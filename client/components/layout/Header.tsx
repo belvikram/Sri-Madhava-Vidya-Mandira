@@ -3,7 +3,7 @@ import { useState } from "react";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { useI18n } from "@/lib/i18n";
 import { getLogo } from "@/lib/imageUtils";
-import { Menu, X, BookOpen, Users, FileText, Building, Camera, Newspaper, Trophy, Phone } from "lucide-react";
+import { Menu, X, BookOpen, Users, FileText, Building, Camera, Newspaper, Trophy, Phone, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Header() {
@@ -26,6 +26,7 @@ export default function Header() {
     { to: "/gallery", label: t("gallery"), icon: Camera, description: "Photo gallery" },
     { to: "/news", label: t("news"), icon: Newspaper, description: "Latest news & events" },
     { to: "/achievements", label: t("achievements"), icon: Trophy, description: "Our achievements" },
+    { to: "/results", label: "Results", icon: Award, description: "Examination results" },
     { to: "/contact", label: t("contact"), icon: Phone, description: "Get in touch" },
   ];
 
