@@ -15,12 +15,17 @@ const schoolImages = [
   'school12.png'
 ];
 
+// Get the base path for assets (handles both dev and production)
+function getAssetBasePath(): string {
+  return import.meta.env.PROD ? '/Sri-Madhava-Vidya-Mandira/assets' : '/assets';
+}
+
 /**
  * Get a random school image path
  */
 export function getRandomSchoolImage(): string {
   const randomIndex = Math.floor(Math.random() * schoolImages.length);
-  return `/assets/${schoolImages[randomIndex]}`;
+  return `${getAssetBasePath()}/${schoolImages[randomIndex]}`;
 }
 
 /**
@@ -28,19 +33,26 @@ export function getRandomSchoolImage(): string {
  */
 export function getSchoolImage(index: number): string {
   const imageIndex = Math.max(1, Math.min(12, index)) - 1;
-  return `/assets/${schoolImages[imageIndex]}`;
+  return `${getAssetBasePath()}/${schoolImages[imageIndex]}`;
 }
 
 /**
  * Get all school image paths
  */
 export function getAllSchoolImages(): string[] {
-  return schoolImages.map(img => `/assets/${img}`);
+  return schoolImages.map(img => `${getAssetBasePath()}/${img}`);
 }
 
 /**
  * Get the main school logo
  */
 export function getLogo(): string {
-  return '/assets/logo.png';
+  return `${getAssetBasePath()}/logo.png`;
+}
+
+/**
+ * Get the hero image path
+ */
+export function getHeroImage(): string {
+  return `${getAssetBasePath()}/HeroImage.png`;
 }

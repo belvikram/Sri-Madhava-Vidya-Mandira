@@ -1,6 +1,6 @@
 import { useI18n } from "@/lib/i18n";
 import { Link } from "react-router-dom";
-import { getLogo } from "@/lib/imageUtils";
+import { getLogo, getHeroImage } from "@/lib/imageUtils";
 
 export default function Hero() {
   const { t } = useI18n();
@@ -31,7 +31,7 @@ export default function Hero() {
           <div className="relative aspect-[4/3] w-full rounded-xl bg-gradient-to-tr from-brand-blue to-brand-orange p-1 shadow-xl">
             <div className="h-full w-full overflow-hidden rounded-[10px] bg-white">
               <img
-                src="/assets/HeroImage.png"
+                src={getHeroImage()}
                 alt="School campus"
                 className="h-full w-full object-cover object-center opacity-90"
               />
