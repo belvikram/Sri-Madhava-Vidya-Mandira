@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { useI18n } from "@/lib/i18n";
+import { getRandomSchoolImage } from "@/lib/imageUtils";
 
 export default function Header() {
   const { t } = useI18n();
@@ -9,7 +10,7 @@ export default function Header() {
       <div className="container mx-auto flex items-center justify-between py-3">
         <Link to="/" className="flex items-center gap-3">
           <img
-            src="/placeholder.svg"
+            src={getRandomSchoolImage()}
             alt="School logo"
             className="h-9 w-9 rounded-full ring-2 ring-brand-orange/30"
           />

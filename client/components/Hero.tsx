@@ -30,14 +30,14 @@ export default function Hero() {
           <div className="relative aspect-[4/3] w-full rounded-xl bg-gradient-to-tr from-brand-blue to-brand-orange p-1 shadow-xl">
             <div className="h-full w-full overflow-hidden rounded-[10px] bg-white">
               <img
-                src="/placeholder.svg"
+                src="/assets/HeroImage.png"
                 alt="School campus"
                 className="h-full w-full object-cover object-center opacity-90"
               />
             </div>
           </div>
           <div className="absolute -bottom-4 -right-4 hidden sm:flex items-center gap-3 rounded-xl bg-white px-4 py-3 shadow-lg ring-1 ring-black/5">
-            <img src="/placeholder.svg" alt="Logo" className="h-8 w-8" />
+            <img src="/assets/HeroImage.png" alt="Logo" className="h-8 w-8 rounded" />
             <div className="text-sm">
               <div className="font-semibold text-brand-blue">{t("school_name")}</div>
               <div className="text-gray-500">{t("tagline")}</div>

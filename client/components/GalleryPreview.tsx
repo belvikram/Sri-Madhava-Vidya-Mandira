@@ -7,14 +7,13 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { getAllSchoolImages } from "@/lib/imageUtils";
 
-const images = [
-  { src: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1200&auto=format&fit=crop", alt: "assembly" },
-  { src: "https://images.unsplash.com/photo-1580584128409-8e5f0b24b1f8?q=80&w=1200&auto=format&fit=crop", alt: "classroom" },
-  { src: "https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=1200&auto=format&fit=crop", alt: "sports" },
-  { src: "https://images.unsplash.com/photo-1580584128409-8950b8067e2e?q=80&w=1200&auto=format&fit=crop", alt: "lab" },
-  { src: "https://images.unsplash.com/photo-1519455953755-af066f52f1ea?q=80&w=1200&auto=format&fit=crop", alt: "cultural" },
-];
+const schoolImages = getAllSchoolImages();
+const images = schoolImages.map((src, index) => ({
+  src,
+  alt: `School image ${index + 1}`
+}));
 
 export default function GalleryPreview() {
   const { t } = useI18n();
