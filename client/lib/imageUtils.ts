@@ -37,3 +37,10 @@ export function getSchoolImage(index: number): string {
 export function getAllSchoolImages(): string[] {
   return schoolImages.map(img => `/assets/${img}`);
 }
+
+/**
+ * Get the main school logo
+ */
+export function getLogo(): string {
+  return '/assets/logo.png';
+}

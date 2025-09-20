@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useI18n } from "@/lib/i18n";
-import { getRandomSchoolImage } from "@/lib/imageUtils";
+import { getLogo } from "@/lib/imageUtils";
 
 export default function Footer() {
   const { t } = useI18n();
@@ -10,7 +10,7 @@ export default function Footer() {
       <div className="container mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 py-10">
         <div>
           <div className="flex items-center gap-3">
-            <img src={getRandomSchoolImage()} alt="Logo" className="h-10 w-10 rounded" />
+            <img src={getLogo()} alt="Logo" className="h-10 w-10 rounded" />
             <div className="font-semibold text-brand-blue">{t("school_name")}</div>
           </div>
           <p className="mt-3 text-sm text-gray-600 max-w-sm">{t("school_name_full")}</p>

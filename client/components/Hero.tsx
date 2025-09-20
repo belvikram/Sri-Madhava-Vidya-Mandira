@@ -1,5 +1,6 @@
 import { useI18n } from "@/lib/i18n";
 import { Link } from "react-router-dom";
+import { getLogo } from "@/lib/imageUtils";
 
 export default function Hero() {
   const { t } = useI18n();
@@ -37,7 +38,7 @@ export default function Hero() {
             </div>
           </div>
           <div className="absolute -bottom-4 -right-4 hidden sm:flex items-center gap-3 rounded-xl bg-white px-4 py-3 shadow-lg ring-1 ring-black/5">
-            <img src="/assets/HeroImage.png" alt="Logo" className="h-8 w-8 rounded" />
+            <img src={getLogo()} alt="Logo" className="h-8 w-8 rounded" />
             <div className="text-sm">
               <div className="font-semibold text-brand-blue">{t("school_name")}</div>
               <div className="text-gray-500">{t("tagline")}</div>
