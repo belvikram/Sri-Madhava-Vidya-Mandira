@@ -26,7 +26,7 @@ export default function Header() {
     { to: "/gallery", label: t("gallery"), icon: Camera, description: "Photo gallery" },
     { to: "/news", label: t("news"), icon: Newspaper, description: "Latest news & events" },
     { to: "/achievements", label: t("achievements"), icon: Trophy, description: "Our achievements" },
-    { to: "/results", label: "Results", icon: Award, description: "Examination results" },
+    { to: "/results", label: t("results"), icon: Award, description: "Examination results" },
     { to: "/contact", label: t("contact"), icon: Phone, description: "Get in touch" },
   ];
 
