@@ -1,4 +1,4 @@
-import { MessageCircle, X, Send } from "lucide-react";
+import { X, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState, useEffect, useRef } from "react";
@@ -80,7 +80,12 @@ export default function WhatsAppButton() {
         className="h-14 w-14 rounded-full bg-green-500 hover:bg-green-600 shadow-lg hover:shadow-xl transition-all duration-300 p-0 whatsapp-float"
         aria-label="Contact us on WhatsApp"
       >
-        <MessageCircle className="h-7 w-7 text-white" />
+        <img 
+          src="/assets/whatsAppLogo.png" 
+          alt="WhatsApp" 
+          className="h-8 w-8 object-contain"
+          style={{ backgroundColor: 'transparent' }}
+        />
       </Button>
       
       {/* Tooltip */}
@@ -98,7 +103,12 @@ export default function WhatsAppButton() {
           <div className="bg-green-500 px-4 py-3 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-                <MessageCircle className="h-5 w-5 text-white" />
+                <img 
+                  src="/assets/whatsAppLogo.png" 
+                  alt="WhatsApp" 
+                  className="h-5 w-5 object-contain"
+                  style={{ backgroundColor: 'transparent' }}
+                />
               </div>
               <div>
                 <h3 className="text-white font-semibold text-sm">SMVM School</h3>
