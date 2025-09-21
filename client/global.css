@@ -5,6 +5,32 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Mobile sidebar full height fix */
+@media (max-width: 768px) {
+  .mobile-sidebar {
+    height: 100vh !important;
+    min-height: 100vh !important;
+    max-height: 100vh !important;
+    z-index: 100000 !important;
+    position: fixed !important;
+  }
+}
+
+/* Ensure mobile sidebar overlay appears above all content */
+.mobile-sidebar-overlay {
+  z-index: 99999 !important;
+  position: fixed !important;
+}
+
 @layer base {
   /**
    * Tailwind CSS theme

@@ -3,81 +3,19 @@ import { useState } from "react";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { useI18n } from "@/lib/i18n";
 import { getLogo } from "@/lib/imageUtils";
-import { Menu, X, BookOpen, Users, FileText, Building, Camera, Newspaper, Trophy, Phone, Award, GraduationCap, HelpCircle, MessageCircle, ChevronDown } from "lucide-react";
+import { Menu, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from "@/components/ui/dropdown-menu";
+import { useMobileMenu } from "@/contexts/MobileMenuContext";
 
 export default function Header() {
   const { t } = useI18n();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { toggleMobileMenu, closeMobileMenu } = useMobileMenu();
+  const [isMoreMenuOpen, setIsMoreMenuOpen] = useState(false);
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
 
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
-  };
-
-  const mobileNavigationItems = [
-    { to: "/about", label: t("about") },
-    { to: "/academics", label: t("academics") },
-    { to: "/admissions", label: t("admissions") },
-    { to: "/facilities", label: t("facilities") },
-    { to: "/gallery", label: t("gallery") },
-    { to: "/news", label: t("news") },
-    { to: "/achievements", label: t("achievements") },
-    { to: "/results", label: t("results") },
-    { to: "/alumni", label: t("alumni") },
-    { to: "/faqs", label: t("faqs") },
-    { to: "/parents-message", label: t("parents_message") },
-    { to: "/contact", label: t("contact") },
-  ];
-
-  const navigationCategories = [
-    {
-      title: t("about"),
-      icon: Users,
-      items: [
-        { to: "/about", label: t("about"), icon: Users, description: "Learn about our school" },
-        { to: "/alumni", label: t("alumni"), icon: GraduationCap, description: "Our alumni network" },
-        { to: "/parents-message", label: t("parents_message"), icon: MessageCircle, description: "Parent testimonials" },
-      ]
-    },
-    {
-      title: t("academics"),
-      icon: BookOpen,
-      items: [
-        { to: "/academics", label: t("academics"), icon: BookOpen, description: "Academic programs" },
-        { to: "/results", label: t("results"), icon: Award, description: "Examination results" },
-        { to: "/achievements", label: t("achievements"), icon: Trophy, description: "Our achievements" },
-      ]
-    },
-    {
-      title: t("admissions"),
-      icon: FileText,
-      items: [
-        { to: "/admissions", label: t("admissions"), icon: FileText, description: "Apply to our school" },
-        { to: "/faqs", label: t("faqs"), icon: HelpCircle, description: "Frequently asked questions" },
-      ]
-    },
-    {
-      title: t("facilities"),
-      icon: Building,
-      items: [
-        { to: "/facilities", label: t("facilities"), icon: Building, description: "Our campus facilities" },
-        { to: "/gallery", label: t("gallery"), icon: Camera, description: "Photo gallery" },
-        { to: "/news", label: t("news"), icon: Newspaper, description: "Latest news & events" },
-      ]
-    },
-  ];
-
-  const directLinks = [
-    { to: "/contact", label: t("contact"), icon: Phone, description: "Get in touch" },
-  ];
 
   return (
-    <header className="sticky top-0 z-50 border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+    <header className="sticky top-0 z-30 border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60">
       <div className="container mx-auto flex items-center justify-between py-3">
         <Link to="/" className="flex items-center gap-3" onClick={closeMobileMenu}>
           <img
@@ -94,34 +32,52 @@ export default function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
-          {navigationCategories.map((category, categoryIndex) => (
-            <DropdownMenu key={categoryIndex}>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="flex items-center gap-1 text-gray-700 hover:text-brand-orange">
-                  <category.icon className="h-4 w-4" />
-                  {category.title}
-                  <ChevronDown className="h-3 w-3" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-64">
-                {category.items.map((item, itemIndex) => (
-                  <DropdownMenuItem key={itemIndex} asChild>
-                    <Link to={item.to} className="flex items-center gap-3 p-3">
-                      <item.icon className="h-4 w-4 text-brand-blue" />
-                      <div>
-                        <div className="font-medium">{item.label}</div>
-                        <div className="text-xs text-gray-500">{item.description}</div>
-                      </div>
-                    </Link>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
-          ))}
+          {/* Core navigation items - always visible (5 links) */}
+          <Nav to="/about" label={t("about")} />
+          <Nav to="/academics" label={t("academics")} />
+          <Nav to="/admissions" label={t("admissions")} />
+          <Nav to="/facilities" label={t("facilities")} />
+          <Nav to="/contact" label={t("contact")} />
           
-          {directLinks.map((link) => (
-            <Nav key={link.to} to={link.to} label={link.label} />
-          ))}
+          {/* More dropdown with remaining links */}
+          <div 
+            className="relative"
+            onMouseEnter={() => setIsMoreMenuOpen(true)}
+            onMouseLeave={() => setIsMoreMenuOpen(false)}
+          >
+            <Button variant="ghost" className="flex items-center gap-1 text-gray-700 hover:text-brand-orange">
+              {t("more")}
+              <ChevronDown className="h-3 w-3" />
+            </Button>
+            
+            {isMoreMenuOpen && (
+              <div className="absolute right-0 top-full mt-1 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-50 p-2">
+                <div className="space-y-1">
+                  <Link to="/gallery" className="block px-3 py-2 text-sm text-gray-900 hover:bg-brand-blue/5 hover:text-brand-blue rounded-md transition-colors">
+                    {t("gallery")}
+                  </Link>
+                  <Link to="/news" className="block px-3 py-2 text-sm text-gray-900 hover:bg-brand-blue/5 hover:text-brand-blue rounded-md transition-colors">
+                    {t("news")}
+                  </Link>
+                  <Link to="/achievements" className="block px-3 py-2 text-sm text-gray-900 hover:bg-brand-blue/5 hover:text-brand-blue rounded-md transition-colors">
+                    {t("achievements")}
+                  </Link>
+                  <Link to="/results" className="block px-3 py-2 text-sm text-gray-900 hover:bg-brand-blue/5 hover:text-brand-blue rounded-md transition-colors">
+                    {t("results")}
+                  </Link>
+                  <Link to="/alumni" className="block px-3 py-2 text-sm text-gray-900 hover:bg-brand-blue/5 hover:text-brand-blue rounded-md transition-colors">
+                    {t("alumni")}
+                  </Link>
+                  <Link to="/faqs" className="block px-3 py-2 text-sm text-gray-900 hover:bg-brand-blue/5 hover:text-brand-blue rounded-md transition-colors">
+                    {t("faqs")}
+                  </Link>
+                  <Link to="/parents-message" className="block px-3 py-2 text-sm text-gray-900 hover:bg-brand-blue/5 hover:text-brand-blue rounded-md transition-colors">
+                    {t("parents_message")}
+                  </Link>
+                </div>
+              </div>
+            )}
+          </div>
         </nav>
 
         {/* Desktop Actions */}
@@ -142,45 +98,11 @@ export default function Header() {
             className="p-2"
             aria-label="Toggle mobile menu"
           >
-            {isMobileMenuOpen ? (
-              <X className="h-5 w-5" />
-            ) : (
-              <Menu className="h-5 w-5" />
-            )}
+            <Menu className="h-5 w-5" />
           </Button>
         </div>
       </div>
 
-      {/* Mobile Navigation Menu */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden border-t bg-white/95 backdrop-blur">
-          <nav className="container mx-auto py-6">
-            <div className="space-y-2">
-              {mobileNavigationItems.map((item, index) => (
-                <Link
-                  key={index}
-                  to={item.to}
-                  onClick={closeMobileMenu}
-                  className="block p-3 text-gray-900 hover:bg-brand-blue/5 hover:text-brand-blue rounded-lg transition-all duration-200"
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-            
-            <div className="mt-6">
-              <Link
-                to="/admissions"
-                onClick={closeMobileMenu}
-                className="flex items-center justify-center w-full px-6 py-4 text-base font-semibold text-white bg-gradient-to-r from-brand-blue to-brand-blue/90 hover:from-brand-blue/90 hover:to-brand-blue/80 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200"
-              >
-                <FileText className="h-5 w-5 mr-2" />
-                {t("admissions_cta")}
-              </Link>
-            </div>
-          </nav>
-        </div>
-      )}
     </header>
   );
 }

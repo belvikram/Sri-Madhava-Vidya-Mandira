@@ -271,7 +271,7 @@ export default function ParentsMessage() {
               <Button size="lg" variant="secondary" className="bg-white text-brand-blue hover:bg-gray-100">
                 {t("parent_share_experience")}
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-brand-blue">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-brand-blue bg-transparent">
                 {t("parent_contact_us")}
               </Button>
             </div>

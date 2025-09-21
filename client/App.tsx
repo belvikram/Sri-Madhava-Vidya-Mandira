@@ -10,7 +10,9 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import MobileSidebar from "@/components/layout/MobileSidebar";
 import { I18nProvider } from "@/lib/i18n";
+import { MobileMenuProvider } from "@/contexts/MobileMenuContext";
 import Admissions from "./pages/Admissions";
 import Academics from "./pages/Academics";
 import Contact from "./pages/Contact";
@@ -33,25 +35,28 @@ const App = () => (
       <Sonner />
       <HashRouter>
         <I18nProvider>
-          <Header />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/academics" element={<Academics />} />
-            <Route path="/admissions" element={<Admissions />} />
-            <Route path="/facilities" element={<Facilities />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/news" element={<News />} />
-            <Route path="/achievements" element={<Achievements />} />
-            <Route path="/results" element={<Results />} />
-            <Route path="/alumni" element={<Alumni />} />
-            <Route path="/faqs" element={<FAQs />} />
-            <Route path="/parents-message" element={<ParentsMessage />} />
-            <Route path="/contact" element={<Contact />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-          <Footer />
+          <MobileMenuProvider>
+            <Header />
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/academics" element={<Academics />} />
+              <Route path="/admissions" element={<Admissions />} />
+              <Route path="/facilities" element={<Facilities />} />
+              <Route path="/gallery" element={<Gallery />} />
+              <Route path="/news" element={<News />} />
+              <Route path="/achievements" element={<Achievements />} />
+              <Route path="/results" element={<Results />} />
+              <Route path="/alumni" element={<Alumni />} />
+              <Route path="/faqs" element={<FAQs />} />
+              <Route path="/parents-message" element={<ParentsMessage />} />
+              <Route path="/contact" element={<Contact />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+            <Footer />
+            <MobileSidebar />
+          </MobileMenuProvider>
         </I18nProvider>
       </HashRouter>
     </TooltipProvider>
