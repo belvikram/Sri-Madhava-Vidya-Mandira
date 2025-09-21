@@ -37,15 +37,12 @@ export default function Header() {
           <img
             src={getLogo()}
             alt="School logo"
-            className="h-9 w-9 rounded-full ring-2 ring-brand-orange/30"
+            className="h-12 w-12 rounded-full ring-2 ring-brand-orange/30"
           />
           <div className="flex flex-col leading-tight">
-            <span className="text-sm font-semibold text-brand-blue">
-              {t("school_name")}
-            </span>
-            <span className="text-[10px] text-gray-500 hidden sm:block">
-              Sira – 572137
-            </span>
+            <div className="text-2xl font-bold text-brand-blue">
+              SMVM
+            </div>
           </div>
         </Link>
 
