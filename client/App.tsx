@@ -11,6 +11,7 @@ import NotFound from "./pages/NotFound";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import MobileSidebar from "@/components/layout/MobileSidebar";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import { I18nProvider } from "@/lib/i18n";
 import { MobileMenuProvider } from "@/contexts/MobileMenuContext";
 import Admissions from "./pages/Admissions";
@@ -56,6 +57,7 @@ const App = () => (
             </Routes>
             <Footer />
             <MobileSidebar />
+            <WhatsAppButton />
           </MobileMenuProvider>
         </I18nProvider>
       </HashRouter>
