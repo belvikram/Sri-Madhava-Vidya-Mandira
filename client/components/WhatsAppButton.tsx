@@ -2,6 +2,7 @@ import { X, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState, useEffect, useRef } from "react";
+import { getWhatsAppLogo } from "@/lib/imageUtils";
 
 export default function WhatsAppButton() {
   const [showPopup, setShowPopup] = useState(false);
@@ -81,7 +82,7 @@ export default function WhatsAppButton() {
         aria-label="Contact us on WhatsApp"
       >
         <img 
-          src="/assets/whatsAppLogo.png" 
+          src={getWhatsAppLogo()} 
           alt="WhatsApp" 
           className="h-8 w-8 object-contain"
           style={{ backgroundColor: 'transparent' }}
@@ -104,7 +105,7 @@ export default function WhatsAppButton() {
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
                 <img 
-                  src="/assets/whatsAppLogo.png" 
+                  src={getWhatsAppLogo()} 
                   alt="WhatsApp" 
                   className="h-5 w-5 object-contain"
                   style={{ backgroundColor: 'transparent' }}

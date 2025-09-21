@@ -56,3 +56,10 @@ export function getLogo(): string {
 export function getHeroImage(): string {
   return `${getAssetBasePath()}/HeroImage.png`;
 }
+
+/**
+ * Get the WhatsApp logo path
+ */
+export function getWhatsAppLogo(): string {
+  return `${getAssetBasePath()}/whatsAppLogo.png`;
+}
