@@ -19,6 +19,21 @@ export default function Header() {
     setIsMobileMenuOpen(false);
   };
 
+  const mobileNavigationItems = [
+    { to: "/about", label: t("about") },
+    { to: "/academics", label: t("academics") },
+    { to: "/admissions", label: t("admissions") },
+    { to: "/facilities", label: t("facilities") },
+    { to: "/gallery", label: t("gallery") },
+    { to: "/news", label: t("news") },
+    { to: "/achievements", label: t("achievements") },
+    { to: "/results", label: t("results") },
+    { to: "/alumni", label: t("alumni") },
+    { to: "/faqs", label: t("faqs") },
+    { to: "/parents-message", label: t("parents_message") },
+    { to: "/contact", label: t("contact") },
+  ];
+
   const navigationCategories = [
     {
       title: t("about"),
@@ -140,44 +155,15 @@ export default function Header() {
       {isMobileMenuOpen && (
         <div className="md:hidden border-t bg-white/95 backdrop-blur">
           <nav className="container mx-auto py-6">
-            <div className="space-y-4">
-              {navigationCategories.map((category, categoryIndex) => (
-                <div key={categoryIndex} className="space-y-2">
-                  <h3 className="text-sm font-semibold text-gray-900 flex items-center gap-2">
-                    <category.icon className="h-4 w-4 text-brand-blue" />
-                    {category.title}
-                  </h3>
-                  <div className="grid grid-cols-1 gap-2 ml-6">
-                    {category.items.map((item, itemIndex) => (
-                      <Link
-                        key={itemIndex}
-                        to={item.to}
-                        onClick={closeMobileMenu}
-                        className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-brand-blue/5 hover:border-brand-blue/20 border border-transparent transition-all duration-200"
-                      >
-                        <item.icon className="h-4 w-4 text-brand-blue" />
-                        <div>
-                          <div className="text-sm font-medium text-gray-900">{item.label}</div>
-                          <div className="text-xs text-gray-500">{item.description}</div>
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              ))}
-              
-              {directLinks.map((link) => (
+            <div className="space-y-2">
+              {mobileNavigationItems.map((item, index) => (
                 <Link
-                  key={link.to}
-                  to={link.to}
+                  key={index}
+                  to={item.to}
                   onClick={closeMobileMenu}
-                  className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-brand-blue/5 hover:border-brand-blue/20 border border-transparent transition-all duration-200"
+                  className="block p-3 text-gray-900 hover:bg-brand-blue/5 hover:text-brand-blue rounded-lg transition-all duration-200"
                 >
-                  <link.icon className="h-4 w-4 text-brand-blue" />
-                  <div>
-                    <div className="text-sm font-medium text-gray-900">{link.label}</div>
-                    <div className="text-xs text-gray-500">{link.description}</div>
-                  </div>
+                  {item.label}
                 </Link>
               ))}
             </div>
