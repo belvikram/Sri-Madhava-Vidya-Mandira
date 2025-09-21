@@ -3,8 +3,9 @@ import { useState } from "react";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { useI18n } from "@/lib/i18n";
 import { getLogo } from "@/lib/imageUtils";
-import { Menu, X, BookOpen, Users, FileText, Building, Camera, Newspaper, Trophy, Phone, Award } from "lucide-react";
+import { Menu, X, BookOpen, Users, FileText, Building, Camera, Newspaper, Trophy, Phone, Award, GraduationCap, HelpCircle, MessageCircle, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from "@/components/ui/dropdown-menu";
 
 export default function Header() {
   const { t } = useI18n();
@@ -18,15 +19,45 @@ export default function Header() {
     setIsMobileMenuOpen(false);
   };
 
-  const navigationLinks = [
-    { to: "/about", label: t("about"), icon: Users, description: "Learn about our school" },
-    { to: "/academics", label: t("academics"), icon: BookOpen, description: "Academic programs" },
-    { to: "/admissions", label: t("admissions"), icon: FileText, description: "Apply to our school" },
-    { to: "/facilities", label: t("facilities"), icon: Building, description: "Our campus facilities" },
-    { to: "/gallery", label: t("gallery"), icon: Camera, description: "Photo gallery" },
-    { to: "/news", label: t("news"), icon: Newspaper, description: "Latest news & events" },
-    { to: "/achievements", label: t("achievements"), icon: Trophy, description: "Our achievements" },
-    { to: "/results", label: t("results"), icon: Award, description: "Examination results" },
+  const navigationCategories = [
+    {
+      title: t("about"),
+      icon: Users,
+      items: [
+        { to: "/about", label: t("about"), icon: Users, description: "Learn about our school" },
+        { to: "/alumni", label: t("alumni"), icon: GraduationCap, description: "Our alumni network" },
+        { to: "/parents-message", label: t("parents_message"), icon: MessageCircle, description: "Parent testimonials" },
+      ]
+    },
+    {
+      title: t("academics"),
+      icon: BookOpen,
+      items: [
+        { to: "/academics", label: t("academics"), icon: BookOpen, description: "Academic programs" },
+        { to: "/results", label: t("results"), icon: Award, description: "Examination results" },
+        { to: "/achievements", label: t("achievements"), icon: Trophy, description: "Our achievements" },
+      ]
+    },
+    {
+      title: t("admissions"),
+      icon: FileText,
+      items: [
+        { to: "/admissions", label: t("admissions"), icon: FileText, description: "Apply to our school" },
+        { to: "/faqs", label: t("faqs"), icon: HelpCircle, description: "Frequently asked questions" },
+      ]
+    },
+    {
+      title: t("facilities"),
+      icon: Building,
+      items: [
+        { to: "/facilities", label: t("facilities"), icon: Building, description: "Our campus facilities" },
+        { to: "/gallery", label: t("gallery"), icon: Camera, description: "Photo gallery" },
+        { to: "/news", label: t("news"), icon: Newspaper, description: "Latest news & events" },
+      ]
+    },
+  ];
+
+  const directLinks = [
     { to: "/contact", label: t("contact"), icon: Phone, description: "Get in touch" },
   ];
 
@@ -48,7 +79,32 @@ export default function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
-          {navigationLinks.map((link) => (
+          {navigationCategories.map((category, categoryIndex) => (
+            <DropdownMenu key={categoryIndex}>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="flex items-center gap-1 text-gray-700 hover:text-brand-orange">
+                  <category.icon className="h-4 w-4" />
+                  {category.title}
+                  <ChevronDown className="h-3 w-3" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="w-64">
+                {category.items.map((item, itemIndex) => (
+                  <DropdownMenuItem key={itemIndex} asChild>
+                    <Link to={item.to} className="flex items-center gap-3 p-3">
+                      <item.icon className="h-4 w-4 text-brand-blue" />
+                      <div>
+                        <div className="font-medium">{item.label}</div>
+                        <div className="text-xs text-gray-500">{item.description}</div>
+                      </div>
+                    </Link>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ))}
+          
+          {directLinks.map((link) => (
             <Nav key={link.to} to={link.to} label={link.label} />
           ))}
         </nav>
@@ -84,26 +140,48 @@ export default function Header() {
       {isMobileMenuOpen && (
         <div className="md:hidden border-t bg-white/95 backdrop-blur">
           <nav className="container mx-auto py-6">
-            <div className="grid grid-cols-2 gap-3">
-              {navigationLinks.map((link) => (
+            <div className="space-y-4">
+              {navigationCategories.map((category, categoryIndex) => (
+                <div key={categoryIndex} className="space-y-2">
+                  <h3 className="text-sm font-semibold text-gray-900 flex items-center gap-2">
+                    <category.icon className="h-4 w-4 text-brand-blue" />
+                    {category.title}
+                  </h3>
+                  <div className="grid grid-cols-1 gap-2 ml-6">
+                    {category.items.map((item, itemIndex) => (
+                      <Link
+                        key={itemIndex}
+                        to={item.to}
+                        onClick={closeMobileMenu}
+                        className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-brand-blue/5 hover:border-brand-blue/20 border border-transparent transition-all duration-200"
+                      >
+                        <item.icon className="h-4 w-4 text-brand-blue" />
+                        <div>
+                          <div className="text-sm font-medium text-gray-900">{item.label}</div>
+                          <div className="text-xs text-gray-500">{item.description}</div>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ))}
+              
+              {directLinks.map((link) => (
                 <Link
                   key={link.to}
                   to={link.to}
                   onClick={closeMobileMenu}
-                  className="flex flex-col items-center p-4 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md hover:border-brand-blue/30 transition-all duration-200 group"
+                  className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-brand-blue/5 hover:border-brand-blue/20 border border-transparent transition-all duration-200"
                 >
-                  <div className="flex items-center justify-center w-12 h-12 bg-brand-blue/10 rounded-full mb-3 group-hover:bg-brand-blue/20 transition-colors">
-                    <link.icon className="h-6 w-6 text-brand-blue" />
+                  <link.icon className="h-4 w-4 text-brand-blue" />
+                  <div>
+                    <div className="text-sm font-medium text-gray-900">{link.label}</div>
+                    <div className="text-xs text-gray-500">{link.description}</div>
                   </div>
-                  <h3 className="text-sm font-semibold text-gray-900 mb-1 text-center">
-                    {link.label}
-                  </h3>
-                  <p className="text-xs text-gray-600 text-center leading-tight">
-                    {link.description}
-                  </p>
                 </Link>
               ))}
             </div>
+            
             <div className="mt-6">
               <Link
                 to="/admissions"
