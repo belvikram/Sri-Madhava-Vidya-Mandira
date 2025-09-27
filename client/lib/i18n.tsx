@@ -47,7 +47,16 @@ const dictionary: Record<Lang, Record<string, string>> = {
     copyright: "All rights reserved.",
     hero_tagline_prefix: "Rooted in",
     hero_tagline_suffix: "for every child",
-    about_snippet: "A nurturing, value-centric school offering holistic education from early years onward. We blend strong academics with culture, sports, and arts.",
+    about_snippet: `Vidya Bharati,
+Akhil Bharatiya Shikshan Sansthan (All India Education Organization):
+
+Vidya Bharati is the largest educational organization in our country, working at an all-India level in the field of education for the past 63 years. Through nearly 30,000 educational centers across the nation, it imparts national education and values.
+
+Our own institution, Sri Madhava Vidya Mandir in Shira town, also functions with the support and guidance of Vidya Bharati. The fundamental aim of Vidya Bharati is to provide children in rural areas with Indian education in their mother tongue, along with school subjects such as Science, Mathematics, Languages, and Social Studies, while also integrating our national culture—music, Sanskrit, yoga, moral education, physical education, vocational education, and social service.
+
+In addition, through activities like national integration service programs, environmental education, Bala Sangama (children’s gatherings), teacher training camps, workshops, and sports meets, the future of school children is shaped so they may become architects of a new India.
+
+It is the aspiration of all of us that our school becomes a sacred temple of selfless service in this noble mission.`,
     ticker_1: "Admissions open for the new academic year.",
     ticker_2: "Congratulations to our students for district-level sports achievements!",
     ticker_3: "Science Fair on 12th September – Parents are welcome.",
@@ -198,6 +207,35 @@ const dictionary: Record<Lang, Record<string, string>> = {
     parent_testimonial_1: "SMVM has provided my child with not just education, but values that will last a lifetime. The teachers are like family.",
     parent_testimonial_2: "The school's commitment to excellence is evident in everything they do. My child's progress has been remarkable.",
     parent_testimonial_3: "I am impressed by the school's modern teaching methods and the care they show for each student's individual needs.",
+    // Core Values
+    values_first: "Values First",
+    values_first_desc: "We believe in nurturing character, integrity, and moral values alongside academic excellence.",
+    holistic_education: "Holistic Education", 
+    holistic_education_desc: "Our curriculum balances academics, sports, arts, and cultural activities for well-rounded development.",
+    excellence_teaching: "Excellence in Teaching",
+    excellence_teaching_desc: "Dedicated teachers with innovative teaching methods to inspire and engage every student.",
+    cultural_heritage: "Cultural Heritage",
+    cultural_heritage_desc: "Preserving and promoting our rich Kannada culture and traditions through various activities.",
+    // Core Values - English
+    samskara: "Culture",
+    samskara_desc: "To instill morality, discipline, respect, and the practice of dharma in students as part of their daily life.",
+    seva_bhavana: "Service Spirit",
+    seva_bhavana_desc: "To nurture compassion and a mindset of service towards every member of society.",
+    shrama_swachata: "Hard Work and Cleanliness",
+    shrama_swachata_desc: "With the goal of \"Sama Ve Shreyassu\" (collective well-being), teaching the dignity of labor and dedication to work. Promoting cleanliness as a reflection of inner purity.",
+    ekata_sahabhava: "Unity and Harmony",
+    ekata_sahabhava_desc: "Embracing the principle of \"Vasudhaiva Kutumbakam\" (the whole world is one family).",
+    adhyatma_atmavikasa: "Spirituality and Self-Development",
+    adhyatma_atmavikasa_desc: "Guiding the mind and soul towards growth through meditation, yoga, chanting, and prayers.",
+    svavalambane: "Self-Reliance",
+    svavalambane_desc: "Developing self-confidence, wisdom, and a sense of duty among students. Empowering them to take responsibility for their lives at every stage.",
+    // Section titles
+    our_core_values: "Our Core Values",
+    our_mission: "Our Mission",
+    our_mission_desc: "To provide quality education that nurtures the intellectual, physical, emotional, and spiritual growth of every child. We aim to develop confident, compassionate, and capable individuals who contribute positively to society while preserving our cultural heritage.",
+    our_vision: "Our Vision",
+    our_vision_desc: "To be a leading educational institution that creates an environment where every child discovers their potential, develops critical thinking skills, and grows into a well-rounded individual with strong values, academic excellence, and cultural awareness.",
+    our_journey: "Our Journey",
   },
   kn: {
     school_name: "ಶ್ರೀ ಮಾಧವ ವಿದ್ಯಾಮಂದಿರ",
@@ -233,7 +271,7 @@ const dictionary: Record<Lang, Record<string, string>> = {
     copyright: "ಎಲ್ಲ ಹಕ್ಕುಗಳು ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ.",
     hero_tagline_prefix: "ಮೂಲ್ಯಗಳು, ಶಿಕ್ಷಣ ಮತ್ತು ಸಂಸ್ಕೃತಿ",
     hero_tagline_suffix: "ಪ್ರತಿ ವಿದ್ಯಾರ್ಥಿಗಾಗಿ",
-    about_snippet: "ಮೂಲ್ಯಾಧಾರಿತ, ಸಮಗ್ರ ಶಿಕ್ಷಣವನ್ನು ನೀಡುವ ಪೋಷಕ ವಾತಾವರಣ. ಅಧ್ಯಯನದ ಜೊತೆಗೆ ಸಂಸ್ಕೃತಿ, ಕ್ರೀಡೆ, ಕಲೆಗಳಿಗೆ ಸಮಾನ ಮಹತ್ವ.",
+    about_snippet: "ವಿದ್ಯಾ ಭಾರತಿ, ಅಖಿಲ ಭಾರತ ಶಿಕ್ಷಣ ಸಂಘಟನೆ ವಿದ್ಯಾ ಭಾರತಿ: ನಮ್ಮ ರಾಷ್ಟ್ರದ ಶಿಕ್ಷಣ ಕ್ಷೇತ್ರದಲ್ಲಿ ಕಳೆದ 63 ವರ್ಷಗಳಿಂದ ಅಖಿಲ ಭಾರತ ಮಟ್ಟದಲ್ಲಿ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತಿರುವ ಬಹುದೊಡ್ಡ ಶಿಕ್ಷಣ ಸಂಘಟನೆ ಸುಮಾರು 30 ಸಹಸ್ರ ವಿದ್ಯಾ ಕೇಂದ್ರಗಳ ಮೂಲಕ ದೇಶಾದ್ಯಂತ ರಾಷ್ಟ್ರೀಯ ಶಿಕ್ಷಣ ಹಾಗೂ ಸಂಸ್ಕಾರವನ್ನು ನೀಡುತ್ತಿದೆ ನಮ್ಮ ಶಿರಾ ನಗರದ ಶ್ರೀ ಮಾಧವ ವಿದ್ಯಾಮಂದಿರವೂ ಸಹ ವಿದ್ಯಾಭಾರತಿ ಸಹಯೋಗ ಹಾಗೂ ಮಾರ್ಗದರ್ಶನದಲ್ಲಿ ಕೆಲಸ ಮಾಡುತ್ತಿರುವ ಸಂಸ್ಥೆಯಾಗಿದೆ ಗ್ರಾಮಾಂತರ ಪ್ರದೇಶದಲ್ಲಿನ ಮಕ್ಕಳಿಗೂ ಮಾತೃಭಾಷೆಯ ಮೂಲಕ ಭಾರತೀಯ ಶಿಕ್ಷಣ ಹಾಗೂ ಶಾಲಾ ಪಠ್ಯ ವಿಷಯಗಳಾದ ವಿಜ್ಞಾನ ಗಣಿತ ಭಾಷಾ ಶಿಕ್ಷಣ ಸಮಾಜ ವಿಜ್ಞಾನಗಳ ಜೊತೆಗೆ ನಮ್ಮ ರಾಷ್ಟ್ರದ ಸಂಸ್ಕೃತಿ ಸಂಗೀತ ಸಂಸ್ಕೃತ ಯೋಗ ನೀತಿ ಶಿಕ್ಷಣ ಶಾರೀರಿಕ ಶಿಕ್ಷಣ ಭೌತಿಕ ಶಿಕ್ಷಣ ವ್ಯವಹಾರಿಕ ಶಿಕ್ಷಣ ಮತ್ತು ಸಮಾಜ ಸೇವ ಕಾರ್ಯಗಳನ್ನು ಅಳವಡಿಸುವುದು ವಿದ್ಯಾ ಭಾರತೀಯ ಮೂಲಭೂತ ಉದ್ದೇಶವಾಗಿದೆ ಇದಲ್ಲದೆ ರಾಷ್ಟ್ರೀಯ ಭಾವೈಕ್ಯ ಸೇವಾ ಕಾರ್ಯ ಪರಿಸರ ಶಿಕ್ಷಣ ಬಾಲಸಂಗಮ ಶಿಕ್ಷಕರಿಗೆ ತರಬೇತಿ ಶಿವರಗಳು ಕಾರ್ಯಗಾರಗಳು ಹಾಗೂ ಕ್ರೀಡಾಕೂಟಗಳನ್ನು ನಡೆಸುವುದರ ಮೂಲಕ ಶಾಲಾ ಮಕ್ಕಳ ಭವಿಷ್ಯವನ್ನು ರೂಪಿಸಿ ಅವರನ್ನು ನವ ಭಾರತದ ಶಿಲ್ಪಿಗಳಾಗಿ ರೂಪಿಸುವ ಕಾರ್ಯದಲ್ಲಿ ನಮ್ಮ ಶಾಲೆಯು ದಾನಾರ್ಜನೆಯ ಪವಿತ್ರ ದೇಗುಲವಾಗಬೇಕೆಂದು ನಮ್ಮೆಲ್ಲರ ಅಭಿಲಾಷೆಯಾಗಿದೆ",
     ticker_1: "ಹೊಸ ಶೈಕ್ಷಣಿಕ ವರ್ಷದ ಪ್ರವೇಶಗಳು ಪ್ರಾರಂಭ.",
     ticker_2: "ಜಿಲ್ಲಾಸ್ಥರ ಕ್ರೀಡೆಯಲ್ಲಿ ನಮ್ಮ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಅಭಿನಂದನೆಗಳು!",
     ticker_3: "ಸೆಪ್ಟೆಂಬರ್ 12ರಂದು ವಿಜ್ಞಾನ ಮೇಳ – ಪೋಷಕರು ಸ್ವಾಗತ.",
@@ -384,6 +422,35 @@ const dictionary: Record<Lang, Record<string, string>> = {
     parent_testimonial_1: "SMVM ನನ್ನ ಮಗುವಿಗೆ ಕೇವಲ ಶಿಕ್ಷಣವನ್ನು ಮಾತ್ರವಲ್ಲ, ಜೀವನದುದ್ದಕ್ಕೂ ಇರುವ ಮೌಲ್ಯಗಳನ್ನು ನೀಡಿದೆ. ಶಿಕ್ಷಕರು ಕುಟುಂಬದಂತೆ.",
     parent_testimonial_2: "ಶಾಲೆಯ ಉತ್ಕೃಷ್ಟತೆಯ ಬದ್ಧತೆಯು ಅವರು ಮಾಡುವ ಎಲ್ಲದರಲ್ಲೂ ಸ್ಪಷ್ಟವಾಗಿದೆ. ನನ್ನ ಮಗುವಿನ ಪ್ರಗತಿ ಗಮನಾರ್ಹವಾಗಿದೆ.",
     parent_testimonial_3: "ಶಾಲೆಯ ಆಧುನಿಕ ಬೋಧನಾ ವಿಧಾನಗಳು ಮತ್ತು ಪ್ರತಿ ವಿದ್ಯಾರ್ಥಿಯ ವೈಯಕ್ತಿಕ ಅಗತ್ಯಗಳ ಬಗ್ಗೆ ಅವರು ತೋರುವ ಕಾಳಜಿಯಿಂದ ನಾನು ಪ್ರಭಾವಿತನಾಗಿದ್ದೇನೆ.",
+    // Core Values
+    values_first: "ಮೌಲ್ಯಗಳು ಮೊದಲು",
+    values_first_desc: "ಶೈಕ್ಷಣಿಕ ಉತ್ಕೃಷ್ಟತೆಯೊಂದಿಗೆ ಚಾರಿತ್ರ್ಯ, ಸಮಗ್ರತೆ ಮತ್ತು ನೈತಿಕ ಮೌಲ್ಯಗಳನ್ನು ಪೋಷಿಸುವುದರಲ್ಲಿ ನಾವು ನಂಬಿಕೆ ಇಡುತ್ತೇವೆ.",
+    holistic_education: "ಸಮಗ್ರ ಶಿಕ್ಷಣ",
+    holistic_education_desc: "ಸಮಗ್ರ ಅಭಿವೃದ್ಧಿಗಾಗಿ ನಮ್ಮ ಪಾಠ್ಯಕ್ರಮವು ಶೈಕ್ಷಣಿಕ, ಕ್ರೀಡೆ, ಕಲೆ ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ ಚಟುವಟಿಕೆಗಳನ್ನು ಸಮತೋಲನಗೊಳಿಸುತ್ತದೆ.",
+    excellence_teaching: "ಬೋಧನೆಯಲ್ಲಿ ಉತ್ಕೃಷ್ಟತೆ",
+    excellence_teaching_desc: "ಪ್ರತಿ ವಿದ್ಯಾರ್ಥಿಯನ್ನು ಪ್ರೇರೇಪಿಸಲು ಮತ್ತು ತೊಡಗಿಸಲು ನವೀನ ಬೋಧನಾ ವಿಧಾನಗಳೊಂದಿಗೆ ಅರ್ಪಿತ ಶಿಕ್ಷಕರು.",
+    cultural_heritage: "ಸಾಂಸ್ಕೃತಿಕ ಪರಂಪರೆ",
+    cultural_heritage_desc: "ವಿವಿಧ ಚಟುವಟಿಕೆಗಳ ಮೂಲಕ ನಮ್ಮ ಸಮೃದ್ಧ ಕನ್ನಡ ಸಂಸ್ಕೃತಿ ಮತ್ತು ಸಂಪ್ರದಾಯಗಳನ್ನು ಸಂರಕ್ಷಿಸುವುದು ಮತ್ತು ಪ್ರಚಾರ ಮಾಡುವುದು.",
+    // New Kannada Values
+    samskara: "ಸಂಸ್ಕಾರ",
+    samskara_desc: "ವಿದ್ಯಾರ್ಥಿಗಳಲ್ಲಿ ನೈತಿಕತೆ ಶಿಸ್ತು ಗೌರವ ಹಾಗೂ ದೈನಂದಿನ ಆಚರಣೆಯಲ್ಲಿಯೂ ಧರ್ಮ ಬೋಧನೆ ಮಾಡುವುದು",
+    seva_bhavana: "ಸೇವಾ ಭಾವನೆ",
+    seva_bhavana_desc: "ಸಮಾಜದ ಪ್ರತಿಯೊಬ್ಬರಲ್ಲಿಯೂ ದಯೆ ಹಾಗೂ ಸೇವಾ ಮನೋಭಾವ ಬೆಳೆಸುವುದು",
+    shrama_swachata: "ಶ್ರಮ ಮತ್ತು ಸ್ವಚ್ಛತೆ",
+    shrama_swachata_desc: "ಸಮವೇ ಶ್ರೇಯಸ್ಸು ಎಂಬ ಧ್ಯೇಯದೊಂದಿಗೆ ಶ್ರಮದಲ್ಲಿ ಗೌರವ ಮತ್ತು ಸಮರ್ಪಣೆಯನ್ನು ಕಲಿಸುವುದು. ಸ್ವಚ್ಛತೆ ಆಂತರಿಕ ಶುದ್ಧತೆಗೂ ಗುರುತು ಎಂಬ ಮೌಲ್ಯವನ್ನು ಬೆಳೆಸುವುದು.",
+    ekata_sahabhava: "ಏಕತೆ ಮತ್ತು ಸಹಭಾವ",
+    ekata_sahabhava_desc: "ವಸುದೈವ ಕುಟುಂಬಕಂ ಎಂಬ ತತ್ವವನ್ನು ಅಳವಡಿಸಿಕೊಳ್ಳುವುದು",
+    adhyatma_atmavikasa: "ಅಧ್ಯಾತ್ಮ ಹಾಗೂ ಆತ್ಮವಿಕಾಸ",
+    adhyatma_atmavikasa_desc: "ಧ್ಯಾನ ಯೋಗ ಜಪಾ ಪ್ರಾರ್ಥನೆಗಳ ಮೂಲಕ ಮನಸ್ಸು ಮತ್ತು ಆತ್ಮವಿಕಾಸ ಸಾಧಿಸುವ ಮಾರ್ಗ",
+    svavalambane: "ಸ್ವಾವಲಂಬನೆ",
+    svavalambane_desc: "ವಿದ್ಯಾರ್ಥಿಗಳಲ್ಲಿ ಆತ್ಮವಿಶ್ವಾಸ ಸ್ವವಿವೇಕ ಮತ್ತು ಕರ್ತವ್ಯ ನಿಷ್ಠೆ ಬೆಳೆಸುವುದು ಜೀವನದ ಪ್ರತಿಯೊಂದು ಹಂತದಲ್ಲೂ ತನ್ನ ಜೀವನದ ಹೊಣಗಾರಿಕೆ ತೆಗೆದುಕೊಳ್ಳುವ ಶಕ್ತಿ ನೀಡುವುದು",
+    // Section titles
+    our_core_values: "ನಮ್ಮ ಮೂಲಭೂತ ಮೌಲ್ಯಗಳು",
+    our_mission: "ನಮ್ಮ ಧ್ಯೇಯ",
+    our_mission_desc: "ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಭಾರತೀಯ ಸಂಸ್ಕೃತಿಯ ಶ್ರೇಷ್ಠತೆಯನ್ನು ಕುರಿತು ಆಧುನಿಕ ಶಿಕ್ಷಣದೊಂದಿಗೆ ಮೌಲ್ಯ ದಾರಿತ ಬದುಕನ್ನು ರೂಪಿಸಲು ಸ್ಪೂರ್ತಿ ನೀಡುವುದು ಭಾರತೀಯ ಪರಂಪರೆ ನೈತಿಕತೆ ಶಿಸ್ತು ಮತ್ತು ಶ್ರದ್ದೆಗೆ ಆದ್ಯತೆ ನೀಡುತ್ತಾ ಜ್ಞಾನ ಹಾಗೂ ಔದಾರ್ಯದೊಂದಿಗೆ ಜವಾಬ್ದಾರಿಯುತನಾಗರೀಕರಣ ರೂಪಿಸುವುದು ನಮ್ಮ ಶಾಲೆಯ ಮುಖ್ಯ ಉದ್ದೇಶ",
+    our_vision: "ನಮ್ಮ ದೃಷ್ಟಿ",
+    our_vision_desc: "ಭಾರತೀಯ ಸಂಸ್ಕೃತಿ ಪರಂಪರೆ ಮತ್ತು ಮೌಲ್ಯಗಳನ್ನು ಪ್ರತಿಬಿಂಬಿಸುವ ಸಮಗ್ರ ಶಿಕ್ಷಣವನ್ನು ಒದಗಿಸಿ ನಾನಾ ನೈತಿಕತೆ ಶ್ರದ್ಧೆ ಮತ್ತು ಸಾಮಾಜಿಕ ಬದ್ಧತೆಯಿಂದ ಶ್ರೇಷ್ಠ ನಾಗರಿಕರನ್ನು ರೂಪಿಸುವುದು ಪೌರಾಣಿಕ ಜ್ಞಾನ ಹಾಗೂ ಆಧುನಿಕ ವಿಜ್ಞಾನವನ್ನು ಸಮನ್ವಯಗೊಳಿಸಿ ಮಾನವೀಯತೆಯೊಂದಿಗೆ ಜೀವನವನ್ನು ಹಮ್ಮಿಕೊಳ್ಳುವ ಮೌಲ್ಯ ಸಂಸ್ಕೃತ ಸಮಾಜವನ್ನು ಕಟ್ಟುವುದು ನಮ್ಮ ಶಾಲೆಯ ದೃಷ್ಟಿಕೋನ",
+    our_journey: "ನಮ್ಮ ಪ್ರಯಾಣ",
   },
 };
 

@@ -177,7 +177,7 @@ export default function Facilities() {
           <CardContent>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               <div className="text-center">
-                <div className="text-3xl font-bold text-brand-blue mb-2">25+</div>
+                <div className="text-3xl font-bold text-brand-blue mb-2">40+</div>
                 <div className="text-sm text-gray-600">Well-ventilated Classrooms</div>
               </div>
               <div className="text-center">

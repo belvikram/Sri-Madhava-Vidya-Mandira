@@ -2,38 +2,48 @@ import { useI18n } from "@/lib/i18n";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { getSchoolImage, getLogo } from "@/lib/imageUtils";
-import { Users, Award, BookOpen, Heart, Target, Eye } from "lucide-react";
+import { Users, Award, BookOpen, Heart, Target, Eye, Sparkles, Hand, Shield, Users2, Brain, UserCheck } from "lucide-react";
 
 export default function About() {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
 
   const stats = [
-    { icon: Users, label: "Students", value: "500+" },
-    { icon: BookOpen, label: "Teachers", value: "25+" },
-    { icon: Award, label: "Years of Excellence", value: "15+" },
-    { icon: Heart, label: "Happy Families", value: "400+" },
+    { icon: Users, label: "Students", value: "400+" },
+    { icon: BookOpen, label: "Teachers And Support Staff", value: "20+" },
+    { icon: Award, label: "Academic service", value: "40+" },
+    { icon: Heart, label: "Families Benefiting", value: "500+" },
   ];
 
   const values = [
     {
-      icon: Heart,
-      title: "Values First",
-      description: "We believe in nurturing character, integrity, and moral values alongside academic excellence.",
+      icon: Sparkles,
+      title: t("samskara"),
+      description: t("samskara_desc"),
     },
     {
-      icon: BookOpen,
-      title: "Holistic Education",
-      description: "Our curriculum balances academics, sports, arts, and cultural activities for well-rounded development.",
+      icon: Hand,
+      title: t("seva_bhavana"),
+      description: t("seva_bhavana_desc"),
     },
     {
-      icon: Target,
-      title: "Excellence in Teaching",
-      description: "Dedicated teachers with innovative teaching methods to inspire and engage every student.",
+      icon: Shield,
+      title: t("shrama_swachata"),
+      description: t("shrama_swachata_desc"),
     },
     {
-      icon: Eye,
-      title: "Cultural Heritage",
-      description: "Preserving and promoting our rich Kannada culture and traditions through various activities.",
+      icon: Users2,
+      title: t("ekata_sahabhava"),
+      description: t("ekata_sahabhava_desc"),
+    },
+    {
+      icon: Brain,
+      title: t("adhyatma_atmavikasa"),
+      description: t("adhyatma_atmavikasa_desc"),
+    },
+    {
+      icon: UserCheck,
+      title: t("svavalambane"),
+      description: t("svavalambane_desc"),
     },
   ];
 
@@ -47,8 +57,7 @@ export default function About() {
         <h1 className="text-4xl font-bold text-brand-blue mb-4">{t("school_name")}</h1>
         <p className="text-xl text-gray-600 mb-6">"Values – Education – Culture"</p>
         <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
-          {t("about_snippet")} Located in the serene town of Sira, we have been shaping young minds 
-          for over a decade, preparing them to become responsible citizens and future leaders.
+          {t("about_snippet")}
         </p>
       </section>
 
@@ -85,8 +94,8 @@ export default function About() {
 
       {/* Our Values */}
       <section className="mb-12">
-        <h2 className="text-3xl font-bold text-center text-brand-blue mb-8">Our Core Values</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <h2 className="text-3xl font-bold text-center text-brand-blue mb-8">{t("our_core_values")}</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {values.map((value, index) => (
             <Card key={index} className="text-center hover:shadow-lg transition-shadow">
               <CardHeader>
@@ -112,15 +121,12 @@ export default function About() {
             <CardHeader>
               <CardTitle className="text-xl text-brand-blue flex items-center gap-2">
                 <Target className="h-5 w-5" />
-                Our Mission
+{t("our_mission")}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-gray-700 leading-relaxed">
-                To provide quality education that nurtures the intellectual, physical, emotional, 
-                and spiritual growth of every child. We aim to develop confident, compassionate, 
-                and capable individuals who contribute positively to society while preserving 
-                our cultural heritage.
+                {t("our_mission_desc")}
               </p>
             </CardContent>
           </Card>
@@ -128,44 +134,102 @@ export default function About() {
             <CardHeader>
               <CardTitle className="text-xl text-brand-blue flex items-center gap-2">
                 <Eye className="h-5 w-5" />
-                Our Vision
+{t("our_vision")}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-gray-700 leading-relaxed">
-                To be a leading educational institution that creates an environment where 
-                every child discovers their potential, develops critical thinking skills, 
-                and grows into a well-rounded individual with strong values, academic 
-                excellence, and cultural awareness.
+                {t("our_vision_desc")}
               </p>
             </CardContent>
           </Card>
         </div>
       </section>
 
-      {/* School History */}
+      {/* School Journey */}
       <section className="mb-12">
         <Card>
           <CardHeader>
-            <CardTitle className="text-2xl text-brand-blue">Our Journey</CardTitle>
+            <CardTitle className="text-2xl text-brand-blue">{t("our_journey")}</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="prose max-w-none">
-              <p className="text-gray-700 leading-relaxed mb-4">
-                Sri Madhava Vidya Mandira was established with a vision to provide quality education 
-                rooted in Indian values and culture. Since our inception, we have been committed to 
-                nurturing young minds in the peaceful town of Sira, Tumkur District.
-              </p>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                Our school has grown from strength to strength, building a reputation for academic 
-                excellence, character development, and cultural enrichment. We take pride in our 
-                dedicated faculty, modern facilities, and the achievements of our students.
-              </p>
-              <div className="flex flex-wrap gap-2 mt-4">
-                <Badge variant="secondary">Established 2009</Badge>
-                <Badge variant="secondary">CBSE Affiliated</Badge>
-                <Badge variant="secondary">Co-educational</Badge>
-                <Badge variant="secondary">English Medium</Badge>
+            <div className="space-y-8">
+              {/* Language-specific content based on global toggle */}
+              {lang === 'kn' ? (
+                <div className="border-l-4 border-brand-orange pl-6">
+                  <h3 className="text-lg font-semibold text-brand-blue mb-4">ಶಾಲೆ ನಡೆದು ಬಂದ ದಾರಿ</h3>
+                  <div className="space-y-4 text-gray-700 leading-relaxed">
+                    <p>
+                      ಶ್ರೀ ಮಾಧವ ವಿದ್ಯಾ ಮಂದಿರವು ರಾಷ್ಟ್ರೀಯ ಸ್ವಯಂಸೇವಕ ಸಂಘ, ಹಿಂದೂ ಸೇವಾ ಪ್ರತಿಷ್ಠಾನ, ವಿಶ್ವ ಹಿಂದೂ ಪರಿಷತ್ನ ಪ್ರೇರಣೆಯಿಂದ ಸಾಧನ ಶಿಕ್ಷಣ ಸಂಸ್ಥೆಯ ಮಾರ್ಗದರ್ಶನದೊಡನೆ ಸ್ವರ್ಗೀಯ ಶ್ರೀಯುತ ಅಜಿತ್ ಕುಮಾರ್ ಅವರ ಅಮೃತ ಹಸ್ತದ ಮೂಲಕ ನಗರದ ಹಿರಿಯರ ಆಶೀರ್ವಾದದಿಂದ 1983- 84ರ ಏಪ್ರಿಲ್ 11ರಂದು ಶಿಶುಮಂದಿರವನ್ನು ಪ್ರಾರಂಭಿಸಲಾಯಿತು.
+                    </p>
+                    <p>
+                      1988ರ ವರೆಗೆ ಶಿಶುಮಂದಿರದಿಂದ 4 ನೇ ತರಗತಿಯವರೆಗೂ ಬೆಳೆದು ಬೆಳೆದ ಶಾಲೆಯಲ್ಲಿ 1989ರಲ್ಲಿ ಹಿರಿಯ ಪ್ರಾಥಮಿಕ ಶಾಲೆಯನ್ನು ಪ್ರಾರಂಭಿಸಲಾಯಿತು.
+                    </p>
+                    <p>
+                      ಇದೀಗ ನಮ್ಮ ಶಾಲೆಯಲ್ಲಿ 1ರಿಂದ 7ನೇ ತರಗತಿವರೆಗೆ(ಕನ್ನಡ ಮಾಧ್ಯಮ) ಅನುದಾನಿತ ಪ್ರಾಥಮಿಕ ವಿಭಾಗ, 8ರಿಂದ 10ನೇ ತರಗತಿವರೆಗೆ ಪ್ರೌಢಶಾಲೆ ಆಂಗ್ಲ ಮಾಧ್ಯಮದಲ್ಲಿ ನಡೆಯುತ್ತಿದ್ದು, 2022-23ರಲ್ಲಿ ಎಲ್. ಕೆ .ಜಿ , ಯು .ಕೆ .ಜಿ. (ಆಂಗ್ಲ ಮಾಧ್ಯಮ) ಪ್ರಾರಂಭವಾಯಿತು
+                    </p>
+                    <p>
+                      2023-24ರಲ್ಲಿ ಒಂದನೇ ತರಗತಿಯನ್ನು ಆಂಗ್ಲ ಮಾಧ್ಯಮದಲ್ಲಿ ಪ್ರಾರಂಭಿಸಲಾಯಿತು.
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                <div className="border-l-4 border-brand-blue pl-6">
+                  <h3 className="text-lg font-semibold text-brand-blue mb-4">Our School's Journey</h3>
+                  <div className="space-y-4 text-gray-700 leading-relaxed">
+                    <p>
+                      Sri Madhava Vidya Mandira was established with the inspiration from Rashtriya Swayamsevak Sangh, 
+                      Hindu Seva Pratishthana, and Vishwa Hindu Parishad, under the guidance of Sadhana Shikshana Samsthe. 
+                      With the blessed hands of the late Sri Ajit Kumar and the blessings of the city's elders, 
+                      the Shishu Mandira (Children's Temple) was inaugurated on April 11, 1983-84.
+                    </p>
+                    <p>
+                      The school grew from the Shishu Mandira up to 4th grade until 1988, and in 1989, 
+                      the Senior Primary School was established.
+                    </p>
+                    <p>
+                      Currently, our school operates with an aided primary section from 1st to 7th grade (Kannada medium), 
+                      and high school from 8th to 10th grade (English medium). In 2022-23, LKG and UKG (English medium) 
+                      were introduced.
+                    </p>
+                    <p>
+                      In 2023-24, 1st grade was started in English medium.
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {/* Key Milestones */}
+              <div className="mt-8">
+                <h4 className="text-lg font-semibold text-brand-blue mb-4">
+                  {lang === 'kn' ? 'ಮುಖ್ಯ ಮೈಲಿಗಲ್ಲುಗಳು' : 'Key Milestones'}
+                </h4>
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                  <div className="text-center p-4 bg-brand-orange/10 rounded-lg">
+                    <div className="text-2xl font-bold text-brand-orange">1983-84</div>
+                    <div className="text-sm text-gray-600">
+                      {lang === 'kn' ? 'ಶಿಶುಮಂದಿರ ಪ್ರಾರಂಭ' : 'Shishu Mandira Inaugurated'}
+                    </div>
+                  </div>
+                  <div className="text-center p-4 bg-brand-blue/10 rounded-lg">
+                    <div className="text-2xl font-bold text-brand-blue">1989</div>
+                    <div className="text-sm text-gray-600">
+                      {lang === 'kn' ? 'ಹಿರಿಯ ಪ್ರಾಥಮಿಕ ಶಾಲೆ' : 'Senior Primary School'}
+                    </div>
+                  </div>
+                  <div className="text-center p-4 bg-brand-orange/10 rounded-lg">
+                    <div className="text-2xl font-bold text-brand-orange">2022-23</div>
+                    <div className="text-sm text-gray-600">
+                      {lang === 'kn' ? 'ಎಲ್.ಕೆ.ಜಿ & ಯು.ಕೆ.ಜಿ (ಆಂಗ್ಲ)' : 'LKG & UKG (English)'}
+                    </div>
+                  </div>
+                  <div className="text-center p-4 bg-brand-blue/10 rounded-lg">
+                    <div className="text-2xl font-bold text-brand-blue">2023-24</div>
+                    <div className="text-sm text-gray-600">
+                      {lang === 'kn' ? '1ನೇ ತರಗತಿ (ಆಂಗ್ಲ)' : '1st Grade (English)'}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </CardContent>

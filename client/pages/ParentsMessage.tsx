@@ -61,7 +61,7 @@ export default function ParentsMessage() {
   const statistics = [
     {
       icon: Users,
-      number: "500+",
+      number: "400+",
       label: t("parent_stat_1")
     },
     {

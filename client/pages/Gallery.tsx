@@ -170,7 +170,7 @@ export default function Gallery() {
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               <div className="text-center">
-                <div className="text-3xl font-bold text-brand-blue mb-2">500+</div>
+                <div className="text-3xl font-bold text-brand-blue mb-2">400+</div>
                 <div className="text-sm text-gray-600">Photos Captured</div>
               </div>
               <div className="text-center">

@@ -84,7 +84,7 @@ export default function Achievements() {
 
   const statistics = [
     { label: "Academic Achievements", value: "50+", icon: Award },
-    { label: "Sports Victories", value: "25+", icon: Trophy },
+    { label: "Sports Victories", value: "40+", icon: Trophy },
     { label: "Cultural Awards", value: "15+", icon: Star },
     { label: "Science Competitions", value: "20+", icon: Medal }
   ];

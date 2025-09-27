@@ -94,7 +94,7 @@ export default function Alumni() {
             <div className="flex flex-wrap justify-center gap-4 text-sm">
               <div className="flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full">
                 <Users className="h-4 w-4" />
-                <span>{t("alumni_count")}: 500+</span>
+                <span>{t("alumni_count")}: 400+</span>
               </div>
               <div className="flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full">
                 <Globe className="h-4 w-4" />
