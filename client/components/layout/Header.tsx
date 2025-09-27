@@ -23,7 +23,7 @@ export default function Header() {
             alt="School logo"
             className="h-20 w-20 rounded-full ring-2 ring-brand-orange/30"
           />
-          <div className="text-2xl font-bold text-brand-blue">
+          <div className="hidden md:block text-2xl font-bold text-brand-blue">
             SMVM
           </div>
         </Link>
