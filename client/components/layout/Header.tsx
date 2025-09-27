@@ -15,18 +15,16 @@ export default function Header() {
 
 
   return (
-    <header className="sticky top-0 z-30 border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+    <header className="sticky top-0 z-30 border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 min-h-16">
       <div className="container mx-auto flex items-center justify-between py-3">
         <Link to="/" className="flex items-center gap-3" onClick={closeMobileMenu}>
           <img
             src={getLogo()}
             alt="School logo"
-            className="h-12 w-12 rounded-full ring-2 ring-brand-orange/30"
+            className="h-20 w-20 rounded-full ring-2 ring-brand-orange/30"
           />
-          <div className="flex flex-col leading-tight">
-            <div className="text-2xl font-bold text-brand-blue">
-              SMVM
-            </div>
+          <div className="text-2xl font-bold text-brand-blue">
+            SMVM
           </div>
         </Link>
 
@@ -74,6 +72,9 @@ export default function Header() {
                   <Link to="/parents-message" className="block px-3 py-2 text-sm text-gray-900 hover:bg-brand-blue/5 hover:text-brand-blue rounded-md transition-colors">
                     {t("parents_message")}
                   </Link>
+                  <Link to="/donor" className="block px-3 py-2 text-sm text-gray-900 hover:bg-red-50 hover:text-red-600 rounded-md transition-colors">
+                    {t("donor")}
+                  </Link>
                 </div>
               </div>
             )}
@@ -93,12 +94,12 @@ export default function Header() {
           <LanguageSwitcher />
           <Button
             variant="ghost"
-            size="sm"
+            size="lg"
             onClick={toggleMobileMenu}
-            className="p-2"
+            className="p-3"
             aria-label="Toggle mobile menu"
           >
-            <Menu className="h-5 w-5" />
+            <Menu className="h-6 w-6" />
           </Button>
         </div>
       </div>

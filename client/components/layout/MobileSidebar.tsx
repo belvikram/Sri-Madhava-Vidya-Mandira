@@ -21,6 +21,7 @@ export default function MobileSidebar() {
     { to: "/alumni", label: t("alumni") },
     { to: "/faqs", label: t("faqs") },
     { to: "/parents-message", label: t("parents_message") },
+    { to: "/donor", label: t("donor") },
     { to: "/contact", label: t("contact") },
   ];
 

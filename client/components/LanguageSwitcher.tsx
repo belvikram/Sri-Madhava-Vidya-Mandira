@@ -7,7 +7,7 @@ export default function LanguageSwitcher() {
       <button
         aria-label={t("kannada")}
         onClick={() => setLang("kn")}
-        className={`px-3 py-1 rounded-md text-xs font-semibold border transition-colors ${
+        className={`px-4 py-2 rounded-md text-sm font-semibold border transition-colors ${
           lang === "kn"
             ? "bg-accent text-accent-foreground border-transparent"
             : "bg-white/70 text-foreground hover:bg-white border-gray-200"
@@ -18,7 +18,7 @@ export default function LanguageSwitcher() {
       <button
         aria-label={t("english")}
         onClick={() => setLang("en")}
-        className={`px-3 py-1 rounded-md text-xs font-semibold border transition-colors ${
+        className={`px-4 py-2 rounded-md text-sm font-semibold border transition-colors ${
           lang === "en"
             ? "bg-accent text-accent-foreground border-transparent"
             : "bg-white/70 text-foreground hover:bg-white border-gray-200"
