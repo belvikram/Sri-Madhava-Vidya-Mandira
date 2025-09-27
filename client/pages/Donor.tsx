@@ -5,9 +5,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
-import { Copy, Heart, Phone, Mail, CheckCircle, CreditCard } from "lucide-react";
+import { Copy, Heart, Phone, Mail, CheckCircle, Smartphone, CreditCard } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 
+const ORG_NAME = "Sri Madhava Vidya Mandira";
+const UPI_VPA = "rainbowshiksha@ybl";
 
 export default function Donor() {
   const { t } = useI18n();
@@ -17,6 +19,21 @@ export default function Donor() {
 
   const quickAmounts = [500, 1000, 2500, 5000, 10000];
 
+  // Generate UPI payment URL
+  const generateUPIUrl = (amount: number) => {
+    const upiUrl = `upi://pay?pa=${UPI_VPA}&pn=${encodeURIComponent(ORG_NAME)}&am=${amount}&cu=INR&tn=School%20Donation`;
+    return upiUrl;
+  };
+
+  // Generate PhonePe deep link
+  const generatePhonePeUrl = (amount: number) => {
+    return `phonepe://pay?pa=${UPI_VPA}&pn=${encodeURIComponent(ORG_NAME)}&am=${amount}&cu=INR&tn=School%20Donation`;
+  };
+
+  // Generate Google Pay deep link
+  const generateGooglePayUrl = (amount: number) => {
+    return `tez://upi/pay?pa=${UPI_VPA}&pn=${encodeURIComponent(ORG_NAME)}&am=${amount}&cu=INR&tn=School%20Donation`;
+  };
 
 
   const copyToClipboard = async (text: string, field: string) => {
@@ -75,153 +92,153 @@ export default function Donor() {
         <div className="max-w-6xl mx-auto">
           {/* Bank Transfer Section */}
           <div className="space-y-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                {/* Account Details Card */}
+               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                 {/* Bank Transfer Card */}
+                 <Card className="shadow-lg">
+                   <CardHeader>
+                     <CardTitle className="flex items-center gap-2">
+                       <div className="p-2 bg-blue-100 rounded-lg">
+                         <CheckCircle className="h-5 w-5 text-blue-600" />
+                       </div>
+                       {t("donor_account_details")}
+                     </CardTitle>
+                     <CardDescription>
+                       {t("donor_note_text")}
+                     </CardDescription>
+                   </CardHeader>
+                   <CardContent className="space-y-6">
+                     {/* Bank Details */}
+                     <div className="space-y-4">
+                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                         <div>
+                           <Label className="text-sm font-medium text-gray-600">
+                             {t("donor_bank_name")}
+                           </Label>
+                           <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                             <span className="font-medium">{t("donor_bank_name_value")}</span>
+                             <Button
+                               variant="ghost"
+                               size="sm"
+                               onClick={() => copyToClipboard(t("donor_bank_name_value"), "bank")}
+                             >
+                               {copiedField === "bank" ? (
+                                 <CheckCircle className="h-4 w-4 text-green-600" />
+                               ) : (
+                                 <Copy className="h-4 w-4" />
+                               )}
+                             </Button>
+                           </div>
+                         </div>
+
+                         <div>
+                           <Label className="text-sm font-medium text-gray-600">
+                             {t("donor_branch")}
+                           </Label>
+                           <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                             <span className="font-medium">{t("donor_branch_value")}</span>
+                             <Button
+                               variant="ghost"
+                               size="sm"
+                               onClick={() => copyToClipboard(t("donor_branch_value"), "branch")}
+                             >
+                               {copiedField === "branch" ? (
+                                 <CheckCircle className="h-4 w-4 text-green-600" />
+                               ) : (
+                                 <Copy className="h-4 w-4" />
+                               )}
+                             </Button>
+                           </div>
+                         </div>
+                       </div>
+
+                       <div>
+                         <Label className="text-sm font-medium text-gray-600">
+                           {t("donor_account_holder")}
+                         </Label>
+                         <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                           <span className="font-medium">{t("donor_account_holder_value")}</span>
+                           <Button
+                             variant="ghost"
+                             size="sm"
+                             onClick={() => copyToClipboard(t("donor_account_holder_value"), "holder")}
+                           >
+                             {copiedField === "holder" ? (
+                               <CheckCircle className="h-4 w-4 text-green-600" />
+                             ) : (
+                               <Copy className="h-4 w-4" />
+                             )}
+                           </Button>
+                         </div>
+                       </div>
+
+                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                         <div>
+                           <Label className="text-sm font-medium text-gray-600">
+                             {t("donor_account_number")}
+                           </Label>
+                           <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                             <span className="font-mono text-sm">{t("donor_account_number_value")}</span>
+                             <Button
+                               variant="ghost"
+                               size="sm"
+                               onClick={() => copyToClipboard(t("donor_account_number_value"), "account")}
+                             >
+                               {copiedField === "account" ? (
+                                 <CheckCircle className="h-4 w-4 text-green-600" />
+                               ) : (
+                                 <Copy className="h-4 w-4" />
+                               )}
+                             </Button>
+                           </div>
+                         </div>
+
+                         <div>
+                           <Label className="text-sm font-medium text-gray-600">
+                             {t("donor_ifsc_code")}
+                           </Label>
+                           <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                             <span className="font-mono text-sm">{t("donor_ifsc_code_value")}</span>
+                             <Button
+                               variant="ghost"
+                               size="sm"
+                               onClick={() => copyToClipboard(t("donor_ifsc_code_value"), "ifsc")}
+                             >
+                               {copiedField === "ifsc" ? (
+                                 <CheckCircle className="h-4 w-4 text-green-600" />
+                               ) : (
+                                 <Copy className="h-4 w-4" />
+                               )}
+                             </Button>
+                           </div>
+                         </div>
+                       </div>
+                     </div>
+
+                     <Separator />
+
+                     {/* Contact Information */}
+                     <div>
+                       <h3 className="text-lg font-semibold mb-3">{t("donor_contact_info")}</h3>
+                       <div className="space-y-2">
+                         <div className="flex items-center gap-2 text-gray-600">
+                           <Phone className="h-4 w-4" />
+                           <span>{t("donor_contact_phone")}</span>
+                         </div>
+                         <div className="flex items-center gap-2 text-gray-600">
+                           <Mail className="h-4 w-4" />
+                           <span>{t("donor_contact_email")}</span>
+                         </div>
+                       </div>
+                     </div>
+                   </CardContent>
+                 </Card>
+
+                {/* Donation Amount Card */}
                 <Card className="shadow-lg">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                      <div className="p-2 bg-blue-100 rounded-lg">
-                        <CheckCircle className="h-5 w-5 text-blue-600" />
-                      </div>
-                      {t("donor_account_details")}
-                    </CardTitle>
-                    <CardDescription>
-                      {t("donor_note_text")}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-6">
-                    {/* Bank Details */}
-                    <div className="space-y-4">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                          <Label className="text-sm font-medium text-gray-600">
-                            {t("donor_bank_name")}
-                          </Label>
-                          <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                            <span className="font-medium">{t("donor_bank_name_value")}</span>
-                            <Button
-                              variant="ghost"
-                              size="sm"
-                              onClick={() => copyToClipboard(t("donor_bank_name_value"), "bank")}
-                            >
-                              {copiedField === "bank" ? (
-                                <CheckCircle className="h-4 w-4 text-green-600" />
-                              ) : (
-                                <Copy className="h-4 w-4" />
-                              )}
-                            </Button>
-                          </div>
-                        </div>
-
-                        <div>
-                          <Label className="text-sm font-medium text-gray-600">
-                            {t("donor_branch")}
-                          </Label>
-                          <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                            <span className="font-medium">{t("donor_branch_value")}</span>
-                            <Button
-                              variant="ghost"
-                              size="sm"
-                              onClick={() => copyToClipboard(t("donor_branch_value"), "branch")}
-                            >
-                              {copiedField === "branch" ? (
-                                <CheckCircle className="h-4 w-4 text-green-600" />
-                              ) : (
-                                <Copy className="h-4 w-4" />
-                              )}
-                            </Button>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div>
-                        <Label className="text-sm font-medium text-gray-600">
-                          {t("donor_account_holder")}
-                        </Label>
-                        <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                          <span className="font-medium">{t("donor_account_holder_value")}</span>
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={() => copyToClipboard(t("donor_account_holder_value"), "holder")}
-                          >
-                            {copiedField === "holder" ? (
-                              <CheckCircle className="h-4 w-4 text-green-600" />
-                            ) : (
-                              <Copy className="h-4 w-4" />
-                            )}
-                          </Button>
-                        </div>
-                      </div>
-
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                          <Label className="text-sm font-medium text-gray-600">
-                            {t("donor_account_number")}
-                          </Label>
-                          <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                            <span className="font-mono text-sm">{t("donor_account_number_value")}</span>
-                            <Button
-                              variant="ghost"
-                              size="sm"
-                              onClick={() => copyToClipboard(t("donor_account_number_value"), "account")}
-                            >
-                              {copiedField === "account" ? (
-                                <CheckCircle className="h-4 w-4 text-green-600" />
-                              ) : (
-                                <Copy className="h-4 w-4" />
-                              )}
-                            </Button>
-                          </div>
-                        </div>
-
-                        <div>
-                          <Label className="text-sm font-medium text-gray-600">
-                            {t("donor_ifsc_code")}
-                          </Label>
-                          <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                            <span className="font-mono text-sm">{t("donor_ifsc_code_value")}</span>
-                            <Button
-                              variant="ghost"
-                              size="sm"
-                              onClick={() => copyToClipboard(t("donor_ifsc_code_value"), "ifsc")}
-                            >
-                              {copiedField === "ifsc" ? (
-                                <CheckCircle className="h-4 w-4 text-green-600" />
-                              ) : (
-                                <Copy className="h-4 w-4" />
-                              )}
-                            </Button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <Separator />
-
-                    {/* Contact Information */}
-                    <div>
-                      <h3 className="text-lg font-semibold mb-3">{t("donor_contact_info")}</h3>
-                      <div className="space-y-2">
-                        <div className="flex items-center gap-2 text-gray-600">
-                          <Phone className="h-4 w-4" />
-                          <span>{t("donor_contact_phone")}</span>
-                        </div>
-                        <div className="flex items-center gap-2 text-gray-600">
-                          <Mail className="h-4 w-4" />
-                          <span>{t("donor_contact_email")}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Bank Transfer Amount Card */}
-                <Card className="shadow-lg">
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <div className="p-2 bg-blue-100 rounded-lg">
-                        <Heart className="h-5 w-5 text-blue-600" />
+                      <div className="p-2 bg-green-100 rounded-lg">
+                        <Heart className="h-5 w-5 text-green-600" />
                       </div>
                       {t("donor_custom_amount")}
                     </CardTitle>
@@ -242,8 +259,8 @@ export default function Donor() {
                             variant={selectedAmount === amount ? "default" : "outline"}
                             className={`h-12 ${
                               selectedAmount === amount
-                                ? "bg-blue-600 hover:bg-blue-700"
-                                : "hover:bg-blue-50"
+                                ? "bg-green-600 hover:bg-green-700"
+                                : "hover:bg-green-50"
                             }`}
                             onClick={() => {
                               setSelectedAmount(amount);
@@ -257,8 +274,8 @@ export default function Donor() {
                           variant={selectedAmount === null && customAmount ? "default" : "outline"}
                           className={`h-12 ${
                             selectedAmount === null && customAmount
-                              ? "bg-blue-600 hover:bg-blue-700"
-                              : "hover:bg-blue-50"
+                              ? "bg-green-600 hover:bg-green-700"
+                              : "hover:bg-green-50"
                           }`}
                           onClick={() => {
                             setSelectedAmount(null);
@@ -272,12 +289,12 @@ export default function Donor() {
 
                     {/* Custom Amount Input */}
                     <div>
-                      <Label htmlFor="custom-amount-bank" className="text-sm font-medium text-gray-600">
+                      <Label htmlFor="custom-amount" className="text-sm font-medium text-gray-600">
                         {t("donor_enter_amount")}
                       </Label>
                       <div className="mt-2">
                         <Input
-                          id="custom-amount-bank"
+                          id="custom-amount"
                           type="number"
                           placeholder={t("donor_amount_placeholder")}
                           value={customAmount}
@@ -290,30 +307,65 @@ export default function Donor() {
                       </div>
                     </div>
 
-                    {/* Donate Button */}
-                    <Button
-                      onClick={handleDonate}
-                      className="w-full h-12 text-lg bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700"
-                      size="lg"
-                    >
-                      <Heart className="h-5 w-5 mr-2" />
-                      {t("donor_donate_now")}
-                    </Button>
+                     {/* UPI App Buttons */}
+                     <div className="space-y-3">
+                       <Label className="text-sm font-medium text-gray-600">
+                         {t("donor_pay_with_any_upi")}
+                       </Label>
+                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                         <Button
+                           onClick={() => {
+                             const amount = selectedAmount || (customAmount ? parseInt(customAmount) : 500);
+                             if (amount > 0) {
+                               window.open(generatePhonePeUrl(amount), '_blank');
+                             } else {
+                               toast({
+                                 title: "Invalid Amount",
+                                 description: "Please select or enter a valid donation amount",
+                                 variant: "destructive",
+                               });
+                             }
+                           }}
+                           className="w-full bg-purple-600 hover:bg-purple-700 text-white"
+                         >
+                           <Smartphone className="h-4 w-4 mr-2" />
+                           {t("donor_pay_with_phonepe")}
+                         </Button>
+                         <Button
+                           onClick={() => {
+                             const amount = selectedAmount || (customAmount ? parseInt(customAmount) : 500);
+                             if (amount > 0) {
+                               window.open(generateGooglePayUrl(amount), '_blank');
+                             } else {
+                               toast({
+                                 title: "Invalid Amount",
+                                 description: "Please select or enter a valid donation amount",
+                                 variant: "destructive",
+                               });
+                             }
+                           }}
+                           className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                         >
+                           <Smartphone className="h-4 w-4 mr-2" />
+                           {t("donor_pay_with_gpay")}
+                         </Button>
+                       </div>
+                     </div>
 
-                    {/* Selected Amount Display */}
-                    {(selectedAmount || customAmount) && (
-                      <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-                        <div className="text-center">
-                          <p className="text-sm text-gray-600 mb-1">Selected Amount</p>
-                          <p className="text-2xl font-bold text-blue-600">
-                            ₹{selectedAmount || customAmount}
-                          </p>
-                        </div>
-                      </div>
-                    )}
+                     {/* Selected Amount Display */}
+                     {(selectedAmount || customAmount) && (
+                       <div className="p-4 bg-green-50 rounded-lg border border-green-200">
+                         <div className="text-center">
+                           <p className="text-sm text-gray-600 mb-1">Selected Amount</p>
+                           <p className="text-2xl font-bold text-green-600">
+                             ₹{selectedAmount || customAmount}
+                           </p>
+                         </div>
+                       </div>
+                     )}
                   </CardContent>
                 </Card>
-            </div>
+              </div>
           </div>
         </div>
 
