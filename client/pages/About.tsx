@@ -157,7 +157,6 @@ export default function About() {
               {/* Language-specific content based on global toggle */}
               {lang === 'kn' ? (
                 <div className="border-l-4 border-brand-orange pl-6">
-                  <h3 className="text-lg font-semibold text-brand-blue mb-4">ಶಾಲೆ ನಡೆದು ಬಂದ ದಾರಿ</h3>
                   <div className="space-y-4 text-gray-700 leading-relaxed">
                     <p>
                       ಶ್ರೀ ಮಾಧವ ವಿದ್ಯಾ ಮಂದಿರವು ರಾಷ್ಟ್ರೀಯ ಸ್ವಯಂಸೇವಕ ಸಂಘ, ಹಿಂದೂ ಸೇವಾ ಪ್ರತಿಷ್ಠಾನ, ವಿಶ್ವ ಹಿಂದೂ ಪರಿಷತ್ನ ಪ್ರೇರಣೆಯಿಂದ ಸಾಧನ ಶಿಕ್ಷಣ ಸಂಸ್ಥೆಯ ಮಾರ್ಗದರ್ಶನದೊಡನೆ ಸ್ವರ್ಗೀಯ ಶ್ರೀಯುತ ಅಜಿತ್ ಕುಮಾರ್ ಅವರ ಅಮೃತ ಹಸ್ತದ ಮೂಲಕ ನಗರದ ಹಿರಿಯರ ಆಶೀರ್ವಾದದಿಂದ 1983- 84ರ ಏಪ್ರಿಲ್ 11ರಂದು ಶಿಶುಮಂದಿರವನ್ನು ಪ್ರಾರಂಭಿಸಲಾಯಿತು.
@@ -175,7 +174,6 @@ export default function About() {
                 </div>
               ) : (
                 <div className="border-l-4 border-brand-blue pl-6">
-                  <h3 className="text-lg font-semibold text-brand-blue mb-4">Our School's Journey</h3>
                   <div className="space-y-4 text-gray-700 leading-relaxed">
                     <p>
                       Sri Madhava Vidya Mandira was established with the inspiration from Rashtriya Swayamsevak Sangh, 
