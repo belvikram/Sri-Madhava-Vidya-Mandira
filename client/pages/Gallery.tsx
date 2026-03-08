@@ -1,7 +1,7 @@
 import { useI18n } from "@/lib/i18n";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { getAllSchoolImages, getSchoolImage } from "@/lib/imageUtils";
+import { getSchoolImage } from "@/lib/imageUtils";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Camera, Users, Trophy, Music, Palette, BookOpen } from "lucide-react";
 
@@ -11,81 +11,80 @@ export default function Gallery() {
   const galleryCategories = [
     {
       id: "campus",
-      title: "Campus Life",
+      title: t("gallery_page_category_campus_title"),
       icon: Camera,
       images: [getSchoolImage(1), getSchoolImage(2), getSchoolImage(3)],
-      description: "Beautiful campus views and learning environments"
+      description: t("gallery_page_category_campus_desc"),
     },
     {
       id: "students",
-      title: "Student Activities",
+      title: t("gallery_page_category_students_title"),
       icon: Users,
       images: [getSchoolImage(4), getSchoolImage(5), getSchoolImage(6)],
-      description: "Students engaged in various learning activities"
+      description: t("gallery_page_category_students_desc"),
     },
     {
       id: "sports",
-      title: "Sports & Games",
+      title: t("gallery_page_category_sports_title"),
       icon: Trophy,
       images: [getSchoolImage(7), getSchoolImage(8), getSchoolImage(9)],
-      description: "Physical education and sports achievements"
+      description: t("gallery_page_category_sports_desc"),
     },
     {
       id: "cultural",
-      title: "Cultural Events",
+      title: t("gallery_page_category_cultural_title"),
       icon: Music,
       images: [getSchoolImage(10), getSchoolImage(11), getSchoolImage(12)],
-      description: "Festivals, performances, and cultural celebrations"
+      description: t("gallery_page_category_cultural_desc"),
     },
     {
       id: "arts",
-      title: "Arts & Crafts",
+      title: t("gallery_page_category_arts_title"),
       icon: Palette,
       images: [getSchoolImage(1), getSchoolImage(2), getSchoolImage(3)],
-      description: "Creative expressions and artistic talents"
+      description: t("gallery_page_category_arts_desc"),
     },
     {
       id: "academics",
-      title: "Academic Excellence",
+      title: t("gallery_page_category_academics_title"),
       icon: BookOpen,
       images: [getSchoolImage(4), getSchoolImage(5), getSchoolImage(6)],
-      description: "Classroom learning and academic achievements"
-    }
+      description: t("gallery_page_category_academics_desc"),
+    },
   ];
 
   const recentEvents = [
     {
-      title: "Annual Sports Day 2024",
-      date: "December 15, 2024",
-      description: "Students showcased their athletic talents in various track and field events",
+      title: t("gallery_page_event_1_title"),
+      date: t("gallery_page_event_1_date"),
+      description: t("gallery_page_event_1_desc"),
       image: getSchoolImage(7),
-      category: "Sports"
+      category: t("gallery_page_event_1_category"),
     },
     {
-      title: "Science Exhibition",
-      date: "November 20, 2024",
-      description: "Innovative science projects and experiments displayed by students",
+      title: t("gallery_page_event_2_title"),
+      date: t("gallery_page_event_2_date"),
+      description: t("gallery_page_event_2_desc"),
       image: getSchoolImage(8),
-      category: "Academics"
+      category: t("gallery_page_event_2_category"),
     },
     {
-      title: "Cultural Fest",
-      date: "October 25, 2024",
-      description: "Traditional dance, music, and drama performances celebrating our heritage",
+      title: t("gallery_page_event_3_title"),
+      date: t("gallery_page_event_3_date"),
+      description: t("gallery_page_event_3_desc"),
       image: getSchoolImage(9),
-      category: "Cultural"
-    }
+      category: t("gallery_page_event_3_category"),
+    },
   ];
 
   return (
     <main className="container mx-auto py-10">
       {/* Hero Section */}
       <section className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-brand-blue mb-4">Photo Gallery</h1>
-        <p className="text-xl text-gray-600 mb-6">Capturing moments of learning and growth</p>
+        <h1 className="text-4xl font-bold text-brand-blue mb-4">{t("gallery_page_title")}</h1>
+        <p className="text-xl text-gray-600 mb-6">{t("gallery_page_subtitle")}</p>
         <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
-          Explore our vibrant school life through these beautiful moments that showcase 
-          our students' achievements, cultural celebrations, and daily learning experiences.
+          {t("gallery_page_intro")}
         </p>
       </section>
 
@@ -117,7 +116,7 @@ export default function Gallery() {
                       <div key={index} className="relative group cursor-pointer">
                         <img 
                           src={image} 
-                          alt={`${category.title} ${index + 1}`}
+                          alt={`${category.title} ${t("gallery_page_photo_label")} ${index + 1}`}
                           className="w-full h-48 object-cover rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
                         />
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors rounded-lg" />
@@ -133,7 +132,7 @@ export default function Gallery() {
 
       {/* Recent Events */}
       <section className="mb-12">
-        <h2 className="text-3xl font-bold text-center text-brand-blue mb-8">Recent Events</h2>
+        <h2 className="text-3xl font-bold text-center text-brand-blue mb-8">{t("gallery_page_recent_events_title")}</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {recentEvents.map((event, index) => (
             <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">

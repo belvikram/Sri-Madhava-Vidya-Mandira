@@ -55,7 +55,7 @@ export default function About() {
           <img src={getLogo()} alt="School Logo" className="h-20 w-20 rounded-full ring-4 ring-brand-orange/20" />
         </div>
         <h1 className="text-4xl font-bold text-brand-blue mb-4">{t("school_name")}</h1>
-        <p className="text-xl text-gray-600 mb-6">"Values – Education – Culture"</p>
+        <p className="text-xl text-gray-600 mb-6">"Education – Culture"</p>
         <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
           {t("about_snippet")}
         </p>

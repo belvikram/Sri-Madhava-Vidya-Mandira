@@ -10,34 +10,34 @@ export default function Contact() {
   const contactInfo = [
     {
       icon: MapPin,
-      title: "Address",
-      details: ["Sree Madhava Vidya Mandira, Bhavani nagara, Sira – 572137, Tumakuru District, Karnataka."],
-      description: "Visit our beautiful campus in the serene town of Sira"
+      title: t("contact_page_info_address_title"),
+      details: [t("contact_page_info_address_detail")],
+      description: t("contact_page_info_address_desc"),
     },
     {
       icon: Phone,
-      title: "Phone",
-      details: ["+91 94494 24530"],
-      description: "Call us during school hours for immediate assistance"
+      title: t("contact_page_info_phone_title"),
+      details: [t("contact_page_info_phone_detail")],
+      description: t("contact_page_info_phone_desc"),
     },
     {
       icon: Mail,
-      title: "Email",
-      details: ["madhavavidyamandira21@gmail.com"],
-      description: "Send us an email and we'll respond within 24 hours"
+      title: t("contact_page_info_email_title"),
+      details: [t("contact_page_info_email_detail")],
+      description: t("contact_page_info_email_desc"),
     },
     {
       icon: Clock,
-      title: "School Hours",
-      details: ["Monday - Friday: 9:00 AM - 4:30 PM", "Saturday: 7:15 AM - 12:00 PM"],
-      description: "Our administrative office is open during these hours"
-    }
+      title: t("contact_page_info_hours_title"),
+      details: [t("contact_page_time_mf"), t("contact_page_time_sat")],
+      description: t("contact_page_info_hours_desc"),
+    },
   ];
 
   const officeHours = [
-    { day: "Monday - Friday", time: "9:00 AM - 4:30 PM" },
-    { day: "Saturday", time: "7:15 AM - 12:00 PM" },
-    { day: "Sunday", time: "Closed" }
+    { day: t("contact_page_day_mf"), time: t("contact_page_time_mf_short") },
+    { day: t("contact_page_day_sat"), time: t("contact_page_time_sat_short") },
+    { day: t("contact_page_day_sun"), time: t("contact_page_time_closed") },
   ];
 
   return (
@@ -45,10 +45,9 @@ export default function Contact() {
       {/* Hero Section */}
       <section className="text-center mb-12">
         <h1 className="text-4xl font-bold text-brand-blue mb-4">{t("contact_us")}</h1>
-        <p className="text-xl text-gray-600 mb-6">We'd love to hear from you</p>
+        <p className="text-xl text-gray-600 mb-6">{t("contact_page_hero_subtitle")}</p>
         <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
-          Get in touch with us for admissions and general inquiries.
-          We're here to help and answer any questions you may have.
+          {t("contact_page_hero_desc")}
         </p>
       </section>
 
@@ -82,11 +81,11 @@ export default function Contact() {
       <section className="mb-12">
         <Card>
           <CardHeader>
-            <CardTitle className="text-xl text-brand-blue">Find Us on Map</CardTitle>
+            <CardTitle className="text-xl text-brand-blue">{t("contact_page_map_title")}</CardTitle>
           </CardHeader>
           <CardContent className="p-0">
             <iframe
-              title="Google Map"
+              title={t("contact_page_map_iframe_title")}
               src={mapSrc}
               className="h-[300px] w-full rounded-b-lg"
               loading="lazy"
@@ -100,8 +99,8 @@ export default function Contact() {
       <section className="mb-12">
         <Card>
           <CardHeader>
-            <CardTitle className="text-2xl text-brand-blue">Office Hours</CardTitle>
-            <p className="text-gray-600">When you can reach us</p>
+            <CardTitle className="text-2xl text-brand-blue">{t("contact_page_office_title")}</CardTitle>
+            <p className="text-gray-600">{t("contact_page_office_subtitle")}</p>
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-3 gap-6">
