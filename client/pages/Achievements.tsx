@@ -10,7 +10,7 @@ export default function Achievements() {
   const achievements = [
     {
       id: 1,
-      title: "CBSE Board Results Excellence",
+      title: " Board Results Excellence",
       category: "Academic",
       year: "2024",
       description: "95% of students scored above 80% in Class X board examinations",
@@ -93,7 +93,7 @@ export default function Achievements() {
     {
       student: "Priya Sharma",
       class: "Class X",
-      achievement: "95% in CBSE Board Exams",
+      achievement: "95% in  Board Exams",
       category: "Academic",
       year: "2024"
     },
@@ -155,7 +155,7 @@ export default function Achievements() {
         <h1 className="text-4xl font-bold text-brand-blue mb-4">Our Achievements</h1>
         <p className="text-xl text-gray-600 mb-6">Celebrating excellence and success</p>
         <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
-          At Sri Madhava Vidya Mandira, we take pride in the outstanding achievements of our students 
+          At Sri Madhava Vidya Mandira, we take pride in the outstanding achievements of our students
           and school in various fields including academics, sports, culture, and innovation.
         </p>
       </section>
@@ -182,8 +182,8 @@ export default function Achievements() {
           {achievements.map((achievement) => (
             <Card key={achievement.id} className="overflow-hidden hover:shadow-lg transition-shadow">
               <div className="relative h-48">
-                <img 
-                  src={achievement.image} 
+                <img
+                  src={achievement.image}
                   alt={achievement.title}
                   className="w-full h-full object-cover"
                 />
@@ -328,9 +328,9 @@ export default function Achievements() {
       {/* Recognition & Awards */}
       <section className="mb-12">
         <div className="relative rounded-xl overflow-hidden shadow-lg">
-          <img 
-            src={getSchoolImage(7)} 
-            alt="Awards and Recognition" 
+          <img
+            src={getSchoolImage(7)}
+            alt="Awards and Recognition"
             className="w-full h-64 md:h-96 object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />

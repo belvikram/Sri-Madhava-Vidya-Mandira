@@ -89,7 +89,7 @@ export default function Admissions() {
         <h1 className="text-4xl font-bold text-brand-blue mb-4">Admissions Open</h1>
         <p className="text-xl text-gray-600 mb-6">Academic Year 2025-26</p>
         <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
-          Join Sri Madhava Vidya Mandira and give your child the gift of quality education 
+          Join Sri Madhava Vidya Mandira and give your child the gift of quality education
           rooted in values and culture. We welcome applications for all classes from Nursery to Class X.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-4">
@@ -184,7 +184,7 @@ export default function Admissions() {
             </div>
             <div className="mt-4 p-4 bg-blue-50 rounded-lg">
               <p className="text-sm text-blue-800">
-                <strong>Note:</strong> Fee concession available for economically weaker sections. 
+                <strong>Note:</strong> Fee concession available for economically weaker sections.
                 Sibling discount of 10% applicable for second child onwards.
               </p>
             </div>
@@ -210,7 +210,7 @@ export default function Admissions() {
               </ul>
             </CardContent>
           </Card>
-          
+
           <Card>
             <CardHeader>
               <CardTitle className="text-xl text-brand-blue">Admission Criteria</CardTitle>
@@ -219,7 +219,7 @@ export default function Admissions() {
               <ul className="space-y-3 text-gray-700">
                 <li className="flex items-start gap-2">
                   <span className="text-brand-blue font-bold">•</span>
-                  <span>Age criteria as per CBSE guidelines</span>
+                  <span>Age criteria as per  guidelines</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-brand-blue font-bold">•</span>
@@ -253,7 +253,7 @@ export default function Admissions() {
             </CardHeader>
             <CardContent>
               <p className="text-sm text-gray-600">
-                We integrate moral values and cultural heritage into our curriculum, 
+                We integrate moral values and cultural heritage into our curriculum,
                 ensuring character development alongside academic excellence.
               </p>
             </CardContent>
@@ -264,7 +264,7 @@ export default function Admissions() {
             </CardHeader>
             <CardContent>
               <p className="text-sm text-gray-600">
-                Our dedicated teachers are well-qualified and experienced, 
+                Our dedicated teachers are well-qualified and experienced,
                 committed to providing quality education and individual attention.
               </p>
             </CardContent>
@@ -275,7 +275,7 @@ export default function Admissions() {
             </CardHeader>
             <CardContent>
               <p className="text-sm text-gray-600">
-                We focus on all-round development through academics, sports, 
+                We focus on all-round development through academics, sports,
                 arts, and cultural activities, nurturing every aspect of a child's growth.
               </p>
             </CardContent>
@@ -286,9 +286,9 @@ export default function Admissions() {
       {/* School Image */}
       <section className="mb-12">
         <div className="relative rounded-xl overflow-hidden shadow-lg">
-          <img 
-            src={getSchoolImage(4)} 
-            alt="Students at School" 
+          <img
+            src={getSchoolImage(4)}
+            alt="Students at School"
             className="w-full h-64 md:h-96 object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />

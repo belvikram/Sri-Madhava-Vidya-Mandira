@@ -2,90 +2,144 @@ import { useI18n } from "@/lib/i18n";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { getSchoolImage } from "@/lib/imageUtils";
-import { BookOpen, Users, Award, Globe, Calculator, Microscope, Palette, Music, Trophy } from "lucide-react";
+import { BookOpen, Users, Award, Globe, Microscope, Palette, Music, Trophy, BookMarked, Languages } from "lucide-react";
 
 export default function Academics() {
   const { t } = useI18n();
 
   const curriculum = [
     {
-      grade: "Pre-Primary (Nursery - UKG)",
-      subjects: ["English", "Kannada", "Mathematics", "Environmental Studies", "Art & Craft", "Music", "Physical Education"],
-      description: "Play-based learning with focus on language development, basic numeracy, and social skills."
+      value: "pre-primary",
+      grade: t("academics_page_grade_pre_primary"),
+      subjects: [
+        t("academics_page_subject_english"),
+        t("academics_page_subject_kannada"),
+        t("academics_page_subject_mathematics"),
+        t("academics_page_subject_environmental_studies"),
+        t("academics_page_subject_art_craft"),
+        t("academics_page_subject_music"),
+        t("academics_page_subject_physical_education"),
+      ],
+      description: t("academics_page_grade_pre_primary_desc"),
     },
     {
-      grade: "Primary (I - V)",
-      subjects: ["English", "Kannada", "Hindi", "Mathematics", "Environmental Studies", "Computer Science", "Art & Craft", "Physical Education"],
-      description: "Foundation building with emphasis on reading, writing, arithmetic, and scientific thinking."
+      value: "primary",
+      grade: t("academics_page_grade_primary"),
+      subjects: [
+        t("academics_page_subject_english"),
+        t("academics_page_subject_kannada"),
+        t("academics_page_subject_hindi"),
+        t("academics_page_subject_mathematics"),
+        t("academics_page_subject_environmental_studies"),
+        t("academics_page_subject_computer_science"),
+        t("academics_page_subject_art_craft"),
+        t("academics_page_subject_physical_education"),
+      ],
+      description: t("academics_page_grade_primary_desc"),
     },
     {
-      grade: "Middle School (VI - VIII)",
-      subjects: ["English", "Kannada", "Hindi", "Mathematics", "Science", "Social Studies", "Computer Science", "Art", "Physical Education"],
-      description: "Comprehensive curriculum preparing students for higher classes with practical learning."
+      value: "middle",
+      grade: t("academics_page_grade_middle"),
+      subjects: [
+        t("academics_page_subject_english"),
+        t("academics_page_subject_kannada"),
+        t("academics_page_subject_hindi"),
+        t("academics_page_subject_mathematics"),
+        t("academics_page_subject_science"),
+        t("academics_page_subject_social_studies"),
+        t("academics_page_subject_computer_science"),
+        t("academics_page_subject_art"),
+        t("academics_page_subject_physical_education"),
+      ],
+      description: t("academics_page_grade_middle_desc"),
     },
     {
-      grade: "High School (IX - X)",
-      subjects: ["English", "Kannada", "Hindi", "Mathematics", "Science", "Social Studies", "Computer Science", "Physical Education"],
-      description: "CBSE curriculum with focus on board examination preparation and career guidance."
-    }
+      value: "high",
+      grade: t("academics_page_grade_high"),
+      subjects: [
+        t("academics_page_subject_english"),
+        t("academics_page_subject_kannada"),
+        t("academics_page_subject_hindi"),
+        t("academics_page_subject_mathematics"),
+        t("academics_page_subject_science"),
+        t("academics_page_subject_social_studies"),
+        t("academics_page_subject_computer_science"),
+        t("academics_page_subject_physical_education"),
+      ],
+      description: t("academics_page_grade_high_desc"),
+    },
   ];
 
   const features = [
     {
       icon: BookOpen,
-      title: "CBSE Curriculum",
-      description: "Following the Central Board of Secondary Education curriculum with local relevance and global perspective."
+      title: t("academics_page_feature_curriculum_title"),
+      description: t("academics_page_feature_curriculum_desc"),
     },
     {
       icon: Users,
-      title: "Small Class Sizes",
-      description: "Limited student-teacher ratio ensuring individual attention and personalized learning."
+      title: t("academics_page_feature_small_classes_title"),
+      description: t("academics_page_feature_small_classes_desc"),
     },
     {
       icon: Award,
-      title: "Regular Assessments",
-      description: "Continuous evaluation through unit tests, projects, and comprehensive examinations."
+      title: t("academics_page_feature_regular_assessments_title"),
+      description: t("academics_page_feature_regular_assessments_desc"),
     },
     {
       icon: Globe,
-      title: "Digital Learning",
-      description: "Smart classrooms with modern technology to enhance learning experiences."
-    }
+      title: t("academics_page_feature_digital_learning_title"),
+      description: t("academics_page_feature_digital_learning_desc"),
+    },
   ];
 
   const coCurricular = [
     {
+      icon: BookMarked,
+      title: t("academics_page_cocurricular_bhagavad_gita_title"),
+      description: t("academics_page_cocurricular_bhagavad_gita_desc"),
+      highlight: true,
+    },
+    {
+      icon: Languages,
+      title: t("academics_page_cocurricular_sanskrit_title"),
+      description: t("academics_page_cocurricular_sanskrit_desc"),
+      highlight: true,
+    },
+    {
       icon: Microscope,
-      title: "Science Club",
-      description: "Hands-on experiments and science exhibitions to foster scientific temper."
+      title: t("academics_page_cocurricular_science_club_title"),
+      description: t("academics_page_cocurricular_science_club_desc"),
+      highlight: false,
     },
     {
       icon: Palette,
-      title: "Art & Craft",
-      description: "Creative expression through various art forms and craft activities."
+      title: t("academics_page_cocurricular_art_craft_title"),
+      description: t("academics_page_cocurricular_art_craft_desc"),
+      highlight: false,
     },
     {
       icon: Music,
-      title: "Music & Dance",
-      description: "Cultural activities including classical music, folk dance, and modern performances."
+      title: t("academics_page_cocurricular_music_dance_title"),
+      description: t("academics_page_cocurricular_music_dance_desc"),
+      highlight: false,
     },
     {
       icon: Trophy,
-      title: "Sports & Games",
-      description: "Physical fitness through cricket, athletics, kho-kho, kabaddi, and indoor games."
-    }
+      title: t("academics_page_cocurricular_sports_games_title"),
+      description: t("academics_page_cocurricular_sports_games_desc"),
+      highlight: false,
+    },
   ];
 
   return (
     <main className="container mx-auto py-10">
       {/* Hero Section */}
       <section className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-brand-blue mb-4">Academic Excellence</h1>
-        <p className="text-xl text-gray-600 mb-6">Nurturing minds, shaping futures</p>
+        <h1 className="text-4xl font-bold text-brand-blue mb-4">{t("academics_page_title")}</h1>
+        <p className="text-xl text-gray-600 mb-6">{t("academics_page_subtitle")}</p>
         <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
-          Our comprehensive academic program is designed to provide students with a strong foundation 
-          in core subjects while fostering critical thinking, creativity, and cultural awareness.
+          {t("academics_page_intro")}
         </p>
       </section>
 
@@ -112,17 +166,17 @@ export default function Academics() {
 
       {/* Curriculum Tabs */}
       <section className="mb-12">
-        <h2 className="text-3xl font-bold text-center text-brand-blue mb-8">Curriculum Overview</h2>
+        <h2 className="text-3xl font-bold text-center text-brand-blue mb-8">{t("academics_page_curriculum_overview")}</h2>
         <Tabs defaultValue="pre-primary" className="w-full">
-          <TabsList className="grid w-full grid-cols-4">
-            <TabsTrigger value="pre-primary">Pre-Primary</TabsTrigger>
-            <TabsTrigger value="primary">Primary</TabsTrigger>
-            <TabsTrigger value="middle">Middle School</TabsTrigger>
-            <TabsTrigger value="high">High School</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 h-auto">
+            <TabsTrigger value="pre-primary">{t("academics_page_tab_pre_primary")}</TabsTrigger>
+            <TabsTrigger value="primary">{t("academics_page_tab_primary")}</TabsTrigger>
+            <TabsTrigger value="middle">{t("academics_page_tab_middle")}</TabsTrigger>
+            <TabsTrigger value="high">{t("academics_page_tab_high")}</TabsTrigger>
           </TabsList>
-          
+
           {curriculum.map((level, index) => (
-            <TabsContent key={index} value={index === 0 ? "pre-primary" : index === 1 ? "primary" : index === 2 ? "middle" : "high"}>
+            <TabsContent key={index} value={level.value}>
               <Card>
                 <CardHeader>
                   <CardTitle className="text-xl text-brand-blue">{level.grade}</CardTitle>
@@ -141,58 +195,50 @@ export default function Academics() {
         </Tabs>
       </section>
 
-      {/* Academic Calendar */}
-      <section className="mb-12">
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-2xl text-brand-blue">Academic Calendar 2024-25</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-lg font-semibold text-brand-blue mb-4">First Term</h3>
-                <ul className="space-y-2 text-gray-700">
-                  <li><strong>June 2024:</strong> School Reopens</li>
-                  <li><strong>July 2024:</strong> Unit Test I</li>
-                  <li><strong>August 2024:</strong> Independence Day Celebration</li>
-                  <li><strong>September 2024:</strong> First Term Examination</li>
-                  <li><strong>October 2024:</strong> Dussehra Holidays</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-brand-blue mb-4">Second Term</h3>
-                <ul className="space-y-2 text-gray-700">
-                  <li><strong>November 2024:</strong> Unit Test II</li>
-                  <li><strong>December 2024:</strong> Annual Sports Day</li>
-                  <li><strong>January 2025:</strong> Annual Day Celebration</li>
-                  <li><strong>February 2025:</strong> Pre-Board Examination</li>
-                  <li><strong>March 2025:</strong> Board Examination & Annual Results</li>
-                </ul>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </section>
 
       {/* Co-Curricular Activities */}
       <section className="mb-12">
-        <h2 className="text-3xl font-bold text-center text-brand-blue mb-8">Co-Curricular Activities</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {coCurricular.map((activity, index) => (
-            <Card key={index} className="text-center hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="flex justify-center mb-3">
-                  <div className="p-3 rounded-full bg-brand-orange/10">
-                    <activity.icon className="h-6 w-6 text-brand-orange" />
+        <h2 className="text-3xl font-bold text-center text-brand-blue mb-8">{t("academics_page_co_curricular_title")}</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {coCurricular.map((activity, index) =>
+            activity.highlight ? (
+              <Card
+                key={index}
+                className="text-center hover:shadow-xl transition-shadow border-2 border-brand-orange bg-gradient-to-b from-amber-50 to-orange-50 relative overflow-hidden"
+              >
+                {/* Decorative glow strip at top */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-400 via-brand-orange to-yellow-400" />
+                <CardHeader className="pt-6">
+                  <div className="flex justify-center mb-1">
+                    <Badge className="bg-brand-orange text-white text-xs px-3 py-0.5 mb-2">{t("academics_page_featured_badge")}</Badge>
                   </div>
-                </div>
-                <CardTitle className="text-lg">{activity.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-gray-600">{activity.description}</p>
-              </CardContent>
-            </Card>
-          ))}
+                  <div className="flex justify-center mb-3">
+                    <div className="p-4 rounded-full bg-brand-orange/20 ring-2 ring-brand-orange/40">
+                      <activity.icon className="h-8 w-8 text-brand-orange" />
+                    </div>
+                  </div>
+                  <CardTitle className="text-lg text-brand-orange">{activity.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-gray-700 leading-relaxed">{activity.description}</p>
+                </CardContent>
+              </Card>
+            ) : (
+              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="flex justify-center mb-3">
+                    <div className="p-3 rounded-full bg-brand-orange/10">
+                      <activity.icon className="h-6 w-6 text-brand-orange" />
+                    </div>
+                  </div>
+                  <CardTitle className="text-lg">{activity.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-gray-600">{activity.description}</p>
+                </CardContent>
+              </Card>
+            )
+          )}
         </div>
       </section>
 
@@ -201,58 +247,52 @@ export default function Academics() {
         <div className="grid md:grid-cols-2 gap-8">
           <Card>
             <CardHeader>
-              <CardTitle className="text-xl text-brand-blue">Assessment Methods</CardTitle>
+              <CardTitle className="text-xl text-brand-blue">{t("academics_page_assessment_methods_title")}</CardTitle>
             </CardHeader>
             <CardContent>
               <ul className="space-y-3 text-gray-700">
+
                 <li className="flex items-start gap-2">
                   <span className="text-brand-blue font-bold">•</span>
-                  <span>Continuous and Comprehensive Evaluation (CCE)</span>
+                  <span>{t("academics_page_assessment_1")}</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-brand-blue font-bold">•</span>
-                  <span>Unit Tests and Periodic Assessments</span>
+                  <span>{t("academics_page_assessment_2")}</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-brand-blue font-bold">•</span>
-                  <span>Project Work and Practical Assignments</span>
+                  <span>{t("academics_page_assessment_3")}</span>
                 </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-brand-blue font-bold">•</span>
-                  <span>Class Participation and Homework</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-brand-blue font-bold">•</span>
-                  <span>Annual Board Examinations (Classes IX & X)</span>
-                </li>
+
               </ul>
             </CardContent>
           </Card>
           <Card>
             <CardHeader>
-              <CardTitle className="text-xl text-brand-blue">Academic Support</CardTitle>
+              <CardTitle className="text-xl text-brand-blue">{t("academics_page_academic_support_title")}</CardTitle>
             </CardHeader>
             <CardContent>
               <ul className="space-y-3 text-gray-700">
                 <li className="flex items-start gap-2">
                   <span className="text-brand-blue font-bold">•</span>
-                  <span>Remedial Classes for Weak Students</span>
+                  <span>{t("academics_page_support_1")}</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-brand-blue font-bold">•</span>
-                  <span>Extra Classes for Board Exam Preparation</span>
+                  <span>{t("academics_page_support_2")}</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-brand-blue font-bold">•</span>
-                  <span>Library with Reference Books</span>
+                  <span>{t("academics_page_support_3")}</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-brand-blue font-bold">•</span>
-                  <span>Parent-Teacher Meetings</span>
+                  <span>{t("academics_page_support_4")}</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-brand-blue font-bold">•</span>
-                  <span>Career Guidance and Counseling</span>
+                  <span>{t("academics_page_support_5")}</span>
                 </li>
               </ul>
             </CardContent>
@@ -260,21 +300,6 @@ export default function Academics() {
         </div>
       </section>
 
-      {/* School Image */}
-      <section className="mb-12">
-        <div className="relative rounded-xl overflow-hidden shadow-lg">
-          <img 
-            src={getSchoolImage(3)} 
-            alt="Students in Classroom" 
-            className="w-full h-64 md:h-96 object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-          <div className="absolute bottom-6 left-6 text-white">
-            <h2 className="text-2xl font-bold mb-2">Learning Environment</h2>
-            <p className="text-sm opacity-90">Interactive classrooms fostering curiosity and creativity</p>
-          </div>
-        </div>
-      </section>
     </main>
   );
 }

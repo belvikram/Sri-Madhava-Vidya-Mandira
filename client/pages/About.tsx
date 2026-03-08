@@ -79,9 +79,9 @@ export default function About() {
       {/* School Image */}
       <section className="mb-12">
         <div className="relative rounded-xl overflow-hidden shadow-lg">
-          <img 
-            src={getSchoolImage(1)} 
-            alt="School Campus" 
+          <img
+            src={getSchoolImage(1)}
+            alt="School Campus"
             className="w-full h-64 md:h-96 object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
@@ -121,7 +121,7 @@ export default function About() {
             <CardHeader>
               <CardTitle className="text-xl text-brand-blue flex items-center gap-2">
                 <Target className="h-5 w-5" />
-{t("our_mission")}
+                {t("our_mission")}
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -134,7 +134,7 @@ export default function About() {
             <CardHeader>
               <CardTitle className="text-xl text-brand-blue flex items-center gap-2">
                 <Eye className="h-5 w-5" />
-{t("our_vision")}
+                {t("our_vision")}
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -159,7 +159,7 @@ export default function About() {
                 <div className="border-l-4 border-brand-orange pl-6">
                   <div className="space-y-4 text-gray-700 leading-relaxed">
                     <p>
-                      ಶ್ರೀ ಮಾಧವ ವಿದ್ಯಾ ಮಂದಿರವು ರಾಷ್ಟ್ರೀಯ ಸ್ವಯಂಸೇವಕ ಸಂಘ, ಹಿಂದೂ ಸೇವಾ ಪ್ರತಿಷ್ಠಾನ, ವಿಶ್ವ ಹಿಂದೂ ಪರಿಷತ್ನ ಪ್ರೇರಣೆಯಿಂದ ಸಾಧನ ಶಿಕ್ಷಣ ಸಂಸ್ಥೆಯ ಮಾರ್ಗದರ್ಶನದೊಡನೆ ಸ್ವರ್ಗೀಯ ಶ್ರೀಯುತ ಅಜಿತ್ ಕುಮಾರ್ ಅವರ ಅಮೃತ ಹಸ್ತದ ಮೂಲಕ ನಗರದ ಹಿರಿಯರ ಆಶೀರ್ವಾದದಿಂದ 1983- 84ರ ಏಪ್ರಿಲ್ 11ರಂದು ಶಿಶುಮಂದಿರವನ್ನು ಪ್ರಾರಂಭಿಸಲಾಯಿತು.
+                      ಶ್ರೀ ಮಾಧವ ವಿದ್ಯಾ ಮಂದಿರವು, ಹಿಂದೂ ಸೇವಾ ಪ್ರತಿಷ್ಠಾನ, ವಿಶ್ವ ಹಿಂದೂ ಪರಿಷತ್ನ ಪ್ರೇರಣೆಯಿಂದ ಸಾಧನ ಶಿಕ್ಷಣ ಸಂಸ್ಥೆಯ ಮಾರ್ಗದರ್ಶನದೊಡನೆ ಸ್ವರ್ಗೀಯ ಶ್ರೀಯುತ ಅಜಿತ್ ಕುಮಾರ್ ಅವರ ಅಮೃತ ಹಸ್ತದ ಮೂಲಕ ನಗರದ ಹಿರಿಯರ ಆಶೀರ್ವಾದದಿಂದ 1983- 84ರ ಏಪ್ರಿಲ್ 11ರಂದು ಶಿಶುಮಂದಿರವನ್ನು ಪ್ರಾರಂಭಿಸಲಾಯಿತು.
                     </p>
                     <p>
                       1988ರ ವರೆಗೆ ಶಿಶುಮಂದಿರದಿಂದ 4 ನೇ ತರಗತಿಯವರೆಗೂ ಬೆಳೆದು ಬೆಳೆದ ಶಾಲೆಯಲ್ಲಿ 1989ರಲ್ಲಿ ಹಿರಿಯ ಪ್ರಾಥಮಿಕ ಶಾಲೆಯನ್ನು ಪ್ರಾರಂಭಿಸಲಾಯಿತು.
@@ -176,18 +176,18 @@ export default function About() {
                 <div className="border-l-4 border-brand-blue pl-6">
                   <div className="space-y-4 text-gray-700 leading-relaxed">
                     <p>
-                      Sri Madhava Vidya Mandira was established with the inspiration from Rashtriya Swayamsevak Sangh, 
-                      Hindu Seva Pratishthana, and Vishwa Hindu Parishad, under the guidance of Sadhana Shikshana Samsthe. 
-                      With the blessed hands of the late Sri Ajit Kumar and the blessings of the city's elders, 
+                      Sri Madhava Vidya Mandira was established with the inspiration from Rashtriya Swayamsevak Sangh,
+                      Hindu Seva Pratishthana, and Vishwa Hindu Parishad, under the guidance of Sadhana Shikshana Samsthe.
+                      With the blessed hands of the late Sri Ajit Kumar and the blessings of the city's elders,
                       the Shishu Mandira (Children's Temple) was inaugurated on April 11, 1983-84.
                     </p>
                     <p>
-                      The school grew from the Shishu Mandira up to 4th grade until 1988, and in 1989, 
+                      The school grew from the Shishu Mandira up to 4th grade until 1988, and in 1989,
                       the Senior Primary School was established.
                     </p>
                     <p>
-                      Currently, our school operates with an aided primary section from 1st to 7th grade (Kannada medium), 
-                      and high school from 8th to 10th grade (English medium). In 2022-23, LKG and UKG (English medium) 
+                      Currently, our school operates with an aided primary section from 1st to 7th grade (Kannada medium),
+                      and high school from 8th to 10th grade (English medium). In 2022-23, LKG and UKG (English medium)
                       were introduced.
                     </p>
                     <p>
@@ -238,28 +238,23 @@ export default function About() {
       <section className="mb-12">
         <Card>
           <CardHeader>
-            <CardTitle className="text-2xl text-brand-blue">Principal's Message</CardTitle>
+            <CardTitle className="text-2xl text-brand-blue">{t("principal_message")}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="flex flex-col md:flex-row gap-6 items-start">
               <div className="flex-shrink-0">
-                <img 
-                  src={getSchoolImage(2)} 
-                  alt="Principal" 
+                <img
+                  src={getSchoolImage(2)}
+                  alt="School Headmaster"
                   className="w-32 h-32 rounded-full object-cover border-4 border-brand-orange/20"
                 />
               </div>
               <div className="flex-1">
-                <h3 className="text-lg font-semibold text-brand-blue mb-2">Principal's Note</h3>
+                <h3 className="text-lg font-semibold text-brand-blue mb-2">{t("principal_note_subtitle")}</h3>
                 <p className="text-gray-700 leading-relaxed">
-                  "Education is not just about acquiring knowledge; it's about building character, 
-                  fostering creativity, and developing a sense of responsibility towards society. 
-                  At Sri Madhava Vidya Mandira, we are committed to providing an environment where 
-                  every child can thrive academically, socially, and personally. Our holistic 
-                  approach ensures that students not only excel in their studies but also grow 
-                  into compassionate, confident, and culturally aware individuals."
+                  {t("principal_message_body")}
                 </p>
-                <p className="text-sm text-gray-600 mt-4 font-medium">— Principal, Sri Madhava Vidya Mandira</p>
+                <p className="text-sm text-gray-600 mt-4 font-medium">{t("principal_attribution")}</p>
               </div>
             </div>
           </CardContent>
