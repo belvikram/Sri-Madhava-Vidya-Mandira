@@ -193,22 +193,22 @@ export default function Admissions() {
               <div className="flex items-center gap-3">
                 <MapPin className="h-5 w-5 text-brand-blue" />
                 <div>
-                  <p className="font-medium">{t("admissions_page_visit_campus")}</p>
-                  <p className="text-sm text-gray-600">{t("address_value")}</p>
+                  <p className="font-medium">{t("admissions_page_address_label")}</p>
+                  <p className="text-sm text-gray-600">{t("admissions_page_contact_address")}</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-brand-blue" />
                 <div>
-                  <p className="font-medium">{t("call_us")}</p>
-                  <p className="text-sm text-gray-600">+91-00000 00000</p>
+                  <p className="font-medium">{t("admissions_page_phone_label")}</p>
+                  <p className="text-sm text-gray-600">{t("admissions_page_phone_value")}</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
                 <FileText className="h-5 w-5 text-brand-blue" />
                 <div>
-                  <p className="font-medium">{t("email_us")}</p>
-                  <p className="text-sm text-gray-600">admissions@smvm.edu.in</p>
+                  <p className="font-medium">{t("admissions_page_email_label")}</p>
+                  <p className="text-sm text-gray-600">{t("admissions_page_email_value")}</p>
                 </div>
               </div>
             </div>

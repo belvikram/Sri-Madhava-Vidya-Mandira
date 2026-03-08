@@ -7,25 +7,25 @@ import { MapPin, Phone, Mail, Clock, Users, Car, Wifi, Shield } from "lucide-rea
 export default function Contact() {
   const { t } = useI18n();
   const mapSrc =
-    "https://www.google.com/maps?q=Bhumisinganahalli%2C%20Sira%20%E2%80%93%20572137%2C%20Tumkur%20District%2C%20Karnataka&output=embed";
+    "https://www.google.com/maps?q=Sree%20Madhava%20Vidya%20Mandira%2C%20Bhavani%20nagara%2C%20Sira%20%E2%80%93%20572137%2C%20Tumakuru%20District%2C%20Karnataka&output=embed";
 
   const contactInfo = [
     {
       icon: MapPin,
       title: "Address",
-      details: [t("address_value")],
+      details: ["Sree Madhava Vidya Mandira, Bhavani nagara, Sira – 572137, Tumakuru District, Karnataka."],
       description: "Visit our beautiful campus in the serene town of Sira"
     },
     {
       icon: Phone,
       title: "Phone",
-      details: ["+91-00000 00000", "+91-00000 00001"],
+      details: ["+91 94494 24530"],
       description: "Call us during school hours for immediate assistance"
     },
     {
       icon: Mail,
-      title: "Email",
-      details: ["info@smvm.edu.in", "admissions@smvm.edu.in"],
+      title: "Email ID",
+      details: ["madhavavidyamandira21@gmail.com"],
       description: "Send us an email and we'll respond within 24 hours"
     },
     {
