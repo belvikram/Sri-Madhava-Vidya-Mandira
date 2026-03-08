@@ -1,9 +1,8 @@
 import { useI18n } from "@/lib/i18n";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { getSchoolImage } from "@/lib/imageUtils";
-import { Calendar, FileText, Users, DollarSign, CheckCircle, Clock, MapPin, Phone } from "lucide-react";
+import { FileText, Users, DollarSign, CheckCircle, MapPin, Phone } from "lucide-react";
 
 export default function Admissions() {
   const { t } = useI18n();
@@ -40,46 +39,10 @@ export default function Admissions() {
     "Previous School Transfer Certificate (if applicable)",
     "Previous Academic Records (Report Cards)",
     "Aadhaar Card (Student & Parents)",
+    "Child's Bank Account Details (Passbook Copy)",
     "Passport Size Photographs (4 copies)",
     "Caste Certificate (if applicable)",
     "Income Certificate (for fee concession)",
-    "Medical Certificate"
-  ];
-
-  const feeStructure = [
-    {
-      grade: "Pre-Primary (Nursery - UKG)",
-      admissionFee: "₹5,000",
-      monthlyFee: "₹2,500",
-      annualFee: "₹25,000"
-    },
-    {
-      grade: "Primary (I - V)",
-      admissionFee: "₹7,500",
-      monthlyFee: "₹3,000",
-      annualFee: "₹30,000"
-    },
-    {
-      grade: "Middle School (VI - VIII)",
-      admissionFee: "₹10,000",
-      monthlyFee: "₹3,500",
-      annualFee: "₹35,000"
-    },
-    {
-      grade: "High School (IX - X)",
-      admissionFee: "₹12,500",
-      monthlyFee: "₹4,000",
-      annualFee: "₹40,000"
-    }
-  ];
-
-  const importantDates = [
-    { event: "Application Forms Available", date: "January 15, 2025" },
-    { event: "Last Date for Application", date: "February 28, 2025" },
-    { event: "Interaction Sessions", date: "March 1-15, 2025" },
-    { event: "Admission Results", date: "March 20, 2025" },
-    { event: "Fee Payment Deadline", date: "March 31, 2025" },
-    { event: "Academic Year Begins", date: "June 1, 2025" }
   ];
 
   return (
@@ -98,31 +61,6 @@ export default function Admissions() {
             Schedule Visit
           </Button>
         </div>
-      </section>
-
-      {/* Important Dates */}
-      <section className="mb-12">
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-2xl text-brand-blue flex items-center gap-2">
-              <Calendar className="h-6 w-6" />
-              Important Dates
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {importantDates.map((item, index) => (
-                <div key={index} className="flex items-center gap-3 p-3 rounded-lg bg-gray-50">
-                  <Clock className="h-5 w-5 text-brand-blue" />
-                  <div>
-                    <p className="font-medium text-gray-900">{item.event}</p>
-                    <p className="text-sm text-gray-600">{item.date}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
       </section>
 
       {/* Admission Process */}
@@ -152,46 +90,6 @@ export default function Admissions() {
         </div>
       </section>
 
-      {/* Fee Structure */}
-      <section className="mb-12">
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-2xl text-brand-blue">Fee Structure 2025-26</CardTitle>
-            <p className="text-gray-600">All fees are inclusive of tuition, library, laboratory, and sports facilities</p>
-          </CardHeader>
-          <CardContent>
-            <div className="overflow-x-auto">
-              <table className="w-full border-collapse">
-                <thead>
-                  <tr className="border-b">
-                    <th className="text-left py-3 px-4 font-semibold text-brand-blue">Grade</th>
-                    <th className="text-left py-3 px-4 font-semibold text-brand-blue">Admission Fee</th>
-                    <th className="text-left py-3 px-4 font-semibold text-brand-blue">Monthly Fee</th>
-                    <th className="text-left py-3 px-4 font-semibold text-brand-blue">Annual Fee</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {feeStructure.map((fee, index) => (
-                    <tr key={index} className="border-b hover:bg-gray-50">
-                      <td className="py-3 px-4 font-medium">{fee.grade}</td>
-                      <td className="py-3 px-4">{fee.admissionFee}</td>
-                      <td className="py-3 px-4">{fee.monthlyFee}</td>
-                      <td className="py-3 px-4">{fee.annualFee}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <div className="mt-4 p-4 bg-blue-50 rounded-lg">
-              <p className="text-sm text-blue-800">
-                <strong>Note:</strong> Fee concession available for economically weaker sections.
-                Sibling discount of 10% applicable for second child onwards.
-              </p>
-            </div>
-          </CardContent>
-        </Card>
-      </section>
-
       {/* Required Documents */}
       <section className="mb-12">
         <div className="grid md:grid-cols-2 gap-8">
@@ -219,7 +117,7 @@ export default function Admissions() {
               <ul className="space-y-3 text-gray-700">
                 <li className="flex items-start gap-2">
                   <span className="text-brand-blue font-bold">•</span>
-                  <span>Age criteria as per  guidelines</span>
+                  <span>Age criteria as per State guidelines</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-brand-blue font-bold">•</span>
@@ -233,13 +131,18 @@ export default function Admissions() {
                   <span className="text-brand-blue font-bold">•</span>
                   <span>Parental commitment to school values</span>
                 </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-brand-blue font-bold">•</span>
-                  <span>Medical fitness certificate</span>
-                </li>
               </ul>
             </CardContent>
           </Card>
+        </div>
+      </section>
+
+      {/* Fee Concession Banner */}
+      <section className="mb-12">
+        <div className="rounded-xl border border-blue-200 bg-blue-50 px-6 py-4 text-center">
+          <p className="text-sm md:text-base font-medium text-blue-900">
+            Free tuition for the third child is available when the first two children are studying at SMVM.
+          </p>
         </div>
       </section>
 
