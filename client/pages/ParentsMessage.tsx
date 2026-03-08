@@ -1,7 +1,5 @@
-import { Heart, Users, MessageCircle, Star, Quote, Calendar, User } from "lucide-react";
+import { Heart, Users, MessageCircle, Star, Quote, User } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { useI18n } from "@/lib/i18n";
 
 export default function ParentsMessage() {
@@ -9,53 +7,59 @@ export default function ParentsMessage() {
 
   const parentMessages = [
     {
-      name: "Mrs. Priya Sharma",
-      child: "Arjun Sharma (Class 10)",
+      name: "Madhumati",
+      child: "PARENT",
       message: t("parent_message_1"),
-      rating: 5,
-      date: "December 2024",
-      location: "Bangalore"
+      rating: 5
     },
     {
-      name: "Mr. Rajesh Kumar",
-      child: "Sneha Kumar (Class 8)",
+      name: "Pavithra",
+      child: "PARENT",
       message: t("parent_message_2"),
-      rating: 5,
-      date: "November 2024",
-      location: "Sira"
+      rating: 5
     },
     {
-      name: "Dr. Meera Patel",
-      child: "Vikram Patel (Class 9)",
+      name: "Vijayalakshmi",
+      child: "PARENT",
       message: t("parent_message_3"),
-      rating: 5,
-      date: "October 2024",
-      location: "Tumkur"
+      rating: 5
     },
     {
-      name: "Mrs. Anita Reddy",
-      child: "Kavya Reddy (Class 7)",
+      name: "Nagamani",
+      child: "PARENT",
       message: t("parent_message_4"),
-      rating: 5,
-      date: "September 2024",
-      location: "Sira"
+      rating: 5
     },
     {
-      name: "Mr. Suresh Desai",
-      child: "Rohit Desai (Class 6)",
+      name: "Thimmaraju",
+      child: "PARENT",
       message: t("parent_message_5"),
-      rating: 5,
-      date: "August 2024",
-      location: "Bangalore"
+      rating: 5
     },
     {
-      name: "Mrs. Lakshmi Nair",
-      child: "Divya Nair (Class 5)",
+      name: "Vatsala",
+      child: "PARENT",
       message: t("parent_message_6"),
-      rating: 5,
-      date: "July 2024",
-      location: "Sira"
-    }
+      rating: 5
+    },
+    {
+      name: "Mangala",
+      child: "PARENT",
+      message: t("parent_testimonial_1"),
+      rating: 5
+    },
+    {
+      name: "Latha",
+      child: "PARENT",
+      message: t("parent_testimonial_2"),
+      rating: 5
+    },
+    {
+      name: "Nirmala",
+      child: "PARENT",
+      message: t("parent_testimonial_3"),
+      rating: 5
+    },
   ];
 
   const statistics = [
@@ -78,24 +82,6 @@ export default function ParentsMessage() {
       icon: MessageCircle,
       number: "200+",
       label: t("parent_stat_4")
-    }
-  ];
-
-  const testimonials = [
-    {
-      quote: t("parent_testimonial_1"),
-      author: "Mrs. Geetha Rao",
-      position: "Parent of Class 10 student"
-    },
-    {
-      quote: t("parent_testimonial_2"),
-      author: "Mr. Venkatesh Iyer",
-      position: "Parent of Class 8 student"
-    },
-    {
-      quote: t("parent_testimonial_3"),
-      author: "Dr. Sunita Agarwal",
-      position: "Parent of Class 9 student"
     }
   ];
 
@@ -202,15 +188,6 @@ export default function ParentsMessage() {
                       </p>
                     </div>
                     
-                    <div className="flex items-center justify-between text-sm text-gray-500">
-                      <div className="flex items-center gap-2">
-                        <Calendar className="h-4 w-4" />
-                        <span>{message.date}</span>
-                      </div>
-                      <Badge variant="outline" className="text-xs">
-                        {message.location}
-                      </Badge>
-                    </div>
                   </CardContent>
                 </Card>
               ))}
@@ -219,65 +196,6 @@ export default function ParentsMessage() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="bg-white py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                {t("parent_testimonials")}
-              </h2>
-              <p className="text-gray-600">
-                {t("parent_testimonials_desc")}
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {testimonials.map((testimonial, index) => (
-                <Card key={index} className="text-center">
-                  <CardContent className="p-6">
-                    <Quote className="h-8 w-8 text-brand-blue/30 mx-auto mb-4" />
-                    <p className="text-gray-700 italic mb-6 leading-relaxed">
-                      "{testimonial.quote}"
-                    </p>
-                    <div>
-                      <h4 className="font-semibold text-gray-900 mb-1">
-                        {testimonial.author}
-                      </h4>
-                      <p className="text-sm text-gray-600">
-                        {testimonial.position}
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Call to Action */}
-      <section className="bg-brand-blue py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center text-white">
-            <h2 className="text-3xl font-bold mb-6">
-              {t("parent_join_community")}
-            </h2>
-            <p className="text-xl text-blue-100 mb-8">
-              {t("parent_join_community_desc")}
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="secondary" className="bg-white text-brand-blue hover:bg-gray-100">
-                {t("parent_share_experience")}
-              </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-brand-blue bg-transparent">
-                {t("parent_contact_us")}
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
