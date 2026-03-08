@@ -10,62 +10,67 @@ export default function Admissions() {
   const admissionProcess = [
     {
       step: 1,
-      title: "Application Submission",
-      description: "Submit the completed application form with required documents",
-      icon: FileText
+      title: t("admissions_page_process_1_title"),
+      description: t("admissions_page_process_1_desc"),
+      icon: FileText,
     },
     {
       step: 2,
-      title: "Document Verification",
-      description: "Verification of birth certificate, previous school records, and other documents",
-      icon: CheckCircle
+      title: t("admissions_page_process_2_title"),
+      description: t("admissions_page_process_2_desc"),
+      icon: CheckCircle,
     },
     {
       step: 3,
-      title: "Interaction Session",
-      description: "Brief interaction with child and parents to understand needs and expectations",
-      icon: Users
+      title: t("admissions_page_process_3_title"),
+      description: t("admissions_page_process_3_desc"),
+      icon: Users,
     },
     {
       step: 4,
-      title: "Fee Payment",
-      description: "Payment of admission fee and first term fees to confirm admission",
-      icon: DollarSign
-    }
+      title: t("admissions_page_process_4_title"),
+      description: t("admissions_page_process_4_desc"),
+      icon: DollarSign,
+    },
   ];
 
   const requiredDocuments = [
-    "Birth Certificate (Original + 2 Photocopies)",
-    "Previous School Transfer Certificate (if applicable)",
-    "Previous Academic Records (Report Cards)",
-    "Aadhaar Card (Student & Parents)",
-    "Child's Bank Account Details (Passbook Copy)",
-    "Passport Size Photographs (4 copies)",
-    "Caste Certificate (if applicable)",
-    "Income Certificate (for fee concession)",
+    t("admissions_page_doc_birth_certificate"),
+    t("admissions_page_doc_transfer_certificate"),
+    t("admissions_page_doc_academic_records"),
+    t("admissions_page_doc_aadhaar"),
+    t("admissions_page_doc_bank_account"),
+    t("admissions_page_doc_photos"),
+    t("admissions_page_doc_caste_certificate"),
+    t("admissions_page_doc_income_certificate"),
+    t("admissions_page_doc_medical_certificate"),
+  ];
+
+  const admissionCriteria = [
+    t("admissions_page_criteria_1"),
+    t("admissions_page_criteria_2"),
+    t("admissions_page_criteria_3"),
+    t("admissions_page_criteria_4"),
   ];
 
   return (
     <main className="container mx-auto py-10">
       {/* Hero Section */}
       <section className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-brand-blue mb-4">Admissions Open</h1>
-        <p className="text-xl text-gray-600 mb-6">Academic Year 2025-26</p>
-        <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
-          Join Sri Madhava Vidya Mandira and give your child the gift of quality education
-          rooted in values and culture. We welcome applications for all classes from Nursery to Class X.
-        </p>
+        <h1 className="text-4xl font-bold text-brand-blue mb-4">{t("admissions_page_title")}</h1>
+        <p className="text-xl text-gray-600 mb-6">{t("admissions_page_year")}</p>
+        <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">{t("admissions_page_intro")}</p>
         <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <Button className="btn-primary">Download Application Form</Button>
+          <Button className="btn-primary">{t("admissions_page_download_application")}</Button>
           <Button variant="outline" className="border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white">
-            Schedule Visit
+            {t("admissions_page_schedule_visit")}
           </Button>
         </div>
       </section>
 
       {/* Admission Process */}
       <section className="mb-12">
-        <h2 className="text-3xl font-bold text-center text-brand-blue mb-8">Admission Process</h2>
+        <h2 className="text-3xl font-bold text-center text-brand-blue mb-8">{t("admissions_page_process_title")}</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {admissionProcess.map((process, index) => (
             <Card key={index} className="text-center hover:shadow-lg transition-shadow">
@@ -95,7 +100,7 @@ export default function Admissions() {
         <div className="grid md:grid-cols-2 gap-8">
           <Card>
             <CardHeader>
-              <CardTitle className="text-xl text-brand-blue">Required Documents</CardTitle>
+              <CardTitle className="text-xl text-brand-blue">{t("admissions_page_required_documents_title")}</CardTitle>
             </CardHeader>
             <CardContent>
               <ul className="space-y-2">
@@ -111,26 +116,16 @@ export default function Admissions() {
 
           <Card>
             <CardHeader>
-              <CardTitle className="text-xl text-brand-blue">Admission Criteria</CardTitle>
+              <CardTitle className="text-xl text-brand-blue">{t("admissions_page_criteria_title")}</CardTitle>
             </CardHeader>
             <CardContent>
               <ul className="space-y-3 text-gray-700">
-                <li className="flex items-start gap-2">
-                  <span className="text-brand-blue font-bold">•</span>
-                  <span>Age criteria as per State guidelines</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-brand-blue font-bold">•</span>
-                  <span>Previous academic performance (for higher classes)</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-brand-blue font-bold">•</span>
-                  <span>Behavioral assessment during interaction</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-brand-blue font-bold">•</span>
-                  <span>Parental commitment to school values</span>
-                </li>
+                {admissionCriteria.map((criterion, index) => (
+                  <li key={index} className="flex items-start gap-2">
+                    <span className="text-brand-blue font-bold">•</span>
+                    <span>{criterion}</span>
+                  </li>
+                ))}
               </ul>
             </CardContent>
           </Card>
@@ -140,47 +135,36 @@ export default function Admissions() {
       {/* Fee Concession Banner */}
       <section className="mb-12">
         <div className="rounded-xl border border-blue-200 bg-blue-50 px-6 py-4 text-center">
-          <p className="text-sm md:text-base font-medium text-blue-900">
-            Free tuition for the third child is available when the first two children are studying at SMVM.
-          </p>
+          <p className="text-sm md:text-base font-medium text-blue-900">{t("admissions_page_fee_concession_banner")}</p>
         </div>
       </section>
 
       {/* Why Choose Us */}
       <section className="mb-12">
-        <h2 className="text-3xl font-bold text-center text-brand-blue mb-8">Why Choose Sri Madhava Vidya Mandira?</h2>
+        <h2 className="text-3xl font-bold text-center text-brand-blue mb-8">{t("admissions_page_why_choose_title")}</h2>
         <div className="grid md:grid-cols-3 gap-6">
           <Card className="text-center">
             <CardHeader>
-              <CardTitle className="text-lg">Values-Based Education</CardTitle>
+              <CardTitle className="text-lg">{t("admissions_page_why_1_title")}</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-gray-600">
-                We integrate moral values and cultural heritage into our curriculum,
-                ensuring character development alongside academic excellence.
-              </p>
+              <p className="text-sm text-gray-600">{t("admissions_page_why_1_desc")}</p>
             </CardContent>
           </Card>
           <Card className="text-center">
             <CardHeader>
-              <CardTitle className="text-lg">Experienced Faculty</CardTitle>
+              <CardTitle className="text-lg">{t("admissions_page_why_2_title")}</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-gray-600">
-                Our dedicated teachers are well-qualified and experienced,
-                committed to providing quality education and individual attention.
-              </p>
+              <p className="text-sm text-gray-600">{t("admissions_page_why_2_desc")}</p>
             </CardContent>
           </Card>
           <Card className="text-center">
             <CardHeader>
-              <CardTitle className="text-lg">Holistic Development</CardTitle>
+              <CardTitle className="text-lg">{t("admissions_page_why_3_title")}</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-gray-600">
-                We focus on all-round development through academics, sports,
-                arts, and cultural activities, nurturing every aspect of a child's growth.
-              </p>
+              <p className="text-sm text-gray-600">{t("admissions_page_why_3_desc")}</p>
             </CardContent>
           </Card>
         </div>
@@ -189,15 +173,11 @@ export default function Admissions() {
       {/* School Image */}
       <section className="mb-12">
         <div className="relative rounded-xl overflow-hidden shadow-lg">
-          <img
-            src={getSchoolImage(4)}
-            alt="Students at School"
-            className="w-full h-64 md:h-96 object-cover"
-          />
+          <img src={getSchoolImage(4)} alt={t("admissions_page_image_alt")} className="w-full h-64 md:h-96 object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
           <div className="absolute bottom-6 left-6 text-white">
-            <h2 className="text-2xl font-bold mb-2">Join Our Family</h2>
-            <p className="text-sm opacity-90">Where every child's potential is nurtured and celebrated</p>
+            <h2 className="text-2xl font-bold mb-2">{t("admissions_page_image_title")}</h2>
+            <p className="text-sm opacity-90">{t("admissions_page_image_desc")}</p>
           </div>
         </div>
       </section>
@@ -206,35 +186,35 @@ export default function Admissions() {
       <section className="mb-12">
         <Card>
           <CardHeader>
-            <CardTitle className="text-2xl text-brand-blue">For More Information</CardTitle>
+            <CardTitle className="text-2xl text-brand-blue">{t("admissions_page_more_info_title")}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="flex items-center gap-3">
                 <MapPin className="h-5 w-5 text-brand-blue" />
                 <div>
-                  <p className="font-medium">Visit Our Campus</p>
+                  <p className="font-medium">{t("admissions_page_visit_campus")}</p>
                   <p className="text-sm text-gray-600">{t("address_value")}</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-brand-blue" />
                 <div>
-                  <p className="font-medium">Call Us</p>
+                  <p className="font-medium">{t("call_us")}</p>
                   <p className="text-sm text-gray-600">+91-00000 00000</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
                 <FileText className="h-5 w-5 text-brand-blue" />
                 <div>
-                  <p className="font-medium">Email Us</p>
+                  <p className="font-medium">{t("email_us")}</p>
                   <p className="text-sm text-gray-600">admissions@smvm.edu.in</p>
                 </div>
               </div>
             </div>
             <div className="mt-6 text-center">
-              <Button className="btn-primary mr-4">Apply Now</Button>
-              <Button variant="outline">Download Brochure</Button>
+              <Button className="btn-primary mr-4">{t("admissions_cta")}</Button>
+              <Button variant="outline">{t("admissions_page_download_brochure")}</Button>
             </div>
           </CardContent>
         </Card>
