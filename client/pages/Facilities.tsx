@@ -2,20 +2,7 @@ import { useI18n } from "@/lib/i18n";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { getSchoolImage } from "@/lib/imageUtils";
-import { 
-  BookOpen, 
-  Microscope, 
-  Computer, 
-  Dumbbell, 
-  Music, 
-  Palette, 
-  Users, 
-  Wifi,
-  Shield,
-  Car,
-  Utensils,
-  Heart
-} from "lucide-react";
+import { BookOpen, Microscope, Computer, Dumbbell, Music, Users, Shield, Car, Utensils, Heart } from "lucide-react";
 
 export default function Facilities() {
   const { t } = useI18n();
@@ -23,106 +10,123 @@ export default function Facilities() {
   const facilities = [
     {
       icon: BookOpen,
-      title: "Library",
-      description: "Well-stocked library with over 5000 books, reference materials, and digital resources",
+      title: t("facilities_page_core_1_title"),
+      description: t("facilities_page_core_1_desc"),
       image: getSchoolImage(5),
-      features: ["Reading Room", "Digital Resources", "Reference Section", "Children's Corner"]
+      features: [
+        t("facilities_page_core_1_feature_1"),
+        t("facilities_page_core_1_feature_2"),
+        t("facilities_page_core_1_feature_3"),
+        t("facilities_page_core_1_feature_4"),
+      ],
     },
     {
       icon: Microscope,
-      title: "Science Laboratories",
-      description: "Fully equipped Physics, Chemistry, and Biology labs for hands-on learning",
+      title: t("facilities_page_core_2_title"),
+      description: t("facilities_page_core_2_desc"),
       image: getSchoolImage(6),
-      features: ["Physics Lab", "Chemistry Lab", "Biology Lab", "Computer Lab"]
+      features: [
+        t("facilities_page_core_2_feature_1"),
+        t("facilities_page_core_2_feature_2"),
+        t("facilities_page_core_2_feature_3"),
+        t("facilities_page_core_2_feature_4"),
+      ],
     },
     {
       icon: Computer,
-      title: "Computer Lab",
-      description: "Modern computer laboratory with high-speed internet and latest software",
+      title: t("facilities_page_core_3_title"),
+      description: t("facilities_page_core_3_desc"),
       image: getSchoolImage(7),
-      features: ["40+ Computers", "High-Speed Internet", "Educational Software", "Digital Learning"]
+      features: [
+        t("facilities_page_core_3_feature_1"),
+        t("facilities_page_core_3_feature_2"),
+        t("facilities_page_core_3_feature_3"),
+        t("facilities_page_core_3_feature_4"),
+      ],
     },
     {
       icon: Dumbbell,
-      title: "Sports Facilities",
-      description: "Comprehensive sports infrastructure for physical development and fitness",
+      title: t("facilities_page_core_4_title"),
+      description: t("facilities_page_core_4_desc"),
       image: getSchoolImage(8),
-      features: ["Playground", "Indoor Games", "Sports Equipment", "Coaching Staff"]
+      features: [
+        t("facilities_page_core_4_feature_1"),
+        t("facilities_page_core_4_feature_2"),
+        t("facilities_page_core_4_feature_3"),
+        t("facilities_page_core_4_feature_4"),
+      ],
     },
     {
       icon: Music,
-      title: "Music & Arts Room",
-      description: "Dedicated spaces for music, dance, and art activities",
+      title: t("facilities_page_core_5_title"),
+      description: t("facilities_page_core_5_desc"),
       image: getSchoolImage(9),
-      features: ["Music Instruments", "Dance Studio", "Art Supplies", "Performance Stage"]
+      features: [
+        t("facilities_page_core_5_feature_1"),
+        t("facilities_page_core_5_feature_2"),
+        t("facilities_page_core_5_feature_3"),
+        t("facilities_page_core_5_feature_4"),
+      ],
     },
     {
       icon: Users,
-      title: "Smart Classrooms",
-      description: "Technology-enabled classrooms with interactive whiteboards and multimedia",
+      title: t("facilities_page_core_6_title"),
+      description: t("facilities_page_core_6_desc"),
       image: getSchoolImage(10),
-      features: ["Interactive Boards", "Projectors", "Audio Systems", "Digital Content"]
-    }
+      features: [
+        t("facilities_page_core_6_feature_1"),
+        t("facilities_page_core_6_feature_2"),
+        t("facilities_page_core_6_feature_3"),
+        t("facilities_page_core_6_feature_4"),
+      ],
+    },
   ];
 
   const additionalFacilities = [
     {
-      icon: Wifi,
-      title: "WiFi Campus",
-      description: "High-speed internet connectivity throughout the campus"
-    },
-    {
       icon: Shield,
-      title: "Security",
-      description: "24/7 security with CCTV surveillance and trained guards"
+      title: t("facilities_page_additional_1_title"),
+      description: t("facilities_page_additional_1_desc"),
     },
     {
       icon: Car,
-      title: "Transportation",
-      description: "Safe and reliable school bus service covering all major areas"
-    },
-    {
-      icon: Utensils,
-      title: "Cafeteria",
-      description: "Healthy and hygienic meals prepared in our modern kitchen"
+      title: t("facilities_page_additional_2_title"),
+      description: t("facilities_page_additional_2_desc"),
     },
     {
       icon: Heart,
-      title: "Medical Room",
-      description: "First-aid facility with trained nurse and basic medical equipment"
+      title: t("facilities_page_additional_3_title"),
+      description: t("facilities_page_additional_3_desc"),
+    },
+    {
+      icon: Utensils,
+      title: t("facilities_page_additional_4_title"),
+      description: t("facilities_page_additional_4_desc"),
     },
     {
       icon: Users,
-      title: "Counseling",
-      description: "Student counseling services for academic and emotional support"
-    }
+      title: t("facilities_page_additional_5_title"),
+      description: t("facilities_page_additional_5_desc"),
+    },
   ];
 
   return (
     <main className="container mx-auto py-10">
       {/* Hero Section */}
       <section className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-brand-blue mb-4">World-Class Facilities</h1>
-        <p className="text-xl text-gray-600 mb-6">Supporting excellence in education</p>
-        <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
-          Our modern infrastructure and state-of-the-art facilities provide an ideal environment 
-          for learning, creativity, and holistic development. Every facility is designed to 
-          enhance the educational experience of our students.
-        </p>
+        <h1 className="text-4xl font-bold text-brand-blue mb-4">{t("facilities_page_title")}</h1>
+        <p className="text-xl text-gray-600 mb-6">{t("facilities_page_subtitle")}</p>
+        <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">{t("facilities_page_intro")}</p>
       </section>
 
       {/* Main Facilities */}
       <section className="mb-12">
-        <h2 className="text-3xl font-bold text-center text-brand-blue mb-8">Core Facilities</h2>
+        <h2 className="text-3xl font-bold text-center text-brand-blue mb-8">{t("facilities_page_core_title")}</h2>
         <div className="grid lg:grid-cols-2 gap-8">
           {facilities.map((facility, index) => (
             <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
               <div className="relative h-48">
-                <img 
-                  src={facility.image} 
-                  alt={facility.title}
-                  className="w-full h-full object-cover"
-                />
+                <img src={facility.image} alt={facility.title} className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                 <div className="absolute top-4 left-4">
                   <div className="p-2 rounded-full bg-brand-blue/90">
@@ -137,7 +141,9 @@ export default function Facilities() {
               <CardContent>
                 <div className="flex flex-wrap gap-2">
                   {facility.features.map((feature, featureIndex) => (
-                    <Badge key={featureIndex} variant="secondary">{feature}</Badge>
+                    <Badge key={featureIndex} variant="secondary">
+                      {feature}
+                    </Badge>
                   ))}
                 </div>
               </CardContent>
@@ -148,7 +154,7 @@ export default function Facilities() {
 
       {/* Additional Facilities */}
       <section className="mb-12">
-        <h2 className="text-3xl font-bold text-center text-brand-blue mb-8">Additional Amenities</h2>
+        <h2 className="text-3xl font-bold text-center text-brand-blue mb-8">{t("facilities_page_additional_title")}</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {additionalFacilities.map((facility, index) => (
             <Card key={index} className="text-center hover:shadow-lg transition-shadow">
@@ -172,50 +178,25 @@ export default function Facilities() {
       <section className="mb-12">
         <Card>
           <CardHeader>
-            <CardTitle className="text-2xl text-brand-blue">Infrastructure Highlights</CardTitle>
+            <CardTitle className="text-2xl text-brand-blue">{t("facilities_page_highlights_title")}</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid md:grid-cols-3 gap-6">
               <div className="text-center">
-                <div className="text-3xl font-bold text-brand-blue mb-2">40+</div>
-                <div className="text-sm text-gray-600">Well-ventilated Classrooms</div>
+                <div className="text-3xl font-bold text-brand-blue mb-2">25+</div>
+                <div className="text-sm text-gray-600">{t("facilities_page_highlight_1")}</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-brand-blue mb-2">5000+</div>
-                <div className="text-sm text-gray-600">Books in Library</div>
+                <div className="text-3xl font-bold text-brand-blue mb-2">2500+</div>
+                <div className="text-sm text-gray-600">{t("facilities_page_highlight_2")}</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-brand-blue mb-2">100%</div>
-                <div className="text-sm text-gray-600">Digital Classrooms</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-brand-blue mb-2">5</div>
-                <div className="text-sm text-gray-600">Science Laboratories</div>
+                <div className="text-3xl font-bold text-brand-blue mb-2">{t("facilities_page_highlight_3_label")}</div>
+                <div className="text-sm text-gray-600">{t("facilities_page_highlight_3")}</div>
               </div>
             </div>
           </CardContent>
         </Card>
-      </section>
-
-      {/* Campus Tour */}
-      <section className="mb-12">
-        <div className="relative rounded-xl overflow-hidden shadow-lg">
-          <img 
-            src={getSchoolImage(11)} 
-            alt="School Campus Aerial View" 
-            className="w-full h-64 md:h-96 object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-          <div className="absolute bottom-6 left-6 text-white">
-            <h2 className="text-2xl font-bold mb-2">Explore Our Campus</h2>
-            <p className="text-sm opacity-90">Modern infrastructure designed for 21st-century learning</p>
-          </div>
-          <div className="absolute top-6 right-6">
-            <button className="bg-white/90 text-brand-blue px-4 py-2 rounded-lg font-medium hover:bg-white transition-colors">
-              Schedule Campus Visit
-            </button>
-          </div>
-        </div>
       </section>
     </main>
   );
