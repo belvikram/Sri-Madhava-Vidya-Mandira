@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { getAllSchoolImages, getSchoolImage } from "@/lib/imageUtils";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Camera, Users, Trophy, Music, Palette, BookOpen, Microscope } from "lucide-react";
+import { Camera, Users, Trophy, Music, Palette, BookOpen } from "lucide-react";
 
 export default function Gallery() {
   const { t } = useI18n();
@@ -161,90 +161,6 @@ export default function Gallery() {
         </div>
       </section>
 
-      {/* Photo Statistics */}
-      <section className="mb-12">
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-2xl text-brand-blue text-center">Gallery Highlights</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-brand-blue mb-2">400+</div>
-                <div className="text-sm text-gray-600">Photos Captured</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-brand-blue mb-2">50+</div>
-                <div className="text-sm text-gray-600">Events Documented</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-brand-blue mb-2">12</div>
-                <div className="text-sm text-gray-600">Categories</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-brand-blue mb-2">365</div>
-                <div className="text-sm text-gray-600">Days of Memories</div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </section>
-
-      {/* Video Gallery */}
-      <section className="mb-12">
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-2xl text-brand-blue">Video Gallery</CardTitle>
-            <p className="text-gray-600">Watch our students in action</p>
-          </CardHeader>
-          <CardContent>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="relative aspect-video bg-gray-200 rounded-lg flex items-center justify-center">
-                <div className="text-center">
-                  <Camera className="h-12 w-12 text-gray-400 mx-auto mb-2" />
-                  <p className="text-gray-600">Annual Day Performance</p>
-                </div>
-              </div>
-              <div className="relative aspect-video bg-gray-200 rounded-lg flex items-center justify-center">
-                <div className="text-center">
-                  <Trophy className="h-12 w-12 text-gray-400 mx-auto mb-2" />
-                  <p className="text-gray-600">Sports Day Highlights</p>
-                </div>
-              </div>
-              <div className="relative aspect-video bg-gray-200 rounded-lg flex items-center justify-center">
-                <div className="text-center">
-                  <Music className="h-12 w-12 text-gray-400 mx-auto mb-2" />
-                  <p className="text-gray-600">Cultural Fest 2024</p>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </section>
-
-      {/* Share Your Moments */}
-      <section className="mb-12">
-        <Card className="bg-gradient-to-r from-brand-blue/5 to-brand-orange/5">
-          <CardHeader>
-            <CardTitle className="text-2xl text-brand-blue text-center">Share Your Moments</CardTitle>
-            <p className="text-gray-600 text-center">
-              Parents and students can share their school memories and experiences with us
-            </p>
-          </CardHeader>
-          <CardContent className="text-center">
-            <div className="flex flex-wrap justify-center gap-4">
-              <button className="btn-primary">
-                <Camera className="h-4 w-4 mr-2" />
-                Upload Photos
-              </button>
-              <button className="btn bg-white text-brand-blue border border-brand-blue hover:bg-blue-50">
-                <Microscope className="h-4 w-4 mr-2" />
-                Share Stories
-              </button>
-            </div>
-          </CardContent>
-        </Card>
-      </section>
     </main>
   );
 }

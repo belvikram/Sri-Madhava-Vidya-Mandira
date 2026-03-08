@@ -231,14 +231,14 @@ export default function FAQs() {
                 <h3 className="font-semibold text-gray-900 mb-2">
                   {t("faq_phone_support")}
                 </h3>
-                <p className="text-gray-600">+91 98765 43210</p>
+                <p className="text-gray-600">{t("faq_phone_value")}</p>
               </div>
               
               <div className="bg-gray-50 p-6 rounded-lg">
                 <h3 className="font-semibold text-gray-900 mb-2">
                   {t("faq_email_support")}
                 </h3>
-                <p className="text-gray-600">info@smvm.edu.in</p>
+                <p className="text-gray-600">{t("faq_email_value")}</p>
               </div>
               
               <div className="bg-gray-50 p-6 rounded-lg">

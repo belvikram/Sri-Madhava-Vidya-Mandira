@@ -1,4 +1,4 @@
-import { Download, FileText, Calendar, Users, Award, BookOpen } from "lucide-react";
+import { Download, FileText, Calendar, Award, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -7,8 +7,7 @@ import { useI18n } from "@/lib/i18n";
 
 export default function Results() {
   const { t } = useI18n();
-  const currentYear = new Date().getFullYear();
-  const academicYear = `${currentYear}-${currentYear + 1}`;
+  const latestAcademicYear = "2024-25";
 
   const resultCategories = [
     {
@@ -18,108 +17,43 @@ export default function Results() {
       color: "bg-blue-500",
       results: [
         {
-          year: academicYear,
-          exam: "SSLC March 2024",
+          year: "2024-25",
+          exam: t("results_sslc_march_2025"),
           status: t("published"),
           downloads: [
-            { name: `Class 10 ${t("overall_results")}`, type: "PDF", size: "2.3 MB" },
-            { name: `Class 10 ${t("subject_wise_results")}`, type: "PDF", size: "1.8 MB" },
-            { name: `Class 10 ${t("merit_list")}`, type: "PDF", size: "0.9 MB" },
-            { name: `Class 10 ${t("grade_analysis")}`, type: "PDF", size: "1.2 MB" }
+            { name: t("results_class_10_overall_2024_25"), type: "PDF", size: "2.3 MB" }
           ]
         },
         {
-          year: `${currentYear - 1}-${currentYear}`,
-          exam: "SSLC March 2023",
+          year: "2023-24",
+          exam: t("results_sslc_march_2024"),
           status: t("published"),
           downloads: [
-            { name: `Class 10 ${t("overall_results")}`, type: "PDF", size: "2.1 MB" },
-            { name: `Class 10 ${t("subject_wise_results")}`, type: "PDF", size: "1.7 MB" },
-            { name: `Class 10 ${t("merit_list")}`, type: "PDF", size: "0.8 MB" }
+            { name: t("results_class_10_overall_2023_24"), type: "PDF", size: "2.1 MB" }
           ]
         }
       ]
     },
     {
-      title: t("class_6_9_results"),
-      description: t("class_6_9_description"),
+      title: t("results_all_classes_title"),
+      description: t("results_all_classes_description"),
       icon: BookOpen,
       color: "bg-green-500",
       results: [
         {
-          year: academicYear,
-          exam: `${t("annual_exam")} 2024`,
+          year: "2024-25",
+          exam: t("results_all_classes_exam_2024_25"),
           status: t("published"),
           downloads: [
-            { name: "Class 9 Results", type: "PDF", size: "1.1 MB" },
-            { name: "Class 8 Results", type: "PDF", size: "1.0 MB" },
-            { name: "Class 7 Results", type: "PDF", size: "0.9 MB" },
-            { name: "Class 6 Results", type: "PDF", size: "0.8 MB" }
+            { name: t("results_all_classes_download_2024_25"), type: "PDF", size: "3.4 MB" }
           ]
         },
         {
-          year: academicYear,
-          exam: `${t("half_yearly_exam")} 2024`,
+          year: "2023-24",
+          exam: t("results_all_classes_exam_2023_24"),
           status: t("published"),
           downloads: [
-            { name: `Classes 6-9 ${t("combined_results")}`, type: "PDF", size: "2.5 MB" },
-            { name: `${t("subject_analysis")} (6-9)`, type: "PDF", size: "1.8 MB" }
-          ]
-        }
-      ]
-    },
-    {
-      title: t("class_1_5_results"),
-      description: t("class_1_5_description"),
-      icon: FileText,
-      color: "bg-purple-500",
-      results: [
-        {
-          year: academicYear,
-          exam: `${t("annual_exam")} 2024`,
-          status: t("published"),
-          downloads: [
-            { name: "Class 5 Results", type: "PDF", size: "0.7 MB" },
-            { name: "Class 4 Results", type: "PDF", size: "0.6 MB" },
-            { name: "Class 3 Results", type: "PDF", size: "0.5 MB" },
-            { name: "Class 2 Results", type: "PDF", size: "0.4 MB" },
-            { name: "Class 1 Results", type: "PDF", size: "0.3 MB" }
-          ]
-        },
-        {
-          year: academicYear,
-          exam: `${t("quarterly_exam")} 2024`,
-          status: t("published"),
-          downloads: [
-            { name: `Classes 1-5 ${t("combined_results")}`, type: "PDF", size: "1.5 MB" },
-            { name: `${t("progress_report")} (1-5)`, type: "PDF", size: "1.2 MB" }
-          ]
-        }
-      ]
-    },
-    {
-      title: t("special_exams"),
-      description: t("special_exams_description"),
-      icon: Users,
-      color: "bg-orange-500",
-      results: [
-        {
-          year: academicYear,
-          exam: `${t("scholarship_test")} 2024`,
-          status: t("published"),
-          downloads: [
-            { name: `Class 10 ${t("scholarship_results")}`, type: "PDF", size: "0.8 MB" },
-            { name: `Class 9 ${t("scholarship_results")}`, type: "PDF", size: "0.7 MB" },
-            { name: `Class 8 ${t("scholarship_results")}`, type: "PDF", size: "0.6 MB" }
-          ]
-        },
-        {
-          year: academicYear,
-          exam: `${t("science_olympiad")} 2024`,
-          status: t("published"),
-          downloads: [
-            { name: `${t("olympiad_results")} (All Classes)`, type: "PDF", size: "0.9 MB" },
-            { name: t("merit_certificate"), type: "PDF", size: "0.5 MB" }
+            { name: t("results_all_classes_download_2023_24"), type: "PDF", size: "3.1 MB" }
           ]
         }
       ]
@@ -151,7 +85,7 @@ export default function Results() {
             <div className="flex flex-wrap justify-center gap-4 text-sm">
               <div className="flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full">
                 <Calendar className="h-4 w-4" />
-                <span>{t("academic_year")}: {academicYear}</span>
+                <span>{t("academic_year")}: {latestAcademicYear}</span>
               </div>
               <div className="flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full">
                 <Award className="h-4 w-4" />
@@ -195,7 +129,7 @@ export default function Results() {
                                 {result.exam}
                               </h3>
                               <p className="text-sm text-gray-600">
-                                Academic Year: {result.year}
+                                {t("academic_year")}: {result.year}
                               </p>
                             </div>
                             <Badge 
@@ -259,30 +193,17 @@ export default function Results() {
             <h2 className="text-3xl font-bold text-gray-900 mb-6">
               {t("important_info")}
             </h2>
-            <div className="grid md:grid-cols-2 gap-8 text-left">
+            <div className="max-w-2xl mx-auto text-left">
               <div className="space-y-4">
                 <h3 className="text-xl font-semibold text-gray-900">
-                  {t("result_access")}
+                  {t("upcoming_features")}
                 </h3>
                 <ul className="space-y-2 text-gray-600">
-                  <li>• {t("result_access_1")}</li>
-                  <li>• {t("result_access_2")}</li>
-                  <li>• {t("result_access_3")}</li>
-                  <li>• {t("result_access_4")}</li>
-                  <li>• {t("result_access_5")}</li>
-                </ul>
-              </div>
-              
-              <div className="space-y-4">
-                <h3 className="text-xl font-semibold text-gray-900">
-                  {t("academic_support")}
-                </h3>
-                <ul className="space-y-2 text-gray-600">
-                  <li>• {t("academic_support_1")}</li>
-                  <li>• {t("academic_support_2")}</li>
-                  <li>• {t("academic_support_3")}</li>
-                  <li>• {t("academic_support_4")}</li>
-                  <li>• {t("academic_support_5")}</li>
+                  <li>• {t("upcoming_feature_1")}</li>
+                  <li>• {t("upcoming_feature_2")}</li>
+                  <li>• {t("upcoming_feature_3")}</li>
+                  <li>• {t("upcoming_feature_4")}</li>
+                  <li>• {t("upcoming_feature_5")}</li>
                 </ul>
               </div>
             </div>
