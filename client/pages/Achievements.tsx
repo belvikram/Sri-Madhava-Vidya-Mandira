@@ -18,7 +18,7 @@ export default function Achievements() {
       image: getSchoolImage(4),
       icon: Star,
       level: t("achievements_page_card_2_level"),
-      participants: t("achievements_page_card_2_participants"),
+      //participants: t("achievements_page_card_2_//participants"),
     },
     {
       id: 6,
@@ -29,7 +29,7 @@ export default function Achievements() {
       details: t("achievements_page_card_3_details"),
       icon: Trophy,
       level: t("achievements_page_card_3_level"),
-      participants: t("achievements_page_card_3_participants"),
+      //participants: t("achievements_page_card_3_//participants"),
     },
     {
       id: 7,
@@ -40,7 +40,7 @@ export default function Achievements() {
       details: t("achievements_page_card_4_details"),
       icon: Trophy,
       level: t("achievements_page_card_4_level"),
-      participants: t("achievements_page_card_4_participants"),
+      //participants: t("achievements_page_card_4_//participants"),
     },
     {
       id: 30,
@@ -52,7 +52,7 @@ export default function Achievements() {
       image: getAssetImage("30.jpeg"),
       icon: Trophy,
       level: t("achievements_page_card_5_level"),
-      participants: t("achievements_page_card_5_participants"),
+      //participants: t("achievements_page_card_5_//participants"),
     },
     {
       id: 31,
@@ -64,7 +64,7 @@ export default function Achievements() {
       image: getAssetImage("31.jpeg"),
       icon: Star,
       level: t("achievements_page_card_6_level"),
-      participants: t("achievements_page_card_6_participants"),
+      //participants: t("achievements_page_card_6_//participants"),
     },
     {
       id: 32,
@@ -76,7 +76,7 @@ export default function Achievements() {
       image: getAssetImage("32.jpeg"),
       icon: Trophy,
       level: t("achievements_page_card_7_level"),
-      participants: t("achievements_page_card_7_participants"),
+      //participants: t("achievements_page_card_7_//participants"),
     },
     {
       id: 33,
@@ -88,7 +88,7 @@ export default function Achievements() {
       image: getAssetImage("33.jpeg"),
       icon: Trophy,
       level: t("achievements_page_card_8_level"),
-      participants: t("achievements_page_card_8_participants"),
+      //participants: t("achievements_page_card_8_//participants"),
     },
     {
       id: 34,
@@ -100,7 +100,7 @@ export default function Achievements() {
       image: getAssetImage("34.jpeg"),
       icon: Star,
       level: t("achievements_page_card_9_level"),
-      participants: t("achievements_page_card_9_participants"),
+      //participants: t("achievements_page_card_9_//participants"),
     },
     {
       id: 35,
@@ -112,7 +112,7 @@ export default function Achievements() {
       image: getAssetImage("35(1).jpeg"), // Note: Using 35(1) as 35.jpeg is missing
       icon: Medal,
       level: t("achievements_page_card_10_level"),
-      participants: t("achievements_page_card_10_participants"),
+      //participants: t("achievements_page_card_10_//participants"),
     },
     {
       id: 351,
@@ -124,7 +124,7 @@ export default function Achievements() {
       image: getAssetImage("35(1).jpeg"),
       icon: Trophy,
       level: t("achievements_page_card_11_level"),
-      participants: t("achievements_page_card_11_participants"),
+      //participants: t("achievements_page_card_11_//participants"),
     },
   ];
 
@@ -221,7 +221,7 @@ export default function Achievements() {
                       <span className="text-sm">{achievement.level}</span>
                     </div>
                     <h3 className="text-lg font-bold mb-1">{achievement.title}</h3>
-                    <p className="text-sm opacity-90">{achievement.year}</p>
+                    {/* <p className="text-sm opacity-90">{achievement.year}</p> */}
                   </div>
                 </div>
               ) : (
@@ -230,19 +230,19 @@ export default function Achievements() {
                     <Badge variant="secondary">{achievement.category}</Badge>
                   </div>
                   <h3 className="text-lg font-bold text-brand-blue mb-1">{achievement.title}</h3>
-                  <p className="text-sm text-gray-500">{achievement.year}</p>
+                  {/* <p className="text-sm text-gray-500">{achievement.year}</p> */}
                 </div>
               )}
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-2 text-sm text-gray-600">
+                  {/* <div className="flex items-center gap-2 text-sm text-gray-600">
                     <Calendar className="h-4 w-4" />
                     <span>{achievement.year}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-gray-600">
+                  </div> */}
+                  {/* <div className="flex items-center gap-2 text-sm text-gray-600">
                     <Users className="h-4 w-4" />
                     <span>{achievement.participants}</span>
-                  </div>
+                  </div> */}
                 </div>
                 <p className="text-gray-700 mb-4 font-medium">{achievement.description}</p>
                 <p className="text-sm text-gray-600">{achievement.details}</p>

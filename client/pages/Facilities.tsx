@@ -62,8 +62,8 @@ export default function Facilities() {
       description: t("facilities_page_core_5_desc"),
       image: getSchoolImage(9),
       features: [
-        t("facilities_page_core_5_feature_1"),
-        t("facilities_page_core_5_feature_2"),
+        // t("facilities_page_core_5_feature_1"),
+        // t("facilities_page_core_5_feature_2"),
         t("facilities_page_core_5_feature_3"),
         t("facilities_page_core_5_feature_4"),
       ],

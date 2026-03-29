@@ -1,10 +1,12 @@
-import { Award, Users, Globe, MapPin, Calendar, Camera } from "lucide-react";
+import { useState } from "react";
+import { Award, Users, Globe, MapPin, Camera, X } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useI18n } from "@/lib/i18n";
 import { getAssetImage } from "@/lib/imageUtils";
 
 export default function Alumni() {
   const { t } = useI18n();
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const alumniData = [
     { name: "DR. ANNAPOORNA", profession: "Doctor", location: "MANIPAL" },
@@ -69,29 +71,48 @@ export default function Alumni() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {alumniData.map((alumni, index) => (
-                <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow border-t-4 border-brand-orange">
-                  <CardHeader className="text-center pb-2">
-                    <CardTitle className="text-lg font-bold text-brand-blue">{alumni.name}</CardTitle>
-                  </CardHeader>
-                  
-                  <CardContent className="space-y-3 pb-6">
-                    <div className="space-y-2">
-                      <div className="flex items-start gap-2 text-sm">
-                        <Award className="h-4 w-4 mt-0.5 text-brand-orange shrink-0" />
-                        <span className="font-semibold text-gray-800">{alumni.profession}</span>
+            <div className="border border-gray-200 rounded-xl overflow-hidden bg-white">
+              <div className="grid grid-cols-1 md:grid-cols-3 bg-gray-50 border-b border-gray-200 font-bold text-brand-blue uppercase text-sm tracking-wider hidden md:grid">
+                <div className="px-6 py-4">{t("alumni_name_label") || "Name"}</div>
+                <div className="px-6 py-4 border-l border-gray-200">{t("alumni_profession_label") || "Profession"}</div>
+                <div className="px-6 py-4 border-l border-gray-200">{t("alumni_location_label") || "Location"}</div>
+              </div>
+
+              <div className="divide-y-0 md:divide-y divide-gray-200">
+                {alumniData.map((alumni, index) => (
+                  <div 
+                    key={index} 
+                    className="grid grid-cols-1 md:grid-cols-3 hover:bg-brand-blue/5 transition-colors group mb-6 md:mb-0 border border-gray-100 md:border-0 rounded-lg md:rounded-none overflow-hidden"
+                  >
+                    <div className="px-6 py-4 flex items-center md:block bg-brand-blue/5 md:bg-transparent">
+                      <span className="text-xs font-bold uppercase text-brand-blue md:hidden mr-4 w-20 shrink-0">Name:</span>
+                      <span className="text-lg font-bold text-brand-blue md:text-gray-900 group-hover:text-brand-blue transition-colors">
+                        {alumni.name}
+                      </span>
+                    </div>
+                    
+                    <div className="px-6 py-4 border-t md:border-t-0 md:border-l border-gray-200 flex items-center md:block">
+                      <span className="text-xs font-bold uppercase text-brand-blue/60 md:hidden mr-4 w-20 shrink-0">Profession:</span>
+                      <div className="flex items-center gap-2">
+                        <Award className="h-4 w-4 text-brand-orange shrink-0 hidden lg:inline" />
+                        <span className="text-gray-700 font-medium">{alumni.profession}</span>
                       </div>
-                      {alumni.location && (
-                        <div className="flex items-start gap-2 text-sm text-gray-600">
-                          <MapPin className="h-4 w-4 mt-0.5 shrink-0" />
-                          <span>{alumni.location}</span>
+                    </div>
+
+                    <div className="px-6 py-4 border-t md:border-t-0 md:border-l border-gray-200 flex items-center md:block">
+                      <span className="text-xs font-bold uppercase text-brand-blue/60 md:hidden mr-4 w-20 shrink-0">Location:</span>
+                      {alumni.location ? (
+                        <div className="flex items-center gap-2">
+                          <MapPin className="h-4 w-4 text-brand-blue shrink-0 hidden lg:inline" />
+                          <span className="text-gray-600">{alumni.location}</span>
                         </div>
+                      ) : (
+                        <span className="text-gray-400 italic text-sm">Not specified</span>
                       )}
                     </div>
-                  </CardContent>
-                </Card>
-              ))}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -108,7 +129,11 @@ export default function Alumni() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
             {galleryImages.map((imgName, idx) => (
-              <div key={idx} className="aspect-video rounded-xl overflow-hidden shadow-md group">
+              <div 
+                key={idx} 
+                className="aspect-video rounded-xl overflow-hidden shadow-md group cursor-pointer"
+                onClick={() => setSelectedImage(imgName)}
+              >
                 <img 
                   src={getAssetImage(imgName)} 
                   alt={`Alumni moment ${idx + 1}`}
@@ -120,30 +145,27 @@ export default function Alumni() {
         </div>
       </section>
 
-      {/* Events Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                {t("alumni_events")}
-              </h2>
-            </div>
-
-            <Card className="max-w-md mx-auto">
-              <CardContent className="p-6">
-                <div className="space-y-3 text-gray-700">
-                  <h3 className="text-xl font-semibold text-gray-900">Alumni Meet 2023</h3>
-                  <div className="flex items-center gap-2 text-sm justify-center">
-                    <Calendar className="h-4 w-4 text-brand-blue" />
-                    <span>January 3, 2023</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+      {/* Image Overlay */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 md:p-8 animate-in fade-in duration-200"
+          onClick={() => setSelectedImage(null)}
+        >
+          <button 
+            className="absolute top-4 right-4 text-white hover:text-brand-orange transition-colors p-2"
+            onClick={() => setSelectedImage(null)}
+          >
+            <X className="h-8 w-8" />
+          </button>
+          <img 
+            src={getAssetImage(selectedImage)} 
+            alt="Fullscreen Preview"
+            className="max-w-full max-h-full object-contain rounded-lg shadow-2xl animate-in zoom-in duration-300"
+            onClick={(e) => e.stopPropagation()}
+          />
         </div>
-      </section>
+      )}
+
     </div>
   );
 }

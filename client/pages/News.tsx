@@ -1,7 +1,6 @@
 import { useI18n } from "@/lib/i18n";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { getSchoolImage, getAssetImage } from "@/lib/imageUtils";
 import { Calendar, Users, Trophy, BookOpen, Music, Star } from "lucide-react";
 
@@ -205,13 +204,9 @@ export default function News() {
                   <span>{article.category}</span>
                 </div>
                 <CardTitle className="text-lg line-clamp-2">{article.title}</CardTitle>
-                <p className="text-sm text-gray-600">{article.date}</p>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-gray-700 mb-4 line-clamp-3">{article.excerpt}</p>
-                <Button variant="outline" size="sm" className="w-full">
-                  {t("read_more")}
-                </Button>
               </CardContent>
             </Card>
           ))}
