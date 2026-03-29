@@ -41,9 +41,6 @@ export default function Admissions() {
     t("admissions_page_doc_aadhaar"),
     t("admissions_page_doc_bank_account"),
     t("admissions_page_doc_photos"),
-    t("admissions_page_doc_caste_certificate"),
-    t("admissions_page_doc_income_certificate"),
-    t("admissions_page_doc_medical_certificate"),
   ];
 
   const admissionCriteria = [

@@ -29,8 +29,8 @@ export default function Footer() {
           <h4 className="font-semibold text-gray-900">{t("footer_contact")}</h4>
           <ul className="mt-3 space-y-2 text-sm text-gray-700">
             <li><span className="font-medium">{t("address_label")}:</span> {t("address_value")}</li>
-            <li><span className="font-medium">{t("phone_label")}:</span> +91-00000 00000</li>
-            <li><span className="font-medium">{t("email_label")}:</span> info@smvm.edu.in</li>
+            <li><span className="font-medium">{t("phone_label")}:</span> {t("phone_value")}</li>
+            <li><span className="font-medium">{t("email_label")}:</span> {t("email_value")}</li>
           </ul>
         </div>
       </div>
