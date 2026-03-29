@@ -78,28 +78,6 @@ export default function FAQs() {
         }
       ]
     },
-    {
-      title: t("faq_general"),
-      icon: "❓",
-      faqs: [
-        {
-          question: t("faq_school_hours"),
-          answer: t("faq_school_hours_answer")
-        },
-        {
-          question: t("faq_holidays"),
-          answer: t("faq_holidays_answer")
-        },
-        {
-          question: t("faq_parent_teacher"),
-          answer: t("faq_parent_teacher_answer")
-        },
-        {
-          question: t("faq_contact"),
-          answer: t("faq_contact_answer")
-        }
-      ]
-    }
   ];
 
   const toggleItem = (index: number) => {

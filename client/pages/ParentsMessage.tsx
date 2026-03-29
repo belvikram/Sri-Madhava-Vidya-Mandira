@@ -8,55 +8,55 @@ export default function ParentsMessage() {
   const parentMessages = [
     {
       name: "Madhumati",
-      child: "PARENT",
+      child: "Parent of Vaishnavi, Class 3 & Chinmayi, Class 6",
       message: t("parent_message_1"),
       rating: 5
     },
     {
       name: "Pavithra",
-      child: "PARENT",
+      child: "Parent of Megha, Class 7",
       message: t("parent_message_2"),
       rating: 5
     },
     {
       name: "Vijayalakshmi",
-      child: "PARENT",
+      child: "Parent of Sharandeep, Class 2",
       message: t("parent_message_3"),
       rating: 5
     },
     {
       name: "Nagamani",
-      child: "PARENT",
+      child: "Parent of Aishwarya, Class 10",
       message: t("parent_message_4"),
       rating: 5
     },
     {
       name: "Thimmaraju",
-      child: "PARENT",
+      child: "Parent of Tulasi, Class 9 & Shashank, Class 8",
       message: t("parent_message_5"),
       rating: 5
     },
     {
       name: "Vatsala",
-      child: "PARENT",
+      child: "Parent of Padmavati, Class 5",
       message: t("parent_message_6"),
       rating: 5
     },
     {
       name: "Mangala",
-      child: "PARENT",
+      child: "Parent of Rashmi, Class 7",
       message: t("parent_testimonial_1"),
       rating: 5
     },
     {
-      name: "Latha",
-      child: "PARENT",
+      name: "Geetha",
+      child: "Parent of Kumuda, Class 4 & Lathish, Class 6",
       message: t("parent_testimonial_2"),
       rating: 5
     },
     {
-      name: "Nirmala",
-      child: "PARENT",
+      name: "Nalina",
+      child: "Parent of Harsha, Class 1 & Indrajit, Class 5",
       message: t("parent_testimonial_3"),
       rating: 5
     },
@@ -69,19 +69,9 @@ export default function ParentsMessage() {
       label: t("parent_stat_1")
     },
     {
-      icon: Star,
-      number: "4.9/5",
-      label: t("parent_stat_2")
-    },
-    {
       icon: Heart,
       number: "98%",
       label: t("parent_stat_3")
-    },
-    {
-      icon: MessageCircle,
-      number: "200+",
-      label: t("parent_stat_4")
     }
   ];
 
@@ -124,7 +114,7 @@ export default function ParentsMessage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
               {statistics.map((stat, index) => (
                 <div key={index} className="text-center">
                   <div className="w-16 h-16 mx-auto mb-4 bg-brand-blue/10 rounded-full flex items-center justify-center">
@@ -166,9 +156,11 @@ export default function ParentsMessage() {
                           <User className="h-6 w-6 text-brand-blue" />
                         </div>
                         <div>
-                          <CardTitle className="text-lg">{message.name}</CardTitle>
-                          <CardDescription className="text-sm">
-                            {message.child}
+                          <CardTitle className="text-lg font-bold text-brand-blue">{message.name}</CardTitle>
+                          <CardDescription className="text-xs pt-1">
+                            <span className="bg-brand-blue/5 text-brand-blue px-2 py-0.5 rounded-md inline-block font-medium">
+                              {message.child.replace(/Class\s(\d+)/g, "Class\u00A0$1")}
+                            </span>
                           </CardDescription>
                         </div>
                       </div>

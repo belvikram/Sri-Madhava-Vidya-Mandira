@@ -295,6 +295,29 @@ export default function Academics() {
         </div>
       </section>
 
+      {/* Upcoming Initiatives */}
+      <section className="mb-12">
+        <h2 className="text-3xl font-bold text-center text-brand-blue mb-8">{t("academics_page_upcoming_title")}</h2>
+        <div className="max-w-2xl mx-auto">
+          <Card className="border-2 border-dashed border-brand-blue/30 bg-brand-blue/5">
+            <CardHeader className="text-center">
+              <div className="flex justify-center mb-2">
+                <Badge variant="outline" className="border-brand-blue text-brand-blue animate-pulse">Coming Soon</Badge>
+              </div>
+              <CardTitle className="text-2xl text-brand-blue flex items-center justify-center gap-2">
+                <Globe className="h-6 w-6" />
+                {t("academics_page_upcoming_cbse_title")}
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="text-center">
+              <p className="text-gray-700 leading-relaxed">
+                {t("academics_page_upcoming_cbse_desc")}
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
     </main>
   );
 }

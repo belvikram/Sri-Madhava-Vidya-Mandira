@@ -1,24 +1,13 @@
 import { useI18n } from "@/lib/i18n";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { getSchoolImage } from "@/lib/imageUtils";
+import { getSchoolImage, getAssetImage } from "@/lib/imageUtils";
 import { Trophy, Medal, Award, Star, Users, Calendar } from "lucide-react";
 
 export default function Achievements() {
   const { t } = useI18n();
 
   const achievements = [
-    {
-      id: 1,
-      title: t("achievements_page_card_1_title"),
-      category: t("achievements_page_card_1_category"),
-      year: t("achievements_page_card_1_year"),
-      description: t("achievements_page_card_1_description"),
-      details: t("achievements_page_card_1_details"),
-      icon: Award,
-      level: t("achievements_page_card_1_level"),
-      participants: t("achievements_page_card_1_participants"),
-    },
     {
       id: 4,
       title: t("achievements_page_card_2_title"),
@@ -53,14 +42,92 @@ export default function Achievements() {
       level: t("achievements_page_card_4_level"),
       participants: t("achievements_page_card_4_participants"),
     },
+    {
+      id: 30,
+      title: t("achievements_page_card_5_title"),
+      category: t("achievements_page_card_5_category"),
+      year: t("achievements_page_card_5_year"),
+      description: t("achievements_page_card_5_description"),
+      details: t("achievements_page_card_5_details"),
+      image: getAssetImage("30.jpeg"),
+      icon: Trophy,
+      level: t("achievements_page_card_5_level"),
+      participants: t("achievements_page_card_5_participants"),
+    },
+    {
+      id: 31,
+      title: t("achievements_page_card_6_title"),
+      category: t("achievements_page_card_6_category"),
+      year: t("achievements_page_card_6_year"),
+      description: t("achievements_page_card_6_description"),
+      details: t("achievements_page_card_6_details"),
+      image: getAssetImage("31.jpeg"),
+      icon: Star,
+      level: t("achievements_page_card_6_level"),
+      participants: t("achievements_page_card_6_participants"),
+    },
+    {
+      id: 32,
+      title: t("achievements_page_card_7_title"),
+      category: t("achievements_page_card_7_category"),
+      year: t("achievements_page_card_7_year"),
+      description: t("achievements_page_card_7_description"),
+      details: t("achievements_page_card_7_details"),
+      image: getAssetImage("32.jpeg"),
+      icon: Trophy,
+      level: t("achievements_page_card_7_level"),
+      participants: t("achievements_page_card_7_participants"),
+    },
+    {
+      id: 33,
+      title: t("achievements_page_card_8_title"),
+      category: t("achievements_page_card_8_category"),
+      year: t("achievements_page_card_8_year"),
+      description: t("achievements_page_card_8_description"),
+      details: t("achievements_page_card_8_details"),
+      image: getAssetImage("33.jpeg"),
+      icon: Trophy,
+      level: t("achievements_page_card_8_level"),
+      participants: t("achievements_page_card_8_participants"),
+    },
+    {
+      id: 34,
+      title: t("achievements_page_card_9_title"),
+      category: t("achievements_page_card_9_category"),
+      year: t("achievements_page_card_9_year"),
+      description: t("achievements_page_card_9_description"),
+      details: t("achievements_page_card_9_details"),
+      image: getAssetImage("34.jpeg"),
+      icon: Star,
+      level: t("achievements_page_card_9_level"),
+      participants: t("achievements_page_card_9_participants"),
+    },
+    {
+      id: 35,
+      title: t("achievements_page_card_10_title"),
+      category: t("achievements_page_card_10_category"),
+      year: t("achievements_page_card_10_year"),
+      description: t("achievements_page_card_10_description"),
+      details: t("achievements_page_card_10_details"),
+      image: getAssetImage("35(1).jpeg"), // Note: Using 35(1) as 35.jpeg is missing
+      icon: Medal,
+      level: t("achievements_page_card_10_level"),
+      participants: t("achievements_page_card_10_participants"),
+    },
+    {
+      id: 351,
+      title: t("achievements_page_card_11_title"),
+      category: t("achievements_page_card_11_category"),
+      year: t("achievements_page_card_11_year"),
+      description: t("achievements_page_card_11_description"),
+      details: t("achievements_page_card_11_details"),
+      image: getAssetImage("35(1).jpeg"),
+      icon: Trophy,
+      level: t("achievements_page_card_11_level"),
+      participants: t("achievements_page_card_11_participants"),
+    },
   ];
 
-  const statistics = [
-    { label: t("achievements_page_stat_academic"), value: "50+", icon: Award },
-    { label: t("achievements_page_stat_sports"), value: "40+", icon: Trophy },
-    { label: t("achievements_page_stat_cultural"), value: "15+", icon: Star },
-    { label: t("achievements_page_stat_science"), value: "20+", icon: Medal },
-  ];
 
   const studentAchievementDetails = [
     {
@@ -128,20 +195,6 @@ export default function Achievements() {
         </p>
       </section>
 
-      {/* Achievement Statistics */}
-      <section className="mb-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {statistics.map((stat, index) => (
-            <Card key={index} className="text-center">
-              <CardContent className="pt-6">
-                <stat.icon className="h-8 w-8 mx-auto mb-3 text-brand-blue" />
-                <div className="text-3xl font-bold text-brand-blue mb-2">{stat.value}</div>
-                <div className="text-sm text-gray-600">{stat.label}</div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
 
       {/* Major Achievements */}
       <section className="mb-12">
