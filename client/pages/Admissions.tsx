@@ -53,7 +53,7 @@ export default function Admissions() {
   return (
     <main className="container mx-auto py-10">
       {/* Hero Section */}
-      <section className="text-center mb-12">
+      {/* <section className="text-center mb-12">
         <h1 className="text-4xl font-bold text-brand-blue mb-4">{t("admissions_page_title")}</h1>
         <p className="text-xl text-gray-600 mb-6">{t("admissions_page_year")}</p>
         <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">{t("admissions_page_intro")}</p>
@@ -63,7 +63,7 @@ export default function Admissions() {
             {t("admissions_page_schedule_visit")}
           </Button>
         </div>
-      </section>
+      </section> */}
 
       {/* Admission Process */}
       <section className="mb-12">
@@ -187,11 +187,11 @@ export default function Admissions() {
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-3 gap-6">
-              <div className="flex items-center gap-3">
-                <MapPin className="h-5 w-5 text-brand-blue" />
-                <div>
+              <div className="flex items-start gap-3">
+                <MapPin className="h-5 w-5 text-brand-blue flex-shrink-0 mt-1" />
+                <div className="min-w-0">
                   <p className="font-medium">{t("admissions_page_address_label")}</p>
-                  <p className="text-sm text-gray-600">{t("admissions_page_contact_address")}</p>
+                  <p className="text-sm text-gray-600 break-words">{t("admissions_page_contact_address")}</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
@@ -201,18 +201,18 @@ export default function Admissions() {
                   <p className="text-sm text-gray-600">{t("admissions_page_phone_value")}</p>
                 </div>
               </div>
-              <div className="flex items-center gap-3">
-                <FileText className="h-5 w-5 text-brand-blue" />
-                <div>
+              <div className="flex items-start gap-3">
+                <FileText className="h-5 w-5 text-brand-blue flex-shrink-0 mt-1" />
+                <div className="min-w-0">
                   <p className="font-medium">{t("admissions_page_email_label")}</p>
-                  <p className="text-sm text-gray-600">{t("admissions_page_email_value")}</p>
+                  <p className="text-sm text-gray-600 break-words">{t("admissions_page_email_value")}</p>
                 </div>
               </div>
             </div>
-            <div className="mt-6 text-center">
+            {/* <div className="mt-6 text-center">
               <Button className="btn-primary mr-4">{t("admissions_cta")}</Button>
               <Button variant="outline">{t("admissions_page_download_brochure")}</Button>
-            </div>
+            </div> */}
           </CardContent>
         </Card>
       </section>

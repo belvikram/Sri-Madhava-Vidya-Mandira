@@ -16,8 +16,8 @@ export default function Facilities() {
       features: [
         t("facilities_page_core_1_feature_1"),
         t("facilities_page_core_1_feature_2"),
-        t("facilities_page_core_1_feature_3"),
-        t("facilities_page_core_1_feature_4"),
+        // t("facilities_page_core_1_feature_3"),
+        // t("facilities_page_core_1_feature_4"),
       ],
     },
     {
@@ -26,9 +26,9 @@ export default function Facilities() {
       description: t("facilities_page_core_2_desc"),
       image: getSchoolImage(6),
       features: [
-        t("facilities_page_core_2_feature_1"),
-        t("facilities_page_core_2_feature_2"),
-        t("facilities_page_core_2_feature_3"),
+        // t("facilities_page_core_2_feature_1"),
+        // t("facilities_page_core_2_feature_2"),
+        // t("facilities_page_core_2_feature_3"),
         t("facilities_page_core_2_feature_4"),
       ],
     },

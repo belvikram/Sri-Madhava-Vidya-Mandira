@@ -2,7 +2,7 @@ import { useI18n } from "@/lib/i18n";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { BookOpen, Users, Award, Globe, Microscope, Palette, Music, Trophy } from "lucide-react";
+import { BookOpenText, Users, Award, Globe, Microscope, Palette, Music, Trophy } from "lucide-react";
 
 export default function Academics() {
   const { t } = useI18n();
@@ -72,7 +72,7 @@ export default function Academics() {
 
   const features = [
     {
-      icon: BookOpen,
+      icon: BookOpenText,
       title: t("academics_page_feature_curriculum_title"),
       description: t("academics_page_feature_curriculum_desc"),
     },
@@ -95,7 +95,7 @@ export default function Academics() {
 
   const coCurricular = [
     {
-      icon: BookOpen,
+      icon: BookOpenText,
       title: t("academics_page_cocurricular_bhagavad_gita_title"),
       description: t("academics_page_cocurricular_bhagavad_gita_desc"),
       highlight: true,
