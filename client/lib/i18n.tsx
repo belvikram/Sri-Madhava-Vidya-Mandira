@@ -1,4 +1,11 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 
 export type Lang = "en" | "kn"; // English, Kannada
 
@@ -15,7 +22,8 @@ const STORAGE_KEY = "smvm_lang";
 const dictionary: Record<Lang, Record<string, string>> = {
   en: {
     school_name: "Sri Madhava Vidya Mandira",
-    school_name_full: "Sri Madhava Vidya Mandira, Sira – 572137, Tumkur District, Karnataka",
+    school_name_full:
+      "Sri Madhava Vidya Mandira, Sira – 572137, Tumkur District, Karnataka",
     tagline: "Education – Culture",
     admissions: "Admissions",
     academics: "Academics",
@@ -34,28 +42,36 @@ const dictionary: Record<Lang, Record<string, string>> = {
     more: "More",
     principal_message: "School Headmaster's Message",
     principal_note_subtitle: "School Headmaster's Note",
-    principal_message_body: "Our school is a model institution — a sacred place of learning that imparts value-based education along with Indian culture and traditions. Here, children are taught not only academic subjects but also yoga, meditation, the Bhagavad Gita, and patriotic songs, nurturing human values within them. Our goal is to foster in students a spirit of respect for elders and love for the younger. We aspire that every child who studies here grows up to be a model student for the school, a good child for their parents, a valuable person for society, and an ideal citizen for the nation.",
+    principal_message_body:
+      "Our school is a model institution — a sacred place of learning that imparts value-based education along with Indian culture and traditions. Here, children are taught not only academic subjects but also yoga, meditation, the Bhagavad Gita, and patriotic songs, nurturing human values within them. Our goal is to foster in students a spirit of respect for elders and love for the younger. We aspire that every child who studies here grows up to be a model student for the school, a good child for their parents, a valuable person for society, and an ideal citizen for the nation.",
     principal_attribution: "— School Headmaster, Sri Madhava Vidya Mandira",
     address_label: "Address",
-    address_value: "Sri Madhava Vidya Mandira, Sira – 572137, Tumkur District, Karnataka",
+    address_value:
+      "Sri Madhava Vidya Mandira, Sira – 572137, Tumkur District, Karnataka",
     phone_label: "Phone",
     phone_value: "+91 94494 24530",
     email_label: "Email",
     email_value: "madhavavidyamandira21@gmail.com",
     contact_us: "Contact Us",
     contact_page_hero_subtitle: "We'd love to hear from you",
-    contact_page_hero_desc: "Get in touch with us for admissions and general inquiries. We're here to help and answer any questions you may have.",
+    contact_page_hero_desc:
+      "Get in touch with us for admissions and general inquiries. We're here to help and answer any questions you may have.",
     contact_page_info_address_title: "Address",
-    contact_page_info_address_detail: "Sri Madhava Vidya Mandira, Sira – 572137, Tumkur District, Karnataka",
-    contact_page_info_address_desc: "Visit our beautiful campus in the serene town of Sira",
+    contact_page_info_address_detail:
+      "Sri Madhava Vidya Mandira, Sira – 572137, Tumkur District, Karnataka",
+    contact_page_info_address_desc:
+      "Visit our beautiful campus in the serene town of Sira",
     contact_page_info_phone_title: "Phone",
     contact_page_info_phone_detail: "+91 94494 24530",
-    contact_page_info_phone_desc: "Call us during school hours for immediate assistance",
+    contact_page_info_phone_desc:
+      "Call us during school hours for immediate assistance",
     contact_page_info_email_title: "Email",
     contact_page_info_email_detail: "madhavavidyamandira21@gmail.com",
-    contact_page_info_email_desc: "Send us an email and we'll respond within 24 hours",
+    contact_page_info_email_desc:
+      "Send us an email and we'll respond within 24 hours",
     contact_page_info_hours_title: "School Hours",
-    contact_page_info_hours_desc: "Our administrative office is open during these hours",
+    contact_page_info_hours_desc:
+      "Our administrative office is open during these hours",
     contact_page_map_title: "Find Us on Map",
     contact_page_map_iframe_title: "Google Map",
     contact_page_office_title: "Office Hours",
@@ -71,48 +87,65 @@ const dictionary: Record<Lang, Record<string, string>> = {
     admissions_cta: "Apply Now",
     admissions_page_title: "Admissions Open",
     admissions_page_year: "Academic Year",
-    admissions_page_intro: "Join Sri Madhava Vidya Mandira and give your child the gift of quality education rooted in values and culture. We welcome applications for all classes from Nursery to Class X.",
+    admissions_page_intro:
+      "Join Sri Madhava Vidya Mandira and give your child the gift of quality education rooted in values and culture. We welcome applications for all classes from Nursery to Class X.",
     admissions_page_download_application: "Download Application Form",
     admissions_page_schedule_visit: "Schedule Visit",
     admissions_page_process_title: "Admission Process",
     admissions_page_process_1_title: "Application Submission",
-    admissions_page_process_1_desc: "Submit the completed application form with required documents.",
+    admissions_page_process_1_desc:
+      "Submit the completed application form with required documents.",
     admissions_page_process_2_title: "Document Verification",
-    admissions_page_process_2_desc: "Verification of birth certificate, previous school records, and other required documents.",
+    admissions_page_process_2_desc:
+      "Verification of birth certificate, previous school records, and other required documents.",
     admissions_page_process_3_title: "Interaction Session",
-    admissions_page_process_3_desc: "A brief interaction with the child and parents to understand needs and expectations.",
+    admissions_page_process_3_desc:
+      "A brief interaction with the child and parents to understand needs and expectations.",
     admissions_page_process_4_title: "Fee Payment",
-    admissions_page_process_4_desc: "Payment of admission fee and first-term fee to confirm admission.",
+    admissions_page_process_4_desc:
+      "Payment of admission fee and first-term fee to confirm admission.",
     admissions_page_required_documents_title: "Required Documents",
-    admissions_page_doc_birth_certificate: "Birth Certificate (Original + 2 Photocopies)",
-    admissions_page_doc_transfer_certificate: "Previous School Transfer Certificate (if applicable)",
-    admissions_page_doc_academic_records: "Previous Academic Records (Report Cards)",
+    admissions_page_doc_birth_certificate:
+      "Birth Certificate (Original + 2 Photocopies)",
+    admissions_page_doc_transfer_certificate:
+      "Previous School Transfer Certificate (if applicable)",
+    admissions_page_doc_academic_records:
+      "Previous Academic Records (Report Cards)",
     admissions_page_doc_aadhaar: "Aadhaar Card (Student and Parents)",
-    admissions_page_doc_bank_account: "Child's Bank Account Details (Passbook Copy)",
+    admissions_page_doc_bank_account:
+      "Child's Bank Account Details (Passbook Copy)",
     admissions_page_doc_photos: "Passport Size Photographs (4 copies)",
     admissions_page_doc_caste_certificate: "Caste Certificate (if applicable)",
-    admissions_page_doc_income_certificate: "Income Certificate (for fee concession)",
+    admissions_page_doc_income_certificate:
+      "Income Certificate (for fee concession)",
     admissions_page_doc_medical_certificate: "Medical Certificate",
     admissions_page_criteria_title: "Admission Criteria",
     admissions_page_criteria_1: "Age criteria as per State guidelines",
-    admissions_page_criteria_2: "Previous academic performance (for higher classes)",
+    admissions_page_criteria_2:
+      "Previous academic performance (for higher classes)",
     admissions_page_criteria_3: "Behavioral assessment during interaction",
     admissions_page_criteria_4: "Parental commitment to school values",
-    admissions_page_fee_concession_banner: "Free tuition for the third child is available when the first two children are studying at SMVM.",
+    admissions_page_fee_concession_banner:
+      "Free tuition for the third child is available when the first two children are studying at SMVM.",
     admissions_page_why_choose_title: "Why Choose Sri Madhava Vidya Mandira?",
     admissions_page_why_1_title: "Values-Based Education",
-    admissions_page_why_1_desc: "We integrate moral values and cultural heritage into our curriculum to ensure character development alongside academic excellence.",
+    admissions_page_why_1_desc:
+      "We integrate moral values and cultural heritage into our curriculum to ensure character development alongside academic excellence.",
     admissions_page_why_2_title: "Experienced Faculty",
-    admissions_page_why_2_desc: "Our dedicated teachers are well-qualified and experienced, committed to providing quality education and individual attention.",
+    admissions_page_why_2_desc:
+      "Our dedicated teachers are well-qualified and experienced, committed to providing quality education and individual attention.",
     admissions_page_why_3_title: "Holistic Development",
-    admissions_page_why_3_desc: "We focus on all-round development through academics, sports, arts, and cultural activities, nurturing every aspect of a child's growth.",
+    admissions_page_why_3_desc:
+      "We focus on all-round development through academics, sports, arts, and cultural activities, nurturing every aspect of a child's growth.",
     admissions_page_image_alt: "Students at School",
     admissions_page_image_title: "Join Us",
-    admissions_page_image_desc: "Where every child's potential is nurtured and celebrated",
+    admissions_page_image_desc:
+      "Where every child's potential is nurtured and celebrated",
     admissions_page_more_info_title: "For More Information",
     admissions_page_visit_campus: "Visit Our Campus",
     admissions_page_address_label: "Address",
-    admissions_page_contact_address: "Sree Madhava Vidya Mandira, Bhavani nagara, Sira – 572137, Tumakuru District, Karnataka.",
+    admissions_page_contact_address:
+      "Sree Madhava Vidya Mandira, Bhavani nagara, Sira – 572137, Tumakuru District, Karnataka.",
     admissions_page_phone_label: "Phone",
     admissions_page_phone_value: "+91 94494 24530",
     admissions_page_email_label: "Email ID",
@@ -120,31 +153,37 @@ const dictionary: Record<Lang, Record<string, string>> = {
     admissions_page_download_brochure: "Download Brochure",
     facilities_page_title: "World-Class Facilities",
     facilities_page_subtitle: "Supporting excellence in education",
-    facilities_page_intro: "Our modern infrastructure and state-of-the-art facilities provide an ideal environment for learning, creativity, and holistic development. Every facility is designed to enhance the educational experience of our students.",
+    facilities_page_intro:
+      "Our modern infrastructure and state-of-the-art facilities provide an ideal environment for learning, creativity, and holistic development. Every facility is designed to enhance the educational experience of our students.",
     facilities_page_core_title: "Core Facilities",
-    facilities_page_core_note: "Photos for all core facility headings will be uploaded soon.",
+    facilities_page_core_note:
+      "Photos for all core facility headings will be uploaded soon.",
     facilities_page_additional_title: "Additional Amenities",
     facilities_page_highlights_title: "Infrastructure Highlights",
     facilities_page_core_1_title: "Library",
-    facilities_page_core_1_desc: "Well-stocked library with over 2500 books, reference materials, and digital resources.",
+    facilities_page_core_1_desc:
+      "Well-stocked library with over 2500 books, reference materials, and digital resources.",
     facilities_page_core_1_feature_1: "Reading Room",
     facilities_page_core_1_feature_2: "Digital Resources",
     facilities_page_core_1_feature_3: "Reference Section",
     facilities_page_core_1_feature_4: "Children's Corner",
     facilities_page_core_2_title: "Science Laboratories",
-    facilities_page_core_2_desc: "Fully equipped Physics, Chemistry, and Biology Facilities for hands-on learning.",
+    facilities_page_core_2_desc:
+      "Fully equipped Physics, Chemistry, and Biology Facilities for hands-on learning.",
     facilities_page_core_2_feature_1: "Physics Lab",
     facilities_page_core_2_feature_2: "Chemistry Lab",
     facilities_page_core_2_feature_3: "Biology Lab",
     facilities_page_core_2_feature_4: "Computer Lab",
     facilities_page_core_3_title: "Computer Lab",
-    facilities_page_core_3_desc: "Modern computer laboratory with high-speed internet and latest software.",
+    facilities_page_core_3_desc:
+      "Modern computer laboratory with high-speed internet and latest software.",
     facilities_page_core_3_feature_1: "Computers",
     facilities_page_core_3_feature_2: "High-Speed Internet",
     facilities_page_core_3_feature_3: "Educational Software",
     facilities_page_core_3_feature_4: "Digital Learning",
     facilities_page_core_4_title: "Sports Facilities",
-    facilities_page_core_4_desc: "Comprehensive sports infrastructure for physical development and fitness.",
+    facilities_page_core_4_desc:
+      "Comprehensive sports infrastructure for physical development and fitness.",
     facilities_page_core_4_feature_1: "Playground",
     facilities_page_core_4_feature_2: "Indoor Games",
     facilities_page_core_4_feature_3: "Sports Equipment",
@@ -156,21 +195,27 @@ const dictionary: Record<Lang, Record<string, string>> = {
     facilities_page_core_5_feature_3: "Art Supplies",
     facilities_page_core_5_feature_4: "Performance Stage",
     facilities_page_core_6_title: "Smart Classrooms",
-    facilities_page_core_6_desc: "Technology-enabled classrooms with interactive whiteboards and multimedia.",
+    facilities_page_core_6_desc:
+      "Technology-enabled classrooms with interactive whiteboards and multimedia.",
     facilities_page_core_6_feature_1: "Interactive Boards",
     facilities_page_core_6_feature_2: "Projectors",
     facilities_page_core_6_feature_3: "Audio Systems",
     facilities_page_core_6_feature_4: "Digital Content",
     facilities_page_additional_1_title: "Security",
-    facilities_page_additional_1_desc: "24/7 security with CCTV surveillance and trained guards.",
+    facilities_page_additional_1_desc:
+      "24/7 security with CCTV surveillance and trained guards.",
     facilities_page_additional_2_title: "Transportation",
-    facilities_page_additional_2_desc: "Safe and reliable school bus service covering major areas.",
+    facilities_page_additional_2_desc:
+      "Safe and reliable school bus service covering major areas.",
     facilities_page_additional_3_title: "Medical Facilities",
-    facilities_page_additional_3_desc: "First-aid facility with basic medical equipment.",
+    facilities_page_additional_3_desc:
+      "First-aid facility with basic medical equipment.",
     facilities_page_additional_4_title: "Mid-day Meals",
-    facilities_page_additional_4_desc: "Mid-day meals provided with government aid.",
+    facilities_page_additional_4_desc:
+      "Mid-day meals provided with government aid.",
     facilities_page_additional_5_title: "Counseling",
-    facilities_page_additional_5_desc: "Student counseling services for academic and emotional support.",
+    facilities_page_additional_5_desc:
+      "Student counseling services for academic and emotional support.",
     facilities_page_highlight_1: "Well-ventilated Classrooms with fresh air",
     facilities_page_highlight_2: "Library Books",
     facilities_page_highlight_3_label: "Well Equipped",
@@ -178,11 +223,13 @@ const dictionary: Record<Lang, Record<string, string>> = {
     facilities_page_highlight_4: "Science Laboratories",
     facilities_page_campus_image_alt: "School Campus Aerial View",
     facilities_page_campus_title: "Explore Our Campus",
-    facilities_page_campus_desc: "Modern infrastructure designed for 21st-century learning",
+    facilities_page_campus_desc:
+      "Modern infrastructure designed for 21st-century learning",
     facilities_page_campus_button: "Schedule Campus Visit",
     achievements_page_title: "Our Achievements",
     achievements_page_subtitle: "Celebrating excellence and success",
-    achievements_page_intro: "At Sri Madhava Vidya Mandira, we take pride in the outstanding achievements of our students and school in academics, sports, culture, and innovation.",
+    achievements_page_intro:
+      "At Sri Madhava Vidya Mandira, we take pride in the outstanding achievements of our students and school in academics, sports, culture, and innovation.",
     achievements_page_stat_academic: "Academic Achievements",
     achievements_page_stat_sports: "Sports Victories",
     achievements_page_stat_cultural: "Cultural Awards",
@@ -191,40 +238,53 @@ const dictionary: Record<Lang, Record<string, string>> = {
     achievements_page_card_1_title: "CBSE Board Results Excellence",
     achievements_page_card_1_category: "Academic",
     achievements_page_card_1_year: "2024",
-    achievements_page_card_1_description: "95% of students scored above 80% in Class X board examinations.",
-    achievements_page_card_1_details: "Our Class X students delivered strong board results with consistent academic performance.",
+    achievements_page_card_1_description:
+      "95% of students scored above 80% in Class X board examinations.",
+    achievements_page_card_1_details:
+      "Our Class X students delivered strong board results with consistent academic performance.",
     achievements_page_card_1_level: "School Level",
     achievements_page_card_1_participants: "50 students",
     achievements_page_card_2_title: "Cultural Festival Excellence",
     achievements_page_card_2_category: "Cultural",
     achievements_page_card_2_year: "2024",
-    achievements_page_card_2_description: "Best Performance Award in State Cultural Festival.",
-    achievements_page_card_2_details: "Our cultural team won the Best Performance Award in the State Cultural Festival for their traditional dance presentation, showcasing Karnataka's rich heritage.",
+    achievements_page_card_2_description:
+      "Best Performance Award in State Cultural Festival.",
+    achievements_page_card_2_details:
+      "Our cultural team won the Best Performance Award in the State Cultural Festival for their traditional dance presentation, showcasing Karnataka's rich heritage.",
     achievements_page_card_2_level: "State Level",
     achievements_page_card_2_participants: "8 students",
     achievements_page_card_3_title: "Electrical Safety Speech Award",
     achievements_page_card_3_category: "Award",
     achievements_page_card_3_year: "2024",
-    achievements_page_card_3_description: "Our student Ms. MEGHA received an award for a speech on ELECTRICAL SAFETY conducted by BESCOM Karnataka.",
-    achievements_page_card_3_details: "Our student Ms. MEGHA received an award for a speech on ELECTRICAL SAFETY conducted by BESCOM Karnataka.",
+    achievements_page_card_3_description:
+      "Our student Ms. MEGHA received an award for a speech on ELECTRICAL SAFETY conducted by BESCOM Karnataka.",
+    achievements_page_card_3_details:
+      "Our student Ms. MEGHA received an award for a speech on ELECTRICAL SAFETY conducted by BESCOM Karnataka.",
     achievements_page_card_3_level: "District Level",
     achievements_page_card_3_participants: "1 student",
     achievements_page_card_4_title: "Green Initiative 🌿",
     achievements_page_card_4_category: "Environment",
     achievements_page_card_4_year: "2025",
-    achievements_page_card_4_description: "Arecanut tree plantation drive for sustainability and agricultural exposure.",
-    achievements_page_card_4_details: "As part of our green initiative, our school has planted arecanut trees on the campus to promote environmental awareness and sustainability. This effort creates a greener campus and gives students practical exposure to agriculture. By observing and caring for these trees, students develop an understanding of farming practices and appreciation for sustainable agriculture.",
+    achievements_page_card_4_description:
+      "Arecanut tree plantation drive for sustainability and agricultural exposure.",
+    achievements_page_card_4_details:
+      "As part of our green initiative, our school has planted arecanut trees on the campus to promote environmental awareness and sustainability. This effort creates a greener campus and gives students practical exposure to agriculture. By observing and caring for these trees, students develop an understanding of farming practices and appreciation for sustainable agriculture.",
     achievements_page_card_4_level: "School Level",
     achievements_page_card_4_participants: "Entire School",
     achievements_page_students_title: "Student Achievements",
-    achievements_page_students_subtitle: "State, Taluk and Hobli level results (2025)",
-    achievements_page_students_s1_title: "State Level Yoga Competition - International Yoga Day",
-    achievements_page_students_s1_item_1: "Our students secured Third Place in the State Level Yoga Competition on International Yoga Day, bringing pride to our school.",
-    achievements_page_students_s2_title: "Taluk Level Sports Meet - 24.10.2025 (Higher Primary)",
+    achievements_page_students_subtitle:
+      "State, Taluk and Hobli level results (2025)",
+    achievements_page_students_s1_title:
+      "State Level Yoga Competition - International Yoga Day",
+    achievements_page_students_s1_item_1:
+      "Our students secured Third Place in the State Level Yoga Competition on International Yoga Day, bringing pride to our school.",
+    achievements_page_students_s2_title:
+      "Taluk Level Sports Meet - 24.10.2025 (Higher Primary)",
     achievements_page_students_s2_item_1: "Boys' High Jump - First Place",
     achievements_page_students_s2_item_2: "Boys' Long Jump - Third Place",
     achievements_page_students_s2_item_3: "Girls' 600 Meter Race - First Place",
-    achievements_page_students_s3_title: "Hobli Level Sports Meet - Group Events",
+    achievements_page_students_s3_title:
+      "Hobli Level Sports Meet - Group Events",
     achievements_page_students_s3_item_1: "Girls' Kho-Kho - First Place",
     achievements_page_students_s3_item_2: "Boys' Kho-Kho - First Place",
     achievements_page_students_s3_item_3: "Boys' Relay - First Place",
@@ -243,30 +303,40 @@ const dictionary: Record<Lang, Record<string, string>> = {
     achievements_page_students_s5_title: "Taluk Level Achievements",
     achievements_page_students_s5_item_1: "Girls' Netball - Second Place",
     achievements_page_students_s5_item_2: "Girls' Kho-Kho - Second Place",
-    achievements_page_students_s5_item_3: "400 Meter Running - Lakshmi S R secured First Place",
+    achievements_page_students_s5_item_3:
+      "400 Meter Running - Lakshmi S R secured First Place",
     achievements_page_students_s6_title: "Pratibha Karanji Program",
-    achievements_page_students_s6_item_1: "Preeti (10th Standard) secured Second Place at Taluk Level and was selected for District Level.",
+    achievements_page_students_s6_item_1:
+      "Preeti (10th Standard) secured Second Place at Taluk Level and was selected for District Level.",
     achievements_page_recognition_title: "Recognition and Awards",
-    achievements_page_recognition_1: "The Headmistress of the Primary School of Sri Madhava Vidya Mandira, Bhavaninagar, Sira, Sangama Mataji, received the Kannada Rajyotsava Award in the field of education and culture on 01/11/2025.",
-    achievements_page_recognition_2: "The State Level Acharya Shri Award was conferred upon Sangama Mataji on 03/08/2025.",
-    achievements_page_recognition_3: "The Savitribai Phule Award was conferred upon Sangama Mataji on 05/01/2026.",
+    achievements_page_recognition_1:
+      "The Headmistress of the Primary School of Sri Madhava Vidya Mandira, Bhavaninagar, Sira, Sangama Mataji, received the Kannada Rajyotsava Award in the field of education and culture on 01/11/2025.",
+    achievements_page_recognition_2:
+      "The State Level Acharya Shri Award was conferred upon Sangama Mataji on 03/08/2025.",
+    achievements_page_recognition_3:
+      "The Savitribai Phule Award was conferred upon Sangama Mataji on 05/01/2026.",
     academics_cta: "View Curriculum",
     academics_page_title: "Academic Excellence",
     academics_page_subtitle: "Nurturing minds, shaping futures",
-    academics_page_intro: "Our comprehensive academic program is designed to provide students with a strong foundation in core subjects while fostering critical thinking, creativity, and cultural awareness.",
+    academics_page_intro:
+      "Our comprehensive academic program is designed to provide students with a strong foundation in core subjects while fostering critical thinking, creativity, and cultural awareness.",
     academics_page_curriculum_overview: "Curriculum Overview",
     academics_page_tab_pre_primary: "Pre-Primary",
     academics_page_tab_primary: "Primary",
     academics_page_tab_middle: "Middle School",
     academics_page_tab_high: "High School",
     academics_page_grade_pre_primary: "Pre-Primary (Nursery - UKG)",
-    academics_page_grade_pre_primary_desc: "Play-based learning with focus on language development, basic numeracy, and social skills.",
+    academics_page_grade_pre_primary_desc:
+      "Play-based learning with focus on language development, basic numeracy, and social skills.",
     academics_page_grade_primary: "Primary (I - V)",
-    academics_page_grade_primary_desc: "Foundation building with emphasis on reading, writing, arithmetic, and scientific thinking.",
+    academics_page_grade_primary_desc:
+      "Foundation building with emphasis on reading, writing, arithmetic, and scientific thinking.",
     academics_page_grade_middle: "Middle School (VI - VIII)",
-    academics_page_grade_middle_desc: "Comprehensive curriculum preparing students for higher classes with practical learning.",
+    academics_page_grade_middle_desc:
+      "Comprehensive curriculum preparing students for higher classes with practical learning.",
     academics_page_grade_high: "High School (IX - X)",
-    academics_page_grade_high_desc: "Board-focused curriculum with emphasis on exam readiness and career guidance.",
+    academics_page_grade_high_desc:
+      "Board-focused curriculum with emphasis on exam readiness and career guidance.",
     academics_page_subject_english: "English",
     academics_page_subject_kannada: "Kannada",
     academics_page_subject_hindi: "Hindi",
@@ -280,27 +350,37 @@ const dictionary: Record<Lang, Record<string, string>> = {
     academics_page_subject_social_studies: "Social Studies",
     academics_page_subject_art: "Art",
     academics_page_feature_curriculum_title: "Comprehensive Curriculum",
-    academics_page_feature_curriculum_desc: "Balanced curriculum aligned with academic standards and local context.",
+    academics_page_feature_curriculum_desc:
+      "Balanced curriculum aligned with academic standards and local context.",
     academics_page_feature_small_classes_title: "Small Class Sizes",
-    academics_page_feature_small_classes_desc: "Limited student-teacher ratio ensures individual attention and personalized learning.",
+    academics_page_feature_small_classes_desc:
+      "Limited student-teacher ratio ensures individual attention and personalized learning.",
     academics_page_feature_regular_assessments_title: "Regular Assessments",
-    academics_page_feature_regular_assessments_desc: "Continuous evaluation through unit tests, projects, and comprehensive examinations.",
+    academics_page_feature_regular_assessments_desc:
+      "Continuous evaluation through unit tests, projects, and comprehensive examinations.",
     academics_page_feature_digital_learning_title: "Digital Learning",
-    academics_page_feature_digital_learning_desc: "Smart classrooms with modern technology to enhance learning experiences.",
+    academics_page_feature_digital_learning_desc:
+      "Smart classrooms with modern technology to enhance learning experiences.",
     academics_page_co_curricular_title: "Co-Curricular Activities",
     academics_page_featured_badge: "Featured",
     academics_page_cocurricular_bhagavad_gita_title: "Bhagavad Gita",
-    academics_page_cocurricular_bhagavad_gita_desc: "Daily recitation and study of the Bhagavad Gita to instill timeless wisdom, moral values, and spiritual strength in every student.",
+    academics_page_cocurricular_bhagavad_gita_desc:
+      "Daily recitation and study of the Bhagavad Gita to instill timeless wisdom, moral values, and spiritual strength in every student.",
     academics_page_cocurricular_sanskrit_title: "Sanskrit Learning",
-    academics_page_cocurricular_sanskrit_desc: "Learning Sanskrit to deepen roots in Indian culture, scriptures, and classical heritage.",
+    academics_page_cocurricular_sanskrit_desc:
+      "Learning Sanskrit to deepen roots in Indian culture, scriptures, and classical heritage.",
     academics_page_cocurricular_science_club_title: "Science Club",
-    academics_page_cocurricular_science_club_desc: "Hands-on experiments and science exhibitions to foster scientific temper.",
+    academics_page_cocurricular_science_club_desc:
+      "Hands-on experiments and science exhibitions to foster scientific temper.",
     academics_page_cocurricular_art_craft_title: "Art & Craft",
-    academics_page_cocurricular_art_craft_desc: "Creative expression through various art forms and craft activities.",
+    academics_page_cocurricular_art_craft_desc:
+      "Creative expression through various art forms and craft activities.",
     academics_page_cocurricular_music_dance_title: "Music & Dance",
-    academics_page_cocurricular_music_dance_desc: "Cultural activities including classical music, folk dance, and modern performances.",
+    academics_page_cocurricular_music_dance_desc:
+      "Cultural activities including classical music, folk dance, and modern performances.",
     academics_page_cocurricular_sports_games_title: "Sports & Games",
-    academics_page_cocurricular_sports_games_desc: "Physical fitness through cricket, athletics, kho-kho, kabaddi, and indoor games.",
+    academics_page_cocurricular_sports_games_desc:
+      "Physical fitness through cricket, athletics, kho-kho, kabaddi, and indoor games.",
     academics_page_assessment_methods_title: "Assessment Methods",
     academics_page_assessment_1: "Unit Tests and Periodic Assessments",
     academics_page_assessment_2: "Project Work and Practical Assignments",
@@ -318,142 +398,194 @@ const dictionary: Record<Lang, Record<string, string>> = {
     copyright: "All rights reserved.",
     hero_tagline_prefix: "Rooted in",
     hero_tagline_suffix: "for every child",
-    about_snippet: "A nurturing environment providing value-based, holistic education. Equal importance is given to culture, sports, and arts alongside studies. Our beautiful institution, located in Sira town, has been shaping young minds for over four decades, nurturing them into responsible citizens and future leaders.",
+    about_snippet:
+      "A nurturing environment providing value-based, holistic education. Equal importance is given to culture, sports, and arts alongside studies. Our beautiful institution, located in Sira town, has been shaping young minds for over four decades, nurturing them into responsible citizens and future leaders.",
     ticker_1: "Admissions open for the new academic year.",
-    ticker_2: "Congratulations to our students for district-level sports achievements!",
+    ticker_2:
+      "Congratulations to our students for district-level sports achievements!",
     ticker_3: "Science Fair on 12th September – Parents are welcome.",
     activities_title: "Activities",
     gallery_title: "Gallery",
     gallery_page_title: "Photo Gallery",
     gallery_page_subtitle: "Capturing moments of learning and growth",
-    gallery_page_intro: "Explore our vibrant school life through beautiful moments that showcase student achievements, cultural celebrations, and daily learning experiences.",
+    gallery_page_intro:
+      "Explore our vibrant school life through beautiful moments that showcase student achievements, cultural celebrations, and daily learning experiences.",
     gallery_page_photo_label: "Photo",
     gallery_page_recent_events_title: "Recent Events",
     gallery_page_category_campus_title: "Campus Life",
-    gallery_page_category_campus_desc: "Beautiful campus views and learning environments",
+    gallery_page_category_campus_desc:
+      "Beautiful campus views and learning environments",
     gallery_page_category_students_title: "Student Activities",
-    gallery_page_category_students_desc: "Students engaged in various learning activities",
+    gallery_page_category_students_desc:
+      "Students engaged in various learning activities",
     gallery_page_category_sports_title: "Sports & Games",
-    gallery_page_category_sports_desc: "Physical education and sports achievements",
+    gallery_page_category_sports_desc:
+      "Physical education and sports achievements",
     gallery_page_category_cultural_title: "Cultural Events",
-    gallery_page_category_cultural_desc: "Festivals, performances, and cultural celebrations",
+    gallery_page_category_cultural_desc:
+      "Festivals, performances, and cultural celebrations",
     gallery_page_category_arts_title: "Arts & Crafts",
-    gallery_page_category_arts_desc: "Creative expressions and artistic talents",
+    gallery_page_category_arts_desc:
+      "Creative expressions and artistic talents",
     gallery_page_category_academics_title: "Academic Excellence",
-    gallery_page_category_academics_desc: "Classroom learning and academic achievements",
+    gallery_page_category_academics_desc:
+      "Classroom learning and academic achievements",
     gallery_page_event_1_title: "Annual Sports Day 2024",
     gallery_page_event_1_date: "December 15, 2024",
-    gallery_page_event_1_desc: "Students showcased their athletic talents in various track and field events",
+    gallery_page_event_1_desc:
+      "Students showcased their athletic talents in various track and field events",
     gallery_page_event_1_category: "Sports",
     gallery_page_event_2_title: "Science Exhibition",
     gallery_page_event_2_date: "November 20, 2024",
-    gallery_page_event_2_desc: "Innovative science projects and experiments displayed by students",
+    gallery_page_event_2_desc:
+      "Innovative science projects and experiments displayed by students",
     gallery_page_event_2_category: "Academics",
     gallery_page_event_3_title: "Cultural Fest",
     gallery_page_event_3_date: "October 25, 2024",
-    gallery_page_event_3_desc: "Traditional dance, music, and drama performances celebrating our heritage",
+    gallery_page_event_3_desc:
+      "Traditional dance, music, and drama performances celebrating our heritage",
     gallery_page_event_3_category: "Cultural",
     news_page_title: "News & Events",
     news_page_subtitle: "Stay updated with school activities and achievements",
-    news_page_intro: "Discover the latest happenings at Sri Madhava Vidya Mandira, from academic achievements to cultural celebrations and sporting events.",
+    news_page_intro:
+      "Discover the latest happenings at Sri Madhava Vidya Mandira, from academic achievements to cultural celebrations and sporting events.",
     news_page_latest_title: "Latest News",
     news_page_article_1_title: "Annual Sports Day 2024 - A Grand Success",
-    news_page_article_1_excerpt: "Students showcased exceptional athletic talents in various track and field events, with over 200 participants competing in different categories.",
-    news_page_article_1_content: "The Annual Sports Day 2024 was held on December 15th with great enthusiasm and participation from all students. The event featured various athletic competitions including 100m, 200m, 400m races, long jump, high jump, shot put, and relay races. The day was filled with excitement as students competed for medals and trophies in their respective age groups.",
+    news_page_article_1_excerpt:
+      "Students showcased exceptional athletic talents in various track and field events, with over 200 participants competing in different categories.",
+    news_page_article_1_content:
+      "The Annual Sports Day 2024 was held on December 15th with great enthusiasm and participation from all students. The event featured various athletic competitions including 100m, 200m, 400m races, long jump, high jump, shot put, and relay races. The day was filled with excitement as students competed for medals and trophies in their respective age groups.",
     news_page_article_1_date: "December 18, 2024",
     news_page_article_1_category: "Sports",
     news_page_article_2_title: "Science Exhibition 2024 - Innovation in Action",
-    news_page_article_2_excerpt: "Students displayed innovative science projects and experiments, showcasing their creativity and scientific understanding.",
-    news_page_article_2_content: "The Science Exhibition 2024 was a remarkable display of student innovation and scientific curiosity. Students from classes VI to X presented various projects covering topics like renewable energy, environmental conservation, robotics, and chemistry experiments.",
+    news_page_article_2_excerpt:
+      "Students displayed innovative science projects and experiments, showcasing their creativity and scientific understanding.",
+    news_page_article_2_content:
+      "The Science Exhibition 2024 was a remarkable display of student innovation and scientific curiosity. Students from classes VI to X presented various projects covering topics like renewable energy, environmental conservation, robotics, and chemistry experiments.",
     news_page_article_2_date: "November 25, 2024",
     news_page_article_2_category: "Academics",
     news_page_article_3_title: "Cultural Fest - Celebrating Heritage",
-    news_page_article_3_excerpt: "Traditional dance, music, and drama performances celebrated our rich cultural heritage with vibrant presentations.",
-    news_page_article_3_content: "The Cultural Fest was a beautiful celebration of our rich Indian heritage. Students performed traditional dances, classical music, and drama presentations that showcased the diversity and beauty of Indian culture.",
+    news_page_article_3_excerpt:
+      "Traditional dance, music, and drama performances celebrated our rich cultural heritage with vibrant presentations.",
+    news_page_article_3_content:
+      "The Cultural Fest was a beautiful celebration of our rich Indian heritage. Students performed traditional dances, classical music, and drama presentations that showcased the diversity and beauty of Indian culture.",
     news_page_article_3_date: "October 30, 2024",
     news_page_article_3_category: "Cultural",
     news_page_article_4_title: "Parent-Teacher Meeting - Building Partnerships",
-    news_page_article_4_excerpt: "Successful parent-teacher meeting held to discuss student progress and academic development.",
-    news_page_article_4_content: "The quarterly parent-teacher meeting was conducted successfully with high participation from parents. Teachers discussed individual student progress, academic performance, and areas for improvement with parents.",
+    news_page_article_4_excerpt:
+      "Successful parent-teacher meeting held to discuss student progress and academic development.",
+    news_page_article_4_content:
+      "The quarterly parent-teacher meeting was conducted successfully with high participation from parents. Teachers discussed individual student progress, academic performance, and areas for improvement with parents.",
     news_page_article_4_date: "September 28, 2024",
     news_page_article_4_category: "Academics",
     news_page_article_5_title: "Independence Day Celebration",
-    news_page_article_5_excerpt: "Students celebrated Independence Day with patriotic songs, speeches, and cultural performances.",
-    news_page_article_5_content: "The Independence Day celebration was marked with patriotic fervor as students performed patriotic songs, delivered speeches on freedom fighters, and participated in cultural programs celebrating India's independence.",
+    news_page_article_5_excerpt:
+      "Students celebrated Independence Day with patriotic songs, speeches, and cultural performances.",
+    news_page_article_5_content:
+      "The Independence Day celebration was marked with patriotic fervor as students performed patriotic songs, delivered speeches on freedom fighters, and participated in cultural programs celebrating India's independence.",
     news_page_article_5_date: "August 16, 2024",
     news_page_article_5_category: "Events",
     news_page_article_6_title: "Inauguration of new classrooms by the donors",
-    news_page_article_6_excerpt: "New classrooms were inaugurated at Sri Madhava Vidya Mandira, generously donated by our supporters.",
-    news_page_article_6_content: "New classrooms were inaugurated at Sri Madhava Vidya Mandira, generously donated by our supporters.",
+    news_page_article_6_excerpt:
+      "New classrooms were inaugurated at Sri Madhava Vidya Mandira, generously donated by our supporters.",
+    news_page_article_6_content:
+      "New classrooms were inaugurated at Sri Madhava Vidya Mandira, generously donated by our supporters.",
     news_page_article_6_date: "March 2024",
     news_page_article_6_category: "Event",
-    news_page_article_7_title: "Inauguration of drinking water facility by donors",
-    news_page_article_7_excerpt: "A new drinking water facility was inaugurated by our generous donors for the students.",
-    news_page_article_7_content: "A new drinking water facility was inaugurated by our generous donors for the students.",
+    news_page_article_7_title:
+      "Inauguration of drinking water facility by donors",
+    news_page_article_7_excerpt:
+      "A new drinking water facility was inaugurated by our generous donors for the students.",
+    news_page_article_7_content:
+      "A new drinking water facility was inaugurated by our generous donors for the students.",
     news_page_article_7_date: "March 2024",
     news_page_article_7_category: "Event",
     news_page_article_8_title: "Sharada Puja and Hall Ticket Distribution",
-    news_page_article_8_excerpt: "Sharada Puja, Ceremonial Lighting, and hall ticket distribution ceremony for Class 10 students.",
-    news_page_article_8_content: "Sharada Puja, Ceremonial Lighting, and hall ticket distribution ceremony for Class 10 students.",
+    news_page_article_8_excerpt:
+      "Sharada Puja, Ceremonial Lighting, and hall ticket distribution ceremony for Class 10 students.",
+    news_page_article_8_content:
+      "Sharada Puja, Ceremonial Lighting, and hall ticket distribution ceremony for Class 10 students.",
     news_page_article_8_date: "February 2024",
     news_page_article_8_category: "Event",
     news_page_article_9_title: "Pada Puja for Parents",
-    news_page_article_9_excerpt: "Pada Puja performed for parents by high school students to show respect and gratitude.",
-    news_page_article_9_content: "Pada Puja performed for parents by high school students to show respect and gratitude.",
+    news_page_article_9_excerpt:
+      "Pada Puja performed for parents by high school students to show respect and gratitude.",
+    news_page_article_9_content:
+      "Pada Puja performed for parents by high school students to show respect and gratitude.",
     news_page_article_9_date: "February 2024",
     news_page_article_9_category: "Event",
     news_page_article_10_title: "Visit by Honorable Judges",
-    news_page_article_10_excerpt: "A memorable moment when honorable judges visited our school and interacted with students.",
-    news_page_article_10_content: "A memorable moment when honorable judges visited our school and interacted with students.",
+    news_page_article_10_excerpt:
+      "A memorable moment when honorable judges visited our school and interacted with students.",
+    news_page_article_10_content:
+      "A memorable moment when honorable judges visited our school and interacted with students.",
     news_page_article_10_date: "January 2024",
     news_page_article_10_category: "Visit",
     news_page_article_11_title: "Visit by Bellavi Kshetra Swamiji",
-    news_page_article_11_excerpt: "His Holiness Karadavira Basava Swamiji of Bellavi Kshetra blessed the school with his visit.",
-    news_page_article_11_content: "His Holiness Karadavira Basava Swamiji of Bellavi Kshetra blessed the school with his visit.",
+    news_page_article_11_excerpt:
+      "His Holiness Karadavira Basava Swamiji of Bellavi Kshetra blessed the school with his visit.",
+    news_page_article_11_content:
+      "His Holiness Karadavira Basava Swamiji of Bellavi Kshetra blessed the school with his visit.",
     news_page_article_11_date: "January 2024",
     news_page_article_11_category: "Visit",
     news_page_article_12_title: "Visit by ISKCON Bangalore Members",
-    news_page_article_12_excerpt: "Venerable monks from ISKCON Bangalore visited our school and inspired our students.",
-    news_page_article_12_content: "Venerable monks from ISKCON Bangalore visited our school and inspired our students.",
+    news_page_article_12_excerpt:
+      "Venerable monks from ISKCON Bangalore visited our school and inspired our students.",
+    news_page_article_12_content:
+      "Venerable monks from ISKCON Bangalore visited our school and inspired our students.",
     news_page_article_12_date: "December 2023",
     news_page_article_12_category: "Visit",
     news_page_article_13_title: "State Level Pratibha Karanji Excellence",
-    news_page_article_13_excerpt: "Our students delivered an excellent performance in the State level Pratibha Karanji competitions.",
-    news_page_article_13_content: "Our students delivered an excellent performance in the State level Pratibha Karanji competitions.",
+    news_page_article_13_excerpt:
+      "Our students delivered an excellent performance in the State level Pratibha Karanji competitions.",
+    news_page_article_13_content:
+      "Our students delivered an excellent performance in the State level Pratibha Karanji competitions.",
     news_page_article_13_date: "December 2023",
     news_page_article_13_category: "Cultural",
     academics_page_upcoming_title: "Upcoming Initiatives",
     academics_page_upcoming_cbse_title: "CBSE Curriculum",
-    academics_page_upcoming_cbse_desc: "We are currently in the process of introducing the CBSE curriculum to provide globally recognized education and enhanced learning opportunities for our students.",
+    academics_page_upcoming_cbse_desc:
+      "We are currently in the process of introducing the CBSE curriculum to provide globally recognized education and enhanced learning opportunities for our students.",
     activity_sports: "Sports & Games",
-    activity_sports_desc: "Cricket, athletics, kho-kho, kabaddi and more with trained coaches.",
+    activity_sports_desc:
+      "Cricket, athletics, kho-kho, kabaddi and more with trained coaches.",
     activity_labs: "Science Labs",
-    activity_labs_desc: "Well-equipped labs for hands-on learning and experiments.",
+    activity_labs_desc:
+      "Well-equipped labs for hands-on learning and experiments.",
     activity_library: "Library",
-    activity_library_desc: "Quiet reading spaces with a rich collection of books.",
+    activity_library_desc:
+      "Quiet reading spaces with a rich collection of books.",
     activity_cultural: "Cultural Activities",
-    activity_cultural_desc: "Music, dance, theatre and festivals that celebrate our heritage.",
+    activity_cultural_desc:
+      "Music, dance, theatre and festivals that celebrate our heritage.",
     activity_yoga: "Yoga & Wellness",
-    activity_yoga_desc: "Regular yoga and mindfulness for a healthy body and mind.",
+    activity_yoga_desc:
+      "Regular yoga and mindfulness for a healthy body and mind.",
     activity_clubs: "Student Clubs",
-    activity_clubs_desc: "Literary, eco, and science clubs to nurture curiosity.",
+    activity_clubs_desc:
+      "Literary, eco, and science clubs to nurture curiosity.",
     results: "Results",
     results_title: "Examination Results",
-    results_subtitle: "Access all examination results and academic achievements",
-    results_10th_description: "Access official examination results from the Government of Karnataka",
+    results_subtitle:
+      "Access all examination results and academic achievements",
+    results_10th_description:
+      "Access official examination results from the Government of Karnataka",
     results_10th_class: "10th Class Karnataka Board",
     results_view_results: "View Results",
-    results_10th_note: "All examination results are published on the official Karnataka Results portal. Enter your registration number to view your results.",
+    results_10th_note:
+      "All examination results are published on the official Karnataka Results portal. Enter your registration number to view your results.",
     academic_year: "Academic Year",
     latest_results: "Latest Results Available",
     sslc_results: "SSLC Results (Class 10)",
-    sslc_description: "Secondary School Leaving Certificate examination results for Class 10",
+    sslc_description:
+      "Secondary School Leaving Certificate examination results for Class 10",
     class_6_9_results: "Class 6-9 Results",
     class_6_9_description: "Examination results for Classes 6, 7, 8, and 9",
     class_1_5_results: "Class 1-5 Results",
     class_1_5_description: "Examination results for Classes 1, 2, 3, 4, and 5",
     special_exams: "Special Examinations",
-    special_exams_description: "Scholarship tests, Olympiads, and special assessments",
+    special_exams_description:
+      "Scholarship tests, Olympiads, and special assessments",
     overall_results: "Overall Results",
     subject_wise_results: "Subject-wise Results",
     merit_list: "Merit List",
@@ -484,11 +616,14 @@ const dictionary: Record<Lang, Record<string, string>> = {
     results_class_10_overall_2024_25: "Class 10 Results 2024-25",
     results_class_10_overall_2023_24: "Class 10 Results 2023-24",
     results_all_classes_title: "All Results (Class 1-10)",
-    results_all_classes_description: "Single combined result tile for Classes 1 to 10 for each academic year",
+    results_all_classes_description:
+      "Single combined result tile for Classes 1 to 10 for each academic year",
     results_all_classes_exam_2024_25: "All Results (Class 1-10)",
     results_all_classes_exam_2023_24: "All Results (Class 1-10) 2023-24",
-    results_all_classes_download_2024_25: "Combined Results - Class 1 to 10 (2024-25)",
-    results_all_classes_download_2023_24: "Combined Results - Class 1 to 10 (2023-24)",
+    results_all_classes_download_2024_25:
+      "Combined Results - Class 1 to 10 (2024-25)",
+    results_all_classes_download_2023_24:
+      "Combined Results - Class 1 to 10 (2023-24)",
     upcoming_features: "Upcoming Features",
     upcoming_feature_1: "All results will be available in PDF format",
     upcoming_feature_2: "Download links will be valid for 1 year",
@@ -509,11 +644,14 @@ const dictionary: Record<Lang, Record<string, string>> = {
     alumni_count: "Alumni Count",
     alumni_global: "Global Presence",
     alumni_spotlight: "Alumni Spotlight",
-    alumni_spotlight_desc: "Meet some of our distinguished alumni who are making a difference in the world",
+    alumni_spotlight_desc:
+      "Meet some of our distinguished alumni who are making a difference in the world",
     alumni_events: "Alumni Events",
-    alumni_events_desc: "Stay connected with upcoming alumni events and reunions",
+    alumni_events_desc:
+      "Stay connected with upcoming alumni events and reunions",
     alumni_contact: "Stay Connected",
-    alumni_contact_desc: "Join our alumni network and stay connected with your school community",
+    alumni_contact_desc:
+      "Join our alumni network and stay connected with your school community",
     email_us: "Email Us",
     call_us: "Call Us",
     register_now: "Register Now",
@@ -522,13 +660,16 @@ const dictionary: Record<Lang, Record<string, string>> = {
     faqs_subtitle: "Find answers to common questions about our school",
     faq_search_placeholder: "Search FAQs...",
     faq_no_results: "No results found",
-    faq_no_results_desc: "Try adjusting your search terms or browse our categories",
+    faq_no_results_desc:
+      "Try adjusting your search terms or browse our categories",
     faq_still_have_questions: "Still have questions?",
-    faq_contact_us_desc: "Our team is here to help you with any questions you may have",
+    faq_contact_us_desc:
+      "Our team is here to help you with any questions you may have",
     faq_phone_support: "Phone Support",
     faq_email_support: "Email Support",
     faq_visit_us: "Visit Us",
-    faq_visit_address: "Sree Madhava Vidya Mandira, Bhavani nagara, Sira – 572137, Tumakuru District, Karnataka.",
+    faq_visit_address:
+      "Sree Madhava Vidya Mandira, Bhavani nagara, Sira – 572137, Tumakuru District, Karnataka.",
     faq_phone_value: "+91 94494 24530",
     faq_email_value: "madhavavidyamandira21@gmail.com",
     faq_admissions: "Admissions",
@@ -536,98 +677,140 @@ const dictionary: Record<Lang, Record<string, string>> = {
     faq_facilities: "Facilities",
     faq_general: "General",
     faq_admission_process: "What is the admission process?",
-    faq_admission_process_answer: "Our admission process includes filling out an application form, submitting required documents, and attending an interaction session. Applications are accepted from January to March for the next academic year.",
+    faq_admission_process_answer:
+      "Our admission process includes filling out an application form, submitting required documents, and attending an interaction session. Applications are accepted from January to March for the next academic year.",
     faq_admission_age: "What is the minimum age for admission?",
-    faq_admission_age_answer: "Children should be 3 years and 10 months old for LKG, 4 years and 10 months for UKG, and 5 years and 10 months for Class 1. Age is calculated as of March 31st of the admission year.",
+    faq_admission_age_answer:
+      "Children should be 3 years and 10 months old for LKG, 4 years and 10 months for UKG, and 5 years and 10 months for Class 1. Age is calculated as of March 31st of the admission year.",
     faq_admission_documents: "What documents are required for admission?",
-    faq_admission_documents_answer: "Required documents include birth certificate, previous year's report card, transfer certificate, passport size photographs, and address proof.",
+    faq_admission_documents_answer:
+      "Required documents include birth certificate, previous year's report card, transfer certificate, passport size photographs, and address proof.",
     faq_admission_fees: "What are the fee structure and payment options?",
-    faq_admission_fees_answer: "Our fee structure is competitive and includes tuition, development, and other charges. We offer flexible payment options including half yearly and annual payments.",
+    faq_admission_fees_answer:
+      "Our fee structure is competitive and includes tuition, development, and other charges. We offer flexible payment options including half yearly and annual payments.",
     faq_curriculum: "What curriculum do you follow?",
-    faq_curriculum_answer: "We follow the Karnataka State Board curriculum with additional focus on value education, sports, and cultural activities for holistic development.",
+    faq_curriculum_answer:
+      "We follow the Karnataka State Board curriculum with additional focus on value education, sports, and cultural activities for holistic development.",
     faq_exams: "How are examinations conducted?",
-    faq_exams_answer: "Unit Tests and Semester Examination for Classes 1 to 7 are conducted for Kannada Medium. Unit Tests, Monthly Tests, Annual Examination for Classes 8 to 10 English Medium. Preparatory Examinations are conducted for Class 10 students.",
+    faq_exams_answer:
+      "Unit Tests and Semester Examination for Classes 1 to 7 are conducted for Kannada Medium. Unit Tests, Monthly Tests, Annual Examination for Classes 8 to 10 English Medium. Preparatory Examinations are conducted for Class 10 students.",
     faq_homework: "What is the homework policy?",
-    faq_homework_answer: "We assign age-appropriate homework that reinforces classroom learning. Homework is designed to be completed within reasonable time limits.",
+    faq_homework_answer:
+      "We assign age-appropriate homework that reinforces classroom learning. Homework is designed to be completed within reasonable time limits.",
     faq_extra_curricular: "What extracurricular activities are available?",
-    faq_extra_curricular_answer: "We offer sports, music, dance, art, science club, literary club, and various cultural activities to develop students' talents and interests.",
+    faq_extra_curricular_answer:
+      "We offer sports, music, dance, art, science club, literary club, and various cultural activities to develop students' talents and interests.",
     faq_library: "What library facilities are available?",
-    faq_library_answer: "Our library has a collection of over 2500 books including textbooks, reference books, fiction, and non-fiction. We also have reading corners.",
+    faq_library_answer:
+      "Our library has a collection of over 2500 books including textbooks, reference books, fiction, and non-fiction. We also have reading corners.",
     faq_labs: "What laboratory facilities do you have?",
-    faq_labs_answer: "We have well-equipped science laboratories for Physics, Chemistry, and Biology with modern equipment and safety measures for hands-on learning.",
+    faq_labs_answer:
+      "We have well-equipped science laboratories for Physics, Chemistry, and Biology with modern equipment and safety measures for hands-on learning.",
     faq_sports: "What sports facilities are available?",
-    faq_sports_answer: "Our sports facilities include a playground for cricket, football, and athletics, indoor games room, and equipment for various sports activities.",
+    faq_sports_answer:
+      "Our sports facilities include a playground for cricket, football, and athletics, indoor games room, and equipment for various sports activities.",
     faq_transport: "Do you provide transport facilities?",
-    faq_transport_answer: "Yes, we provide safe and reliable transport facilities covering various routes in and around Sira. Our buses are equipped with safety features.",
+    faq_transport_answer:
+      "Yes, we provide safe and reliable transport facilities covering various routes in and around Sira. Our buses are equipped with safety features.",
     faq_school_hours: "What are the school timings?",
-    faq_school_hours_answer: "School timings are from 9:30 AM to 4:30 PM from Monday to Friday and from 7:15 AM to 12:00 PM on Saturdays for Classes 1-10, and 9:30 AM to 3:30 PM for LKG and UKG. Timings may vary during examinations.",
+    faq_school_hours_answer:
+      "School timings are from 9:30 AM to 4:30 PM from Monday to Friday and from 7:15 AM to 12:00 PM on Saturdays for Classes 1-10, and 9:30 AM to 3:30 PM for LKG and UKG. Timings may vary during examinations.",
     faq_holidays: "What is the holiday calendar?",
-    faq_holidays_answer: "We follow the Karnataka State Government holiday calendar with additional holidays for festivals and special occasions. The academic year runs from June to April.",
+    faq_holidays_answer:
+      "We follow the Karnataka State Government holiday calendar with additional holidays for festivals and special occasions. The academic year runs from June to April.",
     faq_parent_teacher: "How can parents communicate with teachers?",
-    faq_parent_teacher_answer: "We have regular parent-teacher meetings, and parents can schedule appointments with teachers.",
+    faq_parent_teacher_answer:
+      "We have regular parent-teacher meetings, and parents can schedule appointments with teachers.",
     faq_contact: "How can I contact the school?",
-    faq_contact_answer: "You can contact us at +91 94494 24530, email us at madhavavidyamandira21@gmail.com, or visit our campus at Sree Madhava Vidya Mandira, Bhavani nagara, Sira – 572137, Tumakuru District, Karnataka.",
+    faq_contact_answer:
+      "You can contact us at +91 94494 24530, email us at madhavavidyamandira21@gmail.com, or visit our campus at Sree Madhava Vidya Mandira, Bhavani nagara, Sira – 572137, Tumakuru District, Karnataka.",
     parents_message: "Parents' Voice",
     parents_message_title: "Parents' Voice",
-    parents_message_subtitle: "Hear from our parent community about their experiences",
+    parents_message_subtitle:
+      "Hear from our parent community about their experiences",
     parent_community: "Parent Community",
     parent_voices: "Parent Voices",
     parent_community_stats: "Our Parent Community",
-    parent_community_stats_desc: "Numbers that reflect the trust and satisfaction of our parent community",
+    parent_community_stats_desc:
+      "Numbers that reflect the trust and satisfaction of our parent community",
     parent_stat_1: "Happy Parents",
     parent_stat_2: "Satisfaction Rating",
     parent_stat_3: "Recommendation Rate",
     parent_stat_4: "Testimonials",
     parent_messages: "Parent Messages",
-    parent_messages_desc: "Read what parents have to say about their children's journey at our school",
+    parent_messages_desc:
+      "Read what parents have to say about their children's journey at our school",
     parent_testimonials: "Parent Testimonials",
     parent_testimonials_desc: "Featured testimonials from our parent community",
     parent_join_community: "Join Our Parent Community",
-    parent_join_community_desc: "Share your experience and connect with other parents",
+    parent_join_community_desc:
+      "Share your experience and connect with other parents",
     parent_share_experience: "Share Your Experience",
     parent_contact_us: "Contact Us",
-    parent_message_1: "SMVM has been a blessing for our family. The teachers are dedicated and the environment is nurturing. My child has grown both academically and personally.",
-    parent_message_2: "The school's focus on values and discipline has shaped my daughter into a responsible young person. We are grateful for the quality education provided.",
-    parent_message_3: "The teachers go above and beyond to ensure every child succeeds. The extracurricular activities have helped my son discover his talents.",
-    parent_message_4: "As a working parent, I appreciate the school's communication and support. The parent-teacher meetings are very helpful and informative.",
-    parent_message_5: "The school's infrastructure and facilities are excellent. My child enjoys coming to school every day and has made great friends.",
-    parent_message_6: "The school's emphasis on holistic development is evident. My daughter has become more confident and independent since joining SMVM.",
-    parent_testimonial_1: "SMVM has provided my child with not just education, but values that will last a lifetime. The teachers are like family.",
-    parent_testimonial_2: "The school's commitment to excellence is evident in everything they do. My child's progress has been remarkable.",
-    parent_testimonial_3: "I am impressed by the school's modern teaching methods and the care they show for each student's individual needs.",
+    parent_message_1:
+      "SMVM has been a blessing for our family. The teachers are dedicated and the environment is nurturing. My child has grown both academically and personally.",
+    parent_message_2:
+      "The school's focus on values and discipline has shaped my daughter into a responsible young person. We are grateful for the quality education provided.",
+    parent_message_3:
+      "The teachers go above and beyond to ensure every child succeeds. The extracurricular activities have helped my son discover his talents.",
+    parent_message_4:
+      "As a working parent, I appreciate the school's communication and support. The parent-teacher meetings are very helpful and informative.",
+    parent_message_5:
+      "The school's infrastructure and facilities are excellent. My child enjoys coming to school every day and has made great friends.",
+    parent_message_6:
+      "The school's emphasis on holistic development is evident. My daughter has become more confident and independent since joining SMVM.",
+    parent_testimonial_1:
+      "SMVM has provided my child with not just education, but values that will last a lifetime. The teachers are like family.",
+    parent_testimonial_2:
+      "The school's commitment to excellence is evident in everything they do. My child's progress has been remarkable.",
+    parent_testimonial_3:
+      "I am impressed by the school's modern teaching methods and the care they show for each student's individual needs.",
     // Core Values
     values_first: "Values First",
-    values_first_desc: "We believe in nurturing character, integrity, and moral values alongside academic excellence.",
+    values_first_desc:
+      "We believe in nurturing character, integrity, and moral values alongside academic excellence.",
     holistic_education: "Holistic Education",
-    holistic_education_desc: "Our curriculum balances academics, sports, arts, and cultural activities for well-rounded development.",
+    holistic_education_desc:
+      "Our curriculum balances academics, sports, arts, and cultural activities for well-rounded development.",
     excellence_teaching: "Excellence in Teaching",
-    excellence_teaching_desc: "Dedicated teachers with innovative teaching methods to inspire and engage every student.",
+    excellence_teaching_desc:
+      "Dedicated teachers with innovative teaching methods to inspire and engage every student.",
     cultural_heritage: "Cultural Heritage",
-    cultural_heritage_desc: "Preserving and promoting our rich Kannada culture and traditions through various activities.",
+    cultural_heritage_desc:
+      "Preserving and promoting our rich Kannada culture and traditions through various activities.",
     // Core Values - English
     samskara: "Culture",
-    samskara_desc: "To instill morality, discipline, respect, and the practice of dharma in students as part of their daily life.",
+    samskara_desc:
+      "To instill morality, discipline, respect, and the practice of dharma in students as part of their daily life.",
     seva_bhavana: "Service Spirit",
-    seva_bhavana_desc: "To nurture compassion and a mindset of service towards every member of society.",
+    seva_bhavana_desc:
+      "To nurture compassion and a mindset of service towards every member of society.",
     shrama_swachata: "Hard Work and Cleanliness",
-    shrama_swachata_desc: "With the goal of \"Sama Ve Shreyassu\" (collective well-being), teaching the dignity of labor and dedication to work. Promoting cleanliness as a reflection of inner purity.",
+    shrama_swachata_desc:
+      'With the goal of "Sama Ve Shreyassu" (collective well-being), teaching the dignity of labor and dedication to work. Promoting cleanliness as a reflection of inner purity.',
     ekata_sahabhava: "Unity and Harmony",
-    ekata_sahabhava_desc: "Embracing the principle of \"Vasudhaiva Kutumbakam\" (the whole world is one family).",
+    ekata_sahabhava_desc:
+      'Embracing the principle of "Vasudhaiva Kutumbakam" (the whole world is one family).',
     adhyatma_atmavikasa: "Spirituality and Self-Development",
-    adhyatma_atmavikasa_desc: "Guiding the mind and soul towards growth through meditation, yoga, chanting, and prayers.",
+    adhyatma_atmavikasa_desc:
+      "Guiding the mind and soul towards growth through meditation, yoga, chanting, and prayers.",
     svavalambane: "Self-Reliance",
-    svavalambane_desc: "Developing self-confidence, wisdom, and a sense of duty among students. Empowering them to take responsibility for their lives at every stage.",
+    svavalambane_desc:
+      "Developing self-confidence, wisdom, and a sense of duty among students. Empowering them to take responsibility for their lives at every stage.",
     // Section titles
     our_core_values: "Our Core Values",
     our_mission: "Our Mission",
-    our_mission_desc: "To provide quality education that nurtures the intellectual, physical, emotional, and spiritual growth of every child. We aim to develop confident, compassionate, and capable individuals who contribute positively to society while preserving our cultural heritage.",
+    our_mission_desc:
+      "To provide quality education that nurtures the intellectual, physical, emotional, and spiritual growth of every child. We aim to develop confident, compassionate, and capable individuals who contribute positively to society while preserving our cultural heritage.",
     our_vision: "Our Vision",
-    our_vision_desc: "To be a leading educational institution that creates an environment where every child discovers their potential, develops critical thinking skills, and grows into a well-rounded individual with strong values, academic excellence, and cultural awareness.",
+    our_vision_desc:
+      "To be a leading educational institution that creates an environment where every child discovers their potential, develops critical thinking skills, and grows into a well-rounded individual with strong values, academic excellence, and cultural awareness.",
     our_journey: "Our Journey",
     // Donor Module
     donor: "Donate",
     donor_title: "Support Our School",
-    donor_subtitle: "Your contribution helps us provide quality education and facilities to our students",
+    donor_subtitle:
+      "Your contribution helps us provide quality education and facilities to our students",
     donor_account_details: "Account Details",
     donor_bank_name: "Bank Name",
     donor_bank_name_value: "Canara Bank",
@@ -651,13 +834,16 @@ const dictionary: Record<Lang, Record<string, string>> = {
     donor_10000: "₹10,000",
     donor_other: "Other",
     donor_note: "Note",
-    donor_note_text: "Donations made to this account are eligible for tax deduction under Section 80G of the Income Tax Act.",
+    donor_note_text:
+      "Donations made to this account are eligible for tax deduction under Section 80G of the Income Tax Act.",
     donor_contact_info: "Contact Information",
     donor_contact_phone: "Phone: +91 94494 24530",
     donor_contact_email: "Email: madhavavidyamandira21@gmail.com",
     donor_thank_you: "Thank You",
-    donor_thank_you_message: "Your generous contribution will help us continue providing quality education to our students.",
-    donor_tax_note: "Donations made to this account are eligible for tax deduction under Section 80G of the Income Tax Act.",
+    donor_thank_you_message:
+      "Your generous contribution will help us continue providing quality education to our students.",
+    donor_tax_note:
+      "Donations made to this account are eligible for tax deduction under Section 80G of the Income Tax Act.",
     donor_total_donors: "Total Donors",
     donor_list_title: "List of Donors",
     donor_list_desc: "We gratefully acknowledge the support of our donors.",
@@ -675,56 +861,70 @@ const dictionary: Record<Lang, Record<string, string>> = {
     achievements_page_card_5_title: "Cluster and Taluk Level Sports",
     achievements_page_card_5_category: "Sports",
     achievements_page_card_5_year: "2024-25",
-    achievements_page_card_5_description: "Secured first and second places in the Cluster and Taluk level sports meet.",
-    achievements_page_card_5_details: "Outstanding performance in state-level talent competition.",
+    achievements_page_card_5_description:
+      "Secured first and second places in the Cluster and Taluk level sports meet.",
+    achievements_page_card_5_details:
+      "Outstanding performance in state-level talent competition.",
     achievements_page_card_5_level: "Cluster/Taluk Level",
     achievements_page_card_5_participants: "Multiple Students",
     achievements_page_card_6_title: "District level Pratibha Karanji",
     achievements_page_card_6_category: "Cultural",
     achievements_page_card_6_year: "2024-25",
-    achievements_page_card_6_description: "First prize in the District level Pratibha Karanji extempore speech competition.",
-    achievements_page_card_6_details: "A remarkable achievement in the extempore speech category at the district level competition.",
+    achievements_page_card_6_description:
+      "First prize in the District level Pratibha Karanji extempore speech competition.",
+    achievements_page_card_6_details:
+      "A remarkable achievement in the extempore speech category at the district level competition.",
     achievements_page_card_6_level: "District Level",
     achievements_page_card_6_participants: "1 Student",
     achievements_page_card_7_title: "Taluk Level Sports Awards",
     achievements_page_card_7_category: "Sports",
     achievements_page_card_7_year: "2024-25",
-    achievements_page_card_7_description: "Numerous awards and recognitions in various Taluk level sports competitions.",
-    achievements_page_card_7_details: "The school team participated and won accolades in multiple sporting categories at the taluk level.",
+    achievements_page_card_7_description:
+      "Numerous awards and recognitions in various Taluk level sports competitions.",
+    achievements_page_card_7_details:
+      "The school team participated and won accolades in multiple sporting categories at the taluk level.",
     achievements_page_card_7_level: "Taluk Level",
     achievements_page_card_7_participants: "Sports Team",
     achievements_page_card_8_title: "Kho Kho Competition",
     achievements_page_card_8_category: "Sports",
     achievements_page_card_8_year: "2024-25",
-    achievements_page_card_8_description: "Won prize in the inter-school Kho Kho competition.",
-    achievements_page_card_8_details: "The Kho Kho team demonstrated excellent teamwork and coordination to secure this prize.",
+    achievements_page_card_8_description:
+      "Won prize in the inter-school Kho Kho competition.",
+    achievements_page_card_8_details:
+      "The Kho Kho team demonstrated excellent teamwork and coordination to secure this prize.",
     achievements_page_card_8_level: "Inter-School Level",
     achievements_page_card_8_participants: "Kho Kho Team",
     achievements_page_card_9_title: "Mono Acting Excellence",
     achievements_page_card_9_category: "Cultural",
     achievements_page_card_9_year: "2024-25",
-    achievements_page_card_9_description: "Prize in the Mono Acting competition.",
-    achievements_page_card_9_details: "Exquisite performance in dramatic expression and character portrayal.",
+    achievements_page_card_9_description:
+      "Prize in the Mono Acting competition.",
+    achievements_page_card_9_details:
+      "Exquisite performance in dramatic expression and character portrayal.",
     achievements_page_card_9_level: "School/Regional level",
     achievements_page_card_9_participants: "1 Student",
     achievements_page_card_10_title: "Yoga Competition Prize",
     achievements_page_card_10_category: "Yoga",
     achievements_page_card_10_year: "2024-25",
     achievements_page_card_10_description: "Won prize in the Yoga competition.",
-    achievements_page_card_10_details: "Recognition for flexibility, balance, and mastery over various asanas.",
+    achievements_page_card_10_details:
+      "Recognition for flexibility, balance, and mastery over various asanas.",
     achievements_page_card_10_level: "Regional Level",
     achievements_page_card_10_participants: "Yoga Students",
     achievements_page_card_11_title: "Mysuru Yoga Competition",
     achievements_page_card_11_category: "Yoga",
     achievements_page_card_11_year: "2024-25",
-    achievements_page_card_11_description: "First prize winners in the Yoga competition held in Mysuru.",
-    achievements_page_card_11_details: "Our yoga team secured the top spot in a prestigious competition in Mysuru.",
+    achievements_page_card_11_description:
+      "First prize winners in the Yoga competition held in Mysuru.",
+    achievements_page_card_11_details:
+      "Our yoga team secured the top spot in a prestigious competition in Mysuru.",
     achievements_page_card_11_level: "State/Regional Level",
     achievements_page_card_11_participants: "Yoga Team",
   },
   kn: {
     school_name: "ಶ್ರೀ ಮಾಧವ ವಿದ್ಯಾಮಂದಿರ",
-    school_name_full: "ಶ್ರೀ ಮಾಧವ ವಿದ್ಯಾಮಂದಿರ, ಸಿರಾ – 572137, ತುಮಕೂರು ಜಿಲ್ಲೆ, ಕರ್ನಾಟಕ",
+    school_name_full:
+      "ಶ್ರೀ ಮಾಧವ ವಿದ್ಯಾಮಂದಿರ, ಸಿರಾ – 572137, ತುಮಕೂರು ಜಿಲ್ಲೆ, ಕರ್ನಾಟಕ",
     tagline: "ಶಿಕ್ಷಣ – ಸಂಸ್ಕೃತಿ",
     admissions: "ಪ್ರವೇಶ",
     academics: "ವಿದ್ಯಾಭ್ಯಾಸ",
@@ -743,28 +943,35 @@ const dictionary: Record<Lang, Record<string, string>> = {
     more: "ಇನ್ನಷ್ಟು",
     principal_message: "ಪ್ರಾಂಶುಪಾಲರ ಸಂದೇಶ",
     principal_note_subtitle: "ಮುಖ್ಯ ಶಿಕ್ಷಕರ ನುಡಿ",
-    principal_message_body: "ನಮ್ಮ ಶಾಲೆ ಒಂದು ಮಾದರಿ ಶಾಲೆಯಾಗಿದ್ದು, ಮೌಲ್ಯಯುತ ಶಿಕ್ಷಣದ ಜೊತೆಗೆ ಭಾರತೀಯ ಸಂಸ್ಕೃತಿ ಮತ್ತು ಸಂಸ್ಕಾರಗಳನ್ನು ನೀಡುವ ಪವಿತ್ರ ವಿದ್ಯಾಲಯವಾಗಿದೆ. ಇಲ್ಲಿ ಶಿಕ್ಷಣ ಮಾತ್ರವಲ್ಲದೆ ಯೋಗ, ಧ್ಯಾನ, ಭಗವದ್ಗೀತೆ, ದೇಶಭಕ್ತಿ ಗೀತೆಗಳು ಇತ್ಯಾದಿಗಳನ್ನು ಬೋಧಿಸುವ ಮೂಲಕ ಮಕ್ಕಳಲ್ಲಿ ಮಾನವೀಯ ಮೌಲ್ಯಗಳನ್ನು ಬೆಳೆಸಲಾಗುತ್ತದೆ. ಗುರುಹಿರಿಯರನ್ನು ಗೌರವಿಸುವ ಮತ್ತು ಕಿರಿಯರನ್ನು ಪ್ರೀತಿಯಿಂದ ಕಾಣುವ ಮನೋಭಾವವನ್ನು ಬೆಳೆಸುವುದು ನಮ್ಮ ಧ್ಯೇಯವಾಗಿದೆ. ಇಲ್ಲಿ ವಿದ್ಯಾಭ್ಯಾಸ ಮಾಡಿದ ಮಕ್ಕಳು ಶಾಲೆಗೆ ಆದರ್ಶ ವಿದ್ಯಾರ್ಥಿಗಳಾಗಿ, ತಂದೆತಾಯಿಗಳಿಗೆ ಒಳ್ಳೆಯ ಮಕ್ಕಳಾಗಿ, ಸಮಾಜಕ್ಕೆ ಉತ್ತಮ ವ್ಯಕ್ತಿಗಳಾಗಿ ಹಾಗೂ ದೇಶಕ್ಕೆ ಆದರ್ಶ ಪ್ರಜೆಗಳಾಗಿ ಬೆಳೆಯಬೇಕು ಎಂಬುದು ನಮ್ಮ ಧ್ಯೇಯವಾಗಿದೆ.",
+    principal_message_body:
+      "ನಮ್ಮ ಶಾಲೆ ಒಂದು ಮಾದರಿ ಶಾಲೆಯಾಗಿದ್ದು, ಮೌಲ್ಯಯುತ ಶಿಕ್ಷಣದ ಜೊತೆಗೆ ಭಾರತೀಯ ಸಂಸ್ಕೃತಿ ಮತ್ತು ಸಂಸ್ಕಾರಗಳನ್ನು ನೀಡುವ ಪವಿತ್ರ ವಿದ್ಯಾಲಯವಾಗಿದೆ. ಇಲ್ಲಿ ಶಿಕ್ಷಣ ಮಾತ್ರವಲ್ಲದೆ ಯೋಗ, ಧ್ಯಾನ, ಭಗವದ್ಗೀತೆ, ದೇಶಭಕ್ತಿ ಗೀತೆಗಳು ಇತ್ಯಾದಿಗಳನ್ನು ಬೋಧಿಸುವ ಮೂಲಕ ಮಕ್ಕಳಲ್ಲಿ ಮಾನವೀಯ ಮೌಲ್ಯಗಳನ್ನು ಬೆಳೆಸಲಾಗುತ್ತದೆ. ಗುರುಹಿರಿಯರನ್ನು ಗೌರವಿಸುವ ಮತ್ತು ಕಿರಿಯರನ್ನು ಪ್ರೀತಿಯಿಂದ ಕಾಣುವ ಮನೋಭಾವವನ್ನು ಬೆಳೆಸುವುದು ನಮ್ಮ ಧ್ಯೇಯವಾಗಿದೆ. ಇಲ್ಲಿ ವಿದ್ಯಾಭ್ಯಾಸ ಮಾಡಿದ ಮಕ್ಕಳು ಶಾಲೆಗೆ ಆದರ್ಶ ವಿದ್ಯಾರ್ಥಿಗಳಾಗಿ, ತಂದೆತಾಯಿಗಳಿಗೆ ಒಳ್ಳೆಯ ಮಕ್ಕಳಾಗಿ, ಸಮಾಜಕ್ಕೆ ಉತ್ತಮ ವ್ಯಕ್ತಿಗಳಾಗಿ ಹಾಗೂ ದೇಶಕ್ಕೆ ಆದರ್ಶ ಪ್ರಜೆಗಳಾಗಿ ಬೆಳೆಯಬೇಕು ಎಂಬುದು ನಮ್ಮ ಧ್ಯೇಯವಾಗಿದೆ.",
     principal_attribution: "— ಮುಖ್ಯ ಶಿಕ್ಷಕರು, ಶ್ರೀ ಮಾಧವ ವಿದ್ಯಾಮಂದಿರ",
     address_label: "ವಿಳಾಸ",
-    address_value: "ಶ್ರೀ ಮಾಧವ ವಿದ್ಯಾಮಂದಿರ, ಸಿರಾ – 572137, ತುಮಕೂರು ಜಿಲ್ಲೆ, ಕರ್ನಾಟಕ",
+    address_value:
+      "ಶ್ರೀ ಮಾಧವ ವಿದ್ಯಾಮಂದಿರ, ಸಿರಾ – 572137, ತುಮಕೂರು ಜಿಲ್ಲೆ, ಕರ್ನಾಟಕ",
     phone_label: "ದೂರವಾಣಿ",
     phone_value: "+91 94494 24530",
     email_label: "ಇಮೇಲ್",
     email_value: "madhavavidyamandira21@gmail.com",
     contact_us: "ಸಂಪರ್ಕಿಸಿ",
     contact_page_hero_subtitle: "ನಿಮ್ಮಿಂದ ಕೇಳಲು ನಮಗೆ ಸಂತೋಷ",
-    contact_page_hero_desc: "ಪ್ರವೇಶ ಹಾಗೂ ಸಾಮಾನ್ಯ ವಿಚಾರಣೆಗಳಿಗಾಗಿ ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ. ನಿಮ್ಮ ಪ್ರಶ್ನೆಗಳಿಗೆ ನೆರವಾಗಲು ನಾವು ಸದಾ ಸಿದ್ಧರಾಗಿದ್ದೇವೆ.",
+    contact_page_hero_desc:
+      "ಪ್ರವೇಶ ಹಾಗೂ ಸಾಮಾನ್ಯ ವಿಚಾರಣೆಗಳಿಗಾಗಿ ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ. ನಿಮ್ಮ ಪ್ರಶ್ನೆಗಳಿಗೆ ನೆರವಾಗಲು ನಾವು ಸದಾ ಸಿದ್ಧರಾಗಿದ್ದೇವೆ.",
     contact_page_info_address_title: "ವಿಳಾಸ",
-    contact_page_info_address_detail: "ಶ್ರೀ ಮಾಧವ ವಿದ್ಯಾಮಂದಿರ, ಸಿರಾ – 572137, ತುಮಕೂರು ಜಿಲ್ಲೆ, ಕರ್ನಾಟಕ",
-    contact_page_info_address_desc: "ಶಾಂತ ವಾತಾವರಣದ ಸಿರಾ ಪಟ್ಟಣದಲ್ಲಿ ಇರುವ ನಮ್ಮ ಸುಂದರ ಕ್ಯಾಂಪಸ್‌ಗೆ ಭೇಟಿ ನೀಡಿ",
+    contact_page_info_address_detail:
+      "ಶ್ರೀ ಮಾಧವ ವಿದ್ಯಾಮಂದಿರ, ಸಿರಾ – 572137, ತುಮಕೂರು ಜಿಲ್ಲೆ, ಕರ್ನಾಟಕ",
+    contact_page_info_address_desc:
+      "ಶಾಂತ ವಾತಾವರಣದ ಸಿರಾ ಪಟ್ಟಣದಲ್ಲಿ ಇರುವ ನಮ್ಮ ಸುಂದರ ಕ್ಯಾಂಪಸ್‌ಗೆ ಭೇಟಿ ನೀಡಿ",
     contact_page_info_phone_title: "ದೂರವಾಣಿ",
     contact_page_info_phone_detail: "+91 94494 24530",
     contact_page_info_phone_desc: "ತಕ್ಷಣದ ಸಹಾಯಕ್ಕಾಗಿ ಶಾಲಾ ಸಮಯದಲ್ಲಿ ಕರೆ ಮಾಡಿ",
     contact_page_info_email_title: "ಇಮೇಲ್",
     contact_page_info_email_detail: "madhavavidyamandira21@gmail.com",
-    contact_page_info_email_desc: "ನಮಗೆ ಇಮೇಲ್ ಕಳುಹಿಸಿ, 24 ಗಂಟೆಗಳೊಳಗೆ ಪ್ರತಿಕ್ರಿಯಿಸುತ್ತೇವೆ",
+    contact_page_info_email_desc:
+      "ನಮಗೆ ಇಮೇಲ್ ಕಳುಹಿಸಿ, 24 ಗಂಟೆಗಳೊಳಗೆ ಪ್ರತಿಕ್ರಿಯಿಸುತ್ತೇವೆ",
     contact_page_info_hours_title: "ಶಾಲಾ ಸಮಯ",
-    contact_page_info_hours_desc: "ಈ ಸಮಯಗಳಲ್ಲಿ ನಮ್ಮ ಆಡಳಿತ ಕಚೇರಿ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತದೆ",
+    contact_page_info_hours_desc:
+      "ಈ ಸಮಯಗಳಲ್ಲಿ ನಮ್ಮ ಆಡಳಿತ ಕಚೇರಿ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತದೆ",
     contact_page_map_title: "ನಕ್ಷೆಯಲ್ಲಿ ನಮ್ಮ ಸ್ಥಳ",
     contact_page_map_iframe_title: "ಗೂಗಲ್ ನಕ್ಷೆ",
     contact_page_office_title: "ಕಚೇರಿ ಸಮಯ",
@@ -780,48 +987,65 @@ const dictionary: Record<Lang, Record<string, string>> = {
     admissions_cta: "ಈಗ ಅರ್ಜಿ ಸಲ್ಲಿಸಿ",
     admissions_page_title: "ಪ್ರವೇಶಗಳು ಆರಂಭ",
     admissions_page_year: "ಶೈಕ್ಷಣಿಕ ವರ್ಷ",
-    admissions_page_intro: "ಶ್ರೀ ಮಾಧವ ವಿದ್ಯಾ ಮಂದಿರಕ್ಕೆ ನಿಮ್ಮ ಮಗುವನ್ನು ಸೇರಿಸಿ, ಮೌಲ್ಯ ಮತ್ತು ಸಂಸ್ಕೃತಿಯ ಆಧಾರಿತ ಗುಣಮಟ್ಟದ ಶಿಕ್ಷಣದ ಉಡುಗೊರೆಯನ್ನು ನೀಡಿ. ನರ್ಸರಿಯಿಂದ 10ನೇ ತರಗತಿವರೆಗೆ ಎಲ್ಲಾ ತರಗತಿಗಳಿಗೆ ಅರ್ಜಿಗಳನ್ನು ಸ್ವಾಗತಿಸುತ್ತೇವೆ.",
+    admissions_page_intro:
+      "ಶ್ರೀ ಮಾಧವ ವಿದ್ಯಾ ಮಂದಿರಕ್ಕೆ ನಿಮ್ಮ ಮಗುವನ್ನು ಸೇರಿಸಿ, ಮೌಲ್ಯ ಮತ್ತು ಸಂಸ್ಕೃತಿಯ ಆಧಾರಿತ ಗುಣಮಟ್ಟದ ಶಿಕ್ಷಣದ ಉಡುಗೊರೆಯನ್ನು ನೀಡಿ. ನರ್ಸರಿಯಿಂದ 10ನೇ ತರಗತಿವರೆಗೆ ಎಲ್ಲಾ ತರಗತಿಗಳಿಗೆ ಅರ್ಜಿಗಳನ್ನು ಸ್ವಾಗತಿಸುತ್ತೇವೆ.",
     admissions_page_download_application: "ಅರ್ಜಿ ನಮೂನೆ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ",
     admissions_page_schedule_visit: "ಭೇಟಿ ಸಮಯ ನಿಗದಿಪಡಿ",
     admissions_page_process_title: "ಪ್ರವೇಶ ಪ್ರಕ್ರಿಯೆ",
     admissions_page_process_1_title: "ಅರ್ಜಿ ಸಲ್ಲಿಕೆ",
-    admissions_page_process_1_desc: "ಅಗತ್ಯ ದಾಖಲೆಗಳೊಂದಿಗೆ ಭರ್ತಿಪಡಿಸಿದ ಅರ್ಜಿ ನಮೂನೆ ಸಲ್ಲಿಸಿ.",
+    admissions_page_process_1_desc:
+      "ಅಗತ್ಯ ದಾಖಲೆಗಳೊಂದಿಗೆ ಭರ್ತಿಪಡಿಸಿದ ಅರ್ಜಿ ನಮೂನೆ ಸಲ್ಲಿಸಿ.",
     admissions_page_process_2_title: "ದಾಖಲೆ ಪರಿಶೀಲನೆ",
-    admissions_page_process_2_desc: "ಜನನ ಪ್ರಮಾಣಪತ್ರ, ಹಿಂದಿನ ಶಾಲೆಯ ದಾಖಲೆಗಳು ಮತ್ತು ಇತರೆ ಅಗತ್ಯ ದಾಖಲೆಗಳ ಪರಿಶೀಲನೆ.",
+    admissions_page_process_2_desc:
+      "ಜನನ ಪ್ರಮಾಣಪತ್ರ, ಹಿಂದಿನ ಶಾಲೆಯ ದಾಖಲೆಗಳು ಮತ್ತು ಇತರೆ ಅಗತ್ಯ ದಾಖಲೆಗಳ ಪರಿಶೀಲನೆ.",
     admissions_page_process_3_title: "ಸಂವಾದ ಅಧಿವೇಶನ",
-    admissions_page_process_3_desc: "ಮಗುವಿನ ಮತ್ತು ಪೋಷಕರೊಂದಿಗೆ ಅಗತ್ಯಗಳು ಹಾಗೂ ನಿರೀಕ್ಷೆಗಳನ್ನು ಅರಿಯಲು ಸಂಕ್ಷಿಪ್ತ ಸಂವಾದ.",
+    admissions_page_process_3_desc:
+      "ಮಗುವಿನ ಮತ್ತು ಪೋಷಕರೊಂದಿಗೆ ಅಗತ್ಯಗಳು ಹಾಗೂ ನಿರೀಕ್ಷೆಗಳನ್ನು ಅರಿಯಲು ಸಂಕ್ಷಿಪ್ತ ಸಂವಾದ.",
     admissions_page_process_4_title: "ಶುಲ್ಕ ಪಾವತಿ",
-    admissions_page_process_4_desc: "ಪ್ರವೇಶವನ್ನು ದೃಢೀಕರಿಸಲು ಪ್ರವೇಶ ಶುಲ್ಕ ಮತ್ತು ಮೊದಲ ಅವಧಿ ಶುಲ್ಕ ಪಾವತಿ.",
+    admissions_page_process_4_desc:
+      "ಪ್ರವೇಶವನ್ನು ದೃಢೀಕರಿಸಲು ಪ್ರವೇಶ ಶುಲ್ಕ ಮತ್ತು ಮೊದಲ ಅವಧಿ ಶುಲ್ಕ ಪಾವತಿ.",
     admissions_page_required_documents_title: "ಅಗತ್ಯ ದಾಖಲೆಗಳು",
-    admissions_page_doc_birth_certificate: "ಜನನ ಪ್ರಮಾಣಪತ್ರ (ಮೂಲ + 2 ಝೆರಾಕ್ಸ್ ಪ್ರತಿಗಳು)",
-    admissions_page_doc_transfer_certificate: "ಹಿಂದಿನ ಶಾಲೆಯ ವರ್ಗಾವಣೆ ಪ್ರಮಾಣಪತ್ರ (ಅಗತ್ಯವಿದ್ದಲ್ಲಿ)",
-    admissions_page_doc_academic_records: "ಹಿಂದಿನ ಶೈಕ್ಷಣಿಕ ದಾಖಲೆಗಳು (ರಿಪೋರ್ಟ್ ಕಾರ್ಡ್‌ಗಳು)",
+    admissions_page_doc_birth_certificate:
+      "ಜನನ ಪ್ರಮಾಣಪತ್ರ (ಮೂಲ + 2 ಝೆರಾಕ್ಸ್ ಪ್ರತಿಗಳು)",
+    admissions_page_doc_transfer_certificate:
+      "ಹಿಂದಿನ ಶಾಲೆಯ ವರ್ಗಾವಣೆ ಪ್ರಮಾಣಪತ್ರ (ಅಗತ್ಯವಿದ್ದಲ್ಲಿ)",
+    admissions_page_doc_academic_records:
+      "ಹಿಂದಿನ ಶೈಕ್ಷಣಿಕ ದಾಖಲೆಗಳು (ರಿಪೋರ್ಟ್ ಕಾರ್ಡ್‌ಗಳು)",
     admissions_page_doc_aadhaar: "ಆಧಾರ್ ಕಾರ್ಡ್ (ವಿದ್ಯಾರ್ಥಿ ಮತ್ತು ಪೋಷಕರು)",
-    admissions_page_doc_bank_account: "ವಿದ್ಯಾರ್ಥಿಯ ಬ್ಯಾಂಕ್ ಖಾತೆ ವಿವರಗಳು (ಪಾಸ್‌ಬುಕ್ ಪ್ರತಿಯೊಂದಿಗೆ)",
+    admissions_page_doc_bank_account:
+      "ವಿದ್ಯಾರ್ಥಿಯ ಬ್ಯಾಂಕ್ ಖಾತೆ ವಿವರಗಳು (ಪಾಸ್‌ಬುಕ್ ಪ್ರತಿಯೊಂದಿಗೆ)",
     admissions_page_doc_photos: "ಪಾಸ್‌ಪೋರ್ಟ್ ಗಾತ್ರದ ಫೋಟೋಗಳು (4 ಪ್ರತಿಗಳು)",
     admissions_page_doc_caste_certificate: "ಜಾತಿ ಪ್ರಮಾಣಪತ್ರ (ಅಗತ್ಯವಿದ್ದಲ್ಲಿ)",
-    admissions_page_doc_income_certificate: "ಆದಾಯ ಪ್ರಮಾಣಪತ್ರ (ಶುಲ್ಕ ರಿಯಾಯಿತಿಗೆ)",
+    admissions_page_doc_income_certificate:
+      "ಆದಾಯ ಪ್ರಮಾಣಪತ್ರ (ಶುಲ್ಕ ರಿಯಾಯಿತಿಗೆ)",
     admissions_page_doc_medical_certificate: "ವೈದ್ಯಕೀಯ ಪ್ರಮಾಣಪತ್ರ",
     admissions_page_criteria_title: "ಪ್ರವೇಶ ಮಾನದಂಡಗಳು",
     admissions_page_criteria_1: "ವಯೋಮಿತಿ ರಾಜ್ಯ ಮಾರ್ಗಸೂಚಿಗಳ ಪ್ರಕಾರ",
     admissions_page_criteria_2: "ಹಿಂದಿನ ಶೈಕ್ಷಣಿಕ ಸಾಧನೆ (ಮೇಲ್ದರ್ಜೆ ತರಗತಿಗಳಿಗೆ)",
     admissions_page_criteria_3: "ಸಂವಾದದ ವೇಳೆ ವರ್ತನಾ ಮೌಲ್ಯಮಾಪನ",
     admissions_page_criteria_4: "ಶಾಲೆಯ ಮೌಲ್ಯಗಳಿಗೆ ಪೋಷಕರ ಬದ್ಧತೆ",
-    admissions_page_fee_concession_banner: "ಮೊದಲ ಇಬ್ಬರು ಮಕ್ಕಳು SMVMನಲ್ಲಿ ಓದುತ್ತಿದ್ದರೆ ಮೂರನೇ ಮಗುವಿಗೆ ಉಚಿತ ಶಿಕ್ಷಣ ಸೌಲಭ್ಯ ಲಭ್ಯ.",
-    admissions_page_why_choose_title: "ಶ್ರೀ ಮಾಧವ ವಿದ್ಯಾ ಮಂದಿರವನ್ನು ಏಕೆ ಆಯ್ಕೆ ಮಾಡಬೇಕು?",
+    admissions_page_fee_concession_banner:
+      "ಮೊದಲ ಇಬ್ಬರು ಮಕ್ಕಳು SMVMನಲ್ಲಿ ಓದುತ್ತಿದ್ದರೆ ಮೂರನೇ ಮಗುವಿಗೆ ಉಚಿತ ಶಿಕ್ಷಣ ಸೌಲಭ್ಯ ಲಭ್ಯ.",
+    admissions_page_why_choose_title:
+      "ಶ್ರೀ ಮಾಧವ ವಿದ್ಯಾ ಮಂದಿರವನ್ನು ಏಕೆ ಆಯ್ಕೆ ಮಾಡಬೇಕು?",
     admissions_page_why_1_title: "ಮೌಲ್ಯಾಧಾರಿತ ಶಿಕ್ಷಣ",
-    admissions_page_why_1_desc: "ಶೈಕ್ಷಣಿಕ ಶ್ರೇಷ್ಠತೆಯ ಜೊತೆಗೆ ವ್ಯಕ್ತಿತ್ವ ವಿಕಾಸವಾಗಲು ನಮ್ಮ ಪಾಠ್ಯಕ್ರಮದಲ್ಲಿ ನೈತಿಕ ಮೌಲ್ಯಗಳು ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ ಪರಂಪರೆಯನ್ನು ಒಗ್ಗೂಡಿಸುತ್ತೇವೆ.",
+    admissions_page_why_1_desc:
+      "ಶೈಕ್ಷಣಿಕ ಶ್ರೇಷ್ಠತೆಯ ಜೊತೆಗೆ ವ್ಯಕ್ತಿತ್ವ ವಿಕಾಸವಾಗಲು ನಮ್ಮ ಪಾಠ್ಯಕ್ರಮದಲ್ಲಿ ನೈತಿಕ ಮೌಲ್ಯಗಳು ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ ಪರಂಪರೆಯನ್ನು ಒಗ್ಗೂಡಿಸುತ್ತೇವೆ.",
     admissions_page_why_2_title: "ಅನುಭವಸಂಪನ್ನ ಶಿಕ್ಷಕರು",
-    admissions_page_why_2_desc: "ನಮ್ಮ ಶಿಕ್ಷಕರು ಅರ್ಹತೆ ಮತ್ತು ಅನುಭವ ಹೊಂದಿದ್ದು, ಗುಣಮಟ್ಟದ ಶಿಕ್ಷಣ ಮತ್ತು ವೈಯಕ್ತಿಕ ಗಮನ ನೀಡಲು ಬದ್ಧರಾಗಿದ್ದಾರೆ.",
+    admissions_page_why_2_desc:
+      "ನಮ್ಮ ಶಿಕ್ಷಕರು ಅರ್ಹತೆ ಮತ್ತು ಅನುಭವ ಹೊಂದಿದ್ದು, ಗುಣಮಟ್ಟದ ಶಿಕ್ಷಣ ಮತ್ತು ವೈಯಕ್ತಿಕ ಗಮನ ನೀಡಲು ಬದ್ಧರಾಗಿದ್ದಾರೆ.",
     admissions_page_why_3_title: "ಸಮಗ್ರ ಅಭಿವೃದ್ಧಿ",
-    admissions_page_why_3_desc: "ಶೈಕ್ಷಣಿಕ, ಕ್ರೀಡೆ, ಕಲೆ ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ ಚಟುವಟಿಕೆಗಳ ಮೂಲಕ ಮಗುವಿನ ಪ್ರತಿಯೊಂದು ಆಯಾಮದ ಬೆಳವಣಿಗೆಗೆ ನಾವು ಒತ್ತು ನೀಡುತ್ತೇವೆ.",
+    admissions_page_why_3_desc:
+      "ಶೈಕ್ಷಣಿಕ, ಕ್ರೀಡೆ, ಕಲೆ ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ ಚಟುವಟಿಕೆಗಳ ಮೂಲಕ ಮಗುವಿನ ಪ್ರತಿಯೊಂದು ಆಯಾಮದ ಬೆಳವಣಿಗೆಗೆ ನಾವು ಒತ್ತು ನೀಡುತ್ತೇವೆ.",
     admissions_page_image_alt: "ಶಾಲೆಯ ವಿದ್ಯಾರ್ಥಿಗಳು",
     admissions_page_image_title: "ನಮ್ಮೊಡನೆ ಸೇರಿ",
-    admissions_page_image_desc: "ಪ್ರತಿ ಮಗುವಿನ ಸಾಮರ್ಥ್ಯವನ್ನು ಗುರುತಿಸಿ ಬೆಳೆಸುವ ಸ್ಥಳ",
+    admissions_page_image_desc:
+      "ಪ್ರತಿ ಮಗುವಿನ ಸಾಮರ್ಥ್ಯವನ್ನು ಗುರುತಿಸಿ ಬೆಳೆಸುವ ಸ್ಥಳ",
     admissions_page_more_info_title: "ಹೆಚ್ಚಿನ ಮಾಹಿತಿಗಾಗಿ",
     admissions_page_visit_campus: "ನಮ್ಮ ಕ್ಯಾಂಪಸ್‌ಗೆ ಭೇಟಿ ನೀಡಿ",
     admissions_page_address_label: "ವಿಳಾಸ",
-    admissions_page_contact_address: "Sree Madhava Vidya Mandira, Bhavani nagara, Sira – 572137, Tumakuru District, Karnataka.",
+    admissions_page_contact_address:
+      "Sree Madhava Vidya Mandira, Bhavani nagara, Sira – 572137, Tumakuru District, Karnataka.",
     admissions_page_phone_label: "ಫೋನ್",
     admissions_page_phone_value: "+91 94494 24530",
     admissions_page_email_label: "ಇಮೇಲ್ ಐಡಿ",
@@ -829,31 +1053,37 @@ const dictionary: Record<Lang, Record<string, string>> = {
     admissions_page_download_brochure: "ಬ್ರೋಷರ್ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ",
     facilities_page_title: "ವಿಶ್ವಮಟ್ಟದ ಸೌಲಭ್ಯಗಳು",
     facilities_page_subtitle: "ಶಿಕ್ಷಣದಲ್ಲಿ ಶ್ರೇಷ್ಠತೆಗೆ ಬೆಂಬಲ",
-    facilities_page_intro: "ನಮ್ಮ ಆಧುನಿಕ ಮೂಲಸೌಕರ್ಯ ಮತ್ತು ಅತ್ಯಾಧುನಿಕ ಸೌಲಭ್ಯಗಳು ಕಲಿಕೆ, ಸೃಜನಶೀಲತೆ ಮತ್ತು ಸಮಗ್ರ ಬೆಳವಣಿಗೆಗೆ ಆದರ್ಶ ವಾತಾವರಣ ಒದಗಿಸುತ್ತವೆ. ಪ್ರತಿ ಸೌಲಭ್ಯವೂ ವಿದ್ಯಾರ್ಥಿಗಳ ಶೈಕ್ಷಣಿಕ ಅನುಭವವನ್ನು ಹೆಚ್ಚಿಸಲು ವಿನ್ಯಾಸಗೊಳಿಸಲಾಗಿದೆ.",
+    facilities_page_intro:
+      "ನಮ್ಮ ಆಧುನಿಕ ಮೂಲಸೌಕರ್ಯ ಮತ್ತು ಅತ್ಯಾಧುನಿಕ ಸೌಲಭ್ಯಗಳು ಕಲಿಕೆ, ಸೃಜನಶೀಲತೆ ಮತ್ತು ಸಮಗ್ರ ಬೆಳವಣಿಗೆಗೆ ಆದರ್ಶ ವಾತಾವರಣ ಒದಗಿಸುತ್ತವೆ. ಪ್ರತಿ ಸೌಲಭ್ಯವೂ ವಿದ್ಯಾರ್ಥಿಗಳ ಶೈಕ್ಷಣಿಕ ಅನುಭವವನ್ನು ಹೆಚ್ಚಿಸಲು ವಿನ್ಯಾಸಗೊಳಿಸಲಾಗಿದೆ.",
     facilities_page_core_title: "ಮುಖ್ಯ ಸೌಲಭ್ಯಗಳು",
-    facilities_page_core_note: "ಮುಖ್ಯ ಸೌಲಭ್ಯಗಳ ಎಲ್ಲಾ ಶೀರ್ಷಿಕೆಗಳ ಫೋಟೋಗಳನ್ನು ಶೀಘ್ರದಲ್ಲೇ ಅಪ್‌ಲೋಡ್ ಮಾಡಲಾಗುತ್ತದೆ.",
+    facilities_page_core_note:
+      "ಮುಖ್ಯ ಸೌಲಭ್ಯಗಳ ಎಲ್ಲಾ ಶೀರ್ಷಿಕೆಗಳ ಫೋಟೋಗಳನ್ನು ಶೀಘ್ರದಲ್ಲೇ ಅಪ್‌ಲೋಡ್ ಮಾಡಲಾಗುತ್ತದೆ.",
     facilities_page_additional_title: "ಹೆಚ್ಚುವರಿ ಸೌಲಭ್ಯಗಳು",
     facilities_page_highlights_title: "ಮೂಲಸೌಕರ್ಯ ಮುಖ್ಯಾಂಶಗಳು",
     facilities_page_core_1_title: "ಗ್ರಂಥಾಲಯ",
-    facilities_page_core_1_desc: "2500 ಕ್ಕೂ ಹೆಚ್ಚು ಪುಸ್ತಕಗಳು, ಉಲ್ಲೇಖ ವಸ್ತುಗಳು ಮತ್ತು ಡಿಜಿಟಲ್ ಸಂಪನ್ಮೂಲಗಳೊಂದಿಗೆ ಸಮೃದ್ಧ ಗ್ರಂಥಾಲಯ.",
+    facilities_page_core_1_desc:
+      "2500 ಕ್ಕೂ ಹೆಚ್ಚು ಪುಸ್ತಕಗಳು, ಉಲ್ಲೇಖ ವಸ್ತುಗಳು ಮತ್ತು ಡಿಜಿಟಲ್ ಸಂಪನ್ಮೂಲಗಳೊಂದಿಗೆ ಸಮೃದ್ಧ ಗ್ರಂಥಾಲಯ.",
     facilities_page_core_1_feature_1: "ಓದು ಕೊಠಡಿ",
     facilities_page_core_1_feature_2: "ಡಿಜಿಟಲ್ ಸಂಪನ್ಮೂಲಗಳು",
     facilities_page_core_1_feature_3: "ಉಲ್ಲೇಖ ವಿಭಾಗ",
     facilities_page_core_1_feature_4: "ಮಕ್ಕಳ ವಿಭಾಗ",
     facilities_page_core_2_title: "ವಿಜ್ಞಾನ ಪ್ರಯೋಗಾಲಯಗಳು",
-    facilities_page_core_2_desc: "ಪ್ರಾಯೋಗಿಕ ಕಲಿಕೆಯಿಗಾಗಿ ಭೌತಶಾಸ್ತ್ರ, ರಸಾಯನಶಾಸ್ತ್ರ ಮತ್ತು ಜೀವಶಾಸ್ತ್ರದ ಸಂಪೂರ್ಣ ಸುಸಜ್ಜಿತ ಸೌಲಭ್ಯಗಳು.",
+    facilities_page_core_2_desc:
+      "ಪ್ರಾಯೋಗಿಕ ಕಲಿಕೆಯಿಗಾಗಿ ಭೌತಶಾಸ್ತ್ರ, ರಸಾಯನಶಾಸ್ತ್ರ ಮತ್ತು ಜೀವಶಾಸ್ತ್ರದ ಸಂಪೂರ್ಣ ಸುಸಜ್ಜಿತ ಸೌಲಭ್ಯಗಳು.",
     facilities_page_core_2_feature_1: "ಭೌತಶಾಸ್ತ್ರ ಲ್ಯಾಬ್",
     facilities_page_core_2_feature_2: "ರಸಾಯನಶಾಸ್ತ್ರ ಲ್ಯಾಬ್",
     facilities_page_core_2_feature_3: "ಜೀವಶಾಸ್ತ್ರ ಲ್ಯಾಬ್",
     facilities_page_core_2_feature_4: "ಕಂಪ್ಯೂಟರ್ ಲ್ಯಾಬ್",
     facilities_page_core_3_title: "ಕಂಪ್ಯೂಟರ್ ಲ್ಯಾಬ್",
-    facilities_page_core_3_desc: "ಹೆಚ್ಚಿನ ವೇಗದ ಇಂಟರ್ನೆಟ್ ಮತ್ತು ಹೊಸ ತಂತ್ರಾಂಶಗಳೊಂದಿಗೆ ಆಧುನಿಕ ಕಂಪ್ಯೂಟರ್ ಪ್ರಯೋಗಾಲಯ.",
+    facilities_page_core_3_desc:
+      "ಹೆಚ್ಚಿನ ವೇಗದ ಇಂಟರ್ನೆಟ್ ಮತ್ತು ಹೊಸ ತಂತ್ರಾಂಶಗಳೊಂದಿಗೆ ಆಧುನಿಕ ಕಂಪ್ಯೂಟರ್ ಪ್ರಯೋಗಾಲಯ.",
     facilities_page_core_3_feature_1: "ಕಂಪ್ಯೂಟರ್‌ಗಳು",
     facilities_page_core_3_feature_2: "ಹೆಚ್ಚಿನ ವೇಗದ ಇಂಟರ್ನೆಟ್",
     facilities_page_core_3_feature_3: "ಶೈಕ್ಷಣಿಕ ಸಾಫ್ಟ್‌ವೇರ್",
     facilities_page_core_3_feature_4: "ಡಿಜಿಟಲ್ ಕಲಿಕೆ",
     facilities_page_core_4_title: "ಕ್ರೀಡಾ ಸೌಲಭ್ಯಗಳು",
-    facilities_page_core_4_desc: "ದೈಹಿಕ ಬೆಳವಣಿಗೆ ಮತ್ತು ಆರೋಗ್ಯಕ್ಕಾಗಿ ಸಮಗ್ರ ಕ್ರೀಡಾ ಮೂಲಸೌಕರ್ಯ.",
+    facilities_page_core_4_desc:
+      "ದೈಹಿಕ ಬೆಳವಣಿಗೆ ಮತ್ತು ಆರೋಗ್ಯಕ್ಕಾಗಿ ಸಮಗ್ರ ಕ್ರೀಡಾ ಮೂಲಸೌಕರ್ಯ.",
     facilities_page_core_4_feature_1: "ಆಟದ ಮೈದಾನ",
     facilities_page_core_4_feature_2: "ಒಳಾಂಗಣ ಆಟಗಳು",
     facilities_page_core_4_feature_3: "ಕ್ರೀಡಾ ಉಪಕರಣಗಳು",
@@ -865,33 +1095,42 @@ const dictionary: Record<Lang, Record<string, string>> = {
     facilities_page_core_5_feature_3: "ಕಲಾ ಸಾಮಗ್ರಿಗಳು",
     facilities_page_core_5_feature_4: "ಪ್ರದರ್ಶನ ವೇದಿಕೆ",
     facilities_page_core_6_title: "ಸ್ಮಾರ್ಟ್ ತರಗತಿಗಳು",
-    facilities_page_core_6_desc: "ಸಂವಹನಾತ್ಮಕ ಬೋರ್ಡ್ ಮತ್ತು ಮಲ್ಟಿಮೀಡಿಯಾ ಹೊಂದಿದ ತಂತ್ರಜ್ಞಾನ ಸಕ್ರಿಯ ತರಗತಿಗಳು.",
+    facilities_page_core_6_desc:
+      "ಸಂವಹನಾತ್ಮಕ ಬೋರ್ಡ್ ಮತ್ತು ಮಲ್ಟಿಮೀಡಿಯಾ ಹೊಂದಿದ ತಂತ್ರಜ್ಞಾನ ಸಕ್ರಿಯ ತರಗತಿಗಳು.",
     facilities_page_core_6_feature_1: "ಸಂವಹನಾತ್ಮಕ ಬೋರ್ಡ್‌ಗಳು",
     facilities_page_core_6_feature_2: "ಪ್ರೊಜೆಕ್ಟರ್‌ಗಳು",
     facilities_page_core_6_feature_3: "ಆಡಿಯೋ ವ್ಯವಸ್ಥೆಗಳು",
     facilities_page_core_6_feature_4: "ಡಿಜಿಟಲ್ ವಿಷಯ",
     facilities_page_additional_1_title: "ಭದ್ರತೆ",
-    facilities_page_additional_1_desc: "CCTV ಮೇಲ್ವಿಚಾರಣೆ ಮತ್ತು ತರಬೇತಿ ಪಡೆದ ಭದ್ರತಾ ಸಿಬ್ಬಂದಿಯೊಂದಿಗೆ 24/7 ಭದ್ರತೆ.",
+    facilities_page_additional_1_desc:
+      "CCTV ಮೇಲ್ವಿಚಾರಣೆ ಮತ್ತು ತರಬೇತಿ ಪಡೆದ ಭದ್ರತಾ ಸಿಬ್ಬಂದಿಯೊಂದಿಗೆ 24/7 ಭದ್ರತೆ.",
     facilities_page_additional_2_title: "ಸಾರಿಗೆ",
-    facilities_page_additional_2_desc: "ಮುಖ್ಯ ಪ್ರದೇಶಗಳನ್ನು ಆವರಿಸುವ ಸುರಕ್ಷಿತ ಮತ್ತು ವಿಶ್ವಾಸಾರ್ಹ ಶಾಲಾ ಬಸ್ ಸೇವೆ.",
+    facilities_page_additional_2_desc:
+      "ಮುಖ್ಯ ಪ್ರದೇಶಗಳನ್ನು ಆವರಿಸುವ ಸುರಕ್ಷಿತ ಮತ್ತು ವಿಶ್ವಾಸಾರ್ಹ ಶಾಲಾ ಬಸ್ ಸೇವೆ.",
     facilities_page_additional_3_title: "ವೈದ್ಯಕೀಯ ಸೌಲಭ್ಯಗಳು",
-    facilities_page_additional_3_desc: "ಮೂಲ ವೈದ್ಯಕೀಯ ಉಪಕರಣಗಳಿರುವ ಪ್ರಥಮ ಚಿಕಿತ್ಸೆ ಸೌಲಭ್ಯ.",
+    facilities_page_additional_3_desc:
+      "ಮೂಲ ವೈದ್ಯಕೀಯ ಉಪಕರಣಗಳಿರುವ ಪ್ರಥಮ ಚಿಕಿತ್ಸೆ ಸೌಲಭ್ಯ.",
     facilities_page_additional_4_title: "ಮಧ್ಯಾಹ್ನದ ಊಟ",
-    facilities_page_additional_4_desc: "ಸರ್ಕಾರದ ನೆರವಿನಿಂದ ಮಧ್ಯಾಹ್ನದ ಊಟ ನೀಡಲಾಗುತ್ತದೆ.",
+    facilities_page_additional_4_desc:
+      "ಸರ್ಕಾರದ ನೆರವಿನಿಂದ ಮಧ್ಯಾಹ್ನದ ಊಟ ನೀಡಲಾಗುತ್ತದೆ.",
     facilities_page_additional_5_title: "ಸಮಾಲೋಚನೆ",
-    facilities_page_additional_5_desc: "ಶೈಕ್ಷಣಿಕ ಮತ್ತು ಭಾವನಾತ್ಮಕ ಬೆಂಬಲಕ್ಕಾಗಿ ವಿದ್ಯಾರ್ಥಿ ಸಮಾಲೋಚನಾ ಸೇವೆಗಳು.",
-    facilities_page_highlight_1: "ನೈಸರ್ಗಿಕ ಗಾಳಿ- ಬೆಳಕಿನ ವ್ಯವಸ್ಥೆಯುಳ್ಳ ಕೆೊಠಡಿಗಳು",
+    facilities_page_additional_5_desc:
+      "ಶೈಕ್ಷಣಿಕ ಮತ್ತು ಭಾವನಾತ್ಮಕ ಬೆಂಬಲಕ್ಕಾಗಿ ವಿದ್ಯಾರ್ಥಿ ಸಮಾಲೋಚನಾ ಸೇವೆಗಳು.",
+    facilities_page_highlight_1:
+      "ನೈಸರ್ಗಿಕ ಗಾಳಿ- ಬೆಳಕಿನ ವ್ಯವಸ್ಥೆಯುಳ್ಳ ಕೆೊಠಡಿಗಳು",
     facilities_page_highlight_2: "ಗ್ರಂಥಾಲಯದ ಪುಸ್ತಕಗಳು",
     facilities_page_highlight_3_label: "ಉತ್ತಮವಾಗಿ ಸಜ್ಜುಗೊಂಡ",
     facilities_page_highlight_3: "ಡಿಜಿಟಲ್ ತರಗತಿಗಳು ಮತ್ತು ವಿಜ್ಞಾನ ಪ್ರಯೋಗಾಲಯ",
     facilities_page_highlight_4: "ವಿಜ್ಞಾನ ಪ್ರಯೋಗಾಲಯಗಳು",
     facilities_page_campus_image_alt: "ಶಾಲಾ ಆವರಣದ ಮೇಲ್ನೋಟ",
     facilities_page_campus_title: "ನಮ್ಮ ಆವರಣವನ್ನು ಅನ್ವೇಷಿಸಿ",
-    facilities_page_campus_desc: "21ನೇ ಶತಮಾನದ ಕಲಿಕೆಗೆ ವಿನ್ಯಾಸಗೊಳಿಸಿದ ಆಧುನಿಕ ಮೂಲಸೌಕರ್ಯ",
+    facilities_page_campus_desc:
+      "21ನೇ ಶತಮಾನದ ಕಲಿಕೆಗೆ ವಿನ್ಯಾಸಗೊಳಿಸಿದ ಆಧುನಿಕ ಮೂಲಸೌಕರ್ಯ",
     facilities_page_campus_button: "ಕ್ಯಾಂಪಸ್ ಭೇಟಿ ನಿಗದಿಪಡಿ",
     achievements_page_title: "ನಮ್ಮ ಸಾಧನೆಗಳು",
     achievements_page_subtitle: "ಶ್ರೇಷ್ಠತೆ ಮತ್ತು ಯಶಸ್ಸಿನ ಸಂಭ್ರಮ",
-    achievements_page_intro: "ಶ್ರೀ ಮಾಧವ ವಿದ್ಯಾ ಮಂದಿರದಲ್ಲಿ, ಶೈಕ್ಷಣಿಕ, ಕ್ರೀಡೆ, ಸಂಸ್ಕೃತಿ ಮತ್ತು ನವೀನತೆ ಕ್ಷೇತ್ರಗಳಲ್ಲಿ ನಮ್ಮ ವಿದ್ಯಾರ್ಥಿಗಳು ಮತ್ತು ಶಾಲೆಯ ಸಾಧನೆಗಳ ಬಗ್ಗೆ ನಾವು ಹೆಮ್ಮೆಪಡುತ್ತೇವೆ.",
+    achievements_page_intro:
+      "ಶ್ರೀ ಮಾಧವ ವಿದ್ಯಾ ಮಂದಿರದಲ್ಲಿ, ಶೈಕ್ಷಣಿಕ, ಕ್ರೀಡೆ, ಸಂಸ್ಕೃತಿ ಮತ್ತು ನವೀನತೆ ಕ್ಷೇತ್ರಗಳಲ್ಲಿ ನಮ್ಮ ವಿದ್ಯಾರ್ಥಿಗಳು ಮತ್ತು ಶಾಲೆಯ ಸಾಧನೆಗಳ ಬಗ್ಗೆ ನಾವು ಹೆಮ್ಮೆಪಡುತ್ತೇವೆ.",
     achievements_page_stat_academic: "ಶೈಕ್ಷಣಿಕ ಸಾಧನೆಗಳು",
     achievements_page_stat_sports: "ಕ್ರೀಡಾ ಜಯಗಳು",
     achievements_page_stat_cultural: "ಸಾಂಸ್ಕೃತಿಕ ಪ್ರಶಸ್ತಿಗಳು",
@@ -900,40 +1139,53 @@ const dictionary: Record<Lang, Record<string, string>> = {
     achievements_page_card_1_title: "CBSE ಬೋರ್ಡ್ ಫಲಿತಾಂಶದಲ್ಲಿ ಶ್ರೇಷ್ಠತೆ",
     achievements_page_card_1_category: "ಶೈಕ್ಷಣಿಕ",
     achievements_page_card_1_year: "2024",
-    achievements_page_card_1_description: "10ನೇ ತರಗತಿ ಬೋರ್ಡ್ ಪರೀಕ್ಷೆಯಲ್ಲಿ 95% ವಿದ್ಯಾರ್ಥಿಗಳು 80% ಕ್ಕಿಂತ ಹೆಚ್ಚು ಅಂಕ ಪಡೆದರು.",
-    achievements_page_card_1_details: "ನಮ್ಮ 10ನೇ ತರಗತಿ ವಿದ್ಯಾರ್ಥಿಗಳು ಸ್ಥಿರ ಶೈಕ್ಷಣಿಕ ಸಾಧನೆಗಳೊಂದಿಗೆ ಉತ್ತಮ ಫಲಿತಾಂಶ ನೀಡಿದರು.",
+    achievements_page_card_1_description:
+      "10ನೇ ತರಗತಿ ಬೋರ್ಡ್ ಪರೀಕ್ಷೆಯಲ್ಲಿ 95% ವಿದ್ಯಾರ್ಥಿಗಳು 80% ಕ್ಕಿಂತ ಹೆಚ್ಚು ಅಂಕ ಪಡೆದರು.",
+    achievements_page_card_1_details:
+      "ನಮ್ಮ 10ನೇ ತರಗತಿ ವಿದ್ಯಾರ್ಥಿಗಳು ಸ್ಥಿರ ಶೈಕ್ಷಣಿಕ ಸಾಧನೆಗಳೊಂದಿಗೆ ಉತ್ತಮ ಫಲಿತಾಂಶ ನೀಡಿದರು.",
     achievements_page_card_1_level: "ಶಾಲಾ ಮಟ್ಟ",
     achievements_page_card_1_participants: "50 ವಿದ್ಯಾರ್ಥಿಗಳು",
     achievements_page_card_2_title: "ಸಾಂಸ್ಕೃತಿಕೋತ್ಸವದಲ್ಲಿ ಶ್ರೇಷ್ಠತೆ",
     achievements_page_card_2_category: "ಸಾಂಸ್ಕೃತಿಕ",
     achievements_page_card_2_year: "2024",
-    achievements_page_card_2_description: "ರಾಜ್ಯ ಮಟ್ಟದ ಸಾಂಸ್ಕೃತಿಕೋತ್ಸವದಲ್ಲಿ ಉತ್ತಮ ಪ್ರದರ್ಶನ ಪ್ರಶಸ್ತಿ.",
-    achievements_page_card_2_details: "ನಮ್ಮ ಸಾಂಸ್ಕೃತಿಕ ತಂಡವು ಕರ್ನಾಟಕದ ಸಮೃದ್ಧ ಪರಂಪರೆಯನ್ನು ತೋರಿಸುವ ಸಾಂಪ್ರದಾಯಿಕ ನೃತ್ಯ ಪ್ರದರ್ಶನಕ್ಕಾಗಿ ರಾಜ್ಯ ಮಟ್ಟದ ಸಾಂಸ್ಕೃತಿಕೋತ್ಸವದಲ್ಲಿ ಉತ್ತಮ ಪ್ರದರ್ಶನ ಪ್ರಶಸ್ತಿ ಪಡೆದಿತು.",
+    achievements_page_card_2_description:
+      "ರಾಜ್ಯ ಮಟ್ಟದ ಸಾಂಸ್ಕೃತಿಕೋತ್ಸವದಲ್ಲಿ ಉತ್ತಮ ಪ್ರದರ್ಶನ ಪ್ರಶಸ್ತಿ.",
+    achievements_page_card_2_details:
+      "ನಮ್ಮ ಸಾಂಸ್ಕೃತಿಕ ತಂಡವು ಕರ್ನಾಟಕದ ಸಮೃದ್ಧ ಪರಂಪರೆಯನ್ನು ತೋರಿಸುವ ಸಾಂಪ್ರದಾಯಿಕ ನೃತ್ಯ ಪ್ರದರ್ಶನಕ್ಕಾಗಿ ರಾಜ್ಯ ಮಟ್ಟದ ಸಾಂಸ್ಕೃತಿಕೋತ್ಸವದಲ್ಲಿ ಉತ್ತಮ ಪ್ರದರ್ಶನ ಪ್ರಶಸ್ತಿ ಪಡೆದಿತು.",
     achievements_page_card_2_level: "ರಾಜ್ಯ ಮಟ್ಟ",
     achievements_page_card_2_participants: "8 ವಿದ್ಯಾರ್ಥಿಗಳು",
     achievements_page_card_3_title: "ವಿದ್ಯುತ್ ಸುರಕ್ಷತಾ ಭಾಷಣ ಪ್ರಶಸ್ತಿ",
     achievements_page_card_3_category: "ಪ್ರಶಸ್ತಿ",
     achievements_page_card_3_year: "2024",
-    achievements_page_card_3_description: "ನಮ್ಮ ವಿದ್ಯಾರ್ಥಿನಿ Ms. MEGHA ಅವರಿಗೆ BESCOM Karnataka ಆಯೋಜಿಸಿದ್ದ ELECTRICAL SAFETY ವಿಷಯದ ಭಾಷಣಕ್ಕೆ ಪ್ರಶಸ್ತಿ ಲಭಿಸಿತು.",
-    achievements_page_card_3_details: "ನಮ್ಮ ವಿದ್ಯಾರ್ಥಿನಿ Ms. MEGHA ಅವರಿಗೆ BESCOM Karnataka ಆಯೋಜಿಸಿದ್ದ ELECTRICAL SAFETY ವಿಷಯದ ಭಾಷಣಕ್ಕೆ ಪ್ರಶಸ್ತಿ ಲಭಿಸಿತು.",
+    achievements_page_card_3_description:
+      "ನಮ್ಮ ವಿದ್ಯಾರ್ಥಿನಿ Ms. MEGHA ಅವರಿಗೆ BESCOM Karnataka ಆಯೋಜಿಸಿದ್ದ ELECTRICAL SAFETY ವಿಷಯದ ಭಾಷಣಕ್ಕೆ ಪ್ರಶಸ್ತಿ ಲಭಿಸಿತು.",
+    achievements_page_card_3_details:
+      "ನಮ್ಮ ವಿದ್ಯಾರ್ಥಿನಿ Ms. MEGHA ಅವರಿಗೆ BESCOM Karnataka ಆಯೋಜಿಸಿದ್ದ ELECTRICAL SAFETY ವಿಷಯದ ಭಾಷಣಕ್ಕೆ ಪ್ರಶಸ್ತಿ ಲಭಿಸಿತು.",
     achievements_page_card_3_level: "ಜಿಲ್ಲಾ ಮಟ್ಟ",
     achievements_page_card_3_participants: "1 ವಿದ್ಯಾರ್ಥಿ",
-    achievements_page_card_4_title: "ಹಸಿರು ಉಪಕ್ರಮ 🌿",
+    achievements_page_card_4_title: "ಶಿಕ್ಷಣದ",
     achievements_page_card_4_category: "ಪರಿಸರ",
     achievements_page_card_4_year: "2025",
-    achievements_page_card_4_description: "ಸತತತೆಯ ಜೊತೆಗೆ ಕೃಷಿ ಅರಿವು ಬೆಳೆಸುವ ಅಡಿಕೆ ಗಿಡ ನೆಡುವ ಅಭಿಯಾನ.",
-    achievements_page_card_4_details: "ನಮ್ಮ ಹಸಿರು ಉಪಕ್ರಮದ ಭಾಗವಾಗಿ, ಪರಿಸರ ಜಾಗೃತಿ ಮತ್ತು ಸತತತೆಯನ್ನು ಉತ್ತೇಜಿಸಲು ಶಾಲಾ ಆವರಣದಲ್ಲಿ ಅಡಿಕೆ ಗಿಡಗಳನ್ನು ನೆಡಲಾಗಿದೆ. ಈ ಪ್ರಯತ್ನವು ಹಸಿರು ವಾತಾವರಣವನ್ನು ನಿರ್ಮಿಸುವುದರ ಜೊತೆಗೆ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಕೃಷಿ ಕ್ಷೇತ್ರದ ಪ್ರಾಯೋಗಿಕ ಅರಿವು ನೀಡುತ್ತದೆ. ಗಿಡಗಳನ್ನು ನೋಡಿಕೊಳ್ಳುವ ಮೂಲಕ ವಿದ್ಯಾರ್ಥಿಗಳು ಕೃಷಿ ವಿಧಾನಗಳನ್ನು ಅರ್ಥಮಾಡಿಕೊಂಡು, ಪರಿಸರ ಜವಾಬ್ದಾರಿ ಮತ್ತು ಸತತ ಕೃಷಿಯ ಮಹತ್ವವನ್ನು ಅರಿಯುತ್ತಾರೆ.",
+    achievements_page_card_4_description:
+      "ಸತತತೆಯ ಜೊತೆಗೆ ಕೃಷಿ ಅರಿವು ಬೆಳೆಸುವ ಅಡಿಕೆ ಗಿಡ ನೆಡುವ ಅಭಿಯಾನ.",
+    achievements_page_card_4_details:
+      "ನಮ್ಮ ಹಸಿರು ಉಪಕ್ರಮದ ಭಾಗವಾಗಿ, ಪರಿಸರ ಜಾಗೃತಿ ಮತ್ತು ಸತತತೆಯನ್ನು ಉತ್ತೇಜಿಸಲು ಶಾಲಾ ಆವರಣದಲ್ಲಿ ಅಡಿಕೆ ಗಿಡಗಳನ್ನು ನೆಡಲಾಗಿದೆ. ಈ ಪ್ರಯತ್ನವು ಹಸಿರು ವಾತಾವರಣವನ್ನು ನಿರ್ಮಿಸುವುದರ ಜೊತೆಗೆ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಕೃಷಿ ಕ್ಷೇತ್ರದ ಪ್ರಾಯೋಗಿಕ ಅರಿವು ನೀಡುತ್ತದೆ. ಗಿಡಗಳನ್ನು ನೋಡಿಕೊಳ್ಳುವ ಮೂಲಕ ವಿದ್ಯಾರ್ಥಿಗಳು ಕೃಷಿ ವಿಧಾನಗಳನ್ನು ಅರ್ಥಮಾಡಿಕೊಂಡು, ಪರಿಸರ ಜವಾಬ್ದಾರಿ ಮತ್ತು ಸತತ ಕೃಷಿಯ ಮಹತ್ವವನ್ನು ಅರಿಯುತ್ತಾರೆ.",
     achievements_page_card_4_level: "ಶಾಲಾ ಮಟ್ಟ",
     achievements_page_card_4_participants: "ಸಂಪೂರ್ಣ ಶಾಲೆ",
     achievements_page_students_title: "ವಿದ್ಯಾರ್ಥಿ ಸಾಧನೆಗಳು",
-    achievements_page_students_subtitle: "ರಾಜ್ಯ, ತಾಲ್ಲೂಕು ಮತ್ತು ಹೋಬಳಿ ಮಟ್ಟದ ಫಲಿತಾಂಶಗಳು (2025)",
-    achievements_page_students_s1_title: "ರಾಜ್ಯ ಮಟ್ಟದ ಯೋಗ ಸ್ಪರ್ಧೆ - ಅಂತರರಾಷ್ಟ್ರೀಯ ಯೋಗ ದಿನ",
-    achievements_page_students_s1_item_1: "ಅಂತರರಾಷ್ಟ್ರೀಯ ಯೋಗ ದಿನದಂದು ನಡೆದ ರಾಜ್ಯ ಮಟ್ಟದ ಯೋಗ ಸ್ಪರ್ಧೆಯಲ್ಲಿ ನಮ್ಮ ವಿದ್ಯಾರ್ಥಿಗಳು ತೃತೀಯ ಸ್ಥಾನ ಪಡೆದು ಶಾಲೆಗೆ ಕೀರ್ತಿ ತಂದರು.",
-    achievements_page_students_s2_title: "ತಾಲ್ಲೂಕು ಮಟ್ಟದ ಕ್ರೀಡಾಕೂಟ - 24.10.2025 (ಹೈಯರ್ ಪ್ರೈಮರಿ)",
+    achievements_page_students_subtitle:
+      "ರಾಜ್ಯ, ತಾಲ್ಲೂಕು ಮತ್ತು ಹೋಬಳಿ ಮಟ್ಟದ ಫಲಿತಾಂಶಗಳು (2025)",
+    achievements_page_students_s1_title:
+      "ರಾಜ್ಯ ಮಟ್ಟದ ಯೋಗ ಸ್ಪರ್ಧೆ - ಅಂತರರಾಷ್ಟ್ರೀಯ ಯೋಗ ದಿನ",
+    achievements_page_students_s1_item_1:
+      "ಅಂತರರಾಷ್ಟ್ರೀಯ ಯೋಗ ದಿನದಂದು ನಡೆದ ರಾಜ್ಯ ಮಟ್ಟದ ಯೋಗ ಸ್ಪರ್ಧೆಯಲ್ಲಿ ನಮ್ಮ ವಿದ್ಯಾರ್ಥಿಗಳು ತೃತೀಯ ಸ್ಥಾನ ಪಡೆದು ಶಾಲೆಗೆ ಕೀರ್ತಿ ತಂದರು.",
+    achievements_page_students_s2_title:
+      "ತಾಲ್ಲೂಕು ಮಟ್ಟದ ಕ್ರೀಡಾಕೂಟ - 24.10.2025 (ಹೈಯರ್ ಪ್ರೈಮರಿ)",
     achievements_page_students_s2_item_1: "ಬಾಲಕರ ಹೈ ಜಂಪ್ - ಪ್ರಥಮ ಸ್ಥಾನ",
     achievements_page_students_s2_item_2: "ಬಾಲಕರ ಲಾಂಗ್ ಜಂಪ್ - ತೃತೀಯ ಸ್ಥಾನ",
     achievements_page_students_s2_item_3: "ಬಾಲಕಿಯರ 600 ಮೀಟರ್ ಓಟ - ಪ್ರಥಮ ಸ್ಥಾನ",
-    achievements_page_students_s3_title: "ಹೋಬಳಿ ಮಟ್ಟದ ಕ್ರೀಡಾಕೂಟ - ಗುಂಪು ಸ್ಪರ್ಧೆಗಳು",
+    achievements_page_students_s3_title:
+      "ಹೋಬಳಿ ಮಟ್ಟದ ಕ್ರೀಡಾಕೂಟ - ಗುಂಪು ಸ್ಪರ್ಧೆಗಳು",
     achievements_page_students_s3_item_1: "ಬಾಲಕಿಯರ ಖೋ-ಖೋ - ಪ್ರಥಮ ಸ್ಥಾನ",
     achievements_page_students_s3_item_2: "ಬಾಲಕರ ಖೋ-ಖೋ - ಪ್ರಥಮ ಸ್ಥಾನ",
     achievements_page_students_s3_item_3: "ಬಾಲಕರ ರಿಲೇ - ಪ್ರಥಮ ಸ್ಥಾನ",
@@ -952,30 +1204,40 @@ const dictionary: Record<Lang, Record<string, string>> = {
     achievements_page_students_s5_title: "ತಾಲ್ಲೂಕು ಮಟ್ಟದ ಸಾಧನೆಗಳು",
     achievements_page_students_s5_item_1: "ಬಾಲಕಿಯರ ನೆಟ್‌ಬಾಲ್ - ದ್ವಿತೀಯ ಸ್ಥಾನ",
     achievements_page_students_s5_item_2: "ಬಾಲಕಿಯರ ಖೋ-ಖೋ - ದ್ವಿತೀಯ ಸ್ಥಾನ",
-    achievements_page_students_s5_item_3: "400 ಮೀಟರ್ ಓಟ - ಲಕ್ಷ್ಮಿ ಎಸ್ ಆರ್ ಪ್ರಥಮ ಸ್ಥಾನ ಪಡೆದರು",
+    achievements_page_students_s5_item_3:
+      "400 ಮೀಟರ್ ಓಟ - ಲಕ್ಷ್ಮಿ ಎಸ್ ಆರ್ ಪ್ರಥಮ ಸ್ಥಾನ ಪಡೆದರು",
     achievements_page_students_s6_title: "ಪ್ರತಿಭಾ ಕಾರಂಜಿ ಕಾರ್ಯಕ್ರಮ",
-    achievements_page_students_s6_item_1: "ಪ್ರೀತಿ (10ನೇ ತರಗತಿ) ತಾಲ್ಲೂಕು ಮಟ್ಟದಲ್ಲಿ ದ್ವಿತೀಯ ಸ್ಥಾನ ಪಡೆದು ಜಿಲ್ಲಾಮಟ್ಟಕ್ಕೆ ಆಯ್ಕೆಯಾದರು.",
+    achievements_page_students_s6_item_1:
+      "ಪ್ರೀತಿ (10ನೇ ತರಗತಿ) ತಾಲ್ಲೂಕು ಮಟ್ಟದಲ್ಲಿ ದ್ವಿತೀಯ ಸ್ಥಾನ ಪಡೆದು ಜಿಲ್ಲಾಮಟ್ಟಕ್ಕೆ ಆಯ್ಕೆಯಾದರು.",
     achievements_page_recognition_title: "ಗೌರವಗಳು ಮತ್ತು ಪ್ರಶಸ್ತಿಗಳು",
-    achievements_page_recognition_1: "ಶ್ರೀ ಮಾಧವ ವಿದ್ಯಾ ಮಂದಿರ, ಭವನಿನಗರ, ಸಿರಾ ಪ್ರಾಥಮಿಕ ಶಾಲೆಯ ಮುಖ್ಯ ಶಿಕ್ಷಕಿ ಸಂಗಮ ಮಾತಾಜಿ ಅವರಿಗೆ 01/11/2025 ರಂದು ಶಿಕ್ಷಣ ಮತ್ತು ಸಂಸ್ಕೃತಿ ಕ್ಷೇತ್ರದಲ್ಲಿ ಕನ್ನಡ ರಾಜ್ಯೋತ್ಸವ ಪ್ರಶಸ್ತಿ ಪ್ರದಾನಿಸಲಾಯಿತು.",
-    achievements_page_recognition_2: "03/08/2025 ರಂದು ಸಂಗಮ ಮಾತಾಜಿ ಅವರಿಗೆ ರಾಜ್ಯ ಮಟ್ಟದ ಆಚಾರ್ಯ ಶ್ರೀ ಪ್ರಶಸ್ತಿ ಪ್ರದಾನಿಸಲಾಯಿತು.",
-    achievements_page_recognition_3: "05/01/2026 ರಂದು ಸಂಗಮ ಮಾತಾಜಿ ಅವರಿಗೆ ಸಾವಿತ್ರಿಬಾಯಿ ಫುಲೆ ಪ್ರಶಸ್ತಿ ಪ್ರದಾನಿಸಲಾಯಿತು.",
+    achievements_page_recognition_1:
+      "ಶ್ರೀ ಮಾಧವ ವಿದ್ಯಾ ಮಂದಿರ, ಭವನಿನಗರ, ಸಿರಾ ಪ್ರಾಥಮಿಕ ಶಾಲೆಯ ಮುಖ್ಯ ಶಿಕ್ಷಕಿ ಸಂಗಮ ಮಾತಾಜಿ ಅವರಿಗೆ 01/11/2025 ರಂದು ಶಿಕ್ಷಣ ಮತ್ತು ಸಂಸ್ಕೃತಿ ಕ್ಷೇತ್ರದಲ್ಲಿ ಕನ್ನಡ ರಾಜ್ಯೋತ್ಸವ ಪ್ರಶಸ್ತಿ ಪ್ರದಾನಿಸಲಾಯಿತು.",
+    achievements_page_recognition_2:
+      "03/08/2025 ರಂದು ಸಂಗಮ ಮಾತಾಜಿ ಅವರಿಗೆ ರಾಜ್ಯ ಮಟ್ಟದ ಆಚಾರ್ಯ ಶ್ರೀ ಪ್ರಶಸ್ತಿ ಪ್ರದಾನಿಸಲಾಯಿತು.",
+    achievements_page_recognition_3:
+      "05/01/2026 ರಂದು ಸಂಗಮ ಮಾತಾಜಿ ಅವರಿಗೆ ಸಾವಿತ್ರಿಬಾಯಿ ಫುಲೆ ಪ್ರಶಸ್ತಿ ಪ್ರದಾನಿಸಲಾಯಿತು.",
     academics_cta: "ಪಾಠ್ಯಕ್ರಮ ನೋಡಿ",
     academics_page_title: "ಶೈಕ್ಷಣಿಕ ಶ್ರೇಷ್ಠತೆ",
     academics_page_subtitle: "ಮನಸ್ಸುಗಳನ್ನು ಬೆಳೆಸಿ, ಭವಿಷ್ಯವನ್ನು ರೂಪಿಸುತ್ತೇವೆ",
-    academics_page_intro: "ನಮ್ಮ ಸಮಗ್ರ ಶೈಕ್ಷಣಿಕ ಕಾರ್ಯಕ್ರಮವು ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಮೂಲ ವಿಷಯಗಳಲ್ಲಿ ಗಟ್ಟಿಯಾದ ಅಡಿಪಾಯ ಒದಗಿಸುವುದರ ಜೊತೆಗೆ ವಿಮರ್ಶಾತ್ಮಕ ಚಿಂತನೆ, ಸೃಜನಶೀಲತೆ ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ ಅರಿವು ಬೆಳೆಸುವಂತೆ ರೂಪಿಸಲಾಗಿದೆ.",
+    academics_page_intro:
+      "ನಮ್ಮ ಸಮಗ್ರ ಶೈಕ್ಷಣಿಕ ಕಾರ್ಯಕ್ರಮವು ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಮೂಲ ವಿಷಯಗಳಲ್ಲಿ ಗಟ್ಟಿಯಾದ ಅಡಿಪಾಯ ಒದಗಿಸುವುದರ ಜೊತೆಗೆ ವಿಮರ್ಶಾತ್ಮಕ ಚಿಂತನೆ, ಸೃಜನಶೀಲತೆ ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ ಅರಿವು ಬೆಳೆಸುವಂತೆ ರೂಪಿಸಲಾಗಿದೆ.",
     academics_page_curriculum_overview: "ಪಾಠ್ಯಕ್ರಮ ಅವಲೋಕನ",
     academics_page_tab_pre_primary: "ಪೂರ್ವ-ಪ್ರಾಥಮಿಕ",
     academics_page_tab_primary: "ಪ್ರಾಥಮಿಕ",
     academics_page_tab_middle: "ಮಧ್ಯಮ ಶಾಲೆ",
     academics_page_tab_high: "ಪ್ರೌಢ ಶಾಲೆ",
     academics_page_grade_pre_primary: "ಪೂರ್ವ-ಪ್ರಾಥಮಿಕ (ನರ್ಸರಿ - ಯುಕೆಜಿ)",
-    academics_page_grade_pre_primary_desc: "ಆಟ ಆಧಾರಿತ ಕಲಿಕೆಯ ಮೂಲಕ ಭಾಷಾ ಅಭಿವೃದ್ಧಿ, ಮೂಲ ಸಂಖ್ಯಾಜ್ಞಾನ ಮತ್ತು ಸಾಮಾಜಿಕ ಕೌಶಲ್ಯಗಳ ಮೇಲೆ ಗಮನ ನೀಡಲಾಗುತ್ತದೆ.",
+    academics_page_grade_pre_primary_desc:
+      "ಆಟ ಆಧಾರಿತ ಕಲಿಕೆಯ ಮೂಲಕ ಭಾಷಾ ಅಭಿವೃದ್ಧಿ, ಮೂಲ ಸಂಖ್ಯಾಜ್ಞಾನ ಮತ್ತು ಸಾಮಾಜಿಕ ಕೌಶಲ್ಯಗಳ ಮೇಲೆ ಗಮನ ನೀಡಲಾಗುತ್ತದೆ.",
     academics_page_grade_primary: "ಪ್ರಾಥಮಿಕ (I - V)",
-    academics_page_grade_primary_desc: "ಓದು, ಬರವಣಿಗೆ, ಅಂಕಗಣಿತ ಮತ್ತು ವೈಜ್ಞಾನಿಕ ಚಿಂತನೆಗೆ ಒತ್ತು ನೀಡುವ ಅಡಿಪಾಯ ನಿರ್ಮಾಣ.",
+    academics_page_grade_primary_desc:
+      "ಓದು, ಬರವಣಿಗೆ, ಅಂಕಗಣಿತ ಮತ್ತು ವೈಜ್ಞಾನಿಕ ಚಿಂತನೆಗೆ ಒತ್ತು ನೀಡುವ ಅಡಿಪಾಯ ನಿರ್ಮಾಣ.",
     academics_page_grade_middle: "ಮಧ್ಯಮ ಶಾಲೆ (VI - VIII)",
-    academics_page_grade_middle_desc: "ಪ್ರಾಯೋಗಿಕ ಕಲಿಕೆಯ ಮೂಲಕ ಮೇಲ್ದರ್ಜೆಯ ತರಗತಿಗಳಿಗೆ ಸಿದ್ಧಗೊಳಿಸುವ ಸಮಗ್ರ ಪಾಠ್ಯಕ್ರಮ.",
+    academics_page_grade_middle_desc:
+      "ಪ್ರಾಯೋಗಿಕ ಕಲಿಕೆಯ ಮೂಲಕ ಮೇಲ್ದರ್ಜೆಯ ತರಗತಿಗಳಿಗೆ ಸಿದ್ಧಗೊಳಿಸುವ ಸಮಗ್ರ ಪಾಠ್ಯಕ್ರಮ.",
     academics_page_grade_high: "ಪ್ರೌಢ ಶಾಲೆ (IX - X)",
-    academics_page_grade_high_desc: "ಮಂಡಳಿ ಪರೀಕ್ಷಾ ಸಿದ್ಧತೆ ಮತ್ತು ವೃತ್ತಿ ಮಾರ್ಗದರ್ಶನಕ್ಕೆ ಒತ್ತು ನೀಡಿದ ಪಾಠ್ಯಕ್ರಮ.",
+    academics_page_grade_high_desc:
+      "ಮಂಡಳಿ ಪರೀಕ್ಷಾ ಸಿದ್ಧತೆ ಮತ್ತು ವೃತ್ತಿ ಮಾರ್ಗದರ್ಶನಕ್ಕೆ ಒತ್ತು ನೀಡಿದ ಪಾಠ್ಯಕ್ರಮ.",
     academics_page_subject_english: "ಇಂಗ್ಲಿಷ್",
     academics_page_subject_kannada: "ಕನ್ನಡ",
     academics_page_subject_hindi: "ಹಿಂದಿ",
@@ -989,27 +1251,37 @@ const dictionary: Record<Lang, Record<string, string>> = {
     academics_page_subject_social_studies: "ಸಾಮಾಜಿಕ ವಿಜ್ಞಾನ",
     academics_page_subject_art: "ಕಲೆ",
     academics_page_feature_curriculum_title: "ಸಮಗ್ರ ಪಾಠ್ಯಕ್ರಮ",
-    academics_page_feature_curriculum_desc: "ಸ್ಥಳೀಯ ಸಂದರ್ಭ ಮತ್ತು ಶೈಕ್ಷಣಿಕ ಮಾನದಂಡಗಳಿಗೆ ಹೊಂದುವ ಸಮತೋಲಿತ ಪಾಠ್ಯಕ್ರಮ.",
+    academics_page_feature_curriculum_desc:
+      "ಸ್ಥಳೀಯ ಸಂದರ್ಭ ಮತ್ತು ಶೈಕ್ಷಣಿಕ ಮಾನದಂಡಗಳಿಗೆ ಹೊಂದುವ ಸಮತೋಲಿತ ಪಾಠ್ಯಕ್ರಮ.",
     academics_page_feature_small_classes_title: "ಸಣ್ಣ ತರಗತಿ ಗಾತ್ರಗಳು",
-    academics_page_feature_small_classes_desc: "ಕಡಿಮೆ ವಿದ್ಯಾರ್ಥಿ-ಶಿಕ್ಷಕ ಅನುಪಾತದಿಂದ ವೈಯಕ್ತಿಕ ಗಮನ ಮತ್ತು ವೈಯಕ್ತಿಕೃತ ಕಲಿಕೆ ಸಾಧ್ಯವಾಗುತ್ತದೆ.",
+    academics_page_feature_small_classes_desc:
+      "ಕಡಿಮೆ ವಿದ್ಯಾರ್ಥಿ-ಶಿಕ್ಷಕ ಅನುಪಾತದಿಂದ ವೈಯಕ್ತಿಕ ಗಮನ ಮತ್ತು ವೈಯಕ್ತಿಕೃತ ಕಲಿಕೆ ಸಾಧ್ಯವಾಗುತ್ತದೆ.",
     academics_page_feature_regular_assessments_title: "ನಿಯಮಿತ ಮೌಲ್ಯಮಾಪನ",
-    academics_page_feature_regular_assessments_desc: "ಯುನಿಟ್ ಪರೀಕ್ಷೆಗಳು, ಯೋಜನೆಗಳು ಮತ್ತು ಸಮಗ್ರ ಪರೀಕ್ಷೆಗಳ ಮೂಲಕ ನಿರಂತರ ಮೌಲ್ಯಮಾಪನ.",
+    academics_page_feature_regular_assessments_desc:
+      "ಯುನಿಟ್ ಪರೀಕ್ಷೆಗಳು, ಯೋಜನೆಗಳು ಮತ್ತು ಸಮಗ್ರ ಪರೀಕ್ಷೆಗಳ ಮೂಲಕ ನಿರಂತರ ಮೌಲ್ಯಮಾಪನ.",
     academics_page_feature_digital_learning_title: "ಡಿಜಿಟಲ್ ಕಲಿಕೆ",
-    academics_page_feature_digital_learning_desc: "ಕಲಿಕಾ ಅನುಭವವನ್ನು ಹೆಚ್ಚಿಸುವ ಆಧುನಿಕ ತಂತ್ರಜ್ಞಾನ ಹೊಂದಿದ ಸ್ಮಾರ್ಟ್ ತರಗತಿಗಳು.",
+    academics_page_feature_digital_learning_desc:
+      "ಕಲಿಕಾ ಅನುಭವವನ್ನು ಹೆಚ್ಚಿಸುವ ಆಧುನಿಕ ತಂತ್ರಜ್ಞಾನ ಹೊಂದಿದ ಸ್ಮಾರ್ಟ್ ತರಗತಿಗಳು.",
     academics_page_co_curricular_title: "ಪಠ್ಯೇತರ ಚಟುವಟಿಕೆಗಳು",
     academics_page_featured_badge: "ವಿಶೇಷ",
     academics_page_cocurricular_bhagavad_gita_title: "ಭಗವದ್ಗೀತೆ",
-    academics_page_cocurricular_bhagavad_gita_desc: "ಪ್ರತಿ ವಿದ್ಯಾರ್ಥಿಯಲ್ಲಿ ನೈತಿಕ ಮೌಲ್ಯ, ಆಧ್ಯಾತ್ಮಿಕ ಬಲ ಮತ್ತು ಶಾಶ್ವತ ಜ್ಞಾನ ಬೆಳೆಸಲು ಭಗವದ್ಗೀತೆಯ ದೈನಂದಿನ ಪಠಣ ಮತ್ತು ಅಧ್ಯಯನ.",
+    academics_page_cocurricular_bhagavad_gita_desc:
+      "ಪ್ರತಿ ವಿದ್ಯಾರ್ಥಿಯಲ್ಲಿ ನೈತಿಕ ಮೌಲ್ಯ, ಆಧ್ಯಾತ್ಮಿಕ ಬಲ ಮತ್ತು ಶಾಶ್ವತ ಜ್ಞಾನ ಬೆಳೆಸಲು ಭಗವದ್ಗೀತೆಯ ದೈನಂದಿನ ಪಠಣ ಮತ್ತು ಅಧ್ಯಯನ.",
     academics_page_cocurricular_sanskrit_title: "ಸಂಸ್ಕೃತ ಅಧ್ಯಯನ",
-    academics_page_cocurricular_sanskrit_desc: "ಭಾರತೀಯ ಸಂಸ್ಕೃತಿ, ಶಾಸ್ತ್ರಗಳು ಮತ್ತು ಪರಂಪರೆಯೊಂದಿಗೆ ಆಳವಾದ ನಂಟು ಬೆಳೆಸಲು ಸಂಸ್ಕೃತ ಕಲಿಕೆ.",
+    academics_page_cocurricular_sanskrit_desc:
+      "ಭಾರತೀಯ ಸಂಸ್ಕೃತಿ, ಶಾಸ್ತ್ರಗಳು ಮತ್ತು ಪರಂಪರೆಯೊಂದಿಗೆ ಆಳವಾದ ನಂಟು ಬೆಳೆಸಲು ಸಂಸ್ಕೃತ ಕಲಿಕೆ.",
     academics_page_cocurricular_science_club_title: "ವಿಜ್ಞಾನ ಕ್ಲಬ್",
-    academics_page_cocurricular_science_club_desc: "ವೈಜ್ಞಾನಿಕ ಮನೋಭಾವ ಬೆಳೆಸಲು ಪ್ರಾಯೋಗಿಕ ಪ್ರಯೋಗಗಳು ಮತ್ತು ವಿಜ್ಞಾನ ಪ್ರದರ್ಶನಗಳು.",
+    academics_page_cocurricular_science_club_desc:
+      "ವೈಜ್ಞಾನಿಕ ಮನೋಭಾವ ಬೆಳೆಸಲು ಪ್ರಾಯೋಗಿಕ ಪ್ರಯೋಗಗಳು ಮತ್ತು ವಿಜ್ಞಾನ ಪ್ರದರ್ಶನಗಳು.",
     academics_page_cocurricular_art_craft_title: "ಕಲೆ ಮತ್ತು ಕೈಗಾರಿಕೆ",
-    academics_page_cocurricular_art_craft_desc: "ವಿವಿಧ ಕಲಾರೂಪಗಳು ಮತ್ತು ಕೈಗಾರಿಕಾ ಚಟುವಟಿಕೆಗಳ ಮೂಲಕ ಸೃಜನಾತ್ಮಕ ಅಭಿವ್ಯಕ್ತಿ.",
+    academics_page_cocurricular_art_craft_desc:
+      "ವಿವಿಧ ಕಲಾರೂಪಗಳು ಮತ್ತು ಕೈಗಾರಿಕಾ ಚಟುವಟಿಕೆಗಳ ಮೂಲಕ ಸೃಜನಾತ್ಮಕ ಅಭಿವ್ಯಕ್ತಿ.",
     academics_page_cocurricular_music_dance_title: "ಸಂಗೀತ ಮತ್ತು ನೃತ್ಯ",
-    academics_page_cocurricular_music_dance_desc: "ಶಾಸ್ತ್ರೀಯ ಸಂಗೀತ, ಜನಪದ ನೃತ್ಯ ಮತ್ತು ಆಧುನಿಕ ಪ್ರದರ್ಶನಗಳನ್ನು ಒಳಗೊಂಡ ಸಾಂಸ್ಕೃತಿಕ ಚಟುವಟಿಕೆಗಳು.",
+    academics_page_cocurricular_music_dance_desc:
+      "ಶಾಸ್ತ್ರೀಯ ಸಂಗೀತ, ಜನಪದ ನೃತ್ಯ ಮತ್ತು ಆಧುನಿಕ ಪ್ರದರ್ಶನಗಳನ್ನು ಒಳಗೊಂಡ ಸಾಂಸ್ಕೃತಿಕ ಚಟುವಟಿಕೆಗಳು.",
     academics_page_cocurricular_sports_games_title: "ಕ್ರೀಡೆ ಮತ್ತು ಆಟಗಳು",
-    academics_page_cocurricular_sports_games_desc: "ಕ್ರಿಕೆಟ್, ಅಥ್ಲೆಟಿಕ್ಸ್, ಖೋ-ಖೋ, ಕಬಡ್ಡಿ ಮತ್ತು ಒಳಾಂಗಣ ಆಟಗಳ ಮೂಲಕ ದೈಹಿಕ ಕ್ಷಮತೆ ಅಭಿವೃದ್ಧಿ.",
+    academics_page_cocurricular_sports_games_desc:
+      "ಕ್ರಿಕೆಟ್, ಅಥ್ಲೆಟಿಕ್ಸ್, ಖೋ-ಖೋ, ಕಬಡ್ಡಿ ಮತ್ತು ಒಳಾಂಗಣ ಆಟಗಳ ಮೂಲಕ ದೈಹಿಕ ಕ್ಷಮತೆ ಅಭಿವೃದ್ಧಿ.",
     academics_page_assessment_methods_title: "ಮೌಲ್ಯಮಾಪನ ವಿಧಾನಗಳು",
     academics_page_assessment_1: "ಯುನಿಟ್ ಪರೀಕ್ಷೆಗಳು ಮತ್ತು ಅವಧಿಕ ಮೌಲ್ಯಮಾಪನಗಳು",
     academics_page_assessment_2: "ಯೋಜನಾ ಕೆಲಸ ಮತ್ತು ಪ್ರಾಯೋಗಿಕ ಕಾರ್ಯಗಳು",
@@ -1027,7 +1299,8 @@ const dictionary: Record<Lang, Record<string, string>> = {
     copyright: "ಎಲ್ಲ ಹಕ್ಕುಗಳು ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ.",
     hero_tagline_prefix: "ಮೂಲ್ಯಗಳು, ಶಿಕ್ಷಣ ಮತ್ತು ಸಂಸ್ಕೃತಿ",
     hero_tagline_suffix: "ಪ್ರತಿ ವಿದ್ಯಾರ್ಥಿಗಾಗಿ",
-    about_snippet: "ಮೌಲ್ಯಾಧಾರಿತ, ಸಮಗ್ರ ಶಿಕ್ಷಣವನ್ನು ನೀಡುವ ಪೋಷಕ ವಾತಾವರಣ. ಅಧ್ಯಯನದ ಜೊತೆಗೆ ಸಂಸ್ಕೃತಿ, ಕ್ರೀಡೆ ಮತ್ತು ಕಲೆಗಳಿಗೆ ಸಮಾನ ಮಹತ್ವ ನೀಡಲಾಗುತ್ತದೆ. ಸಿರಾ ಪಟ್ಟಣದಲ್ಲಿ ಇರುವ ನಮ್ಮ ಸುಂದರವಾದ ಸಂಸ್ಥೆ. ಕಳೆದ ನಾಲ್ಕು ದಶಕಕ್ಕೂ ಹೆಚ್ಚು ಕಾಲದಿಂದ ಯುವ ಮನಸ್ಸುಗಳನ್ನು ರೂಪಿಸುತ್ತಿದ್ದು, ಅವರನ್ನು ಜವಾಬ್ದಾರಿಯುತ ನಾಗರಿಕರು ಮತ್ತು ಭವಿಷ್ಯದ ನಾಯಕರಾಗಿ ಬೆಳೆಸುತ್ತಿದೆ.",
+    about_snippet:
+      "ಮೌಲ್ಯಾಧಾರಿತ, ಸಮಗ್ರ ಶಿಕ್ಷಣವನ್ನು ನೀಡುವ ಪೋಷಕ ವಾತಾವರಣ. ಅಧ್ಯಯನದ ಜೊತೆಗೆ ಸಂಸ್ಕೃತಿ, ಕ್ರೀಡೆ ಮತ್ತು ಕಲೆಗಳಿಗೆ ಸಮಾನ ಮಹತ್ವ ನೀಡಲಾಗುತ್ತದೆ. ಸಿರಾ ಪಟ್ಟಣದಲ್ಲಿ ಇರುವ ನಮ್ಮ ಸುಂದರವಾದ ಸಂಸ್ಥೆ. ಕಳೆದ ನಾಲ್ಕು ದಶಕಕ್ಕೂ ಹೆಚ್ಚು ಕಾಲದಿಂದ ಯುವ ಮನಸ್ಸುಗಳನ್ನು ರೂಪಿಸುತ್ತಿದ್ದು, ಅವರನ್ನು ಜವಾಬ್ದಾರಿಯುತ ನಾಗರಿಕರು ಮತ್ತು ಭವಿಷ್ಯದ ನಾಯಕರಾಗಿ ಬೆಳೆಸುತ್ತಿದೆ.",
     ticker_1: "ಹೊಸ ಶೈಕ್ಷಣಿಕ ವರ್ಷದ ಪ್ರವೇಶಗಳು ಪ್ರಾರಂಭ.",
     ticker_2: "ಜಿಲ್ಲಾಸ್ಥರ ಕ್ರೀಡೆಯಲ್ಲಿ ನಮ್ಮ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಅಭಿನಂದನೆಗಳು!",
     ticker_3: "ಸೆಪ್ಟೆಂಬರ್ 12ರಂದು ವಿಜ್ಞಾನ ಮೇಳ – ಪೋಷಕರು ಸ್ವಾಗತ.",
@@ -1035,65 +1308,86 @@ const dictionary: Record<Lang, Record<string, string>> = {
     gallery_title: "ಚಿತ್ರಶಾಲೆ",
     gallery_page_title: "ಫೋಟೋ ಗ್ಯಾಲರಿ",
     gallery_page_subtitle: "ಕಲಿಕೆ ಮತ್ತು ಬೆಳವಣಿಗೆಯ ಕ್ಷಣಗಳ ಸಂಗ್ರಹ",
-    gallery_page_intro: "ವಿದ್ಯಾರ್ಥಿಗಳ ಸಾಧನೆಗಳು, ಸಾಂಸ್ಕೃತಿಕ ಕಾರ್ಯಕ್ರಮಗಳು ಮತ್ತು ದೈನಂದಿನ ಕಲಿಕಾ ಅನುಭವಗಳನ್ನು ತೋರಿಸುವ ಸುಂದರ ಕ್ಷಣಗಳ ಮೂಲಕ ನಮ್ಮ ಶಾಲಾ ಜೀವನವನ್ನು ಅನ್ವೇಷಿಸಿ.",
+    gallery_page_intro:
+      "ವಿದ್ಯಾರ್ಥಿಗಳ ಸಾಧನೆಗಳು, ಸಾಂಸ್ಕೃತಿಕ ಕಾರ್ಯಕ್ರಮಗಳು ಮತ್ತು ದೈನಂದಿನ ಕಲಿಕಾ ಅನುಭವಗಳನ್ನು ತೋರಿಸುವ ಸುಂದರ ಕ್ಷಣಗಳ ಮೂಲಕ ನಮ್ಮ ಶಾಲಾ ಜೀವನವನ್ನು ಅನ್ವೇಷಿಸಿ.",
     gallery_page_photo_label: "ಫೋಟೋ",
     gallery_page_recent_events_title: "ಇತ್ತೀಚಿನ ಕಾರ್ಯಕ್ರಮಗಳು",
     gallery_page_category_campus_title: "ಕ್ಯಾಂಪಸ್ ಜೀವನ",
-    gallery_page_category_campus_desc: "ಸುಂದರ ಕ್ಯಾಂಪಸ್ ದೃಶ್ಯಗಳು ಮತ್ತು ಕಲಿಕಾ ವಾತಾವರಣ",
+    gallery_page_category_campus_desc:
+      "ಸುಂದರ ಕ್ಯಾಂಪಸ್ ದೃಶ್ಯಗಳು ಮತ್ತು ಕಲಿಕಾ ವಾತಾವರಣ",
     gallery_page_category_students_title: "ವಿದ್ಯಾರ್ಥಿ ಚಟುವಟಿಕೆಗಳು",
-    gallery_page_category_students_desc: "ವಿವಿಧ ಕಲಿಕಾ ಚಟುವಟಿಕೆಗಳಲ್ಲಿ ತೊಡಗಿರುವ ವಿದ್ಯಾರ್ಥಿಗಳು",
+    gallery_page_category_students_desc:
+      "ವಿವಿಧ ಕಲಿಕಾ ಚಟುವಟಿಕೆಗಳಲ್ಲಿ ತೊಡಗಿರುವ ವಿದ್ಯಾರ್ಥಿಗಳು",
     gallery_page_category_sports_title: "ಕ್ರೀಡೆ ಮತ್ತು ಆಟಗಳು",
     gallery_page_category_sports_desc: "ದೈಹಿಕ ಶಿಕ್ಷಣ ಮತ್ತು ಕ್ರೀಡಾ ಸಾಧನೆಗಳು",
     gallery_page_category_cultural_title: "ಸಾಂಸ್ಕೃತಿಕ ಕಾರ್ಯಕ್ರಮಗಳು",
-    gallery_page_category_cultural_desc: "ಹಬ್ಬಗಳು, ಪ್ರದರ್ಶನಗಳು ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ ಸಂಭ್ರಮ",
+    gallery_page_category_cultural_desc:
+      "ಹಬ್ಬಗಳು, ಪ್ರದರ್ಶನಗಳು ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ ಸಂಭ್ರಮ",
     gallery_page_category_arts_title: "ಕಲೆ ಮತ್ತು ಕೈಗಾರಿಕೆ",
-    gallery_page_category_arts_desc: "ಸೃಜನಾತ್ಮಕ ಅಭಿವ್ಯಕ್ತಿ ಮತ್ತು ಕಲಾತ್ಮಕ ಪ್ರತಿಭೆಗಳು",
+    gallery_page_category_arts_desc:
+      "ಸೃಜನಾತ್ಮಕ ಅಭಿವ್ಯಕ್ತಿ ಮತ್ತು ಕಲಾತ್ಮಕ ಪ್ರತಿಭೆಗಳು",
     gallery_page_category_academics_title: "ಶೈಕ್ಷಣಿಕ ಶ್ರೇಷ್ಠತೆ",
     gallery_page_category_academics_desc: "ತರಗತಿ ಕಲಿಕೆ ಮತ್ತು ಶೈಕ್ಷಣಿಕ ಸಾಧನೆಗಳು",
     gallery_page_event_1_title: "ವಾರ್ಷಿಕ ಕ್ರೀಡಾ ದಿನ 2024",
     gallery_page_event_1_date: "ಡಿಸೆಂಬರ್ 15, 2024",
-    gallery_page_event_1_desc: "ವಿದ್ಯಾರ್ಥಿಗಳು ವಿವಿಧ ಟ್ರ್ಯಾಕ್ ಮತ್ತು ಫೀಲ್ಡ್ ಸ್ಪರ್ಧೆಗಳಲ್ಲಿ ತಮ್ಮ ಕ್ರೀಡಾ ಪ್ರತಿಭೆಯನ್ನು ಪ್ರದರ್ಶಿಸಿದರು",
+    gallery_page_event_1_desc:
+      "ವಿದ್ಯಾರ್ಥಿಗಳು ವಿವಿಧ ಟ್ರ್ಯಾಕ್ ಮತ್ತು ಫೀಲ್ಡ್ ಸ್ಪರ್ಧೆಗಳಲ್ಲಿ ತಮ್ಮ ಕ್ರೀಡಾ ಪ್ರತಿಭೆಯನ್ನು ಪ್ರದರ್ಶಿಸಿದರು",
     gallery_page_event_1_category: "ಕ್ರೀಡೆ",
     gallery_page_event_2_title: "ವಿಜ್ಞಾನ ಪ್ರದರ್ಶನ",
     gallery_page_event_2_date: "ನವೆಂಬರ್ 20, 2024",
-    gallery_page_event_2_desc: "ವಿದ್ಯಾರ್ಥಿಗಳು ನವೀನ ವಿಜ್ಞಾನ ಯೋಜನೆಗಳು ಮತ್ತು ಪ್ರಯೋಗಗಳನ್ನು ಪ್ರದರ್ಶಿಸಿದರು",
+    gallery_page_event_2_desc:
+      "ವಿದ್ಯಾರ್ಥಿಗಳು ನವೀನ ವಿಜ್ಞಾನ ಯೋಜನೆಗಳು ಮತ್ತು ಪ್ರಯೋಗಗಳನ್ನು ಪ್ರದರ್ಶಿಸಿದರು",
     gallery_page_event_2_category: "ವಿದ್ಯಾಭ್ಯಾಸ",
     gallery_page_event_3_title: "ಸಾಂಸ್ಕೃತಿಕ ಹಬ್ಬ",
     gallery_page_event_3_date: "ಅಕ್ಟೋಬರ್ 25, 2024",
-    gallery_page_event_3_desc: "ನಮ್ಮ ಪರಂಪರೆಯನ್ನು ಹಬ್ಬಿಸುವ ಸಾಂಪ್ರದಾಯಿಕ ನೃತ್ಯ, ಸಂಗೀತ ಮತ್ತು ನಾಟಕ ಪ್ರದರ್ಶನಗಳು",
+    gallery_page_event_3_desc:
+      "ನಮ್ಮ ಪರಂಪರೆಯನ್ನು ಹಬ್ಬಿಸುವ ಸಾಂಪ್ರದಾಯಿಕ ನೃತ್ಯ, ಸಂಗೀತ ಮತ್ತು ನಾಟಕ ಪ್ರದರ್ಶನಗಳು",
     gallery_page_event_3_category: "ಸಾಂಸ್ಕೃತಿಕ",
     news_page_title: "ಸುದ್ದಿ ಮತ್ತು ಕಾರ್ಯಕ್ರಮಗಳು",
     news_page_subtitle: "ಶಾಲಾ ಚಟುವಟಿಕೆಗಳು ಮತ್ತು ಸಾಧನೆಗಳೊಂದಿಗೆ ನವೀಕರಿತರಾಗಿ",
-    news_page_intro: "ಶ್ರೀ ಮಾಧವ ವಿದ್ಯಾ ಮಂದಿರದ ಇತ್ತೀಚಿನ ಬೆಳವಣಿಗೆಗಳನ್ನು ತಿಳಿದುಕೊಳ್ಳಿ - ಶೈಕ್ಷಣಿಕ ಸಾಧನೆಗಳಿಂದ ಸಾಂಸ್ಕೃತಿಕ ಉತ್ಸವಗಳು ಮತ್ತು ಕ್ರೀಡಾಕಾರ್ಯಕ್ರಮಗಳವರೆಗೆ.",
+    news_page_intro:
+      "ಶ್ರೀ ಮಾಧವ ವಿದ್ಯಾ ಮಂದಿರದ ಇತ್ತೀಚಿನ ಬೆಳವಣಿಗೆಗಳನ್ನು ತಿಳಿದುಕೊಳ್ಳಿ - ಶೈಕ್ಷಣಿಕ ಸಾಧನೆಗಳಿಂದ ಸಾಂಸ್ಕೃತಿಕ ಉತ್ಸವಗಳು ಮತ್ತು ಕ್ರೀಡಾಕಾರ್ಯಕ್ರಮಗಳವರೆಗೆ.",
     news_page_latest_title: "ಇತ್ತೀಚಿನ ಸುದ್ದಿ",
     news_page_article_1_title: "ವಾರ್ಷಿಕ ಕ್ರೀಡಾ ದಿನ 2024 - ಭರ್ಜರಿ ಯಶಸ್ಸು",
-    news_page_article_1_excerpt: "200 ಕ್ಕೂ ಹೆಚ್ಚು ವಿದ್ಯಾರ್ಥಿಗಳು ವಿವಿಧ ವಿಭಾಗಗಳಲ್ಲಿ ಸ್ಪರ್ಧಿಸಿ ಅಸಾಧಾರಣ ಕ್ರೀಡಾ ಪ್ರತಿಭೆ ಪ್ರದರ್ಶಿಸಿದರು.",
-    news_page_article_1_content: "ವಾರ್ಷಿಕ ಕ್ರೀಡಾ ದಿನ 2024 ಡಿಸೆಂಬರ್ 15ರಂದು ಅತ್ಯಂತ ಉತ್ಸಾಹದಿಂದ ನಡೆಯಿತು. 100ಮೀ, 200ಮೀ, 400ಮೀ ಓಟ, ಲಾಂಗ್ ಜಂಪ್, ಹೈ ಜಂಪ್, ಶಾಟ್ ಪುಟ್ ಮತ್ತು ರಿಲೇ ಸ್ಪರ್ಧೆಗಳು ನಡೆದವು. ವಿದ್ಯಾರ್ಥಿಗಳು ತಮ್ಮ ವಿಭಾಗಗಳಲ್ಲಿ ಪದಕಗಳಿಗಾಗಿ ಸ್ಪರ್ಧಿಸಿ ದಿನವನ್ನು ರೋಚಕಗೊಳಿಸಿದರು.",
+    news_page_article_1_excerpt:
+      "200 ಕ್ಕೂ ಹೆಚ್ಚು ವಿದ್ಯಾರ್ಥಿಗಳು ವಿವಿಧ ವಿಭಾಗಗಳಲ್ಲಿ ಸ್ಪರ್ಧಿಸಿ ಅಸಾಧಾರಣ ಕ್ರೀಡಾ ಪ್ರತಿಭೆ ಪ್ರದರ್ಶಿಸಿದರು.",
+    news_page_article_1_content:
+      "ವಾರ್ಷಿಕ ಕ್ರೀಡಾ ದಿನ 2024 ಡಿಸೆಂಬರ್ 15ರಂದು ಅತ್ಯಂತ ಉತ್ಸಾಹದಿಂದ ನಡೆಯಿತು. 100ಮೀ, 200ಮೀ, 400ಮೀ ಓಟ, ಲಾಂಗ್ ಜಂಪ್, ಹೈ ಜಂಪ್, ಶಾಟ್ ಪುಟ್ ಮತ್ತು ರಿಲೇ ಸ್ಪರ್ಧೆಗಳು ನಡೆದವು. ವಿದ್ಯಾರ್ಥಿಗಳು ತಮ್ಮ ವಿಭಾಗಗಳಲ್ಲಿ ಪದಕಗಳಿಗಾಗಿ ಸ್ಪರ್ಧಿಸಿ ದಿನವನ್ನು ರೋಚಕಗೊಳಿಸಿದರು.",
     news_page_article_1_date: "ಡಿಸೆಂಬರ್ 18, 2024",
     news_page_article_1_category: "ಕ್ರೀಡೆ",
     news_page_article_2_title: "ವಿಜ್ಞಾನ ಪ್ರದರ್ಶನ 2024 - ಹೊಸತನದ ಹೆಜ್ಜೆ",
-    news_page_article_2_excerpt: "ವಿದ್ಯಾರ್ಥಿಗಳು ಸೃಜನಶೀಲತೆ ಮತ್ತು ವೈಜ್ಞಾನಿಕ ಅರಿವನ್ನು ತೋರಿಸುವ ನವೀನ ಯೋಜನೆಗಳು ಮತ್ತು ಪ್ರಯೋಗಗಳನ್ನು ಪ್ರದರ್ಶಿಸಿದರು.",
-    news_page_article_2_content: "ವಿಜ್ಞಾನ ಪ್ರದರ್ಶನ 2024 ವಿದ್ಯಾರ್ಥಿಗಳ ಹೊಸತನ ಮತ್ತು ವಿಜ್ಞಾನ ಕುತೂಹಲದ ಅತ್ಯುತ್ತಮ ಪ್ರದರ್ಶನವಾಗಿತ್ತು. 6ರಿಂದ 10ನೇ ತರಗತಿ ವಿದ್ಯಾರ್ಥಿಗಳು ನವೀಕರಿಸಬಹುದಾದ ಇಂಧನ, ಪರಿಸರ ಸಂರಕ್ಷಣೆ, ರೋಬೋಟಿಕ್ಸ್ ಹಾಗೂ ರಸಾಯನಶಾಸ್ತ್ರ ವಿಷಯಗಳ ಯೋಜನೆಗಳನ್ನು ಪ್ರದರ್ಶಿಸಿದರು.",
+    news_page_article_2_excerpt:
+      "ವಿದ್ಯಾರ್ಥಿಗಳು ಸೃಜನಶೀಲತೆ ಮತ್ತು ವೈಜ್ಞಾನಿಕ ಅರಿವನ್ನು ತೋರಿಸುವ ನವೀನ ಯೋಜನೆಗಳು ಮತ್ತು ಪ್ರಯೋಗಗಳನ್ನು ಪ್ರದರ್ಶಿಸಿದರು.",
+    news_page_article_2_content:
+      "ವಿಜ್ಞಾನ ಪ್ರದರ್ಶನ 2024 ವಿದ್ಯಾರ್ಥಿಗಳ ಹೊಸತನ ಮತ್ತು ವಿಜ್ಞಾನ ಕುತೂಹಲದ ಅತ್ಯುತ್ತಮ ಪ್ರದರ್ಶನವಾಗಿತ್ತು. 6ರಿಂದ 10ನೇ ತರಗತಿ ವಿದ್ಯಾರ್ಥಿಗಳು ನವೀಕರಿಸಬಹುದಾದ ಇಂಧನ, ಪರಿಸರ ಸಂರಕ್ಷಣೆ, ರೋಬೋಟಿಕ್ಸ್ ಹಾಗೂ ರಸಾಯನಶಾಸ್ತ್ರ ವಿಷಯಗಳ ಯೋಜನೆಗಳನ್ನು ಪ್ರದರ್ಶಿಸಿದರು.",
     news_page_article_2_date: "ನವೆಂಬರ್ 25, 2024",
     news_page_article_2_category: "ವಿದ್ಯಾಭ್ಯಾಸ",
     news_page_article_3_title: "ಸಾಂಸ್ಕೃತಿಕ ಹಬ್ಬ - ಪರಂಪರೆಯ ಸಂಭ್ರಮ",
-    news_page_article_3_excerpt: "ಸಾಂಪ್ರದಾಯಿಕ ನೃತ್ಯ, ಸಂಗೀತ ಮತ್ತು ನಾಟಕ ಪ್ರದರ್ಶನಗಳ ಮೂಲಕ ನಮ್ಮ ಸಾಂಸ್ಕೃತಿಕ ಪರಂಪರೆಯ ಸಂಭ್ರಮ ನಡೆಯಿತು.",
-    news_page_article_3_content: "ಸಾಂಸ್ಕೃತಿಕ ಹಬ್ಬ 2024 ನಮ್ಮ ಭಾರತೀಯ ಪರಂಪರೆಯ ಸುಂದರ ಆಚರಣೆ ಆಗಿತ್ತು. ವಿದ್ಯಾರ್ಥಿಗಳು ಸಾಂಪ್ರದಾಯಿಕ ನೃತ್ಯ, ಶಾಸ್ತ್ರೀಯ ಸಂಗೀತ ಹಾಗೂ ನಾಟಕ ಪ್ರದರ್ಶನಗಳ ಮೂಲಕ ಭಾರತೀಯ ಸಂಸ್ಕೃತಿಯ ವೈವಿಧ್ಯವನ್ನು ತೋರಿಸಿದರು.",
+    news_page_article_3_excerpt:
+      "ಸಾಂಪ್ರದಾಯಿಕ ನೃತ್ಯ, ಸಂಗೀತ ಮತ್ತು ನಾಟಕ ಪ್ರದರ್ಶನಗಳ ಮೂಲಕ ನಮ್ಮ ಸಾಂಸ್ಕೃತಿಕ ಪರಂಪರೆಯ ಸಂಭ್ರಮ ನಡೆಯಿತು.",
+    news_page_article_3_content:
+      "ಸಾಂಸ್ಕೃತಿಕ ಹಬ್ಬ 2024 ನಮ್ಮ ಭಾರತೀಯ ಪರಂಪರೆಯ ಸುಂದರ ಆಚರಣೆ ಆಗಿತ್ತು. ವಿದ್ಯಾರ್ಥಿಗಳು ಸಾಂಪ್ರದಾಯಿಕ ನೃತ್ಯ, ಶಾಸ್ತ್ರೀಯ ಸಂಗೀತ ಹಾಗೂ ನಾಟಕ ಪ್ರದರ್ಶನಗಳ ಮೂಲಕ ಭಾರತೀಯ ಸಂಸ್ಕೃತಿಯ ವೈವಿಧ್ಯವನ್ನು ತೋರಿಸಿದರು.",
     news_page_article_3_date: "ಅಕ್ಟೋಬರ್ 30, 2024",
     news_page_article_3_category: "ಸಾಂಸ್ಕೃತಿಕ",
     news_page_article_4_title: "ಪೋಷಕ-ಶಿಕ್ಷಕರ ಸಭೆ - ಜೊತೆಯಾಗಿ ಬೆಳವಣಿಗೆ",
-    news_page_article_4_excerpt: "ವಿದ್ಯಾರ್ಥಿಗಳ ಪ್ರಗತಿ ಮತ್ತು ಶೈಕ್ಷಣಿಕ ಅಭಿವೃದ್ಧಿಯನ್ನು ಚರ್ಚಿಸಲು ವಾರ್ಷಿಕ ಪೋಷಕ-ಶಿಕ್ಷಕರ ಸಭೆ ನಡೆಯುತ್ತದೆ.",
-    news_page_article_4_content: "ವಿದ್ಯಾರ್ಥಿಗಳ ಪ್ರಗತಿ ಮತ್ತು ಶೈಕ್ಷಣಿಕ ಅಭಿವೃದ್ಧಿಯನ್ನು ಚರ್ಚಿಸಲು ವಾರ್ಷಿಕ ಪೋಷಕ-ಶಿಕ್ಷಕರ ಸಭೆ ನಡೆಯುತ್ತದೆ.",
+    news_page_article_4_excerpt:
+      "ವಿದ್ಯಾರ್ಥಿಗಳ ಪ್ರಗತಿ ಮತ್ತು ಶೈಕ್ಷಣಿಕ ಅಭಿವೃದ್ಧಿಯನ್ನು ಚರ್ಚಿಸಲು ವಾರ್ಷಿಕ ಪೋಷಕ-ಶಿಕ್ಷಕರ ಸಭೆ ನಡೆಯುತ್ತದೆ.",
+    news_page_article_4_content:
+      "ವಿದ್ಯಾರ್ಥಿಗಳ ಪ್ರಗತಿ ಮತ್ತು ಶೈಕ್ಷಣಿಕ ಅಭಿವೃದ್ಧಿಯನ್ನು ಚರ್ಚಿಸಲು ವಾರ್ಷಿಕ ಪೋಷಕ-ಶಿಕ್ಷಕರ ಸಭೆ ನಡೆಯುತ್ತದೆ.",
     news_page_article_4_date: "ಸೆಪ್ಟೆಂಬರ್ 28, 2024",
     news_page_article_4_category: "ವಿದ್ಯಾಭ್ಯಾಸ",
     news_page_article_5_title: "ಸ್ವಾತಂತ್ರ್ಯ ದಿನಾಚರಣೆ",
-    news_page_article_5_excerpt: "ದೇಶಭಕ್ತಿ ಗೀತೆಗಳು, ಭಾಷಣಗಳು ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ ಕಾರ್ಯಕ್ರಮಗಳೊಂದಿಗೆ ವಿದ್ಯಾರ್ಥಿಗಳು ಸ್ವಾತಂತ್ರ್ಯ ದಿನವನ್ನು ಆಚರಿಸುತ್ತೇವೆ",
-    news_page_article_5_content: "ದೇಶಭಕ್ತಿ ಗೀತೆಗಳು, ಭಾಷಣಗಳು ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ ಕಾರ್ಯಕ್ರಮಗಳೊಂದಿಗೆ ವಿದ್ಯಾರ್ಥಿಗಳು ಸ್ವಾತಂತ್ರ್ಯ ದಿನವನ್ನು ಆಚರಿಸುತ್ತೇವೆ",
+    news_page_article_5_excerpt:
+      "ದೇಶಭಕ್ತಿ ಗೀತೆಗಳು, ಭಾಷಣಗಳು ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ ಕಾರ್ಯಕ್ರಮಗಳೊಂದಿಗೆ ವಿದ್ಯಾರ್ಥಿಗಳು ಸ್ವಾತಂತ್ರ್ಯ ದಿನವನ್ನು ಆಚರಿಸುತ್ತೇವೆ",
+    news_page_article_5_content:
+      "ದೇಶಭಕ್ತಿ ಗೀತೆಗಳು, ಭಾಷಣಗಳು ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ ಕಾರ್ಯಕ್ರಮಗಳೊಂದಿಗೆ ವಿದ್ಯಾರ್ಥಿಗಳು ಸ್ವಾತಂತ್ರ್ಯ ದಿನವನ್ನು ಆಚರಿಸುತ್ತೇವೆ",
     news_page_article_5_date: "ಆಗಸ್ಟ್ 16, 2024",
     news_page_article_5_category: "ಕಾರ್ಯಕ್ರಮಗಳು",
     news_page_article_6_title: "ದಾನಿಗಳಿಂದ ನೂತನ ಕೊಠಡಿಗಳ ಉದ್ಘಾಟನೆ",
-    news_page_article_6_excerpt: "ದಾನಿಗಳ ಸಹಕಾರದಿಂದ ನಿರ್ಮಿಸಲಾದ ನೂತನ ಕೊಠಡಿಗಳ ಉದ್ಘಾಟನಾ ಸಮಾರಂಭವು ಯಶಸ್ವಿಯಾಗಿ ನಡೆಯಿತು.",
-    news_page_article_6_content: "ದಾನಿಗಳ ಸಹಕಾರದಿಂದ ನಿರ್ಮಿಸಲಾದ ನೂತನ ಕೊಠಡಿಗಳ ಉದ್ಘಾಟನಾ ಸಮಾರಂಭವು ಯಶಸ್ವಿಯಾಗಿ ನಡೆಯಿತು.",
+    news_page_article_6_excerpt:
+      "ದಾನಿಗಳ ಸಹಕಾರದಿಂದ ನಿರ್ಮಿಸಲಾದ ನೂತನ ಕೊಠಡಿಗಳ ಉದ್ಘಾಟನಾ ಸಮಾರಂಭವು ಯಶಸ್ವಿಯಾಗಿ ನಡೆಯಿತು.",
+    news_page_article_6_content:
+      "ದಾನಿಗಳ ಸಹಕಾರದಿಂದ ನಿರ್ಮಿಸಲಾದ ನೂತನ ಕೊಠಡಿಗಳ ಉದ್ಘಾಟನಾ ಸಮಾರಂಭವು ಯಶಸ್ವಿಯಾಗಿ ನಡೆಯಿತು.",
     news_page_article_6_date: "ಮಾರ್ಚ್ 2024",
     news_page_article_6_category: "ಕಾರ್ಯಕ್ರಮ",
     news_page_article_7_title: "ದಾನಿಗಳಿಂದ ಕುಡಿಯುವ ನೀರಿನ ಸೌಲಭ್ಯ ಉದ್ಘಾಟನೆ",
@@ -1102,12 +1396,15 @@ const dictionary: Record<Lang, Record<string, string>> = {
     news_page_article_7_date: "ಮಾರ್ಚ್ 2024",
     news_page_article_7_category: "ಕಾರ್ಯಕ್ರಮ",
     news_page_article_8_title: "ಶಾರದಾ ಪೂಜೆ ಹಾಗೂ ಜ್ಯೋತಿ ಪ್ರಜ್ವಲನ",
-    news_page_article_8_excerpt: "ಎಲ್ಲಾ ವಿದ್ಯಾರ್ಥಿಗಳು ಶಾರದಾ ಪೂಜೆಯನ್ನು ನೆರವೇರಿಸುತ್ತಿದ್ದಾರೆ. ಹತ್ತನೇ ತರಗತಿ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಜ್ಯೋತಿ ಪ್ರಜ್ವಲನದೊಂದಿಗೆ ಪ್ರವೇಶ ಪತ್ರವನ್ನು ವಿತರಿಸಲಾಗುತ್ತದೆ.",
-    news_page_article_8_content: "ಎಲ್ಲಾ ವಿದ್ಯಾರ್ಥಿಗಳು ಶಾರದಾ ಪೂಜೆಯನ್ನು ನೆರವೇರಿಸುತ್ತಿದ್ದಾರೆ. ಹತ್ತನೇ ತರಗತಿ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಜ್ಯೋತಿ ಪ್ರಜ್ವಲನದೊಂದಿಗೆ ಪ್ರವೇಶ ಪತ್ರವನ್ನು ವಿತರಿಸಲಾಗುತ್ತದೆ.",
+    news_page_article_8_excerpt:
+      "ಎಲ್ಲಾ ವಿದ್ಯಾರ್ಥಿಗಳು ಶಾರದಾ ಪೂಜೆಯನ್ನು ನೆರವೇರಿಸುತ್ತಿದ್ದಾರೆ. ಹತ್ತನೇ ತರಗತಿ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಜ್ಯೋತಿ ಪ್ರಜ್ವಲನದೊಂದಿಗೆ ಪ್ರವೇಶ ಪತ್ರವನ್ನು ವಿತರಿಸಲಾಗುತ್ತದೆ.",
+    news_page_article_8_content:
+      "ಎಲ್ಲಾ ವಿದ್ಯಾರ್ಥಿಗಳು ಶಾರದಾ ಪೂಜೆಯನ್ನು ನೆರವೇರಿಸುತ್ತಿದ್ದಾರೆ. ಹತ್ತನೇ ತರಗತಿ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಜ್ಯೋತಿ ಪ್ರಜ್ವಲನದೊಂದಿಗೆ ಪ್ರವೇಶ ಪತ್ರವನ್ನು ವಿತರಿಸಲಾಗುತ್ತದೆ.",
     news_page_article_8_date: "ಫೆಬ್ರವರಿ 2024",
     news_page_article_8_category: "ಕಾರ್ಯಕ್ರಮ",
     news_page_article_9_title: "ಪ್ರೌಢಶಾಲೆ ವಿದ್ಯಾರ್ಥಿಗಳಿಂದ ಪೋಷಕರಿಗೆ ಪಾದಪೂಜೆ",
-    news_page_article_9_excerpt: "ತಾಯಿ-ತಂದೆಯರ ಆಶೀರ್ವಾದದೊಂದಿಗೆ ವಿದ್ಯಾರ್ಥಿಗಳು ಪರೀಕ್ಷೆಗೆ ಸಜ್ಜಾಗುತ್ತಾರೆ.",
+    news_page_article_9_excerpt:
+      "ತಾಯಿ-ತಂದೆಯರ ಆಶೀರ್ವಾದದೊಂದಿಗೆ ವಿದ್ಯಾರ್ಥಿಗಳು ಪರೀಕ್ಷೆಗೆ ಸಜ್ಜಾಗುತ್ತಾರೆ.",
     news_page_article_9_content: "ಪ್ರೌಢಶಾಲೆ ವಿದ್ಯಾರ್ಥಿಗಳಿಂದ ಪೋಷಕರಿಗೆ ಪಾದಪೂಜೆ",
     news_page_article_9_date: "ಫೆಬ್ರವರಿ 2024",
     news_page_article_9_category: "ಕಾರ್ಯಕ್ರಮ",
@@ -1117,25 +1414,33 @@ const dictionary: Record<Lang, Record<string, string>> = {
     news_page_article_10_date: "ಜನವರಿ 2024",
     news_page_article_10_category: "ಭೇಟಿ",
     news_page_article_11_title: "ಬೆಳ್ಳಾವಿ ಕ್ಷೇತ್ರದ ಶ್ರೀಗಳ ಭೇಟಿ",
-    news_page_article_11_excerpt: "ಬೆಳ್ಳಾವಿ ಕ್ಷೇತ್ರದ ಕಾರದವೀರ ಬಸವ ಸ್ವಾಮೀಜಿ ಅವರು ಶಾಲೆಗೆ ಭೇಟಿ ನೀಡಿದ ಸಂದರ್ಭ",
-    news_page_article_11_content: "ಬೆಳ್ಳಾವಿ ಕ್ಷೇತ್ರದ ಕಾರದವೀರ ಬಸವ ಸ್ವಾಮೀಜಿ ಅವರು ಶಾಲೆಗೆ ಭೇಟಿ ನೀಡಿದ ಸಂದರ್ಭ",
+    news_page_article_11_excerpt:
+      "ಬೆಳ್ಳಾವಿ ಕ್ಷೇತ್ರದ ಕಾರದವೀರ ಬಸವ ಸ್ವಾಮೀಜಿ ಅವರು ಶಾಲೆಗೆ ಭೇಟಿ ನೀಡಿದ ಸಂದರ್ಭ",
+    news_page_article_11_content:
+      "ಬೆಳ್ಳಾವಿ ಕ್ಷೇತ್ರದ ಕಾರದವೀರ ಬಸವ ಸ್ವಾಮೀಜಿ ಅವರು ಶಾಲೆಗೆ ಭೇಟಿ ನೀಡಿದ ಸಂದರ್ಭ",
     news_page_article_11_date: "ಜನವರಿ 2024",
     news_page_article_11_category: "ಭೇಟಿ",
     news_page_article_12_title: "ಇಸ್ಕಾನ್ ಬೆಂಗಳೂರಿನ ಪೂಜ್ಯರ ಭೇಟಿ",
-    news_page_article_12_excerpt: "ಬೆಂಗಳೂರಿನ ಇಸ್ಕಾನ್ ದೇವಾಲಯದ ಪೂಜ್ಯರು ಭೇಟಿ ನೀಡಿದ ಸಂದರ್ಭ",
-    news_page_article_12_content: "ಬೆಂಗಳೂರಿನ ಇಸ್ಕಾನ್ ದೇವಾಲಯದ ಪೂಜ್ಯರು ಭೇಟಿ ನೀಡಿದ ಸಂದರ್ಭ",
+    news_page_article_12_excerpt:
+      "ಬೆಂಗಳೂರಿನ ಇಸ್ಕಾನ್ ದೇವಾಲಯದ ಪೂಜ್ಯರು ಭೇಟಿ ನೀಡಿದ ಸಂದರ್ಭ",
+    news_page_article_12_content:
+      "ಬೆಂಗಳೂರಿನ ಇಸ್ಕಾನ್ ದೇವಾಲಯದ ಪೂಜ್ಯರು ಭೇಟಿ ನೀಡಿದ ಸಂದರ್ಭ",
     news_page_article_12_date: "ಡಿಸೆಂಬರ್ 2023",
     news_page_article_12_category: "ಭೇಟಿ",
     news_page_article_13_title: "ರಾಜ್ಯಮಟ್ಟದ ಪ್ರತಿಭಾ ಕಾರಂಜಿಯಲ್ಲಿ ಶ್ರೇಷ್ಠತೆ",
-    news_page_article_13_excerpt: "ರಾಜ್ಯಮಟ್ಟದ ಪ್ರತಿಭಾ ಕಾರಂಜಿಯಲ್ಲಿ ಉತ್ತಮ ಪ್ರದರ್ಶನ",
-    news_page_article_13_content: "ರಾಜ್ಯಮಟ್ಟದ ಪ್ರತಿಭಾ ಕಾರಂಜಿಯಲ್ಲಿ ಉತ್ತಮ ಪ್ರದರ್ಶನ",
+    news_page_article_13_excerpt:
+      "ರಾಜ್ಯಮಟ್ಟದ ಪ್ರತಿಭಾ ಕಾರಂಜಿಯಲ್ಲಿ ಉತ್ತಮ ಪ್ರದರ್ಶನ",
+    news_page_article_13_content:
+      "ರಾಜ್ಯಮಟ್ಟದ ಪ್ರತಿಭಾ ಕಾರಂಜಿಯಲ್ಲಿ ಉತ್ತಮ ಪ್ರದರ್ಶನ",
     news_page_article_13_date: "ಡಿಸೆಂಬರ್ 2023",
     news_page_article_13_category: "ಸಾಂಸ್ಕೃತಿಕ",
     academics_page_upcoming_title: "ಉದಯೋನ್ಮುಖ ಕಾರ್ಯಕ್ರಮಗಳು",
     academics_page_upcoming_cbse_title: "CBSE ಪಠ್ಯಕ್ರಮ",
-    academics_page_upcoming_cbse_desc: "ನಮ್ಮ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಜಾಗತಿಕ ಮಟ್ಟದ ಶಿಕ್ಷಣ ಮತ್ತು ಹೆಚ್ಚಿನ ಕಲಿಕಾ ಅವಕಾಶಗಳನ್ನು ಒದಗಿಸಲು ನಾವು CBSE ಪಠ್ಯಕ್ರಮವನ್ನು ಪರಿಚಯಿಸುವ ಪ್ರಕ್ರಿಯೆಯಲ್ಲಿದ್ದೇವೆ.",
+    academics_page_upcoming_cbse_desc:
+      "ನಮ್ಮ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಜಾಗತಿಕ ಮಟ್ಟದ ಶಿಕ್ಷಣ ಮತ್ತು ಹೆಚ್ಚಿನ ಕಲಿಕಾ ಅವಕಾಶಗಳನ್ನು ಒದಗಿಸಲು ನಾವು CBSE ಪಠ್ಯಕ್ರಮವನ್ನು ಪರಿಚಯಿಸುವ ಪ್ರಕ್ರಿಯೆಯಲ್ಲಿದ್ದೇವೆ.",
     activity_sports: "ಕ್ರೀಡೆ ಮತ್ತು ಆಟಗಳು",
-    activity_sports_desc: "ಕ್ರಿಕೆಟ್, ಅಥ್ಲೆಟಿಕ್ಸ್, ಖೋ-ಖೋ, ಕಬಡ್ಡಿ ಇತ್ಯಾದಿ ತರಬೇತುದಾರರೊಂದಿಗೆ.",
+    activity_sports_desc:
+      "ಕ್ರಿಕೆಟ್, ಅಥ್ಲೆಟಿಕ್ಸ್, ಖೋ-ಖೋ, ಕಬಡ್ಡಿ ಇತ್ಯಾದಿ ತರಬೇತುದಾರರೊಂದಿಗೆ.",
     activity_labs: "ವಿಜ್ಞಾನ ಪ್ರಯೋಗಾಲಯಗಳು",
     activity_labs_desc: "ಪ್ರಾಯೋಗಿಕ ಅಧ್ಯಯನಕ್ಕೆ ಸೂಕ್ತವಾದ ಸಜ್ಜಿತ ಲ್ಯಾಬ್‌ಗಳು.",
     activity_library: "ಗ್ರಂಥಾಲಯ",
@@ -1143,26 +1448,33 @@ const dictionary: Record<Lang, Record<string, string>> = {
     activity_cultural: "ಸಾಂಸ್ಕೃತಿಕ ಚಟುವಟಿಕೆಗಳು",
     activity_cultural_desc: "ಸಂಗೀತ, ನೃತ್ಯ, ನಾಟಕ ಮತ್ತು ಹಬ್ಬಗಳ ಸಂಭ್ರಮ.",
     activity_yoga: "ಯೋಗ ಮತ್ತು ಕ್ಷೇಮ",
-    activity_yoga_desc: "ಆರೋಗ್ಯಕರ ದೇಹ-ಮನಸ್ಸಿಗಾಗಿ ನಿಯಮಿತ ಯೋಗ ಮತ್ತು ಮೈಂಡ್‌ಫುಲ್‌ನೆಸ್.",
+    activity_yoga_desc:
+      "ಆರೋಗ್ಯಕರ ದೇಹ-ಮನಸ್ಸಿಗಾಗಿ ನಿಯಮಿತ ಯೋಗ ಮತ್ತು ಮೈಂಡ್‌ಫುಲ್‌ನೆಸ್.",
     activity_clubs: "ವಿದ್ಯಾರ್ಥಿ ಕ್ಲಬ್‌ಗಳು",
-    activity_clubs_desc: "ಸಾಹಿತ್ಯ, ಪರಿಸರ ಮತ್ತು ವಿಜ್ಞಾನ ಕ್ಲಬ್‌ಗಳು ಕುತೂಹಲ ಬೆಳೆಸಲು.",
+    activity_clubs_desc:
+      "ಸಾಹಿತ್ಯ, ಪರಿಸರ ಮತ್ತು ವಿಜ್ಞಾನ ಕ್ಲಬ್‌ಗಳು ಕುತೂಹಲ ಬೆಳೆಸಲು.",
     results: "ಫಲಿತಾಂಶಗಳು",
     results_title: "ಪರೀಕ್ಷಾ ಫಲಿತಾಂಶಗಳು",
-    results_subtitle: "ಎಲ್ಲಾ ಪರೀಕ್ಷಾ ಫಲಿತಾಂಶಗಳು ಮತ್ತು ಶೈಕ್ಷಣಿಕ ಸಾಧನೆಗಳನ್ನು ಪ್ರವೇಶಿಸಿ",
-    results_10th_description: "ಕರ್ನಾಟಕ ಸರ್ಕಾರದ ಅಧಿಕೃತ ಪರೀಕ್ಷಾ ಫಲಿತಾಂಶಗಳನ್ನು ಪ್ರವೇಶಿಸಿ",
+    results_subtitle:
+      "ಎಲ್ಲಾ ಪರೀಕ್ಷಾ ಫಲಿತಾಂಶಗಳು ಮತ್ತು ಶೈಕ್ಷಣಿಕ ಸಾಧನೆಗಳನ್ನು ಪ್ರವೇಶಿಸಿ",
+    results_10th_description:
+      "ಕರ್ನಾಟಕ ಸರ್ಕಾರದ ಅಧಿಕೃತ ಪರೀಕ್ಷಾ ಫಲಿತಾಂಶಗಳನ್ನು ಪ್ರವೇಶಿಸಿ",
     results_10th_class: "10ನೇ ತರಗತಿ ಕರ್ನಾಟಕ ಬೋರ್ಡ್",
     results_view_results: "ಫಲಿತಾಂಶಗಳನ್ನು ವೀಕ್ಷಿಸಿ",
-    results_10th_note: "ಎಲ್ಲಾ ಪರೀಕ್ಷಾ ಫಲಿತಾಂಶಗಳನ್ನು ಅಧಿಕೃತ ಕರ್ನಾಟಕ ಫಲಿತಾಂಶಗಳ ಪೋರ್ಟಲ್‌ನಲ್ಲಿ ಪ್ರಕಟ ಮಾಡಲಾಗುತ್ತದೆ. ನಿಮ್ಮ ಫಲಿತಾಂಶಗಳನ್ನು ವೀಕ್ಷಿಸಲು ನಿಮ್ಮ ನೋಂದಣಿ ಸಂಖ್ಯೆ ನಮೂದಿಸಿ.",
+    results_10th_note:
+      "ಎಲ್ಲಾ ಪರೀಕ್ಷಾ ಫಲಿತಾಂಶಗಳನ್ನು ಅಧಿಕೃತ ಕರ್ನಾಟಕ ಫಲಿತಾಂಶಗಳ ಪೋರ್ಟಲ್‌ನಲ್ಲಿ ಪ್ರಕಟ ಮಾಡಲಾಗುತ್ತದೆ. ನಿಮ್ಮ ಫಲಿತಾಂಶಗಳನ್ನು ವೀಕ್ಷಿಸಲು ನಿಮ್ಮ ನೋಂದಣಿ ಸಂಖ್ಯೆ ನಮೂದಿಸಿ.",
     academic_year: "ಶೈಕ್ಷಣಿಕ ವರ್ಷ",
     latest_results: "ಇತ್ತೀಚಿನ ಫಲಿತಾಂಶಗಳು ಲಭ್ಯ",
     sslc_results: "ಎಸ್‌ಎಸ್‌ಎಲ್‌ಸಿ ಫಲಿತಾಂಶಗಳು (10ನೇ ತರಗತಿ)",
-    sslc_description: "10ನೇ ತರಗತಿಗೆ ಮಾಧ್ಯಮಿಕ ಶಾಲಾ ಸೇರುವಿಕೆ ಪ್ರಮಾಣಪತ್ರ ಪರೀಕ್ಷಾ ಫಲಿತಾಂಶಗಳು",
+    sslc_description:
+      "10ನೇ ತರಗತಿಗೆ ಮಾಧ್ಯಮಿಕ ಶಾಲಾ ಸೇರುವಿಕೆ ಪ್ರಮಾಣಪತ್ರ ಪರೀಕ್ಷಾ ಫಲಿತಾಂಶಗಳು",
     class_6_9_results: "6-9ನೇ ತರಗತಿ ಫಲಿತಾಂಶಗಳು",
     class_6_9_description: "6, 7, 8, ಮತ್ತು 9ನೇ ತರಗತಿಗಳ ಪರೀಕ್ಷಾ ಫಲಿತಾಂಶಗಳು",
     class_1_5_results: "1-5ನೇ ತರಗತಿ ಫಲಿತಾಂಶಗಳು",
     class_1_5_description: "1, 2, 3, 4, ಮತ್ತು 5ನೇ ತರಗತಿಗಳ ಪರೀಕ್ಷಾ ಫಲಿತಾಂಶಗಳು",
     special_exams: "ವಿಶೇಷ ಪರೀಕ್ಷೆಗಳು",
-    special_exams_description: "ವಿದ್ಯಾರ್ಥಿವೇತನ ಪರೀಕ್ಷೆಗಳು, ಒಲಿಂಪಿಯಾಡ್‌ಗಳು ಮತ್ತು ವಿಶೇಷ ಮೌಲ್ಯಮಾಪನಗಳು",
+    special_exams_description:
+      "ವಿದ್ಯಾರ್ಥಿವೇತನ ಪರೀಕ್ಷೆಗಳು, ಒಲಿಂಪಿಯಾಡ್‌ಗಳು ಮತ್ತು ವಿಶೇಷ ಮೌಲ್ಯಮಾಪನಗಳು",
     overall_results: "ಒಟ್ಟಾರೆ ಫಲಿತಾಂಶಗಳು",
     subject_wise_results: "ವಿಷಯಾನುಸಾರ ಫಲಿತಾಂಶಗಳು",
     merit_list: "ಗೌರವ ಪಟ್ಟಿ",
@@ -1193,11 +1505,14 @@ const dictionary: Record<Lang, Record<string, string>> = {
     results_class_10_overall_2024_25: "10ನೇ ತರಗತಿ ಫಲಿತಾಂಶ 2024-25",
     results_class_10_overall_2023_24: "10ನೇ ತರಗತಿ ಫಲಿತಾಂಶ 2023-24",
     results_all_classes_title: "1-10ನೇ ತರಗತಿಗಳ ಸಮಗ್ರ ಫಲಿತಾಂಶಗಳು",
-    results_all_classes_description: "ಪ್ರತಿ ಶೈಕ್ಷಣಿಕ ವರ್ಷದಿಗಾಗಿ 1ರಿಂದ 10ನೇ ತರಗತಿವರೆಗಿನ ಒಂದೇ ಸಮಗ್ರ ಫಲಿತಾಂಶ ಟೈಲ್",
+    results_all_classes_description:
+      "ಪ್ರತಿ ಶೈಕ್ಷಣಿಕ ವರ್ಷದಿಗಾಗಿ 1ರಿಂದ 10ನೇ ತರಗತಿವರೆಗಿನ ಒಂದೇ ಸಮಗ್ರ ಫಲಿತಾಂಶ ಟೈಲ್",
     results_all_classes_exam_2024_25: "ಸಮಗ್ರ ಫಲಿತಾಂಶಗಳು (1-10ನೇ ತರಗತಿ) 2024-25",
     results_all_classes_exam_2023_24: "ಸಮಗ್ರ ಫಲಿತಾಂಶಗಳು (1-10ನೇ ತರಗತಿ) 2023-24",
-    results_all_classes_download_2024_25: "ಸಂಯುಕ್ತ ಫಲಿತಾಂಶ - 1ರಿಂದ 10ನೇ ತರಗತಿ (2024-25)",
-    results_all_classes_download_2023_24: "ಸಂಯುಕ್ತ ಫಲಿತಾಂಶ - 1ರಿಂದ 10ನೇ ತರಗತಿ (2023-24)",
+    results_all_classes_download_2024_25:
+      "ಸಂಯುಕ್ತ ಫಲಿತಾಂಶ - 1ರಿಂದ 10ನೇ ತರಗತಿ (2024-25)",
+    results_all_classes_download_2023_24:
+      "ಸಂಯುಕ್ತ ಫಲಿತಾಂಶ - 1ರಿಂದ 10ನೇ ತರಗತಿ (2023-24)",
     upcoming_features: "ಮುಂಬರುವ ವೈಶಿಷ್ಟ್ಯಗಳು",
     upcoming_feature_1: "ಎಲ್ಲಾ ಫಲಿತಾಂಶಗಳು PDF ಸ್ವರೂಪದಲ್ಲಿ ಲಭ್ಯವಾಗುತ್ತವೆ",
     upcoming_feature_2: "ಡೌನ್‌ಲೋಡ್ ಲಿಂಕ್‌ಗಳು 1 ವರ್ಷ ಮಾನ್ಯವಾಗಿರುತ್ತವೆ",
@@ -1218,11 +1533,14 @@ const dictionary: Record<Lang, Record<string, string>> = {
     alumni_count: "ಪೂರ್ವ ವಿದ್ಯಾರ್ಥಿಗಳ ಸಂಖ್ಯೆ",
     alumni_global: "ಜಾಗತಿಕ ಉಪಸ್ಥಿತಿ",
     alumni_spotlight: "ಪೂರ್ವ ವಿದ್ಯಾರ್ಥಿ ಸ್ಪಾಟ್ಲೈಟ್",
-    alumni_spotlight_desc: "ಜಗತ್ತಿನಲ್ಲಿ ವ್ಯತ್ಯಾಸ ಮಾಡುತ್ತಿರುವ ನಮ್ಮ ಪ್ರತಿಷ್ಠಿತ ಪೂರ್ವ ವಿದ್ಯಾರ್ಥಿಗಳನ್ನು ಭೇಟಿಯಾಗಿ",
+    alumni_spotlight_desc:
+      "ಜಗತ್ತಿನಲ್ಲಿ ವ್ಯತ್ಯಾಸ ಮಾಡುತ್ತಿರುವ ನಮ್ಮ ಪ್ರತಿಷ್ಠಿತ ಪೂರ್ವ ವಿದ್ಯಾರ್ಥಿಗಳನ್ನು ಭೇಟಿಯಾಗಿ",
     alumni_events: "ಪೂರ್ವ ವಿದ್ಯಾರ್ಥಿ ಕಾರ್ಯಕ್ರಮಗಳು",
-    alumni_events_desc: "ಮುಂಬರುವ ಪೂರ್ವ ವಿದ್ಯಾರ್ಥಿ ಕಾರ್ಯಕ್ರಮಗಳು ಮತ್ತು ಮರುಸೇರ್ಪಡೆಗಳೊಂದಿಗೆ ಸಂಪರ್ಕದಲ್ಲಿರಿ",
+    alumni_events_desc:
+      "ಮುಂಬರುವ ಪೂರ್ವ ವಿದ್ಯಾರ್ಥಿ ಕಾರ್ಯಕ್ರಮಗಳು ಮತ್ತು ಮರುಸೇರ್ಪಡೆಗಳೊಂದಿಗೆ ಸಂಪರ್ಕದಲ್ಲಿರಿ",
     alumni_contact: "ಸಂಪರ್ಕದಲ್ಲಿರಿ",
-    alumni_contact_desc: "ನಮ್ಮ ಪೂರ್ವ ವಿದ್ಯಾರ್ಥಿ ನೆಟ್‌ವರ್ಕ್‌ಗೆ ಸೇರಿ ಮತ್ತು ನಿಮ್ಮ ಶಾಲಾ ಸಮುದಾಯದೊಂದಿಗೆ ಸಂಪರ್ಕದಲ್ಲಿರಿ",
+    alumni_contact_desc:
+      "ನಮ್ಮ ಪೂರ್ವ ವಿದ್ಯಾರ್ಥಿ ನೆಟ್‌ವರ್ಕ್‌ಗೆ ಸೇರಿ ಮತ್ತು ನಿಮ್ಮ ಶಾಲಾ ಸಮುದಾಯದೊಂದಿಗೆ ಸಂಪರ್ಕದಲ್ಲಿರಿ",
     email_us: "ಇಮೇಲ್ ಮಾಡಿ",
     call_us: "ಕರೆ ಮಾಡಿ",
     register_now: "ಈಗ ನೋಂದಾಯಿಸಿ",
@@ -1231,13 +1549,16 @@ const dictionary: Record<Lang, Record<string, string>> = {
     faqs_subtitle: "ನಮ್ಮ ಶಾಲೆಯ ಬಗ್ಗೆ ಸಾಮಾನ್ಯ ಪ್ರಶ್ನೆಗಳಿಗೆ ಉತ್ತರಗಳನ್ನು ಹುಡುಕಿ",
     faq_search_placeholder: "FAQ ಗಳನ್ನು ಹುಡುಕಿ...",
     faq_no_results: "ಯಾವುದೇ ಫಲಿತಾಂಶಗಳು ಕಂಡುಬಂದಿಲ್ಲ",
-    faq_no_results_desc: "ನಿಮ್ಮ ಹುಡುಕಾಟ ಪದಗಳನ್ನು ಹೊಂದಿಸಲು ಪ್ರಯತ್ನಿಸಿ ಅಥವಾ ನಮ್ಮ ವರ್ಗಗಳನ್ನು ನೋಡಿ",
+    faq_no_results_desc:
+      "ನಿಮ್ಮ ಹುಡುಕಾಟ ಪದಗಳನ್ನು ಹೊಂದಿಸಲು ಪ್ರಯತ್ನಿಸಿ ಅಥವಾ ನಮ್ಮ ವರ್ಗಗಳನ್ನು ನೋಡಿ",
     faq_still_have_questions: "ಇನ್ನೂ ಪ್ರಶ್ನೆಗಳಿವೆಯೇ?",
-    faq_contact_us_desc: "ನಿಮ್ಮ ಯಾವುದೇ ಪ್ರಶ್ನೆಗಳಿಗೆ ನಿಮಗೆ ಸಹಾಯ ಮಾಡಲು ನಮ್ಮ ತಂಡ ಇಲ್ಲಿದೆ",
+    faq_contact_us_desc:
+      "ನಿಮ್ಮ ಯಾವುದೇ ಪ್ರಶ್ನೆಗಳಿಗೆ ನಿಮಗೆ ಸಹಾಯ ಮಾಡಲು ನಮ್ಮ ತಂಡ ಇಲ್ಲಿದೆ",
     faq_phone_support: "ಫೋನ್ ಬೆಂಬಲ",
     faq_email_support: "ಇಮೇಲ್ ಬೆಂಬಲ",
     faq_visit_us: "ನಮ್ಮನ್ನು ಭೇಟಿ ಮಾಡಿ",
-    faq_visit_address: "Sree Madhava Vidya Mandira, Bhavani nagara, Sira – 572137, Tumakuru District, Karnataka.",
+    faq_visit_address:
+      "Sree Madhava Vidya Mandira, Bhavani nagara, Sira – 572137, Tumakuru District, Karnataka.",
     faq_phone_value: "+91 94494 24530",
     faq_email_value: "madhavavidyamandira21@gmail.com",
     faq_admissions: "ಪ್ರವೇಶ",
@@ -1245,96 +1566,136 @@ const dictionary: Record<Lang, Record<string, string>> = {
     faq_facilities: "ಸೌಲಭ್ಯಗಳು",
     faq_general: "ಸಾಮಾನ್ಯ",
     faq_admission_process: "ಪ್ರವೇಶ ಪ್ರಕ್ರಿಯೆ ಯಾವುದು?",
-    faq_admission_process_answer: "ನಮ್ಮ ಪ್ರವೇಶ ಪ್ರಕ್ರಿಯೆಯು ಅರ್ಜಿ ಫಾರ್ಮ್‌ನಲ್ಲಿ ಭರ್ತಿ ಮಾಡುವುದು, ಅಗತ್ಯ ದಾಖಲೆಗಳನ್ನು ಸಲ್ಲಿಸುವುದು ಮತ್ತು ಸಂವಾದ ಸೆಷನ್‌ಗೆ ಹಾಜರಾಗುವುದನ್ನು ಒಳಗೊಂಡಿದೆ. ಮುಂದಿನ ಶೈಕ್ಷಣಿಕ ವರ್ಷಕ್ಕಾಗಿ ಜನವರಿ-ಮಾರ್ಚ್‌ನಲ್ಲಿ ಅರ್ಜಿಗಳನ್ನು ಸ್ವೀಕರಿಸಲಾಗುತ್ತದೆ.",
+    faq_admission_process_answer:
+      "ನಮ್ಮ ಪ್ರವೇಶ ಪ್ರಕ್ರಿಯೆಯು ಅರ್ಜಿ ಫಾರ್ಮ್‌ನಲ್ಲಿ ಭರ್ತಿ ಮಾಡುವುದು, ಅಗತ್ಯ ದಾಖಲೆಗಳನ್ನು ಸಲ್ಲಿಸುವುದು ಮತ್ತು ಸಂವಾದ ಸೆಷನ್‌ಗೆ ಹಾಜರಾಗುವುದನ್ನು ಒಳಗೊಂಡಿದೆ. ಮುಂದಿನ ಶೈಕ್ಷಣಿಕ ವರ್ಷಕ್ಕಾಗಿ ಜನವರಿ-ಮಾರ್ಚ್‌ನಲ್ಲಿ ಅರ್ಜಿಗಳನ್ನು ಸ್ವೀಕರಿಸಲಾಗುತ್ತದೆ.",
     faq_admission_age: "ಪ್ರವೇಶಕ್ಕೆ ಕನಿಷ್ಠ ವಯಸ್ಸು ಯಾವುದು?",
-    faq_admission_age_answer: "LKGಗೆ 3 ವರ್ಷ 10 ತಿಂಗಳು, UKGಗೆ 4 ವರ್ಷ 10 ತಿಂಗಳು, 1ನೇ ತರಗತಿಗೆ 5 ವರ್ಷ 10 ತಿಂಗಳು ವಯಸ್ಸು ಇರಬೇಕು. ಪ್ರವೇಶ ವರ್ಷದ ಮಾರ್ಚ್ 31ರ ಸ್ಥಿತಿಗತಿಯಲ್ಲಿ ವಯಸ್ಸನ್ನು ಲೆಕ್ಕಿಸಲಾಗುತ್ತದೆ.",
+    faq_admission_age_answer:
+      "LKGಗೆ 3 ವರ್ಷ 10 ತಿಂಗಳು, UKGಗೆ 4 ವರ್ಷ 10 ತಿಂಗಳು, 1ನೇ ತರಗತಿಗೆ 5 ವರ್ಷ 10 ತಿಂಗಳು ವಯಸ್ಸು ಇರಬೇಕು. ಪ್ರವೇಶ ವರ್ಷದ ಮಾರ್ಚ್ 31ರ ಸ್ಥಿತಿಗತಿಯಲ್ಲಿ ವಯಸ್ಸನ್ನು ಲೆಕ್ಕಿಸಲಾಗುತ್ತದೆ.",
     faq_admission_documents: "ಪ್ರವೇಶಕ್ಕೆ ಯಾವ ದಾಖಲೆಗಳು ಅಗತ್ಯ?",
-    faq_admission_documents_answer: "ಅಗತ್ಯ ದಾಖಲೆಗಳು ಜನನ ಪ್ರಮಾಣಪತ್ರ, ಹಿಂದಿನ ವರ್ಷದ ವರದಿ ಕಾರ್ಡ್, ವರ್ಗಾವಣೆ ಪ್ರಮಾಣಪತ್ರ, ಪಾಸ್‌ಪೋರ್ಟ್ ಗಾತ್ರದ ಫೋಟೋಗಳು, ಮತ್ತು ವಿಳಾಸ ಪುರಾವೆಯನ್ನು ಒಳಗೊಂಡಿದೆ.",
+    faq_admission_documents_answer:
+      "ಅಗತ್ಯ ದಾಖಲೆಗಳು ಜನನ ಪ್ರಮಾಣಪತ್ರ, ಹಿಂದಿನ ವರ್ಷದ ವರದಿ ಕಾರ್ಡ್, ವರ್ಗಾವಣೆ ಪ್ರಮಾಣಪತ್ರ, ಪಾಸ್‌ಪೋರ್ಟ್ ಗಾತ್ರದ ಫೋಟೋಗಳು, ಮತ್ತು ವಿಳಾಸ ಪುರಾವೆಯನ್ನು ಒಳಗೊಂಡಿದೆ.",
     faq_admission_fees: "ಶುಲ್ಕ ರಚನೆ ಮತ್ತು ಪಾವತಿ ಆಯ್ಕೆಗಳು ಯಾವುವು?",
-    faq_admission_fees_answer: "ನಮ್ಮ ಶುಲ್ಕ ರಚನೆ ಸ್ಪರ್ಧಾತ್ಮಕವಾಗಿದ್ದು ಟ್ಯೂಷನ್, ಅಭಿವೃದ್ಧಿ ಮತ್ತು ಇತರ ಶುಲ್ಕಗಳನ್ನು ಒಳಗೊಂಡಿದೆ. ನಾವು ಅರ್ಧವಾರ್ಷಿಕ ಮತ್ತು ವಾರ್ಷಿಕ ಪಾವತಿ ಆಯ್ಕೆಗಳನ್ನು ನೀಡುತ್ತೇವೆ.",
+    faq_admission_fees_answer:
+      "ನಮ್ಮ ಶುಲ್ಕ ರಚನೆ ಸ್ಪರ್ಧಾತ್ಮಕವಾಗಿದ್ದು ಟ್ಯೂಷನ್, ಅಭಿವೃದ್ಧಿ ಮತ್ತು ಇತರ ಶುಲ್ಕಗಳನ್ನು ಒಳಗೊಂಡಿದೆ. ನಾವು ಅರ್ಧವಾರ್ಷಿಕ ಮತ್ತು ವಾರ್ಷಿಕ ಪಾವತಿ ಆಯ್ಕೆಗಳನ್ನು ನೀಡುತ್ತೇವೆ.",
     faq_curriculum: "ನೀವು ಯಾವ ಪಾಠ್ಯಕ್ರಮವನ್ನು ಅನುಸರಿಸುತ್ತೀರಿ?",
-    faq_curriculum_answer: "ನಾವು ಕರ್ನಾಟಕ ರಾಜ್ಯ ಮಂಡಳಿ ಪಾಠ್ಯಕ್ರಮವನ್ನು ಅನುಸರಿಸುತ್ತೇವೆ ಮತ್ತು ಸಮಗ್ರ ಅಭಿವೃದ್ಧಿಗಾಗಿ ಮೌಲ್ಯ ಶಿಕ್ಷಣ, ಕ್ರೀಡೆ, ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ ಚಟುವಟಿಕೆಗಳ ಮೇಲೆ ಹೆಚ್ಚುವರಿ ಗಮನವನ್ನು ನೀಡುತ್ತೇವೆ.",
+    faq_curriculum_answer:
+      "ನಾವು ಕರ್ನಾಟಕ ರಾಜ್ಯ ಮಂಡಳಿ ಪಾಠ್ಯಕ್ರಮವನ್ನು ಅನುಸರಿಸುತ್ತೇವೆ ಮತ್ತು ಸಮಗ್ರ ಅಭಿವೃದ್ಧಿಗಾಗಿ ಮೌಲ್ಯ ಶಿಕ್ಷಣ, ಕ್ರೀಡೆ, ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ ಚಟುವಟಿಕೆಗಳ ಮೇಲೆ ಹೆಚ್ಚುವರಿ ಗಮನವನ್ನು ನೀಡುತ್ತೇವೆ.",
     faq_exams: "ಪರೀಕ್ಷೆಗಳನ್ನು ಹೇಗೆ ನಡೆಸಲಾಗುತ್ತದೆ?",
-    faq_exams_answer: "1 ರಿಂದ 7ನೇ ತರಗತಿಗಳ ಕನ್ನಡ ಮಾಧ್ಯಮಕ್ಕೆ ಯೂನಿಟ್ ಟೆಸ್ಟ್ ಮತ್ತು ಸೆಮಿಸ್ಟರ್ ಪರೀಕ್ಷೆಗಳನ್ನು ನಡೆಸಲಾಗುತ್ತದೆ. 8 ರಿಂದ 10ನೇ ತರಗತಿಗಳ ಇಂಗ್ಲಿಷ್ ಮಾಧ್ಯಮಕ್ಕೆ ಯೂನಿಟ್ ಟೆಸ್ಟ್, ಮಾಸಿಕ ಟೆಸ್ಟ್ ಮತ್ತು ವಾರ್ಷಿಕ ಪರೀಕ್ಷೆಗಳನ್ನು ನಡೆಸಲಾಗುತ್ತದೆ. 10ನೇ ತರಗತಿಗೆ ತಯಾರಿ (Preparatory) ಪರೀಕ್ಷೆಗಳನ್ನೂ ನಡೆಸಲಾಗುತ್ತದೆ.",
+    faq_exams_answer:
+      "1 ರಿಂದ 7ನೇ ತರಗತಿಗಳ ಕನ್ನಡ ಮಾಧ್ಯಮಕ್ಕೆ ಯೂನಿಟ್ ಟೆಸ್ಟ್ ಮತ್ತು ಸೆಮಿಸ್ಟರ್ ಪರೀಕ್ಷೆಗಳನ್ನು ನಡೆಸಲಾಗುತ್ತದೆ. 8 ರಿಂದ 10ನೇ ತರಗತಿಗಳ ಇಂಗ್ಲಿಷ್ ಮಾಧ್ಯಮಕ್ಕೆ ಯೂನಿಟ್ ಟೆಸ್ಟ್, ಮಾಸಿಕ ಟೆಸ್ಟ್ ಮತ್ತು ವಾರ್ಷಿಕ ಪರೀಕ್ಷೆಗಳನ್ನು ನಡೆಸಲಾಗುತ್ತದೆ. 10ನೇ ತರಗತಿಗೆ ತಯಾರಿ (Preparatory) ಪರೀಕ್ಷೆಗಳನ್ನೂ ನಡೆಸಲಾಗುತ್ತದೆ.",
     faq_homework: "ಮನೆಕೆಲಸದ ನೀತಿ ಯಾವುದು?",
-    faq_homework_answer: "ನಾವು ತರಗತಿ ಕಲಿಕೆಯನ್ನು ಬಲಪಡಿಸುವ ವಯಸ್ಸಿಗೆ ಸೂಕ್ತವಾದ ಮನೆಕೆಲಸವನ್ನು ನಿಯೋಜಿಸುತ್ತೇವೆ. ಮನೆಕೆಲಸವನ್ನು ಸಮಂಜಸವಾದ ಸಮಯದ ಮಿತಿಯೊಳಗೆ ಪೂರ್ಣಗೊಳಿಸಲು ವಿನ್ಯಾಸಗೊಳಿಸಲಾಗಿದೆ.",
+    faq_homework_answer:
+      "ನಾವು ತರಗತಿ ಕಲಿಕೆಯನ್ನು ಬಲಪಡಿಸುವ ವಯಸ್ಸಿಗೆ ಸೂಕ್ತವಾದ ಮನೆಕೆಲಸವನ್ನು ನಿಯೋಜಿಸುತ್ತೇವೆ. ಮನೆಕೆಲಸವನ್ನು ಸಮಂಜಸವಾದ ಸಮಯದ ಮಿತಿಯೊಳಗೆ ಪೂರ್ಣಗೊಳಿಸಲು ವಿನ್ಯಾಸಗೊಳಿಸಲಾಗಿದೆ.",
     faq_extra_curricular: "ಯಾವ ಪಠ್ಯೇತರ ಚಟುವಟಿಕೆಗಳು ಲಭ್ಯವಿವೆ?",
-    faq_extra_curricular_answer: "ವಿದ್ಯಾರ್ಥಿಗಳ ಪ್ರತಿಭೆ ಮತ್ತು ಆಸಕ್ತಿಗಳನ್ನು ಅಭಿವೃದ್ಧಿಪಡಿಸಲು ನಾವು ಕ್ರೀಡೆ, ಸಂಗೀತ, ನೃತ್ಯ, ಕಲೆ, ವಿಜ್ಞಾನ ಕ್ಲಬ್, ಸಾಹಿತ್ಯ ಕ್ಲಬ್, ಮತ್ತು ವಿವಿಧ ಸಾಂಸ್ಕೃತಿಕ ಚಟುವಟಿಕೆಗಳನ್ನು ನೀಡುತ್ತೇವೆ.",
+    faq_extra_curricular_answer:
+      "ವಿದ್ಯಾರ್ಥಿಗಳ ಪ್ರತಿಭೆ ಮತ್ತು ಆಸಕ್ತಿಗಳನ್ನು ಅಭಿವೃದ್ಧಿಪಡಿಸಲು ನಾವು ಕ್ರೀಡೆ, ಸಂಗೀತ, ನೃತ್ಯ, ಕಲೆ, ವಿಜ್ಞಾನ ಕ್ಲಬ್, ಸಾಹಿತ್ಯ ಕ್ಲಬ್, ಮತ್ತು ವಿವಿಧ ಸಾಂಸ್ಕೃತಿಕ ಚಟುವಟಿಕೆಗಳನ್ನು ನೀಡುತ್ತೇವೆ.",
     faq_library: "ಯಾವ ಗ್ರಂಥಾಲಯ ಸೌಲಭ್ಯಗಳು ಲಭ್ಯವಿವೆ?",
-    faq_library_answer: "ನಮ್ಮ ಗ್ರಂಥಾಲಯದಲ್ಲಿ ಪಾಠ್ಯಪುಸ್ತಕಗಳು, ಉಲ್ಲೇಖ ಪುಸ್ತಕಗಳು, ಕಥಾಸಾಹಿತ್ಯ ಮತ್ತು ಅಕಥಾಸಾಹಿತ್ಯ ಸೇರಿ 2500ಕ್ಕೂ ಹೆಚ್ಚು ಪುಸ್ತಕಗಳಿವೆ. ಓದು ಮೂಲೆಗಳ ಸೌಲಭ್ಯವೂ ಇದೆ.",
+    faq_library_answer:
+      "ನಮ್ಮ ಗ್ರಂಥಾಲಯದಲ್ಲಿ ಪಾಠ್ಯಪುಸ್ತಕಗಳು, ಉಲ್ಲೇಖ ಪುಸ್ತಕಗಳು, ಕಥಾಸಾಹಿತ್ಯ ಮತ್ತು ಅಕಥಾಸಾಹಿತ್ಯ ಸೇರಿ 2500ಕ್ಕೂ ಹೆಚ್ಚು ಪುಸ್ತಕಗಳಿವೆ. ಓದು ಮೂಲೆಗಳ ಸೌಲಭ್ಯವೂ ಇದೆ.",
     faq_labs: "ನಿಮ್ಮಲ್ಲಿ ಯಾವ ಪ್ರಯೋಗಾಲಯ ಸೌಲಭ್ಯಗಳಿವೆ?",
-    faq_labs_answer: "ನಾವು ಭೌತಶಾಸ್ತ್ರ, ರಸಾಯನಶಾಸ್ತ್ರ, ಮತ್ತು ಜೀವಶಾಸ್ತ್ರಕ್ಕಾಗಿ ಆಧುನಿಕ ಸಲಕರಣೆಗಳು ಮತ್ತು ಪ್ರಾಯೋಗಿಕ ಕಲಿಕೆಗೆ ಸುರಕ್ಷತಾ ಕ್ರಮಗಳೊಂದಿಗೆ ಸಜ್ಜಿತ ವಿಜ್ಞಾನ ಪ್ರಯೋಗಾಲಯಗಳನ್ನು ಹೊಂದಿದ್ದೇವೆ.",
+    faq_labs_answer:
+      "ನಾವು ಭೌತಶಾಸ್ತ್ರ, ರಸಾಯನಶಾಸ್ತ್ರ, ಮತ್ತು ಜೀವಶಾಸ್ತ್ರಕ್ಕಾಗಿ ಆಧುನಿಕ ಸಲಕರಣೆಗಳು ಮತ್ತು ಪ್ರಾಯೋಗಿಕ ಕಲಿಕೆಗೆ ಸುರಕ್ಷತಾ ಕ್ರಮಗಳೊಂದಿಗೆ ಸಜ್ಜಿತ ವಿಜ್ಞಾನ ಪ್ರಯೋಗಾಲಯಗಳನ್ನು ಹೊಂದಿದ್ದೇವೆ.",
     faq_sports: "ಯಾವ ಕ್ರೀಡಾ ಸೌಲಭ್ಯಗಳು ಲಭ್ಯವಿವೆ?",
-    faq_sports_answer: "ನಮ್ಮ ಕ್ರೀಡಾ ಸೌಲಭ್ಯಗಳು ಕ್ರಿಕೆಟ್, ಫುಟ್‌ಬಾಲ್, ಮತ್ತು ಅಥ್ಲೆಟಿಕ್ಸ್‌ಗೆ ಆಟದ ಮೈದಾನ, ಇಂಡೋರ್ ಆಟಗಳ ಕೋಣೆ, ಮತ್ತು ವಿವಿಧ ಕ್ರೀಡಾ ಚಟುವಟಿಕೆಗಳಿಗೆ ಸಲಕರಣೆಗಳನ್ನು ಒಳಗೊಂಡಿದೆ.",
+    faq_sports_answer:
+      "ನಮ್ಮ ಕ್ರೀಡಾ ಸೌಲಭ್ಯಗಳು ಕ್ರಿಕೆಟ್, ಫುಟ್‌ಬಾಲ್, ಮತ್ತು ಅಥ್ಲೆಟಿಕ್ಸ್‌ಗೆ ಆಟದ ಮೈದಾನ, ಇಂಡೋರ್ ಆಟಗಳ ಕೋಣೆ, ಮತ್ತು ವಿವಿಧ ಕ್ರೀಡಾ ಚಟುವಟಿಕೆಗಳಿಗೆ ಸಲಕರಣೆಗಳನ್ನು ಒಳಗೊಂಡಿದೆ.",
     faq_transport: "ನೀವು ಸಾರಿಗೆ ಸೌಲಭ್ಯಗಳನ್ನು ನೀಡುತ್ತೀರಾ?",
-    faq_transport_answer: "ಹೌದು, ನಾವು ಸಿರಾ ಮತ್ತು ಸುತ್ತಮುತ್ತಲಿನ ವಿವಿಧ ಮಾರ್ಗಗಳಲ್ಲಿ ಸುರಕ್ಷಿತ ಮತ್ತು ವಿಶ್ವಾಸಾರ್ಹ ಸಾರಿಗೆ ಸೌಲಭ್ಯಗಳನ್ನು ಒದಗಿಸುತ್ತೇವೆ. ನಮ್ಮ ಬಸ್‌ಗಳು ಸುರಕ್ಷತಾ ವೈಶಿಷ್ಟ್ಯಗಳಿಂದ ಸಜ್ಜಿತವಾಗಿವೆ.",
+    faq_transport_answer:
+      "ಹೌದು, ನಾವು ಸಿರಾ ಮತ್ತು ಸುತ್ತಮುತ್ತಲಿನ ವಿವಿಧ ಮಾರ್ಗಗಳಲ್ಲಿ ಸುರಕ್ಷಿತ ಮತ್ತು ವಿಶ್ವಾಸಾರ್ಹ ಸಾರಿಗೆ ಸೌಲಭ್ಯಗಳನ್ನು ಒದಗಿಸುತ್ತೇವೆ. ನಮ್ಮ ಬಸ್‌ಗಳು ಸುರಕ್ಷತಾ ವೈಶಿಷ್ಟ್ಯಗಳಿಂದ ಸಜ್ಜಿತವಾಗಿವೆ.",
     faq_school_hours: "ಶಾಲೆಯ ಸಮಯಗಳು ಯಾವುವು?",
-    faq_school_hours_answer: "1-10ನೇ ತರಗತಿಗಳಿಗೆ ಸೋಮವಾರದಿಂದ ಶುಕ್ರವಾರದವರೆಗೆ ಬೆಳಿಗ್ಗೆ 9:30 ರಿಂದ ಸಂಜೆ 4:30 ರವರೆಗೆ ಮತ್ತು ಶನಿವಾರ ಬೆಳಿಗ್ಗೆ 7:15 ರಿಂದ ಮಧ್ಯಾಹ್ನ 12:00 ರವರೆಗೆ ಶಾಲೆ ಇರುತ್ತದೆ. LKG ಮತ್ತು UKGಗೆ ಬೆಳಿಗ್ಗೆ 9:30 ರಿಂದ ಸಂಜೆ 3:30 ರವರೆಗೆ. ಪರೀಕ್ಷಾ ಅವಧಿಯಲ್ಲಿ ಸಮಯಗಳಲ್ಲಿ ಬದಲಾವಣೆ ಇರಬಹುದು.",
+    faq_school_hours_answer:
+      "1-10ನೇ ತರಗತಿಗಳಿಗೆ ಸೋಮವಾರದಿಂದ ಶುಕ್ರವಾರದವರೆಗೆ ಬೆಳಿಗ್ಗೆ 9:30 ರಿಂದ ಸಂಜೆ 4:30 ರವರೆಗೆ ಮತ್ತು ಶನಿವಾರ ಬೆಳಿಗ್ಗೆ 7:15 ರಿಂದ ಮಧ್ಯಾಹ್ನ 12:00 ರವರೆಗೆ ಶಾಲೆ ಇರುತ್ತದೆ. LKG ಮತ್ತು UKGಗೆ ಬೆಳಿಗ್ಗೆ 9:30 ರಿಂದ ಸಂಜೆ 3:30 ರವರೆಗೆ. ಪರೀಕ್ಷಾ ಅವಧಿಯಲ್ಲಿ ಸಮಯಗಳಲ್ಲಿ ಬದಲಾವಣೆ ಇರಬಹುದು.",
     faq_holidays: "ರಜಾದಿನಗಳ ಕ್ಯಾಲೆಂಡರ್ ಯಾವುದು?",
-    faq_holidays_answer: "ನಾವು ಕರ್ನಾಟಕ ರಾಜ್ಯ ಸರ್ಕಾರದ ರಜಾದಿನಗಳ ಕ್ಯಾಲೆಂಡರ್‌ನನ್ನು ಅನುಸರಿಸುತ್ತೇವೆ ಮತ್ತು ಹಬ್ಬಗಳು ಮತ್ತು ವಿಶೇಷ ಸಂದರ್ಭಗಳಿಗೆ ಹೆಚ್ಚುವರಿ ರಜಾದಿನಗಳನ್ನು ಹೊಂದಿದ್ದೇವೆ. ಶೈಕ್ಷಣಿಕ ವರ್ಷವು ಜೂನ್‌ನಿಂದ ಏಪ್ರಿಲ್‌ವರೆಗೆ ನಡೆಯುತ್ತದೆ.",
+    faq_holidays_answer:
+      "ನಾವು ಕರ್ನಾಟಕ ರಾಜ್ಯ ಸರ್ಕಾರದ ರಜಾದಿನಗಳ ಕ್ಯಾಲೆಂಡರ್‌ನನ್ನು ಅನುಸರಿಸುತ್ತೇವೆ ಮತ್ತು ಹಬ್ಬಗಳು ಮತ್ತು ವಿಶೇಷ ಸಂದರ್ಭಗಳಿಗೆ ಹೆಚ್ಚುವರಿ ರಜಾದಿನಗಳನ್ನು ಹೊಂದಿದ್ದೇವೆ. ಶೈಕ್ಷಣಿಕ ವರ್ಷವು ಜೂನ್‌ನಿಂದ ಏಪ್ರಿಲ್‌ವರೆಗೆ ನಡೆಯುತ್ತದೆ.",
     faq_parent_teacher: "ಪೋಷಕರು ಶಿಕ್ಷಕರೊಂದಿಗೆ ಹೇಗೆ ಸಂವಹನ ಮಾಡಬಹುದು?",
-    faq_parent_teacher_answer: "ನಾವು ನಿಯಮಿತ ಪೋಷಕ-ಶಿಕ್ಷಕ ಸಭೆಗಳನ್ನು ನಡೆಸುತ್ತೇವೆ, ಮತ್ತು ಪೋಷಕರು ಶಿಕ್ಷಕರೊಂದಿಗೆ ಸಮಯ ನಿಗದಿ ಮಾಡಿಕೊಂಡು ಭೇಟಿಯಾಗಬಹುದು.",
+    faq_parent_teacher_answer:
+      "ನಾವು ನಿಯಮಿತ ಪೋಷಕ-ಶಿಕ್ಷಕ ಸಭೆಗಳನ್ನು ನಡೆಸುತ್ತೇವೆ, ಮತ್ತು ಪೋಷಕರು ಶಿಕ್ಷಕರೊಂದಿಗೆ ಸಮಯ ನಿಗದಿ ಮಾಡಿಕೊಂಡು ಭೇಟಿಯಾಗಬಹುದು.",
     faq_contact: "ನಾನು ಶಾಲೆಯನ್ನು ಹೇಗೆ ಸಂಪರ್ಕಿಸಬಹುದು?",
-    faq_contact_answer: "ನೀವು +91 94494 24530 ರಂದು ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಬಹುದು, madhavavidyamandira21@gmail.com ಗೆ ಇಮೇಲ್ ಮಾಡಬಹುದು, ಅಥವಾ Sree Madhava Vidya Mandira, Bhavani nagara, Sira – 572137, Tumakuru District, Karnataka ನಲ್ಲಿ ನಮ್ಮ ಕ್ಯಾಂಪಸ್‌ಗೆ ಭೇಟಿ ನೀಡಬಹುದು.",
+    faq_contact_answer:
+      "ನೀವು +91 94494 24530 ರಂದು ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಬಹುದು, madhavavidyamandira21@gmail.com ಗೆ ಇಮೇಲ್ ಮಾಡಬಹುದು, ಅಥವಾ Sree Madhava Vidya Mandira, Bhavani nagara, Sira – 572137, Tumakuru District, Karnataka ನಲ್ಲಿ ನಮ್ಮ ಕ್ಯಾಂಪಸ್‌ಗೆ ಭೇಟಿ ನೀಡಬಹುದು.",
     parents_message: "ಪೋಷಕರ ಧ್ವನಿ",
     parents_message_title: "ಪೋಷಕರ ಧ್ವನಿ",
     parents_message_subtitle: "ನಮ್ಮ ಪೋಷಕ ಸಮುದಾಯದ ಅನುಭವಗಳ ಬಗ್ಗೆ ಕೇಳಿ",
     parent_community: "ಪೋಷಕ ಸಮುದಾಯ",
     parent_voices: "ಪೋಷಕರ ಧ್ವನಿಗಳು",
     parent_community_stats: "ನಮ್ಮ ಪೋಷಕ ಸಮುದಾಯ",
-    parent_community_stats_desc: "ನಮ್ಮ ಪೋಷಕ ಸಮುದಾಯದ ನಂಬಿಕೆ ಮತ್ತು ತೃಪ್ತಿಯನ್ನು ಪ್ರತಿಬಿಂಬಿಸುವ ಸಂಖ್ಯೆಗಳು",
+    parent_community_stats_desc:
+      "ನಮ್ಮ ಪೋಷಕ ಸಮುದಾಯದ ನಂಬಿಕೆ ಮತ್ತು ತೃಪ್ತಿಯನ್ನು ಪ್ರತಿಬಿಂಬಿಸುವ ಸಂಖ್ಯೆಗಳು",
     parent_stat_1: "ಸಂತೋಷದ ಪೋಷಕರು",
     parent_stat_2: "ತೃಪ್ತಿ ರೇಟಿಂಗ್",
     parent_stat_3: "ಶಿಫಾರಸು ದರ",
     parent_stat_4: "ಸಾಕ್ಷ್ಯಚಿತ್ರಗಳು",
     parent_messages: "ಪೋಷಕರ ಸಂದೇಶಗಳು",
-    parent_messages_desc: "ನಮ್ಮ ಶಾಲೆಯಲ್ಲಿ ತಮ್ಮ ಮಕ್ಕಳ ಪ್ರಯಾಣದ ಬಗ್ಗೆ ಪೋಷಕರು ಏನು ಹೇಳುತ್ತಾರೆಂದು ಓದಿ",
+    parent_messages_desc:
+      "ನಮ್ಮ ಶಾಲೆಯಲ್ಲಿ ತಮ್ಮ ಮಕ್ಕಳ ಪ್ರಯಾಣದ ಬಗ್ಗೆ ಪೋಷಕರು ಏನು ಹೇಳುತ್ತಾರೆಂದು ಓದಿ",
     parent_testimonials: "ಪೋಷಕರ ಸಾಕ್ಷ್ಯಚಿತ್ರಗಳು",
-    parent_testimonials_desc: "ನಮ್ಮ ಪೋಷಕ ಸಮುದಾಯದಿಂದ ವೈಶಿಷ್ಟ್ಯಗೊಳಿಸಿದ ಸಾಕ್ಷ್ಯಚಿತ್ರಗಳು",
+    parent_testimonials_desc:
+      "ನಮ್ಮ ಪೋಷಕ ಸಮುದಾಯದಿಂದ ವೈಶಿಷ್ಟ್ಯಗೊಳಿಸಿದ ಸಾಕ್ಷ್ಯಚಿತ್ರಗಳು",
     parent_join_community: "ನಮ್ಮ ಪೋಷಕ ಸಮುದಾಯಕ್ಕೆ ಸೇರಿ",
-    parent_join_community_desc: "ನಿಮ್ಮ ಅನುಭವವನ್ನು ಹಂಚಿಕೊಳ್ಳಿ ಮತ್ತು ಇತರ ಪೋಷಕರೊಂದಿಗೆ ಸಂಪರ್ಕಿಸಿ",
+    parent_join_community_desc:
+      "ನಿಮ್ಮ ಅನುಭವವನ್ನು ಹಂಚಿಕೊಳ್ಳಿ ಮತ್ತು ಇತರ ಪೋಷಕರೊಂದಿಗೆ ಸಂಪರ್ಕಿಸಿ",
     parent_share_experience: "ನಿಮ್ಮ ಅನುಭವವನ್ನು ಹಂಚಿಕೊಳ್ಳಿ",
     parent_contact_us: "ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ",
-    parent_message_1: "SMVM ನಮ್ಮ ಕುಟುಂಬಕ್ಕೆ ಆಶೀರ್ವಾದವಾಗಿದೆ. ಶಿಕ್ಷಕರು ಅರ್ಪಿತರಾಗಿದ್ದಾರೆ ಮತ್ತು ಪರಿಸರವು ಪೋಷಕವಾಗಿದೆ. ನನ್ನ ಮಗು ಶೈಕ್ಷಣಿಕವಾಗಿ ಮತ್ತು ವೈಯಕ್ತಿಕವಾಗಿ ಬೆಳೆದಿದೆ.",
-    parent_message_2: "ಶಾಲೆಯ ಮೌಲ್ಯಗಳು ಮತ್ತು ಶಿಸ್ತಿನ ಮೇಲಿನ ಗಮನವು ನನ್ನ ಮಗಳನ್ನು ಜವಾಬ್ದಾರಿಯುತ ಯುವ ವ್ಯಕ್ತಿಯಾಗಿ ರೂಪಿಸಿದೆ. ನೀಡಲಾದ ಗುಣಮಟ್ಟದ ಶಿಕ್ಷಣಕ್ಕಾಗಿ ನಾವು ಕೃತಜ್ಞರಾಗಿದ್ದೇವೆ.",
-    parent_message_3: "ಪ್ರತಿ ಮಗು ಯಶಸ್ವಿಯಾಗುವಂತೆ ಶಿಕ್ಷಕರು ಮಿತಿಮೀರಿ ಕೆಲಸ ಮಾಡುತ್ತಾರೆ. ಪಠ್ಯೇತರ ಚಟುವಟಿಕೆಗಳು ನನ್ನ ಮಗನ ಪ್ರತಿಭೆಗಳನ್ನು ಕಂಡುಹಿಡಿಯಲು ಸಹಾಯ ಮಾಡಿವೆ.",
-    parent_message_4: "ಕೆಲಸ ಮಾಡುವ ಪೋಷಕರಾಗಿ, ನಾನು ಶಾಲೆಯ ಸಂವಹನ ಮತ್ತು ಬೆಂಬಲವನ್ನು ಪ್ರಶಂಸಿಸುತ್ತೇನೆ. ಪೋಷಕ-ಶಿಕ್ಷಕ ಸಭೆಗಳು ಬಹಳ ಸಹಾಯಕ ಮತ್ತು ಮಾಹಿತಿಪೂರ್ಣವಾಗಿವೆ.",
-    parent_message_5: "ಶಾಲೆಯ ಮೂಲಸೌಕರ್ಯ ಮತ್ತು ಸೌಲಭ್ಯಗಳು ಅತ್ಯುತ್ತಮವಾಗಿವೆ. ನನ್ನ ಮಗು ಪ್ರತಿದಿನ ಶಾಲೆಗೆ ಬರಲು ಆನಂದಿಸುತ್ತಾನೆ ಮತ್ತು ಉತ್ತಮ ಸ್ನೇಹಿತರನ್ನು ಮಾಡಿದ್ದಾನೆ.",
-    parent_message_6: "ಶಾಲೆಯ ಸಮಗ್ರ ಅಭಿವೃದ್ಧಿಯ ಮೇಲಿನ ಒತ್ತು ಸ್ಪಷ್ಟವಾಗಿದೆ. ನನ್ನ ಮಗಳು SMVM ಗೆ ಸೇರಿದ ನಂತರ ಹೆಚ್ಚು ಆತ್ಮವಿಶ್ವಾಸ ಮತ್ತು ಸ್ವಾವಲಂಬಿಯಾಗಿದ್ದಾಳೆ.",
-    parent_testimonial_1: "SMVM ನನ್ನ ಮಗುವಿಗೆ ಕೇವಲ ಶಿಕ್ಷಣವನ್ನು ಮಾತ್ರವಲ್ಲ, ಜೀವನದುದ್ದಕ್ಕೂ ಇರುವ ಮೌಲ್ಯಗಳನ್ನು ನೀಡಿದೆ. ಶಿಕ್ಷಕರು ಕುಟುಂಬದಂತೆ.",
-    parent_testimonial_2: "ಶಾಲೆಯ ಉತ್ಕೃಷ್ಟತೆಯ ಬದ್ಧತೆಯು ಅವರು ಮಾಡುವ ಎಲ್ಲದರಲ್ಲೂ ಸ್ಪಷ್ಟವಾಗಿದೆ. ನನ್ನ ಮಗುವಿನ ಪ್ರಗತಿ ಗಮನಾರ್ಹವಾಗಿದೆ.",
-    parent_testimonial_3: "ಶಾಲೆಯ ಆಧುನಿಕ ಬೋಧನಾ ವಿಧಾನಗಳು ಮತ್ತು ಪ್ರತಿ ವಿದ್ಯಾರ್ಥಿಯ ವೈಯಕ್ತಿಕ ಅಗತ್ಯಗಳ ಬಗ್ಗೆ ಅವರು ತೋರುವ ಕಾಳಜಿಯಿಂದ ನಾನು ಪ್ರಭಾವಿತನಾಗಿದ್ದೇನೆ.",
+    parent_message_1:
+      "SMVM ನಮ್ಮ ಕುಟುಂಬಕ್ಕೆ ಆಶೀರ್ವಾದವಾಗಿದೆ. ಶಿಕ್ಷಕರು ಅರ್ಪಿತರಾಗಿದ್ದಾರೆ ಮತ್ತು ಪರಿಸರವು ಪೋಷಕವಾಗಿದೆ. ನನ್ನ ಮಗು ಶೈಕ್ಷಣಿಕವಾಗಿ ಮತ್ತು ವೈಯಕ್ತಿಕವಾಗಿ ಬೆಳೆದಿದೆ.",
+    parent_message_2:
+      "ಶಾಲೆಯ ಮೌಲ್ಯಗಳು ಮತ್ತು ಶಿಸ್ತಿನ ಮೇಲಿನ ಗಮನವು ನನ್ನ ಮಗಳನ್ನು ಜವಾಬ್ದಾರಿಯುತ ಯುವ ವ್ಯಕ್ತಿಯಾಗಿ ರೂಪಿಸಿದೆ. ನೀಡಲಾದ ಗುಣಮಟ್ಟದ ಶಿಕ್ಷಣಕ್ಕಾಗಿ ನಾವು ಕೃತಜ್ಞರಾಗಿದ್ದೇವೆ.",
+    parent_message_3:
+      "ಪ್ರತಿ ಮಗು ಯಶಸ್ವಿಯಾಗುವಂತೆ ಶಿಕ್ಷಕರು ಮಿತಿಮೀರಿ ಕೆಲಸ ಮಾಡುತ್ತಾರೆ. ಪಠ್ಯೇತರ ಚಟುವಟಿಕೆಗಳು ನನ್ನ ಮಗನ ಪ್ರತಿಭೆಗಳನ್ನು ಕಂಡುಹಿಡಿಯಲು ಸಹಾಯ ಮಾಡಿವೆ.",
+    parent_message_4:
+      "ಕೆಲಸ ಮಾಡುವ ಪೋಷಕರಾಗಿ, ನಾನು ಶಾಲೆಯ ಸಂವಹನ ಮತ್ತು ಬೆಂಬಲವನ್ನು ಪ್ರಶಂಸಿಸುತ್ತೇನೆ. ಪೋಷಕ-ಶಿಕ್ಷಕ ಸಭೆಗಳು ಬಹಳ ಸಹಾಯಕ ಮತ್ತು ಮಾಹಿತಿಪೂರ್ಣವಾಗಿವೆ.",
+    parent_message_5:
+      "ಶಾಲೆಯ ಮೂಲಸೌಕರ್ಯ ಮತ್ತು ಸೌಲಭ್ಯಗಳು ಅತ್ಯುತ್ತಮವಾಗಿವೆ. ನನ್ನ ಮಗು ಪ್ರತಿದಿನ ಶಾಲೆಗೆ ಬರಲು ಆನಂದಿಸುತ್ತಾನೆ ಮತ್ತು ಉತ್ತಮ ಸ್ನೇಹಿತರನ್ನು ಮಾಡಿದ್ದಾನೆ.",
+    parent_message_6:
+      "ಶಾಲೆಯ ಸಮಗ್ರ ಅಭಿವೃದ್ಧಿಯ ಮೇಲಿನ ಒತ್ತು ಸ್ಪಷ್ಟವಾಗಿದೆ. ನನ್ನ ಮಗಳು SMVM ಗೆ ಸೇರಿದ ನಂತರ ಹೆಚ್ಚು ಆತ್ಮವಿಶ್ವಾಸ ಮತ್ತು ಸ್ವಾವಲಂಬಿಯಾಗಿದ್ದಾಳೆ.",
+    parent_testimonial_1:
+      "SMVM ನನ್ನ ಮಗುವಿಗೆ ಕೇವಲ ಶಿಕ್ಷಣವನ್ನು ಮಾತ್ರವಲ್ಲ, ಜೀವನದುದ್ದಕ್ಕೂ ಇರುವ ಮೌಲ್ಯಗಳನ್ನು ನೀಡಿದೆ. ಶಿಕ್ಷಕರು ಕುಟುಂಬದಂತೆ.",
+    parent_testimonial_2:
+      "ಶಾಲೆಯ ಉತ್ಕೃಷ್ಟತೆಯ ಬದ್ಧತೆಯು ಅವರು ಮಾಡುವ ಎಲ್ಲದರಲ್ಲೂ ಸ್ಪಷ್ಟವಾಗಿದೆ. ನನ್ನ ಮಗುವಿನ ಪ್ರಗತಿ ಗಮನಾರ್ಹವಾಗಿದೆ.",
+    parent_testimonial_3:
+      "ಶಾಲೆಯ ಆಧುನಿಕ ಬೋಧನಾ ವಿಧಾನಗಳು ಮತ್ತು ಪ್ರತಿ ವಿದ್ಯಾರ್ಥಿಯ ವೈಯಕ್ತಿಕ ಅಗತ್ಯಗಳ ಬಗ್ಗೆ ಅವರು ತೋರುವ ಕಾಳಜಿಯಿಂದ ನಾನು ಪ್ರಭಾವಿತನಾಗಿದ್ದೇನೆ.",
     // Core Values
     values_first: "ಮೌಲ್ಯಗಳು ಮೊದಲು",
-    values_first_desc: "ಶೈಕ್ಷಣಿಕ ಉತ್ಕೃಷ್ಟತೆಯೊಂದಿಗೆ ಚಾರಿತ್ರ್ಯ, ಸಮಗ್ರತೆ ಮತ್ತು ನೈತಿಕ ಮೌಲ್ಯಗಳನ್ನು ಪೋಷಿಸುವುದರಲ್ಲಿ ನಾವು ನಂಬಿಕೆ ಇಡುತ್ತೇವೆ.",
+    values_first_desc:
+      "ಶೈಕ್ಷಣಿಕ ಉತ್ಕೃಷ್ಟತೆಯೊಂದಿಗೆ ಚಾರಿತ್ರ್ಯ, ಸಮಗ್ರತೆ ಮತ್ತು ನೈತಿಕ ಮೌಲ್ಯಗಳನ್ನು ಪೋಷಿಸುವುದರಲ್ಲಿ ನಾವು ನಂಬಿಕೆ ಇಡುತ್ತೇವೆ.",
     holistic_education: "ಸಮಗ್ರ ಶಿಕ್ಷಣ",
-    holistic_education_desc: "ಸಮಗ್ರ ಅಭಿವೃದ್ಧಿಗಾಗಿ ನಮ್ಮ ಪಾಠ್ಯಕ್ರಮವು ಶೈಕ್ಷಣಿಕ, ಕ್ರೀಡೆ, ಕಲೆ ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ ಚಟುವಟಿಕೆಗಳನ್ನು ಸಮತೋಲನಗೊಳಿಸುತ್ತದೆ.",
+    holistic_education_desc:
+      "ಸಮಗ್ರ ಅಭಿವೃದ್ಧಿಗಾಗಿ ನಮ್ಮ ಪಾಠ್ಯಕ್ರಮವು ಶೈಕ್ಷಣಿಕ, ಕ್ರೀಡೆ, ಕಲೆ ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ ಚಟುವಟಿಕೆಗಳನ್ನು ಸಮತೋಲನಗೊಳಿಸುತ್ತದೆ.",
     excellence_teaching: "ಬೋಧನೆಯಲ್ಲಿ ಉತ್ಕೃಷ್ಟತೆ",
-    excellence_teaching_desc: "ಪ್ರತಿ ವಿದ್ಯಾರ್ಥಿಯನ್ನು ಪ್ರೇರೇಪಿಸಲು ಮತ್ತು ತೊಡಗಿಸಲು ನವೀನ ಬೋಧನಾ ವಿಧಾನಗಳೊಂದಿಗೆ ಅರ್ಪಿತ ಶಿಕ್ಷಕರು.",
+    excellence_teaching_desc:
+      "ಪ್ರತಿ ವಿದ್ಯಾರ್ಥಿಯನ್ನು ಪ್ರೇರೇಪಿಸಲು ಮತ್ತು ತೊಡಗಿಸಲು ನವೀನ ಬೋಧನಾ ವಿಧಾನಗಳೊಂದಿಗೆ ಅರ್ಪಿತ ಶಿಕ್ಷಕರು.",
     cultural_heritage: "ಸಾಂಸ್ಕೃತಿಕ ಪರಂಪರೆ",
-    cultural_heritage_desc: "ವಿವಿಧ ಚಟುವಟಿಕೆಗಳ ಮೂಲಕ ನಮ್ಮ ಸಮೃದ್ಧ ಕನ್ನಡ ಸಂಸ್ಕೃತಿ ಮತ್ತು ಸಂಪ್ರದಾಯಗಳನ್ನು ಸಂರಕ್ಷಿಸುವುದು ಮತ್ತು ಪ್ರಚಾರ ಮಾಡುವುದು.",
+    cultural_heritage_desc:
+      "ವಿವಿಧ ಚಟುವಟಿಕೆಗಳ ಮೂಲಕ ನಮ್ಮ ಸಮೃದ್ಧ ಕನ್ನಡ ಸಂಸ್ಕೃತಿ ಮತ್ತು ಸಂಪ್ರದಾಯಗಳನ್ನು ಸಂರಕ್ಷಿಸುವುದು ಮತ್ತು ಪ್ರಚಾರ ಮಾಡುವುದು.",
     // New Kannada Values
     samskara: "ಸಂಸ್ಕಾರ",
-    samskara_desc: "ವಿದ್ಯಾರ್ಥಿಗಳಲ್ಲಿ ನೈತಿಕತೆ ಶಿಸ್ತು ಗೌರವ ಹಾಗೂ ದೈನಂದಿನ ಆಚರಣೆಯಲ್ಲಿಯೂ ಧರ್ಮ ಬೋಧನೆ ಮಾಡುವುದು",
+    samskara_desc:
+      "ವಿದ್ಯಾರ್ಥಿಗಳಲ್ಲಿ ನೈತಿಕತೆ ಶಿಸ್ತು ಗೌರವ ಹಾಗೂ ದೈನಂದಿನ ಆಚರಣೆಯಲ್ಲಿಯೂ ಧರ್ಮ ಬೋಧನೆ ಮಾಡುವುದು",
     seva_bhavana: "ಸೇವಾ ಭಾವನೆ",
-    seva_bhavana_desc: "ಸಮಾಜದ ಪ್ರತಿಯೊಬ್ಬರಲ್ಲಿಯೂ ದಯೆ ಹಾಗೂ ಸೇವಾ ಮನೋಭಾವ ಬೆಳೆಸುವುದು ಇತರರ ಒಳತಿಗಾಗಿ ತನ್ನ ಸ್ವಾರ್ಥವನ್ನು ತ್ಯಾಗ ಮಾಡುವುದು ತನ್ನ ಕರ್ತವ್ಯವನ್ನು ನಿಷ್ಠೆಯಿಂದ ಪಾಲಿಸುವುದು.",
+    seva_bhavana_desc:
+      "ಸಮಾಜದ ಪ್ರತಿಯೊಬ್ಬರಲ್ಲಿಯೂ ದಯೆ ಹಾಗೂ ಸೇವಾ ಮನೋಭಾವ ಬೆಳೆಸುವುದು ಇತರರ ಒಳತಿಗಾಗಿ ತನ್ನ ಸ್ವಾರ್ಥವನ್ನು ತ್ಯಾಗ ಮಾಡುವುದು ತನ್ನ ಕರ್ತವ್ಯವನ್ನು ನಿಷ್ಠೆಯಿಂದ ಪಾಲಿಸುವುದು.",
     ekata_sahabhava: "ಏಕತೆ ಮತ್ತು ಸಹಭಾವ",
     ekata_sahabhava_desc: "ವಸುದೈವ ಕುಟುಂಬಕಂ ಎಂಬ ತತ್ವವನ್ನು ಅಳವಡಿಸಿಕೊಳ್ಳುವುದು",
     adhyatma_atmavikasa: "ಅಧ್ಯಾತ್ಮ ಹಾಗೂ ಆತ್ಮವಿಕಾಸ",
-    adhyatma_atmavikasa_desc: "ಧ್ಯಾನ ಯೋಗ ಜಪಾ ಪ್ರಾರ್ಥನೆಗಳ ಮೂಲಕ ಮನಸ್ಸು ಮತ್ತು ಆತ್ಮವಿಕಾಸ ಸಾಧಿಸುವ ಮಾರ್ಗ",
+    adhyatma_atmavikasa_desc:
+      "ಧ್ಯಾನ ಯೋಗ ಜಪಾ ಪ್ರಾರ್ಥನೆಗಳ ಮೂಲಕ ಮನಸ್ಸು ಮತ್ತು ಆತ್ಮವಿಕಾಸ ಸಾಧಿಸುವ ಮಾರ್ಗ",
     svavalambane: "ಸ್ವಾವಲಂಬನೆ",
-    svavalambane_desc: "ವಿದ್ಯಾರ್ಥಿಗಳಲ್ಲಿ ಆತ್ಮವಿಶ್ವಾಸ ಸ್ವವಿವೇಕ ಮತ್ತು ಕರ್ತವ್ಯ ನಿಷ್ಠೆ ಬೆಳೆಸುವುದು ಜೀವನದ ಪ್ರತಿಯೊಂದು ಹಂತದಲ್ಲೂ ತನ್ನ ಜೀವನದ ಹೊಣಗಾರಿಕೆ ತೆಗೆದುಕೊಳ್ಳುವ ಶಕ್ತಿ ನೀಡುವುದು",
+    svavalambane_desc:
+      "ವಿದ್ಯಾರ್ಥಿಗಳಲ್ಲಿ ಆತ್ಮವಿಶ್ವಾಸ ಸ್ವವಿವೇಕ ಮತ್ತು ಕರ್ತವ್ಯ ನಿಷ್ಠೆ ಬೆಳೆಸುವುದು ಜೀವನದ ಪ್ರತಿಯೊಂದು ಹಂತದಲ್ಲೂ ತನ್ನ ಜೀವನದ ಹೊಣಗಾರಿಕೆ ತೆಗೆದುಕೊಳ್ಳುವ ಶಕ್ತಿ ನೀಡುವುದು",
     // Section titles
     our_core_values: "ನಮ್ಮ ಮೂಲಭೂತ ಮೌಲ್ಯಗಳು",
     our_mission: "ನಮ್ಮ ಧ್ಯೇಯ",
-    our_mission_desc: "ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಭಾರತೀಯ ಸಂಸ್ಕೃತಿಯ ಶ್ರೇಷ್ಠತೆಯನ್ನು ಕುರಿತು, ಆಧುನಿಕ ಶಿಕ್ಷಣದೊಂದಿಗೆ ಮೌಲ್ಯಧಾರಿತ ಬದುಕನ್ನು ರೂಪಿಸಲು ಸ್ಪೂರ್ತಿ ನೀಡುವುದು; ಭಾರತೀಯ ಪರಂಪರೆ, ನೈತಿಕತೆ, ಶಿಸ್ತು ಮತ್ತು ಶ್ರದ್ಧೆಗೆ ಆದ್ಯತೆ ನೀಡುತ್ತಾ, ಜ್ಞಾನ ಹಾಗೂ ಔದಾರ್ಯದೊಂದಿಗೆ ಜವಾಬ್ದಾರಿಯುತ ನಾಗರೀಕರಣವನ್ನು ರೂಪಿಸುವುದು ನಮ್ಮ ಶಾಲೆಯ ಮುಖ್ಯ ಉದ್ದೇಶ.",
+    our_mission_desc:
+      "ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಭಾರತೀಯ ಸಂಸ್ಕೃತಿಯ ಶ್ರೇಷ್ಠತೆಯನ್ನು ಕುರಿತು, ಆಧುನಿಕ ಶಿಕ್ಷಣದೊಂದಿಗೆ ಮೌಲ್ಯಧಾರಿತ ಬದುಕನ್ನು ರೂಪಿಸಲು ಸ್ಪೂರ್ತಿ ನೀಡುವುದು; ಭಾರತೀಯ ಪರಂಪರೆ, ನೈತಿಕತೆ, ಶಿಸ್ತು ಮತ್ತು ಶ್ರದ್ಧೆಗೆ ಆದ್ಯತೆ ನೀಡುತ್ತಾ, ಜ್ಞಾನ ಹಾಗೂ ಔದಾರ್ಯದೊಂದಿಗೆ ಜವಾಬ್ದಾರಿಯುತ ನಾಗರೀಕರಣವನ್ನು ರೂಪಿಸುವುದು ನಮ್ಮ ಶಾಲೆಯ ಮುಖ್ಯ ಉದ್ದೇಶ.",
     our_vision: "ನಮ್ಮ ದೃಷ್ಟಿ",
-    our_vision_desc: "ಭಾರತೀಯ ಸಂಸ್ಕೃತಿ ಪರಂಪರೆ ಮತ್ತು ಮೌಲ್ಯಗಳನ್ನು ಪ್ರತಿಬಿಂಬಿಸುವ ಸಮಗ್ರ ಶಿಕ್ಷಣವನ್ನು ಒದಗಿಸಿ ನಾನಾ ನೈತಿಕತೆ ಶ್ರದ್ಧೆ ಮತ್ತು ಸಾಮಾಜಿಕ ಬದ್ಧತೆಯಿಂದ ಶ್ರೇಷ್ಠ ನಾಗರಿಕರನ್ನು ರೂಪಿಸುವುದು ಪೌರಾಣಿಕ ಜ್ಞಾನ ಹಾಗೂ ಆಧುನಿಕ ವಿಜ್ಞಾನವನ್ನು ಸಮನ್ವಯಗೊಳಿಸಿ ಮಾನವೀಯತೆಯೊಂದಿಗೆ ಜೀವನವನ್ನು ಹಮ್ಮಿಕೊಳ್ಳುವ ಮೌಲ್ಯ ಸಂಸ್ಕೃತ ಸಮಾಜವನ್ನು ಕಟ್ಟುವುದು ನಮ್ಮ ಶಾಲೆಯ ದೃಷ್ಟಿಕೋನ",
+    our_vision_desc:
+      "ಭಾರತೀಯ ಸಂಸ್ಕೃತಿ ಪರಂಪರೆ ಮತ್ತು ಮೌಲ್ಯಗಳನ್ನು ಪ್ರತಿಬಿಂಬಿಸುವ ಸಮಗ್ರ ಶಿಕ್ಷಣವನ್ನು ಒದಗಿಸಿ ನಾನಾ ನೈತಿಕತೆ ಶ್ರದ್ಧೆ ಮತ್ತು ಸಾಮಾಜಿಕ ಬದ್ಧತೆಯಿಂದ ಶ್ರೇಷ್ಠ ನಾಗರಿಕರನ್ನು ರೂಪಿಸುವುದು ಪೌರಾಣಿಕ ಜ್ಞಾನ ಹಾಗೂ ಆಧುನಿಕ ವಿಜ್ಞಾನವನ್ನು ಸಮನ್ವಯಗೊಳಿಸಿ ಮಾನವೀಯತೆಯೊಂದಿಗೆ ಜೀವನವನ್ನು ಹಮ್ಮಿಕೊಳ್ಳುವ ಮೌಲ್ಯ ಸಂಸ್ಕೃತ ಸಮಾಜವನ್ನು ಕಟ್ಟುವುದು ನಮ್ಮ ಶಾಲೆಯ ದೃಷ್ಟಿಕೋನ",
     our_journey: "ನಮ್ಮ ಪ್ರಯಾಣ",
     // Donor Module
     donor: "ದಾನ",
     donor_title: "ನಮ್ಮ ಶಾಲೆಗೆ ಬೆಂಬಲ ನೀಡಿ",
-    donor_subtitle: "ನಿಮ್ಮ ಕೊಡುಗೆಯು ನಮ್ಮ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಗುಣಮಟ್ಟದ ಶಿಕ್ಷಣ ಮತ್ತು ಸೌಲಭ್ಯಗಳನ್ನು ಒದಗಿಸಲು ನಮಗೆ ಸಹಾಯ ಮಾಡುತ್ತದೆ",
+    donor_subtitle:
+      "ನಿಮ್ಮ ಕೊಡುಗೆಯು ನಮ್ಮ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಗುಣಮಟ್ಟದ ಶಿಕ್ಷಣ ಮತ್ತು ಸೌಲಭ್ಯಗಳನ್ನು ಒದಗಿಸಲು ನಮಗೆ ಸಹಾಯ ಮಾಡುತ್ತದೆ",
     donor_account_details: "ಖಾತೆ ವಿವರಗಳು",
     donor_bank_name: "ಬ್ಯಾಂಕ್ ಹೆಸರು",
     donor_bank_name_value: "ಕನರಾ ಬ್ಯಾಂಕ್",
@@ -1358,16 +1719,20 @@ const dictionary: Record<Lang, Record<string, string>> = {
     donor_10000: "₹10,000",
     donor_other: "ಇತರೆ",
     donor_note: "ಗಮನಿಸಿ",
-    donor_note_text: "ಈ ಖಾತೆಗೆ ನೀಡುವ ದೇಣಿಗೆಗಳು ಆದಾಯ ತೆರಿಗೆ ಕಾಯ್ದೆಯ ಕಲಂ 80G ಅಡಿಯಲ್ಲಿ ತೆರಿಗೆ ವಿನಾಯಿತಿಗೆ ಅರ್ಹವಾಗಿವೆ.",
+    donor_note_text:
+      "ಈ ಖಾತೆಗೆ ನೀಡುವ ದೇಣಿಗೆಗಳು ಆದಾಯ ತೆರಿಗೆ ಕಾಯ್ದೆಯ ಕಲಂ 80G ಅಡಿಯಲ್ಲಿ ತೆರಿಗೆ ವಿನಾಯಿತಿಗೆ ಅರ್ಹವಾಗಿವೆ.",
     donor_contact_info: "ಸಂಪರ್ಕ ಮಾಹಿತಿ",
     donor_contact_phone: "ದೂರವಾಣಿ: +91 94494 24530",
     donor_contact_email: "ಇಮೇಲ್: madhavavidyamandira21@gmail.com",
     donor_thank_you: "ಧನ್ಯವಾದಗಳು",
-    donor_thank_you_message: "ನಿಮ್ಮ ಉದಾರ ಕೊಡುಗೆಯು ನಮ್ಮ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಗುಣಮಟ್ಟದ ಶಿಕ್ಷಣವನ್ನು ನೀಡುವುದನ್ನು ಮುಂದುವರಿಸಲು ನಮಗೆ ಸಹಾಯ ಮಾಡುತ್ತದೆ.",
-    donor_tax_note: "ಈ ಖಾತೆಗೆ ನೀಡುವ ದೇಣಿಗೆಗಳು ಆದಾಯ ತೆರಿಗೆ ಕಾಯ್ದೆಯ ಕಲಂ 80G ಅಡಿಯಲ್ಲಿ ತೆರಿಗೆ ವಿನಾಯಿತಿಗೆ ಅರ್ಹವಾಗಿವೆ.",
+    donor_thank_you_message:
+      "ನಿಮ್ಮ ಉದಾರ ಕೊಡುಗೆಯು ನಮ್ಮ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಗುಣಮಟ್ಟದ ಶಿಕ್ಷಣವನ್ನು ನೀಡುವುದನ್ನು ಮುಂದುವರಿಸಲು ನಮಗೆ ಸಹಾಯ ಮಾಡುತ್ತದೆ.",
+    donor_tax_note:
+      "ಈ ಖಾತೆಗೆ ನೀಡುವ ದೇಣಿಗೆಗಳು ಆದಾಯ ತೆರಿಗೆ ಕಾಯ್ದೆಯ ಕಲಂ 80G ಅಡಿಯಲ್ಲಿ ತೆರಿಗೆ ವಿನಾಯಿತಿಗೆ ಅರ್ಹವಾಗಿವೆ.",
     donor_total_donors: "ಒಟ್ಟು ದಾನಿಗಳು",
     donor_list_title: "ದಾನಿಗಳ ಪಟ್ಟಿ",
-    donor_list_desc: "ನಮ್ಮ ದಾನಿಗಳ ಬೆಂಬಲಕ್ಕೆ ನಾವು ಹೃತ್ಪೂರ್ವಕ ಕೃತಜ್ಞತೆ ಸಲ್ಲಿಸುತ್ತೇವೆ.",
+    donor_list_desc:
+      "ನಮ್ಮ ದಾನಿಗಳ ಬೆಂಬಲಕ್ಕೆ ನಾವು ಹೃತ್ಪೂರ್ವಕ ಕೃತಜ್ಞತೆ ಸಲ್ಲಿಸುತ್ತೇವೆ.",
     // UPI Payment Options
     donor_upi_payment: "UPI ಪಾವತಿ",
     donor_upi_id: "UPI ID",
@@ -1382,50 +1747,61 @@ const dictionary: Record<Lang, Record<string, string>> = {
     achievements_page_card_5_title: "ಕ್ಲಸ್ಟರ್ ಮತ್ತು ತಾಲ್ಲೂಕು ಮಟ್ಟದ ಕ್ರೀಡೆಗಳು",
     achievements_page_card_5_category: "ಕ್ರೀಡೆ",
     achievements_page_card_5_year: "2024-25",
-    achievements_page_card_5_description: "ಕ್ಲಸ್ಟರ್ ಹಾಗೂ ತಾಲ್ಲೂಕು ಮಟ್ಟದ ಕ್ರೀಡಾಕೂಟದಲ್ಲಿ ಭಾಗವಹಿಸಿ ಪ್ರಥಮ ದ್ವಿತೀಯ ಸ್ಥಾನ ಗಳಿಸಿದ್ದಾರೆ.",
-    achievements_page_card_5_details: "ರಾಜ್ಯಮಟ್ಟದ ಪ್ರತಿಭಾ ಕಾರಂಜಿಯಲ್ಲಿ ಉತ್ತಮ ಪ್ರದರ್ಶನ",
+    achievements_page_card_5_description:
+      "ಕ್ಲಸ್ಟರ್ ಹಾಗೂ ತಾಲ್ಲೂಕು ಮಟ್ಟದ ಕ್ರೀಡಾಕೂಟದಲ್ಲಿ ಭಾಗವಹಿಸಿ ಪ್ರಥಮ ದ್ವಿತೀಯ ಸ್ಥಾನ ಗಳಿಸಿದ್ದಾರೆ.",
+    achievements_page_card_5_details:
+      "ರಾಜ್ಯಮಟ್ಟದ ಪ್ರತಿಭಾ ಕಾರಂಜಿಯಲ್ಲಿ ಉತ್ತಮ ಪ್ರದರ್ಶನ",
     achievements_page_card_5_level: "ಕ್ಲಸ್ಟರ್/ತಾಲ್ಲೂಕು ಮಟ್ಟ",
     achievements_page_card_5_participants: "ಅನೇಕ ವಿದ್ಯಾರ್ಥಿಗಳು",
     achievements_page_card_6_title: "ಜಿಲ್ಲಾ ಮಟ್ಟದ ಪ್ರತಿಭಾ ಕಾರಂಜಿ",
     achievements_page_card_6_category: "ಸಾಂಸ್ಕೃತಿಕ",
     achievements_page_card_6_year: "2024-25",
-    achievements_page_card_6_description: "ಜಿಲ್ಲಾ ಮಟ್ಟದ ಪ್ರತಿಭಾ ಕಾರಂಜಲ್ಲಿ ಆಶುಭಾಷಣ ಸ್ಪರ್ಧೆಯಲ್ಲಿ ಪ್ರಥಮ ಬಹುಮಾನ.",
-    achievements_page_card_6_details: "ಜಿಲ್ಲಾ ಮಟ್ಟದ ಸ್ಪರ್ಧೆಯ ಆಶುಭಾಷಣ ವಿಭಾಗದಲ್ಲಿ ಗಮನಾರ್ಹ ಸಾಧನೆ.",
+    achievements_page_card_6_description:
+      "ಜಿಲ್ಲಾ ಮಟ್ಟದ ಪ್ರತಿಭಾ ಕಾರಂಜಲ್ಲಿ ಆಶುಭಾಷಣ ಸ್ಪರ್ಧೆಯಲ್ಲಿ ಪ್ರಥಮ ಬಹುಮಾನ.",
+    achievements_page_card_6_details:
+      "ಜಿಲ್ಲಾ ಮಟ್ಟದ ಸ್ಪರ್ಧೆಯ ಆಶುಭಾಷಣ ವಿಭಾಗದಲ್ಲಿ ಗಮನಾರ್ಹ ಸಾಧನೆ.",
     achievements_page_card_6_level: "ಜಿಲ್ಲಾ ಮಟ್ಟ",
     achievements_page_card_6_participants: "1 ವಿದ್ಯಾರ್ಥಿ",
     achievements_page_card_7_title: "ತಾಲ್ಲೂಕು ಮಟ್ಟದ ಕ್ರೀಡಾ ಪ್ರಶಸ್ತಿಗಳು",
     achievements_page_card_7_category: "ಕ್ರೀಡೆ",
     achievements_page_card_7_year: "2024-25",
-    achievements_page_card_7_description: "ತಾಲ್ಲೂಕು ಮಟ್ಟದ ಕ್ರೀಡೆಗಳಲ್ಲಿ ಪ್ರಶಸ್ತಿಗಳು.",
-    achievements_page_card_7_details: "ಶಾಲಾ ತಂಡವು ತಾಲ್ಲೂಕು ಮಟ್ಟದ ವಿವಿಧ ಕ್ರೀಡಾ ವಿಭಾಗಗಳಲ್ಲಿ ಭಾಗವಹಿಸಿ ಪ್ರಶಸ್ತಿಗಳನ್ನು ಗೆದ್ದಿದೆ.",
+    achievements_page_card_7_description:
+      "ತಾಲ್ಲೂಕು ಮಟ್ಟದ ಕ್ರೀಡೆಗಳಲ್ಲಿ ಪ್ರಶಸ್ತಿಗಳು.",
+    achievements_page_card_7_details:
+      "ಶಾಲಾ ತಂಡವು ತಾಲ್ಲೂಕು ಮಟ್ಟದ ವಿವಿಧ ಕ್ರೀಡಾ ವಿಭಾಗಗಳಲ್ಲಿ ಭಾಗವಹಿಸಿ ಪ್ರಶಸ್ತಿಗಳನ್ನು ಗೆದ್ದಿದೆ.",
     achievements_page_card_7_level: "ತಾಲ್ಲೂಕು ಮಟ್ಟ",
     achievements_page_card_7_participants: "ಕ್ರೀಡಾ ತಂಡ",
     achievements_page_card_8_title: "ಖೋ ಖೋ ಸ್ಪರ್ಧೆ",
     achievements_page_card_8_category: "ಕ್ರೀಡೆ",
     achievements_page_card_8_year: "2024-25",
     achievements_page_card_8_description: "ಖೋ ಖೋ ಸ್ಪರ್ಧೆಯಲ್ಲಿ ಬಹುಮಾನ.",
-    achievements_page_card_8_details: "ಖೋ ಖೋ ತಂಡವು ಈ ಬಹುಮಾನವನ್ನು ಪಡೆಯಲು ಅತ್ಯುತ್ತಮ ತಂಡದ ಕೆಲಸ ಮತ್ತು ಸಮನ್ವಯವನ್ನು ಪ್ರದರ್ಶಿಸಿತು.",
+    achievements_page_card_8_details:
+      "ಖೋ ಖೋ ತಂಡವು ಈ ಬಹುಮಾನವನ್ನು ಪಡೆಯಲು ಅತ್ಯುತ್ತಮ ತಂಡದ ಕೆಲಸ ಮತ್ತು ಸಮನ್ವಯವನ್ನು ಪ್ರದರ್ಶಿಸಿತು.",
     achievements_page_card_8_level: "ಶಾಲಾ ಮಟ್ಟದ ಸ್ಪರ್ಧೆ",
     achievements_page_card_8_participants: "ಖೋ ಖೋ ತಂಡ",
     achievements_page_card_9_title: "ಏಕ ಪಾತ್ರ ಅಭಿನಯ ಶ್ರೇಷ್ಠತೆ",
     achievements_page_card_9_category: "ಸಾಂಸ್ಕೃತಿಕ",
     achievements_page_card_9_year: "2024-25",
     achievements_page_card_9_description: "ಏಕ ಪಾತ್ರ ಅಭಿನಯ ಸ್ಪರ್ಧೆಯಲ್ಲಿ ಬಹುಮಾನ.",
-    achievements_page_card_9_details: "ನಾಟಕೀಯ ಅಭಿವ್ಯಕ್ತಿ ಮತ್ತು ಪಾತ್ರ ನಿರ್ವಹಣೆಯಲ್ಲಿ ಅತ್ಯುತ್ತಮ ಪ್ರದರ್ಶನ.",
+    achievements_page_card_9_details:
+      "ನಾಟಕೀಯ ಅಭಿವ್ಯಕ್ತಿ ಮತ್ತು ಪಾತ್ರ ನಿರ್ವಹಣೆಯಲ್ಲಿ ಅತ್ಯುತ್ತಮ ಪ್ರದರ್ಶನ.",
     achievements_page_card_9_level: "ಶಾಲಾ/ಪ್ರಾದೇಶಿಕ ಮಟ್ಟ",
     achievements_page_card_9_participants: "1 ವಿದ್ಯಾರ್ಥಿ",
     achievements_page_card_10_title: "ಯೋಗ ಸ್ಪರ್ಧೆಯ ಬಹುಮಾನ",
     achievements_page_card_10_category: "ಯೋಗ",
     achievements_page_card_10_year: "2024-25",
     achievements_page_card_10_description: "ಯೋಗ ಸ್ಪರ್ಧೆಯಲ್ಲಿ ಬಹುಮಾನ.",
-    achievements_page_card_10_details: "ವಿದ್ಯಾರ್ಥಿಗಳ ನಮ್ಯತೆ, ಸಮತೋಲನ ಮತ್ತು ವಿವಿಧ ಆಸನಗಳ ಮೇಲಿನ ಪ್ರಭುತ್ವಕ್ಕಾಗಿ ಮಾನ್ಯತೆ.",
+    achievements_page_card_10_details:
+      "ವಿದ್ಯಾರ್ಥಿಗಳ ನಮ್ಯತೆ, ಸಮತೋಲನ ಮತ್ತು ವಿವಿಧ ಆಸನಗಳ ಮೇಲಿನ ಪ್ರಭುತ್ವಕ್ಕಾಗಿ ಮಾನ್ಯತೆ.",
     achievements_page_card_10_level: "ಪ್ರಾದೇಶಿಕ ಮಟ್ಟ",
     achievements_page_card_10_participants: "ಯೋಗ ವಿದ್ಯಾರ್ಥಿಗಳು",
     achievements_page_card_11_title: "ಮೈಸೂರು ಯೋಗ ಸ್ಪರ್ಧೆ",
     achievements_page_card_11_category: "ಯೋಗ",
     achievements_page_card_11_year: "2024-25",
-    achievements_page_card_11_description: "ಮೈಸೂರಿನಲ್ಲಿ ನಡೆದ ಯೋಗ ಸ್ಪರ್ಧೆಯ ಪ್ರಥಮ ಬಹುಮಾನ ವಿಜೇತರು.",
-    achievements_page_card_11_details: "ನಮ್ಮ ಯೋಗ ತಂಡವು ಮೈಸೂರಿನಲ್ಲಿ ನಡೆದ ಪ್ರತಿಷ್ಠಿತ ಸ್ಪರ್ಧೆಯಲ್ಲಿ ಅಗ್ರಸ್ಥಾನವನ್ನು ಪಡೆದುಕೊಂಡಿದೆ.",
+    achievements_page_card_11_description:
+      "ಮೈಸೂರಿನಲ್ಲಿ ನಡೆದ ಯೋಗ ಸ್ಪರ್ಧೆಯ ಪ್ರಥಮ ಬಹುಮಾನ ವಿಜೇತರು.",
+    achievements_page_card_11_details:
+      "ನಮ್ಮ ಯೋಗ ತಂಡವು ಮೈಸೂರಿನಲ್ಲಿ ನಡೆದ ಪ್ರತಿಷ್ಠಿತ ಸ್ಪರ್ಧೆಯಲ್ಲಿ ಅಗ್ರಸ್ಥಾನವನ್ನು ಪಡೆದುಕೊಂಡಿದೆ.",
     achievements_page_card_11_level: "ರಾಜ್ಯ/ಪ್ರಾದೇಶಿಕ ಮಟ್ಟ",
     achievements_page_card_11_participants: "ಯೋಗ ತಂಡ",
   },

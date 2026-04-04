@@ -1,8 +1,20 @@
-import { useI18n } from "@/lib/i18n";
+import {
+  BookOpen,
+  Car,
+  Computer,
+  Dumbbell,
+  Heart,
+  Microscope,
+  Music,
+  Shield,
+  Users,
+  Utensils,
+} from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { getAssetImage } from "@/lib/imageUtils";
+
 import { Badge } from "@/components/ui/badge";
-import { getSchoolImage } from "@/lib/imageUtils";
-import { BookOpen, Microscope, Computer, Dumbbell, Music, Users, Shield, Car, Utensils, Heart } from "lucide-react";
+import { useI18n } from "@/lib/i18n";
 
 export default function Facilities() {
   const { t } = useI18n();
@@ -12,7 +24,7 @@ export default function Facilities() {
       icon: BookOpen,
       title: t("facilities_page_core_1_title"),
       description: t("facilities_page_core_1_desc"),
-      image: getSchoolImage(5),
+      image: getAssetImage("1.png"),
       features: [
         t("facilities_page_core_1_feature_1"),
         t("facilities_page_core_1_feature_2"),
@@ -24,7 +36,7 @@ export default function Facilities() {
       icon: Microscope,
       title: t("facilities_page_core_2_title"),
       description: t("facilities_page_core_2_desc"),
-      image: getSchoolImage(6),
+      image: getAssetImage("2.jpg"),
       features: [
         // t("facilities_page_core_2_feature_1"),
         // t("facilities_page_core_2_feature_2"),
@@ -36,7 +48,7 @@ export default function Facilities() {
       icon: Computer,
       title: t("facilities_page_core_3_title"),
       description: t("facilities_page_core_3_desc"),
-      image: getSchoolImage(7),
+      image: getAssetImage("3.jpg"),
       features: [
         t("facilities_page_core_3_feature_1"),
         t("facilities_page_core_3_feature_2"),
@@ -48,7 +60,7 @@ export default function Facilities() {
       icon: Dumbbell,
       title: t("facilities_page_core_4_title"),
       description: t("facilities_page_core_4_desc"),
-      image: getSchoolImage(8),
+      image: getAssetImage("4.png"),
       features: [
         t("facilities_page_core_4_feature_1"),
         t("facilities_page_core_4_feature_2"),
@@ -60,7 +72,7 @@ export default function Facilities() {
       icon: Music,
       title: t("facilities_page_core_5_title"),
       description: t("facilities_page_core_5_desc"),
-      image: getSchoolImage(9),
+      image: getAssetImage("5.png"),
       features: [
         // t("facilities_page_core_5_feature_1"),
         // t("facilities_page_core_5_feature_2"),
@@ -72,7 +84,7 @@ export default function Facilities() {
       icon: Users,
       title: t("facilities_page_core_6_title"),
       description: t("facilities_page_core_6_desc"),
-      image: getSchoolImage(10),
+      image: getAssetImage('5(1).jpg'),
       features: [
         t("facilities_page_core_6_feature_1"),
         t("facilities_page_core_6_feature_2"),
@@ -114,20 +126,37 @@ export default function Facilities() {
     <main className="container mx-auto py-10">
       {/* Hero Section */}
       <section className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-brand-blue mb-4">{t("facilities_page_title")}</h1>
-        <p className="text-xl text-gray-600 mb-6">{t("facilities_page_subtitle")}</p>
-        <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">{t("facilities_page_intro")}</p>
+        <h1 className="text-4xl font-bold text-brand-blue mb-4">
+          {t("facilities_page_title")}
+        </h1>
+        <p className="text-xl text-gray-600 mb-6">
+          {t("facilities_page_subtitle")}
+        </p>
+        <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
+          {t("facilities_page_intro")}
+        </p>
       </section>
 
       {/* Main Facilities */}
       <section className="mb-12">
-        <h2 className="text-3xl font-bold text-center text-brand-blue mb-8">{t("facilities_page_core_title")}</h2>
-        <p className="text-center text-sm font-medium text-brand-orange mb-6">{t("facilities_page_core_note")}</p>
+        <h2 className="text-3xl font-bold text-center text-brand-blue mb-8">
+          {t("facilities_page_core_title")}
+        </h2>
+        <p className="text-center text-sm font-medium text-brand-orange mb-6">
+          {t("facilities_page_core_note")}
+        </p>
         <div className="grid lg:grid-cols-2 gap-8">
           {facilities.map((facility, index) => (
-            <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
+            <Card
+              key={index}
+              className="overflow-hidden hover:shadow-lg transition-shadow"
+            >
               <div className="relative h-48">
-                <img src={facility.image} alt={facility.title} className="w-full h-full object-cover" />
+                <img
+                  src={facility.image}
+                  alt={facility.title}
+                  className="w-full h-full object-cover"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                 <div className="absolute top-4 left-4">
                   <div className="p-2 rounded-full bg-brand-blue/90">
@@ -136,7 +165,9 @@ export default function Facilities() {
                 </div>
               </div>
               <CardHeader>
-                <CardTitle className="text-xl text-brand-blue">{facility.title}</CardTitle>
+                <CardTitle className="text-xl text-brand-blue">
+                  {facility.title}
+                </CardTitle>
                 <p className="text-gray-600">{facility.description}</p>
               </CardHeader>
               <CardContent>
@@ -155,10 +186,15 @@ export default function Facilities() {
 
       {/* Additional Facilities */}
       <section className="mb-12">
-        <h2 className="text-3xl font-bold text-center text-brand-blue mb-8">{t("facilities_page_additional_title")}</h2>
+        <h2 className="text-3xl font-bold text-center text-brand-blue mb-8">
+          {t("facilities_page_additional_title")}
+        </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {additionalFacilities.map((facility, index) => (
-            <Card key={index} className="text-center hover:shadow-lg transition-shadow">
+            <Card
+              key={index}
+              className="text-center hover:shadow-lg transition-shadow"
+            >
               <CardHeader>
                 <div className="flex justify-center mb-3">
                   <div className="p-3 rounded-full bg-brand-orange/10">
@@ -179,21 +215,35 @@ export default function Facilities() {
       <section className="mb-12">
         <Card>
           <CardHeader>
-            <CardTitle className="text-2xl text-brand-blue">{t("facilities_page_highlights_title")}</CardTitle>
+            <CardTitle className="text-2xl text-brand-blue">
+              {t("facilities_page_highlights_title")}
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="text-center">
-                <div className="text-3xl font-bold text-brand-blue mb-2">25+</div>
-                <div className="text-sm text-gray-600">{t("facilities_page_highlight_1")}</div>
+                <div className="text-3xl font-bold text-brand-blue mb-2">
+                  25+
+                </div>
+                <div className="text-sm text-gray-600">
+                  {t("facilities_page_highlight_1")}
+                </div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-brand-blue mb-2">2500+</div>
-                <div className="text-sm text-gray-600">{t("facilities_page_highlight_2")}</div>
+                <div className="text-3xl font-bold text-brand-blue mb-2">
+                  2500+
+                </div>
+                <div className="text-sm text-gray-600">
+                  {t("facilities_page_highlight_2")}
+                </div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-brand-blue mb-2">{t("facilities_page_highlight_3_label")}</div>
-                <div className="text-sm text-gray-600">{t("facilities_page_highlight_3")}</div>
+                <div className="text-3xl font-bold text-brand-blue mb-2">
+                  {t("facilities_page_highlight_3_label")}
+                </div>
+                <div className="text-sm text-gray-600">
+                  {t("facilities_page_highlight_3")}
+                </div>
               </div>
             </div>
           </CardContent>

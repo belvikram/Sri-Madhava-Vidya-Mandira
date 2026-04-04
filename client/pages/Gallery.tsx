@@ -1,7 +1,7 @@
 import { useI18n } from "@/lib/i18n";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { getSchoolImage } from "@/lib/imageUtils";
+import { getSchoolImage, getAssetImage } from "@/lib/imageUtils";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Camera, Users, Trophy, Music, Palette, BookOpen } from "lucide-react";
 
@@ -13,42 +13,42 @@ export default function Gallery() {
       id: "campus",
       title: t("gallery_page_category_campus_title"),
       icon: Camera,
-      images: [getSchoolImage(1), getSchoolImage(2), getSchoolImage(3)],
+      images: [getSchoolImage(1), getSchoolImage(2), getSchoolImage(3), getSchoolImage(6), getSchoolImage(7), getSchoolImage(8)],
       description: t("gallery_page_category_campus_desc"),
     },
     {
       id: "students",
       title: t("gallery_page_category_students_title"),
       icon: Users,
-      images: [getSchoolImage(4), getSchoolImage(5), getSchoolImage(6)],
+      images: [getSchoolImage(4), getSchoolImage(5), getSchoolImage(6), getAssetImage('9.png'), getAssetImage('10.png'), getAssetImage('11.png'), getAssetImage('11(1).jpeg'), getAssetImage('11(2).jpeg'), getAssetImage('11(3).jpeg'), getAssetImage('11(4).jpeg')],
       description: t("gallery_page_category_students_desc"),
     },
     {
       id: "sports",
       title: t("gallery_page_category_sports_title"),
       icon: Trophy,
-      images: [getSchoolImage(7), getSchoolImage(8), getSchoolImage(9)],
+      images: [getSchoolImage(7), getSchoolImage(8), getSchoolImage(9), getAssetImage('12.jpg'), getAssetImage('13.jpg'), getAssetImage('14.png'), getAssetImage('14(1).JPG'), getAssetImage('14(2).JPG'), getAssetImage('14(3).JPG')],
       description: t("gallery_page_category_sports_desc"),
     },
     {
       id: "cultural",
       title: t("gallery_page_category_cultural_title"),
       icon: Music,
-      images: [getSchoolImage(10), getSchoolImage(11), getSchoolImage(12)],
+      images: [getSchoolImage(10), getSchoolImage(11), getSchoolImage(12), getAssetImage('15.jpg'), getAssetImage('16.jpg'), getAssetImage('17.jpg')],
       description: t("gallery_page_category_cultural_desc"),
     },
     {
       id: "arts",
       title: t("gallery_page_category_arts_title"),
       icon: Palette,
-      images: [getSchoolImage(1), getSchoolImage(2), getSchoolImage(3)],
+      images: [getSchoolImage(1), getSchoolImage(2), getSchoolImage(3), getAssetImage('18.jpeg'), getAssetImage('19.jpeg'), getAssetImage('20.png')],
       description: t("gallery_page_category_arts_desc"),
     },
     {
       id: "academics",
       title: t("gallery_page_category_academics_title"),
       icon: BookOpen,
-      images: [getSchoolImage(4), getSchoolImage(5), getSchoolImage(6)],
+      images: [getSchoolImage(4), getSchoolImage(5), getSchoolImage(6), getAssetImage('21.png')],
       description: t("gallery_page_category_academics_desc"),
     },
   ];
